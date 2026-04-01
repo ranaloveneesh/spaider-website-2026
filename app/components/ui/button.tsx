@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import { useState, CSSProperties, ReactNode } from "react";
 
 // ─────────────────────────────────────────────
@@ -7,7 +10,7 @@ interface CeramicButtonProps {
   /** Button label or any ReactNode */
   children: ReactNode;
 
-  /** Main background color of the button — hex, rgb, hsl, etc.
+  /** Main background color of the button - hex, rgb, hsl, etc.
    *  @example "#6c47ff" | "rgb(99,102,241)" | "hsl(250,80%,55%)"
    */
   color: string;
@@ -33,11 +36,17 @@ interface CeramicButtonProps {
   /** Click handler */
   onClick?: () => void;
 
+  /** When set, renders as a Next.js link (same visuals as the button). */
+  href?: string;
+
   /** Extra inline styles */
   style?: CSSProperties;
 
   /** HTML button type */
   type?: "button" | "submit" | "reset";
+
+  /** Center label content */
+  centered?: boolean;
 }
 
 // ─────────────────────────────────────────────
@@ -53,8 +62,10 @@ export default function CeramicButton({
   padding = "6px 14px",
   disabled = false,
   onClick,
+  href,
   style,
   type = "button",
+  centered = false,
 }: CeramicButtonProps) {
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -94,6 +105,7 @@ export default function CeramicButton({
          0 4px 4px -2px rgba(0,0,0,0.24),
          0 0 0 1px ${ring}`,
     transition: "filter 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease",
+    textDecoration: "none",
     ...style,
   };
 
@@ -115,11 +127,12 @@ export default function CeramicButton({
     width: "100%",
     alignItems: "center",
     alignSelf: "stretch",
+    justifyContent: centered ? "center" : "flex-start",
     whiteSpace: "nowrap",
     padding,
     filter: hovered ? "none" : "drop-shadow(0 1px 2px rgba(0,0,0,0.2))",
     transition: "filter 0.15s ease",
-    fontFamily: "'DM Sans', system-ui, sans-serif",
+    fontFamily: "var(--font-montserrat), system-ui, sans-serif",
     fontSize: `${fontSize}px`,
     fontWeight: 600,
     letterSpacing: "-0.01em",
@@ -128,6 +141,28 @@ export default function CeramicButton({
     position: "relative",
     zIndex: 1,
   };
+
+  const sheen = <span style={sheenStyle} aria-hidden="true" />;
+  const label = <span style={innerStyle}>{children}</span>;
+
+  if (href) {
+    return (
+      <Link
+        href={href}
+        style={baseStyle}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => {
+          setHovered(false);
+          setPressed(false);
+        }}
+        onMouseDown={() => setPressed(true)}
+        onMouseUp={() => setPressed(false)}
+      >
+        {sheen}
+        {label}
+      </Link>
+    );
+  }
 
   return (
     <button
@@ -143,59 +178,8 @@ export default function CeramicButton({
       onMouseUp={() => setPressed(false)}
       style={baseStyle}
     >
-      {/* Gradient sheen overlay */}
-      <span style={sheenStyle} aria-hidden="true" />
-      {/* Content */}
-      <span style={innerStyle}>{children}</span>
+      {sheen}
+      {label}
     </button>
-  );
-}
-
-// ─────────────────────────────────────────────
-// Usage Preview (remove this in production)
-// ─────────────────────────────────────────────
-export function CeramicButtonPreview() {
-  return (
-    <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap"
-        rel="stylesheet"
-      />
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "#0d0d0f",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "16px",
-        }}
-      >
-        <CeramicButton color="#6c47ff">Invite user</CeramicButton>
-        <CeramicButton color="#0f766e" ringColor="#0d9488">
-          Join waitlist
-        </CeramicButton>
-        <CeramicButton color="#b91c1c" ringColor="#ef4444">
-          Delete account
-        </CeramicButton>
-        <CeramicButton
-          color="#1d4ed8"
-          ringColor="#3b82f6"
-          borderRadius={999}
-          padding="8px 20px"
-        >
-          Get started →
-        </CeramicButton>
-        <CeramicButton
-          color="#374151"
-          textColor="#f9fafb"
-          ringColor="#6b7280"
-          disabled
-        >
-          Disabled
-        </CeramicButton>
-      </div>
-    </>
   );
 }

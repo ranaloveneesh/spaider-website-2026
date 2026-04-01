@@ -3,7 +3,8 @@
 import Link from "next/link";
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import CeramicButton, { Button } from "./ui/button";
+import CeramicButton from "./ui/button";
+import AnimatedNavLink from "./ui/animated-navlink";
 
 type NavLink = { label: string; href: string };
 
@@ -15,22 +16,48 @@ const PRIMARY_LINKS: NavLink[] = [
   { label: "BLOG", href: "/blog" },
 ];
 
+const AGENTS_DROPDOWN_LINKS: NavLink[] = [
+  { label: "SAGAN", href: "/agents/sagan" },
+  { label: "KEPLER (Coming Soon)", href: "/agents/kepler" },
+];
+
 const MOBILE_LINKS: NavLink[] = [
   ...PRIMARY_LINKS,
   { label: "REQUEST DEMO", href: "/request-demo" },
 ];
 
 const NAV_LINK_CLASSNAME =
-  "relative inline-flex items-center py-[10px] text-[12px] leading-none font-semibold uppercase tracking-[0.08em] text-white after:absolute after:bottom-[2px] after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-white after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:after:scale-x-100";
+  "relative inline-flex items-center text-xs leading-none font-medium uppercase tracking-[0.08em] text-white";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
   const toggleMobileMenu = useCallback(
     () => setIsMobileMenuOpen((v) => !v),
     [],
   );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      if (docHeight <= 0) {
+        setProgress(0);
+        return;
+      }
+
+      const scrolled = scrollTop / docHeight;
+      setProgress(Math.max(0, Math.min(1, scrolled)));
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -41,69 +68,121 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  const initialWidth = 0.2;
+  const finalScale = initialWidth + (1 - initialWidth) * progress;
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-black/20 backdrop-blur-md">
-        <div className="mx-auto flex h-(--header-height) items-center justify-between px-5 sm:px-6 lg:px-10">
-          <div className="flex items-center">
-            <Link
-              href="/"
-              aria-label="Home"
-              className="select-none flex flex-row items-center gap-2"
+        <div className="relative">
+          <div className="mx-auto flex h-(--header-height) items-center justify-between px-5 sm:px-6 lg:px-10">
+            <div className="flex items-center">
+              <Link
+                href="/"
+                aria-label="Home"
+                className="select-none flex flex-row items-center gap-2"
+              >
+                <Image src="/logo.png" alt="SPAIDER" width={40} height={80} />
+                <span className="text-2xl font-semibold text-white">
+                  SPAIDER Space
+                </span>
+              </Link>
+            </div>
+
+            <nav
+              aria-label="Primary"
+              className="hidden flex-1 items-center justify-end gap-5 xl:gap-10 lg:flex"
             >
-              <Image src="/logo.png" alt="SPAIDER" width={80} height={80} />
-              <span className="text-2xl font-semibold text-white">
-                Spaider Space
-              </span>
-            </Link>
+              {PRIMARY_LINKS.map((l) =>
+                l.label === "AGENTS" ? (
+                  <div key={l.href} className="group relative">
+                    <span
+                      className={`group relative inline-block overflow-hidden h-4 font-semibold uppercase text-[13px] cursor-pointer`}
+                    >
+                      <div className="flex flex-col transition-transform duration-400 ease-out transform group-hover:-translate-y-1/2">
+                        <span className="text-muted">{l.label}</span>
+                        <span className="text-foreground">{l.label}</span>
+                      </div>
+                    </span>
+
+                    <div className="pointer-events-none absolute left-0 top-full z-60 w-max min-w-[220px] -translate-y-[120vh] p-1 opacity-0 transition-all duration-300 ease-out group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100">
+                      {AGENTS_DROPDOWN_LINKS.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          className="block whitespace-nowrap px-1 py-1 tracking-[0.08em] font-semibold uppercase text-[13px] text-muted transition-colors hover:text-foreground"
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <AnimatedNavLink key={l.href} href={l.href}>
+                    {l.label}
+                  </AnimatedNavLink>
+                ),
+              )}
+              <CeramicButton
+                href="/request-demo"
+                color="rgba(255, 255, 255, 0.06)"
+                ringColor="rgba(255, 255, 255, 0.22)"
+                textColor="var(--color-white)"
+                borderRadius={9999}
+                padding="8px 16px"
+              >
+                REQUEST DEMO
+              </CeramicButton>
+            </nav>
+
+            <button
+              type="button"
+              className="relative inline-flex h-10 w-10 cursor-pointer items-center justify-center bg-transparent p-0 lg:hidden"
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="spx-mobile-menu"
+              onClick={toggleMobileMenu}
+            >
+              <span
+                aria-hidden="true"
+                className={`absolute h-[2px] w-5 rounded-full bg-white transition-transform duration-300 ease-out ${
+                  isMobileMenuOpen
+                    ? "translate-y-0 rotate-45"
+                    : "-translate-y-[6px] rotate-0"
+                }`}
+              />
+              <span
+                aria-hidden="true"
+                className={`absolute h-[2px] w-5 rounded-full bg-white transition-opacity duration-300 ease-out ${
+                  isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                aria-hidden="true"
+                className={`absolute h-[2px] w-5 rounded-full bg-white transition-transform duration-300 ease-out ${
+                  isMobileMenuOpen
+                    ? "translate-y-0 -rotate-45"
+                    : "translate-y-[6px] rotate-0"
+                }`}
+              />
+            </button>
           </div>
 
-          <nav
-            aria-label="Primary"
-            className="hidden flex-1 items-center justify-end gap-5 xl:gap-6 lg:flex"
-          >
-            {PRIMARY_LINKS.map((l) => (
-              <Link key={l.href} href={l.href} className={NAV_LINK_CLASSNAME}>
-                {l.label}
-              </Link>
-            ))}
-
-            <CeramicButton color="#0070C0" textColor="#ffffff">
-              Request Demo
-            </CeramicButton>
-          </nav>
-
-          <button
-            type="button"
-            className="relative inline-flex h-10 w-10 cursor-pointer items-center justify-center bg-transparent p-0 lg:hidden"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="spx-mobile-menu"
-            onClick={toggleMobileMenu}
-          >
-            <span
-              aria-hidden="true"
-              className={`absolute h-[2px] w-5 rounded-full bg-white transition-transform duration-300 ease-out ${
-                isMobileMenuOpen
-                  ? "translate-y-0 rotate-45"
-                  : "-translate-y-[6px] rotate-0"
-              }`}
+          <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black overflow-hidden">
+            <div
+              className="h-full origin-center"
+              style={{
+                position: "absolute",
+                left: "50%",
+                transform: `translateX(-50%) scaleX(${finalScale})`,
+                transformOrigin: "center",
+                width: "100%",
+                background:
+                  "linear-gradient(90deg, #000000 -25%, var(--color-accent) 54.33%, #000000 125%)",
+                transition: "transform 0.1s ease-out",
+              }}
             />
-            <span
-              aria-hidden="true"
-              className={`absolute h-[2px] w-5 rounded-full bg-white transition-opacity duration-300 ease-out ${
-                isMobileMenuOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              aria-hidden="true"
-              className={`absolute h-[2px] w-5 rounded-full bg-white transition-transform duration-300 ease-out ${
-                isMobileMenuOpen
-                  ? "translate-y-0 -rotate-45"
-                  : "translate-y-[6px] rotate-0"
-              }`}
-            />
-          </button>
+          </div>
         </div>
       </header>
 
@@ -141,13 +220,13 @@ export default function Navbar() {
                 key={`${l.href}-${l.label}`}
                 className="border-b border-white/15"
               >
-                <Link
+                <AnimatedNavLink
+                  key={l.href}
                   href={l.href}
-                  className="flex items-center justify-end py-4 text-[14px] font-semibold uppercase tracking-[0.08em] text-white"
                   onClick={closeMobileMenu}
                 >
                   {l.label}
-                </Link>
+                </AnimatedNavLink>
               </li>
             ))}
           </ul>
