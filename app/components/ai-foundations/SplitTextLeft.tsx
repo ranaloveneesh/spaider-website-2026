@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 type StepItem = {
   title: string;
   description: string;
@@ -35,7 +33,7 @@ function Dot() {
 }
 
 export default function SplitTextLeft({
-  kicker,
+  kicker: _kicker,
   title,
 }: {
   kicker?: string;

@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import CeramicButton from "./ui/button";
 
 type Props = {
@@ -12,8 +11,8 @@ type Props = {
 export default function CtaPanel({
   title = "Got a use case in mind? Let’s make it real.",
   copy = "Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we’ll help you bring your AI agent to life — faster.",
-  ctaHref = "/book-demo",
-  ctaLabel = "Talk to us",
+  ctaHref: _ctaHref = "/book-demo",
+  ctaLabel: _ctaLabel = "Talk to us",
 }: Props) {
   return (
     <div className="mx-auto w-full max-w-420 mt-28">

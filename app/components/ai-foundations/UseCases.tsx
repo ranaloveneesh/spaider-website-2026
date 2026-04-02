@@ -1,112 +1,12 @@
 "use client";
 
-import React from "react";
-
-/* ========== Simple, common icons (accessible, minimal) ========== */
-const IconBriefcase = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <rect
-      x="3"
-      y="7"
-      width="18"
-      height="12"
-      rx="2"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-    <path
-      d="M9 7V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-    <path d="M3 12h18" stroke="currentColor" strokeWidth="1.6" />
-  </svg>
-);
-
-const IconBrackets = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <path
-      d="M8 5L4 9v6l4 4"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M16 5l4 4v6l-4 4"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const IconTruck = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <rect
-      x="3"
-      y="7"
-      width="11"
-      height="7"
-      rx="1.5"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-    <path
-      d="M14 10h3l3 3h1v3h-2"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <circle cx="8" cy="17" r="1.8" fill="currentColor" />
-    <circle cx="18" cy="17" r="1.8" fill="currentColor" />
-  </svg>
-);
-
-const IconCalendarCheck = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <rect
-      x="3"
-      y="5"
-      width="18"
-      height="16"
-      rx="2"
-      stroke="currentColor"
-      strokeWidth="1.6"
-    />
-    <path
-      d="M7 5v-2M17 5v-2M3 9h18"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-    />
-    <path
-      d="M8 14l2.5 2.5L16 11"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const IconNetwork = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <circle cx="12" cy="12" r="2.2" fill="currentColor" />
-    <circle cx="5" cy="7" r="1.6" fill="currentColor" />
-    <circle cx="19" cy="7" r="1.6" fill="currentColor" />
-    <circle cx="5" cy="17" r="1.6" fill="currentColor" />
-    <circle cx="19" cy="17" r="1.6" fill="currentColor" />
-    <path
-      d="M12 10V7M12 14v3M7 8l3 2M17 8l-3 2M7 16l3-2M17 16l-3-2"
-      stroke="currentColor"
-      strokeWidth="1.4"
-      strokeLinecap="round"
-    />
-  </svg>
-);
+import {
+  Briefcase,
+  Braces,
+  Truck,
+  CalendarCheck,
+  Network,
+} from "lucide-react";
 
 /* ========== Aerospace-context use cases (EN) ========== */
 const USE_CASES = [
@@ -115,35 +15,35 @@ const USE_CASES = [
     d: "Track proposals, renewals, and blockers by syncing your CRM and contracts",
     prompt:
       "Which ESA/CD contracts renew in the next 30 days, who's blocking them, and what's the next action?",
-    Icon: IconBriefcase,
+    Icon: Briefcase,
   },
   {
     t: "Engineering",
     d: "Search Git repos, codebases, and logs with context across payload, GNC, and avionics work.",
     prompt:
       "List open issues tagged 'telemetry' in `gnc/imu` and show the last 3 related commits.",
-    Icon: IconBrackets,
+    Icon: Braces,
   },
   {
     t: "Logistics",
     d: "Watch long-lead and rad-hard parts, POs, and lead times. Flag risks and suggest qualified alternates.",
     prompt:
       "Show POs delayed >7 days for rad-hard MCUs and suggest alternates to avoid stockouts.",
-    Icon: IconTruck,
+    Icon: Truck,
   },
   {
     t: "Project Management",
     d: "Sync Asana to align milestones and risks. Auto-draft SRR/PDR/CDR reports from real data.",
     prompt:
       "Draft this week's PDR update for Project Atlas with risks, mitigations, and timeline changes.",
-    Icon: IconCalendarCheck,
+    Icon: CalendarCheck,
   },
   {
     t: "Systems Engineering",
     d: "Manage requirements, ICDs, and V&V matrices with traceability. Run impact checks before approvals.",
     prompt:
       "For REQ-214, list linked tests, current status, and impacted ICD interfaces.",
-    Icon: IconNetwork,
+    Icon: Network,
   },
 ] as const;
 

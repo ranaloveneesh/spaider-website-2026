@@ -1,12 +1,11 @@
 "use client";
 
-import LLMLimitations from "./sections/LLMLimitations";
-import Visual from "./sections/Visual";
-import SplitTextLeft from "./sections/SplitTextLeft";
-import UseCases from "./sections/UseCases";
-import FinalCTA from "./sections/FinalCTA";
+import LLMLimitations from "../../components/ai-foundations/LLMLimitations";
+import Visual from "../../components/ai-foundations/Visual";
+import SplitTextLeft from "../../components/ai-foundations/SplitTextLeft";
+import UseCases from "../../components/ai-foundations/UseCases";
+import FinalCTA from "../../components/ai-foundations/FinalCTA";
 import CeramicButton from "@/app/components/ui/button";
-import IntegrationsGallery from "@/app/components/IntegrationsGallery";
 import Image from "next/image";
 
 export default function FoundationsPage() {

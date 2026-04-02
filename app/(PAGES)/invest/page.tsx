@@ -1,4 +1,4 @@
-import { InvestForm } from "../../components/invest-form";
+import { InvestFormLazy } from "@/app/components/invest/InvestFormLazy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function InvestPage() {
         </p>
       </div>
 
-      <InvestForm />
+      <InvestFormLazy />
     </div>
   );
 }

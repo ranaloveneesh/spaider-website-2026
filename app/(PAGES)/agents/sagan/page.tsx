@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import AgentsHero from "@/app/components/AgentsHero";
-import RfpChallenge from "./RfpChallenge";
-import KeyFeatures from "./KeyFeatures";
-import AudienceBenefits from "./AudienceBenefits";
-import OnboardingTimeline from "./OnboardingTimeline";
-import Metrics from "./Metrics";
-import SaganCTA from "./SaganCTA";
+import AgentsHero from "@/app/components/sagan/AgentsHero";
+import RfpChallenge from "../../../components/sagan/RfpChallenge";
+import KeyFeatures from "../../../components/sagan/KeyFeatures";
+import OnboardingTimeline from "../../../components/sagan/OnboardingTimeline";
+import Metrics from "../../../components/sagan/Metrics";
+import SaganCTA from "../../../components/sagan/SaganCTA";
 
 export const metadata: Metadata = {
   title: "Sagan - SPAIDER",
@@ -15,17 +14,12 @@ export const metadata: Metadata = {
 
 export default function SaganPage() {
   return (
-    <div className="">
+    <div>
       <AgentsHero />
-
       <RfpChallenge />
-
       <KeyFeatures />
-
       <OnboardingTimeline />
-
       <Metrics />
-
       <SaganCTA />
     </div>
   );

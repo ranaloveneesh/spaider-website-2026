@@ -1,27 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Manrope, Montserrat, Playfair_Display } from "next/font/google";
+import { JsonLd } from "@/app/components/seo/JsonLd";
+import { getSiteJsonLd } from "@/app/lib/structured-data";
 import "./globals.css";
-import SmoothScrollProvider from "./components/SmoothScrollProvider";
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  preload: false,
+  display: "swap",
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: "italic",
+  preload: false,
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -84,6 +91,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#08090a",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -94,12 +107,13 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${inter.variable} ${montserrat.variable} ${playfair.variable} h-full antialiased`}
     >
-      <div className="min-h-screen relative bg-[radial-gradient(circle_at_15%_25%,rgba(255,255,255,0.10),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(to_bottom,#0b0b0c,#000000)]">
-        <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <JsonLd data={getSiteJsonLd()} />
+        <div className="min-h-screen relative bg-[radial-gradient(circle_at_15%_25%,rgba(255,255,255,0.10),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(to_bottom,#0b0b0c,#000000)]">
           {/* <SmoothScrollProvider>{children}</SmoothScrollProvider> */}
           {children}
-        </body>
-      </div>
+        </div>
+      </body>
     </html>
   );
 }

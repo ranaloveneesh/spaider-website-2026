@@ -3,10 +3,16 @@ import Image from "next/image";
 
 const hero = () => {
   return (
-    <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:gap-8 lg:justify-between lg:items-center">
+    <section
+      aria-labelledby="hero-heading"
+      className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:gap-8 lg:justify-between lg:items-center"
+    >
       <div className="w-full flex-1 lg:max-w-[560px] ">
         <div className="space-y-6">
-          <h1 className="text-3xl font-semibold leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl font-manrope">
+          <h1
+            id="hero-heading"
+            className="text-3xl font-semibold leading-[1.04] tracking-tight text-foreground sm:text-4xl lg:text-5xl font-manrope"
+          >
             Your Domain Trained
             <span className="font-playfair-italic block">Co-Pilot</span>
           </h1>
@@ -32,24 +38,19 @@ const hero = () => {
         </div>
       </div>
 
-      <div className="relative w-full flex-1  lg:ml-auto overflow-visible lg:flex lg:justify-end rounded-3xl">
-        <div
-          className="relative w-full overflow-visible border border-border rounded-3xl"
-          style={{
-            height: "600px",
-            width: "100%",
-          }}
-        >
+      <div className="relative w-full flex-1 lg:ml-auto lg:flex lg:justify-end rounded-3xl">
+        <div className="relative aspect-4/3 w-full max-h-[min(600px,85vh)] min-h-[280px] overflow-hidden border border-border rounded-3xl lg:max-h-[600px] lg:aspect-auto lg:h-[600px] lg:min-h-0">
           <Image
             src="/demo.png"
             alt="Dashboard preview"
             fill
             priority
-            className="object-cover object-left p-4 rounded-3xl w-fit"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover object-left p-4 rounded-3xl"
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

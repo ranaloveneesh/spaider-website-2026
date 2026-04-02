@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 
 const AnimatedNavLink = ({
   href,
@@ -8,7 +8,7 @@ const AnimatedNavLink = ({
   onClick,
 }: {
   href: string;
-  children: React.ReactNode;
+  children: ReactNode;
   onClick?: () => void;
 }) => {
   const defaultTextColor = "text-muted";
@@ -18,7 +18,7 @@ const AnimatedNavLink = ({
     <a
       href={href}
       onClick={onClick}
-      className={`group relative inline-block overflow-hidden h-5 flex items-center font-semibold uppercase text-[13px]`}
+      className={`group relative inline-block overflow-hidden h-5 flex items-center font-semibold uppercase text-[13px] rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]`}
     >
       <div className="flex flex-col transition-transform duration-400 ease-out transform group-hover:-translate-y-1/2">
         <span className={defaultTextColor}>{children}</span>

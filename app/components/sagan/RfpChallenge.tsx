@@ -1,13 +1,6 @@
 "use client";
 import { useState } from "react";
-
-const Title: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <h2 className="mb-6 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl lg:text-4xl font-manrope">
-    <span className="bg-gradient-to-r from-[#5ce1e6] to-white bg-clip-text text-transparent">
-      {children}
-    </span>
-  </h2>
-);
+import { ChevronDown } from "lucide-react";
 
 const CHALLENGES = [
   {
@@ -64,20 +57,10 @@ export default function RfpChallenge() {
             aria-controls="rfp-more"
           >
             {expanded ? "Read less" : "Read more"}
-            <svg
+            <ChevronDown
               className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M6 9l6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+              aria-hidden
+            />
           </button>
         </div>
 

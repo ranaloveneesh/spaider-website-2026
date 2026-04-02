@@ -1,5 +1,7 @@
 "use client";
 
+import { CircleCheck } from "lucide-react";
+
 type Feature = { title: string; bullets: string[] };
 
 const FEATURES: Feature[] = [
@@ -40,25 +42,6 @@ const FEATURES: Feature[] = [
   },
 ];
 
-const IconCheck = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-    <circle
-      cx="12"
-      cy="12"
-      r="10"
-      stroke="rgba(255,255,255,0.35)"
-      strokeWidth="2"
-    />
-    <path
-      d="M7 12.5l3 3 7-7"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
 const spanByIndex = (_i: number) => "lg:col-span-6";
 
 export default function KeyFeatures() {
@@ -95,7 +78,10 @@ export default function KeyFeatures() {
               <ul className="space-y-3 text-muted-foreground leading-relaxed font-inter">
                 {f.bullets.map((b, bi) => (
                   <li key={bi} className="flex items-start gap-3">
-                    <IconCheck className="mt-[2px] h-5 w-5 text-[#4ea7fc]" />
+                    <CircleCheck
+                      className="mt-[2px] h-5 w-5 shrink-0 text-[#4ea7fc]"
+                      aria-hidden
+                    />
                     <span>{b}</span>
                   </li>
                 ))}

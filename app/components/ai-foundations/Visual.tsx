@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import type { CSSProperties } from "react";
 
 type Px = number | undefined;
 
@@ -30,7 +30,7 @@ export default function Visual({
   const defaultBgSize =
     "bg-[length:98%_auto] md:bg-[length:104%_auto] lg:bg-[length:112%_auto]";
 
-  const varStyle: React.CSSProperties & Record<string, string> = {
+  const varStyle: CSSProperties & Record<string, string> = {
     "--v-h-mobile": `${hMobile ?? 160}px`,
     "--v-h-md": `${hMd ?? 200}px`,
     "--v-h-lg": `${hLg ?? 420}px`,

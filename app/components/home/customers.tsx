@@ -43,7 +43,7 @@ export default function Customers() {
           {[...LOGOS, ...LOGOS].map(({ src, alt, scale }, i) => (
             <div
               key={`${src}-${i}`}
-              className="flex w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220x] items-center justify-center shrink-0"
+              className="flex w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] items-center justify-center shrink-0"
             >
               <div
                 className="flex items-center justify-center"
@@ -57,8 +57,9 @@ export default function Customers() {
                   alt={alt}
                   width={360}
                   height={120}
+                  sizes="(max-width: 640px) 160px, (max-width: 1280px) 200px, 220px"
                   className="h-12 md:h-14 lg:h-16 w-auto object-contain filter brightness-0 invert"
-                  priority={false}
+                  decoding="async"
                 />
               </div>
             </div>

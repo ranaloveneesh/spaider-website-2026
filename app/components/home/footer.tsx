@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FiMail, FiLinkedin, FiYoutube } from "react-icons/fi";
+import { Linkedin, Mail, Youtube } from "lucide-react";
 import { usePathname } from "next/navigation";
+import {
+  EMAIL_ADDRESS,
+  LINKEDIN_URL,
+  YOUTUBE_URL,
+} from "@/app/utils/constants";
 
-const footer = () => {
+function Footer() {
   const year = new Date().getFullYear();
 
   const path = usePathname();
@@ -28,7 +33,7 @@ const footer = () => {
             <div className="flex items-center gap-3">
               <Image
                 src="/logo.png"
-                alt="SPAIDER"
+                alt=""
                 width={80}
                 height={100}
                 className="h-12 w-auto"
@@ -53,10 +58,10 @@ const footer = () => {
             </p>
           </div>
 
-          <div>
-            <p className="font-medium uppercase text-foreground font-montserrat">
+          <nav aria-label="Footer — Platform">
+            <h2 className="m-0 font-medium uppercase text-foreground font-montserrat">
               Platform
-            </p>
+            </h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <Link
@@ -83,12 +88,12 @@ const footer = () => {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <p className="font-medium uppercase text-foreground font-montserrat">
+          <nav aria-label="Footer — Company">
+            <h2 className="m-0 font-medium uppercase text-foreground font-montserrat">
               Company
-            </p>
+            </h2>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
                 <Link
@@ -114,32 +119,69 @@ const footer = () => {
                   Request a demo
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="transition-colors text-foreground font-inter"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className="transition-colors text-foreground font-inter"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
-          </div>
+          </nav>
 
-          <div className="md:row-start-2 md:col-start-3 md:col-span-2">
-            <p className="font-medium uppercase text-muted font-montserrat">
+          <section
+            className="md:row-start-2 md:col-start-3 md:col-span-2"
+            aria-labelledby="footer-contact-heading"
+          >
+            <h2
+              id="footer-contact-heading"
+              className="m-0 font-medium uppercase text-muted font-montserrat"
+            >
               CONTACT US
-            </p>
-            <div className="mt-4 flex gap-8 text-foreground font-inter">
-              <a
-                href="mailto:info@spaiderspace.com"
-                className="flex items-center gap-2"
-              >
-                <FiMail className="h-6 w-6" aria-hidden="true" />
-                <span className="sr-only">info@spaiderspace.com</span>
-              </a>
-
-              <span className="flex items-center gap-2">
-                <FiLinkedin className="h-6 w-6" aria-hidden="true" />
-                <span className="sr-only">LinkedIn</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <FiYoutube className="h-6 w-6" aria-hidden="true" />
-                <span className="sr-only">YouTube</span>
-              </span>
-            </div>
-          </div>
+            </h2>
+            <ul className="mt-4 flex list-none flex-wrap gap-8 p-0 text-foreground font-inter">
+              <li>
+                <a
+                  href={`mailto:${EMAIL_ADDRESS}`}
+                  className="flex items-center gap-2"
+                  aria-label={`Email ${EMAIL_ADDRESS}`}
+                >
+                  <Mail className="h-6 w-6" aria-hidden />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={LINKEDIN_URL}
+                  className="flex items-center gap-2"
+                  aria-label="Spaider Space on LinkedIn (opens in a new tab)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="h-6 w-6" aria-hidden />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={YOUTUBE_URL}
+                  className="flex items-center gap-2"
+                  aria-label="Spaider Space on YouTube (opens in a new tab)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Youtube className="h-6 w-6" aria-hidden />
+                </a>
+              </li>
+            </ul>
+          </section>
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
@@ -155,4 +197,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;

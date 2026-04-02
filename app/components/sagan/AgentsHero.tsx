@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import CeramicButton from "./ui/button";
+import CeramicButton from "../ui/button";
 import Link from "next/link";
 
 export default function AgentsHero() {

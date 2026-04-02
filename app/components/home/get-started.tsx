@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-
 type ChangelogItem = {
   title: string;
   description: string;

@@ -1,5 +1,5 @@
 import CtaPanel from "@/app/components/CtaPanel";
-import IntegrationsGallery from "@/app/components/IntegrationsGallery";
+import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
 import type { Metadata } from "next";
 import Image from "next/image";
 

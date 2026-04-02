@@ -1,4 +1,4 @@
-import { RequestDemoForm } from "@/app/components/request-demo-form";
+import { RequestDemoFormLazy } from "@/app/components/request-demo/RequestDemoFormLazy";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function RequestDemoPage() {
         </ul>
       </div>
 
-      <RequestDemoForm />
+      <RequestDemoFormLazy />
     </div>
   );
 }
