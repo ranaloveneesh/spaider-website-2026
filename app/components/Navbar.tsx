@@ -99,7 +99,6 @@ export default function Navbar() {
                 </span>
               </Link>
             </div>
-
             <nav
               aria-label="Primary"
               className="hidden flex-1 items-center justify-end gap-5 xl:gap-10 lg:flex"
