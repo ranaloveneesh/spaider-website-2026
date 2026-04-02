@@ -1,4 +1,11 @@
 import type { Metadata } from "next";
+import AgentsHero from "@/app/components/AgentsHero";
+import RfpChallenge from "./RfpChallenge";
+import KeyFeatures from "./KeyFeatures";
+import AudienceBenefits from "./AudienceBenefits";
+import OnboardingTimeline from "./OnboardingTimeline";
+import Metrics from "./Metrics";
+import SaganCTA from "./SaganCTA";
 
 export const metadata: Metadata = {
   title: "Sagan - SPAIDER",
@@ -8,10 +15,18 @@ export const metadata: Metadata = {
 
 export default function SaganPage() {
   return (
-    <div className="space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        Sagan
-      </h1>
+    <div className="">
+      <AgentsHero />
+
+      <RfpChallenge />
+
+      <KeyFeatures />
+
+      <OnboardingTimeline />
+
+      <Metrics />
+
+      <SaganCTA />
     </div>
   );
 }

@@ -94,7 +94,9 @@ export default function SmoothScrollProvider({
     const lenis = new Lenis({
       lerp,
       smoothWheel,
-      smoothTouch,
+      // `smoothTouch` isn't part of the installed LenisOptions type.
+      // The equivalent option in this version is `syncTouch`.
+      syncTouch: smoothTouch,
     });
 
     lenisRef.current = lenis;

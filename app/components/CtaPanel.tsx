@@ -16,7 +16,7 @@ export default function CtaPanel({
   ctaLabel = "Talk to us",
 }: Props) {
   return (
-    <div className="mx-auto w-full max-w-420 mt-12">
+    <div className="mx-auto w-full max-w-420 mt-28">
       <div className="relative overflow-hidden rounded-2xl border border-border bg-panel px-6 py-8 text-center shadow-md md:px-10 md:py-12">
         <div
           aria-hidden

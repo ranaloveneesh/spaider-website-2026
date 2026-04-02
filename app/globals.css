@@ -101,3 +101,25 @@ body {
 .font-manrope {
   font-family: var(--font-manrope);
 }
+
+/* Shared layout for agents pages: consistent section dividers */
+.section-wrap {
+  position: relative;
+}
+
+.section-wrap:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(72rem, 92%);
+  height: 1px;
+  opacity: 0.18;
+  background: linear-gradient(
+    90deg,
+    rgba(92, 225, 230, 0) 0%,
+    rgba(92, 225, 230, 0.6) 50%,
+    rgba(92, 225, 230, 0) 100%
+  );
+}

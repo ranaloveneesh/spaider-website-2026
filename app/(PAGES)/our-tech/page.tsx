@@ -47,9 +47,9 @@ export default function OurTechPage() {
   return (
     <div className="space-y-8 md:space-y-10 pb-12">
       <header className="space-y-4">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-manrope">
+        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-manrope">
           Our tech
-        </h1>
+        </h2>
         <p className="text-foreground leading-7">
           A sovereign, modular AI stack built for aerospace teams that need
           reliability, security, and full deployment control.
@@ -131,7 +131,7 @@ export default function OurTechPage() {
 
         <IntegrationsGallery />
 
-        <div className="mt-28">
+        <div className="mt-12">
           {/* CTA PANEL (BEFORE FOOTER) */}
           <CtaPanel
             title="Got a use case in mind? Let's make it real."
