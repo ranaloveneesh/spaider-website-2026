@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 import CeramicButton from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
@@ -64,6 +65,7 @@ function validate(values: FormValues): FormErrors {
 export function InvestForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (name: keyof FormValues, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -80,12 +82,34 @@ export function InvestForm() {
     setErrors((prev) => ({ ...prev, [name]: error || undefined }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
-    console.log("Form submitted", values);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/invest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      toast.success("Thanks! Your message has been received.");
+      setValues(initialValues);
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong while submitting. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -200,15 +224,16 @@ export function InvestForm() {
         </LabelInputContainer>
 
         <CeramicButton
-          href="/invest"
           color="var(--color-accent)"
           textColor="var(--color-white)"
           borderRadius={6}
           padding="12px"
           centered
           style={{ width: "100%", textAlign: "center" }}
+          type="submit"
+          disabled={isSubmitting}
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </CeramicButton>
       </form>
     </div>

@@ -2,12 +2,15 @@
 import Image from "next/image";
 import CeramicButton from "../ui/button";
 import Link from "next/link";
+import Pill from "../Pill";
 
 export default function AgentsHero() {
   return (
     <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:gap-8 lg:justify-between lg:items-center">
       <div className="w-full flex-1 lg:max-w-[560px] ">
         <div className="space-y-6">
+          <Pill variant="outline">RFP Manager</Pill>
+
           <h2 className="text-2xl font-semibold leading-[1.04] tracking-tight text-foreground sm:text-3xl lg:text-4xl font-manrope">
             Meet SAGAN
           </h2>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Manrope, Montserrat, Playfair_Display } from "next/font/google";
 import { JsonLd } from "@/app/components/seo/JsonLd";
 import { getSiteJsonLd } from "@/app/lib/structured-data";
+import { Toaster } from "@/app/components/Toaster";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -109,6 +110,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <JsonLd data={getSiteJsonLd()} />
+        <Toaster />
         <div className="min-h-screen relative bg-[radial-gradient(circle_at_15%_25%,rgba(255,255,255,0.10),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(to_bottom,#0b0b0c,#000000)]">
           {/* <SmoothScrollProvider>{children}</SmoothScrollProvider> */}
           {children}

@@ -5,19 +5,26 @@ import { CalendarIcon, MailIcon } from "lucide-react";
 import { CALENDLY_URL, EMAIL_ADDRESS } from "@/app/utils/constants";
 import { BottomGradient } from "./RequestDemoShared";
 
-export function RequestDemoFormSubmitAndAlternates() {
+type Props = {
+  isSubmitting: boolean;
+};
+
+export function RequestDemoFormSubmitAndAlternates({
+  isSubmitting,
+}: Props) {
   return (
     <>
       <CeramicButton
-        href="/request-demo"
         color="var(--color-accent)"
         textColor="var(--color-white)"
         borderRadius={6}
         padding="12px"
         centered
         style={{ width: "100%", textAlign: "center" }}
+        type="submit"
+        disabled={isSubmitting}
       >
-        Book demo
+        {isSubmitting ? "Submitting..." : "Book demo"}
       </CeramicButton>
 
       <div className="my-6 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />

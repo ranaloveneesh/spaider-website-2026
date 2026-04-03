@@ -11,10 +11,11 @@ type Logo = {
 const LOGOS: Logo[] = [
   { src: "/trusted/esa.svg", alt: "ESA", scale: 0.6 },
   { src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.7 },
-  { src: "/trusted/luxprovide.png", alt: "LuxProvide", scale: 0.9 },
   { src: "/trusted/mirores.svg", alt: "Mirores", scale: 0.8 },
-  { src: "/trusted/googlecloud.svg", alt: "Google Cloud", scale: 2.5 },
-  { src: "/trusted/nvidia.png", alt: "NVIDIA", scale: 1.1 },
+  { src: "/trusted/esric.png", alt: "ESRIC", scale: 0.7 },
+  { src: "/trusted/esa.svg", alt: "SES", scale: 0.6 },
+  { src: "/trusted/esa.svg", alt: "SREC", scale: 0.6 },
+  { src: "/trusted/esa.svg", alt: "OHB", scale: 0.6 },
 ];
 
 export default function Customers() {

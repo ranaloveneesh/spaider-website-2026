@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import {
   initialValues,
   validate,
@@ -18,6 +19,7 @@ import { RequestDemoFormWork } from "./RequestDemoFormWork";
 export function RequestDemoForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (name: keyof FormValues, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -34,12 +36,34 @@ export function RequestDemoForm() {
     setErrors((prev) => ({ ...prev, [name]: error || undefined }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
-    console.log("Form submitted", values);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/request-demo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      toast.success("Thanks! Your request has been received.");
+      setValues(initialValues);
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong while submitting. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fieldProps = { values, errors, onChange: handleChange, onBlur: handleBlur };
@@ -51,7 +75,9 @@ export function RequestDemoForm() {
         <RequestDemoFormWork {...fieldProps} />
         <RequestDemoFormContact {...fieldProps} />
         <RequestDemoFormHelp {...fieldProps} />
-        <RequestDemoFormSubmitAndAlternates />
+        <RequestDemoFormSubmitAndAlternates
+          isSubmitting={isSubmitting}
+        />
       </form>
     </div>
   );

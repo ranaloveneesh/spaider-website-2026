@@ -1,12 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import type { Tab } from "@/app/components/ui/animated-tabs";
 
 const AnimatedTabs = dynamic(
-  () =>
-    import("@/app/components/ui/animated-tabs").then((m) => m.AnimatedTabs),
+  () => import("@/app/components/ui/animated-tabs").then((m) => m.AnimatedTabs),
   {
     ssr: false,
     loading: () => (
@@ -19,15 +17,18 @@ const AnimatedTabs = dynamic(
   },
 );
 
-function AgentsTabImage({ src, alt }: { src: string; alt: string }) {
+function AgentsTabVideo({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative h-[min(25rem,70vw)] w-full overflow-hidden rounded-sm border-none shadow-[0_0_20px_rgba(0,0,0,0.2)]">
-      <Image
+    <div className="relative h-[min(25rem,70vw)] w-full overflow-hidden rounded-sm border-2 border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.2)]">
+      <video
         src={src}
-        alt={alt}
-        fill
-        sizes="(max-width: 768px) 100vw, 45vw"
-        className="!m-0 mt-0 border-none object-cover"
+        aria-label={alt}
+        muted
+        loop
+        autoPlay
+        playsInline
+        preload="metadata"
+        className="h-full w-full object-cover"
       />
     </div>
   );
@@ -39,10 +40,7 @@ const tabs: Tab[] = [
     label: "AI Foundations",
     content: (
       <div className="grid grid-cols-2 gap-4 w-full h-full">
-        <AgentsTabImage
-          src="https://images.unsplash.com/photo-1493552152660-f915ab47ae9d?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="AI Foundations"
-        />
+        <AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="AI Foundations" />
 
         <div className="flex flex-col gap-y-2">
           <h2 className="text-2xl font-semibold mb-0 text-white mt-0 m-0! font-manrope">
@@ -75,10 +73,7 @@ const tabs: Tab[] = [
     label: "SAGAN",
     content: (
       <div className="grid grid-cols-2 gap-4 w-full h-full">
-        <AgentsTabImage
-          src="https://images.unsplash.com/photo-1506543730435-e2c1d4553a84?q=80&w=2362&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="SAGAN"
-        />
+        <AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="SAGAN" />
         <div className="flex flex-col gap-y-2">
           <h2 className="text-2xl font-semibold mb-0 text-white mt-0 m-0! font-manrope">
             SAGAN
@@ -110,10 +105,7 @@ const tabs: Tab[] = [
     label: "KEPLER (Coming Soon)",
     content: (
       <div className="grid grid-cols-2 gap-4 w-full h-full">
-        <AgentsTabImage
-          src="https://images.unsplash.com/photo-1522428938647-2baa7c899f2f?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Kepler"
-        />
+        <AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="Kepler" />
         <div className="flex flex-col gap-y-2">
           <h2 className="text-2xl font-semibold mb-0 text-white mt-0 m-0! font-manrope">
             Kepler
