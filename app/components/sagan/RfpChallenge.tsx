@@ -25,7 +25,7 @@ export default function RfpChallenge() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <section className="mx-auto mt-28">
+    <section className="mx-auto mt-24">
       <div className="grid gap-10 md:grid-cols-12">
         {/* LEFT: Copy */}
         <div className="md:col-span-7">

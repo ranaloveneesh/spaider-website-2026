@@ -4,7 +4,7 @@ import CeramicButton from "@/app/components/ui/button";
 
 export default function FinalCTA() {
   return (
-    <section className="mx-auto w-full max-w-420 pt-8 md:pt-10">
+    <section className="mx-auto w-full max-w-420 mt-24">
       <div className="relative overflow-hidden rounded-2xl border border-border bg-panel px-6 py-8 text-center shadow-md md:px-10 md:py-12">
         <div
           aria-hidden

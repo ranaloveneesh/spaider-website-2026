@@ -29,7 +29,7 @@ const ITEMS = [
 
 export default function LLMLimitations() {
   return (
-    <section className="relative mx-auto pt-8 pb-16 md:pt-10">
+    <section className="relative mx-auto mt-24">
       <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope">
         What you get with SPAIDER&apos;s Foundations
       </h2>

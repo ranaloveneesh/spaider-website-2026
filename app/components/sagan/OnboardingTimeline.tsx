@@ -39,7 +39,7 @@ function Dot() {
 
 export default function OnboardingTimeline() {
   return (
-    <section className="mx-auto w-[98%] max-w-420 py-14 md:py-18">
+    <section className="mx-auto max-w-420 mt-24">
       <div className="flex items-end justify-between gap-6">
         <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope">
           Seamless Onboarding
@@ -61,11 +61,11 @@ export default function OnboardingTimeline() {
                     <Dot />
                   </div>
 
-                  <div className="mt-4 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
-                    <h4 className="text-sm font-medium tracking-tight text-foreground font-inter">
+                  <div className="mt-2 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
+                    <h4 className="text-lg font-medium tracking-tight text-foreground font-inter">
                       {step.title}
                     </h4>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-tertiary font-inter">
+                    <p className="mt-2 text-sm leading-relaxed text-muted-tertiary font-inter">
                       {step.description}
                     </p>
                   </div>

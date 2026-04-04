@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import Hero from "../components/home/hero";
-import SecurityCompliance from "../components/home/SecurityCompliance";
 
 const Customers = dynamic(() => import("../components/home/customers"), {
   loading: () => (
@@ -41,6 +40,20 @@ const SpaiderSection = dynamic(
   },
 );
 
+const SecurityCompliance = dynamic(
+  () => import("../components/home/SecurityCompliance"),
+  {
+    loading: () => (
+      <section
+        className="relative min-h-[18rem] pt-8 pb-12 md:min-h-[22rem] md:pt-30 md:pb-16"
+        aria-busy="true"
+      >
+        <div className="h-full min-h-[14rem] w-full animate-pulse rounded-[24px] bg-white/5 md:min-h-[18rem]" />
+      </section>
+    ),
+  },
+);
+
 const Agents = dynamic(() => import("../components/home/agents"), {
   loading: () => (
     <section className="mt-24 min-h-[20rem]" aria-busy="true">
@@ -53,7 +66,7 @@ const Agents = dynamic(() => import("../components/home/agents"), {
 const GetStarted = dynamic(() => import("../components/home/get-started"), {
   loading: () => (
     <div
-      className="mt-24 min-h-[12rem] animate-pulse rounded-xl bg-white/5"
+      className="mt-32 min-h-[12rem] animate-pulse rounded-xl bg-white/5"
       aria-busy="true"
     />
   ),
@@ -62,7 +75,7 @@ const GetStarted = dynamic(() => import("../components/home/get-started"), {
 const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
   loading: () => (
     <div
-      className="mx-auto min-h-[14rem] max-w-420 animate-pulse rounded-2xl bg-white/5"
+      className="mt-32 min-h-[14rem] max-w-420 animate-pulse rounded-2xl bg-white/5"
       aria-busy="true"
     />
   ),

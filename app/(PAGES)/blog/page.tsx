@@ -29,7 +29,7 @@ export default function BlogPage() {
           <Link
             key={blog.href}
             href={blog.href}
-            className="block rounded-xl border border-border bg-card p-5 transition hover:border-primary/40 hover:bg-muted/40"
+            className="block rounded-xl border-2 border-border bg-card p-5 transition hover:border-primary/40 hover:bg-muted/40"
           >
             <p className="text-xs text-muted-foreground">{blog.date}</p>
             <h2 className="mt-1 text-xl font-semibold text-foreground">

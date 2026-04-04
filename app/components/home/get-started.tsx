@@ -46,7 +46,7 @@ function Dot() {
 
 export default function GetStarted() {
   return (
-    <section className="mt-24">
+    <section className="mt-32">
       <div className="flex items-end justify-between gap-6">
         <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope">
           Get started with SPAIDER
@@ -70,11 +70,11 @@ export default function GetStarted() {
                     <Dot />
                   </div>
 
-                  <div className="mt-4 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
-                    <h3 className="text-sm font-medium tracking-tight text-foreground font-inter">
+                  <div className="mt-2 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
+                    <h3 className="text-lg font-medium tracking-tight text-foreground font-inter">
                       {item.title}
                     </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-tertiary font-inter line-clamp-2">
+                    <p className="mt-2 text-sm leading-relaxed text-muted-tertiary font-inter line-clamp-2">
                       {item.description}
                     </p>
                   </div>

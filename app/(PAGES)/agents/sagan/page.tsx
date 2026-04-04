@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function SaganPage() {
   return (
-    <div>
+    <div className="space-y-8 pb-12 md:space-y-10 mt-6">
       <AgentsHero />
       <RfpChallenge />
       <KeyFeatures />

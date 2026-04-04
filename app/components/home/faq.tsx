@@ -244,18 +244,6 @@ function FAQ() {
 
   const palette = useMemo(() => palettes[theme], [theme]);
 
-  const toggleTheme = () => {
-    if (typeof document === "undefined") return;
-    const root = document.documentElement;
-    const next = root.classList.contains("dark") ? "light" : "dark";
-    root.classList.toggle("dark", next === "dark");
-    setTheme(next);
-    try {
-      window.localStorage?.setItem("bento-theme", next);
-    } catch (_err) {
-      /* ignore */
-    }
-  };
   const toggleQuestion = (index: number) =>
     setActiveIndex((prev) => (prev === index ? -1 : index));
 
@@ -296,26 +284,16 @@ function FAQ() {
   };
 
   return (
-    <div
-      className={`relative min-h-screen w-full overflow-hidden transition-colors duration-700`}
-    >
-      <div className="absolute inset-0 z-0" />
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-80"
-        style={{
-          mixBlendMode: theme === "dark" ? "screen" : "multiply",
-        }}
-      />
-
+    <div className={`relative mt-24 transition-colors duration-700`}>
       <section
-        className={`relative z-10 mx-auto flex flex-col gap-12 mt-28 ${
+        className={`relative z-10 mx-auto flex flex-col gap-12 ${
           hasEntered ? "faq1-fade--ready" : "faq1-fade"
         }`}
       >
         <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="space-y-4">
             <h1
-              className={`text-3xl font-semibold leading-tight md:text-4xl font-manrope ${palette.heading}`}
+              className={`text-2xl font-semibold leading-tight md:text-3xl font-manrope text-muted`}
             >
               FAQs
             </h1>

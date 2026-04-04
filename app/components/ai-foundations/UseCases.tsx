@@ -52,7 +52,7 @@ const spanByIndex = (i: number) => (i < 3 ? "lg:col-span-4" : "lg:col-span-6");
 
 export default function UseCases() {
   return (
-    <section className="mx-auto mt-12">
+    <section className="mx-auto mt-24">
       <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope md:mb-10 lg:mb-12">
         Use Cases
       </h2>

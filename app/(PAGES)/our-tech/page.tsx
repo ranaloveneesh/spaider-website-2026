@@ -58,13 +58,13 @@ export default function OurTechPage() {
 
       <main className="relative text-foreground">
         {/* 4 repeated sections */}
-        <section className="mx-auto w-full max-w-420 space-y-10 md:space-y-12">
+        <section className="mx-auto w-full max-w-5xl space-y-6 md:space-y-8">
           {SECTIONS.map((s, i) => {
             const isSvg = s.img.toLowerCase().endsWith(".svg");
             return (
               <article
                 key={s.title}
-                className="grid items-stretch gap-6 rounded-2xl border border-border bg-panel/40 p-4 shadow-sm md:grid-cols-2 md:gap-8 md:p-4"
+                className="grid items-stretch gap-4 rounded-xl border border-border bg-panel/40 p-3 shadow-sm md:grid-cols-2 md:gap-5 md:p-4"
               >
                 {/* Image left */}
                 <div className="relative overflow-hidden rounded-xl border border-border/70 bg-background/40">
@@ -83,7 +83,7 @@ export default function OurTechPage() {
                   {/* Image layer */}
                   {isSvg ? (
                     <div
-                      className="relative z-10 aspect-video bg-center bg-no-repeat md:aspect-5/3"
+                      className="relative z-10 aspect-4/3 bg-center bg-no-repeat md:aspect-3/2"
                       style={{
                         backgroundImage: `url(${s.img})`,
                         backgroundSize: i === 0 ? "110% auto" : "cover",
@@ -94,13 +94,13 @@ export default function OurTechPage() {
                       role="img"
                     />
                   ) : (
-                    <div className="relative z-10 aspect-video md:aspect-5/3">
+                    <div className="relative z-10 aspect-4/3 md:aspect-3/2">
                       <Image
                         src={s.img}
                         alt={s.title}
                         fill
                         className="object-cover"
-                        sizes="(min-width:1280px) 840px, (min-width:1024px) 48vw, 92vw"
+                        sizes="(min-width:1280px) 512px, (min-width:1024px) 45vw, 92vw"
                         priority={i === 0}
                         quality={80}
                       />
@@ -111,15 +111,15 @@ export default function OurTechPage() {
                 {/* Text right panel */}
                 <div className="relative overflow-hidden rounded-xl border border-border/70 bg-panel">
                   <div className="absolute inset-0 bg-linear-to-br from-background/55 via-panel to-background/70" />
-                  <div className="relative p-6 md:p-8 lg:p-6">
-                    <h3 className="text-3xl font-medium leading-tight tracking-tight font-manrope">
+                  <div className="relative p-4 md:p-5">
+                    <h3 className="text-2xl font-medium leading-tight tracking-tight font-manrope md:text-[1.625rem]">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-muted text-sm md:text-base tracking-[0.12em]">
+                    <p className="mt-1.5 text-muted text-xs md:text-sm tracking-[0.12em]">
                       {s.subtitle.toUpperCase()}
                     </p>
-                    <div className="mt-5 h-px w-40 md:w-64 bg-border" />
-                    <p className="mt-5 text-sm md:text-base leading-relaxed text-muted-foreground">
+                    <div className="mt-3 h-px w-32 md:w-48 bg-border" />
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                       {s.body}
                     </p>
                   </div>
@@ -131,15 +131,13 @@ export default function OurTechPage() {
 
         <IntegrationsGallery />
 
-        <div className="mt-12">
-          {/* CTA PANEL (BEFORE FOOTER) */}
-          <CtaPanel
-            title="Got a use case in mind? Let's make it real."
-            copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
-            ctaHref="/book-demo"
-            ctaLabel="Talk to us"
-          />
-        </div>
+        {/* CTA PANEL (BEFORE FOOTER) */}
+        <CtaPanel
+          title="Got a use case in mind? Let's make it real."
+          copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
+          ctaHref="/book-demo"
+          ctaLabel="Talk to us"
+        />
       </main>
     </div>
   );

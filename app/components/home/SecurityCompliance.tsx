@@ -11,7 +11,7 @@ const BADGES: Badge[] = [
 
 export default function SecurityCompliance() {
   return (
-    <section className="relative pt-8 pb-12 md:pt-30 md:pb-16">
+    <section className="relative mt-24">
       <div className="relative overflow-hidden rounded-[24px] border border-border/40 bg-transparent">
         {/* Gold/Black gradient background */}
         <div

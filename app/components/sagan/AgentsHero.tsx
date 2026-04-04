@@ -6,7 +6,7 @@ import Pill from "../Pill";
 
 export default function AgentsHero() {
   return (
-    <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:gap-8 lg:justify-between lg:items-center">
+    <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:gap-8 lg:justify-between lg:items-center mt-6">
       <div className="w-full flex-1 lg:max-w-[560px] ">
         <div className="space-y-6">
           <Pill variant="outline">RFP Manager</Pill>

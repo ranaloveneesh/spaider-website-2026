@@ -100,8 +100,8 @@ const Big: React.FC<{
 
 export default function Metrics() {
   return (
-    <section className="mx-auto mt-12">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope md:mb-10 lg:mb-12">
+    <section className="mx-auto mt-24">
+      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope">
         Measurable Advantage: Accelerate Wins, Scale Ambition
       </h2>
       <div className="mt-10 grid gap-6 md:grid-cols-3">

@@ -12,7 +12,6 @@ export default function Visual({
   hMobile = 160, // <768px
   hMd = 200, // ≥768px
   hLg = 420, // ≥1024px
-  paddingYClass = "py-3 md:py-4 lg:py-4",
   bgSizeClass,
   zoomPct,
 }: {
@@ -22,7 +21,6 @@ export default function Visual({
   hMobile?: Px;
   hMd?: Px;
   hLg?: Px;
-  paddingYClass?: string;
   bgSizeClass?: string;
   zoomPct?: number;
 }) {
@@ -37,7 +35,7 @@ export default function Visual({
   };
 
   return (
-    <section className={`mx-auto ${paddingYClass}`}>
+    <section className={`mx-auto mt-24`}>
       {title && (
         <h2 className="text-2xl font-semibold leading-[1.04] tracking-tight text-foreground sm:text-2xl lg:text-3xl font-manrope">
           {title}
