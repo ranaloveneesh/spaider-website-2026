@@ -20,31 +20,31 @@ const LOGOS: Logo[] = [
 
 export default function Customers() {
   return (
-    <section className="mt-24">
-      <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope mb-12">
+    <section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
         They trust us
       </h2>
 
       <div
-        className="mx-auto w-full overflow-hidden relative"
+        className="relative mx-auto w-full min-w-0 overflow-hidden"
         aria-label="Trusted by logo carousel"
         role="region"
       >
         {/* Edge fades to make the infinite loop less noticeable */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-[#08090a] to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#08090a] to-transparent sm:w-16 lg:w-20"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-20 z-10 bg-gradient-to-l from-[#08090a] to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#08090a] to-transparent sm:w-16 lg:w-20"
         />
-        <div className="customer-marquee-track flex w-max items-center gap-x-10 sm:gap-x-14 lg:gap-x-20">
+        <div className="customer-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
           {/* Duplicate logos to create a seamless loop */}
           {[...LOGOS, ...LOGOS].map(({ src, alt, scale }, i) => (
             <div
               key={`${src}-${i}`}
-              className="flex w-[160px] sm:w-[180px] lg:w-[200px] xl:w-[220px] items-center justify-center shrink-0"
+              className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]"
             >
               <div
                 className="flex items-center justify-center"
@@ -59,7 +59,7 @@ export default function Customers() {
                   width={360}
                   height={120}
                   sizes="(max-width: 640px) 160px, (max-width: 1280px) 200px, 220px"
-                  className="h-12 md:h-14 lg:h-16 w-auto object-contain filter brightness-0 invert"
+                  className="h-9 w-auto object-contain filter brightness-0 invert sm:h-10 md:h-12 lg:h-14 xl:h-16"
                   decoding="async"
                 />
               </div>

@@ -90,7 +90,7 @@ const Big: React.FC<{
   }, [reducedMotion, value]);
 
   return (
-    <div className="text-[clamp(2rem,4.2vw,3.2rem)] font-extrabold font-manrope bg-linear-to-r from-[#5ce1e6] to-[#67f0ff] bg-clip-text text-transparent">
+    <div className="text-[clamp(1.65rem,5vw,3rem)] font-extrabold font-manrope bg-linear-to-r from-[#5ce1e6] to-[#67f0ff] bg-clip-text text-transparent sm:text-[clamp(1.85rem,4.2vw,3.2rem)]">
       {prefix}
       {display}
       {suffix}
@@ -100,26 +100,26 @@ const Big: React.FC<{
 
 export default function Metrics() {
   return (
-    <section className="mx-auto mt-24">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope">
+    <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="mb-6 max-w-4xl font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl">
         Measurable Advantage: Accelerate Wins, Scale Ambition
       </h2>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
+      <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:mt-10 md:grid-cols-3 md:gap-6">
         {METRICS.map((m) => (
           <div
             key={m.title}
             className={[
-              "rounded-2xl border border-white/10 p-8 text-center shadow-sm",
-              "bg-gradient-to-b from-black/70 via-black/35 to-black/70",
+              "rounded-xl border border-white/10 p-4 text-center shadow-sm sm:rounded-2xl sm:p-6 md:p-8",
+              "bg-linear-to-b from-black/70 via-black/35 to-black/70",
               "transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-md",
             ].join(" ")}
           >
             <div className="relative">
               <Big prefix={m.prefix} value={m.value} suffix={m.suffix} />
-              <div className="mt-3 text-xl font-semibold tracking-tight font-manrope">
+              <div className="mt-2 font-manrope text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">
                 {m.title}
               </div>
-              <p className="mt-3 text-muted-foreground leading-relaxed font-inter">
+              <p className="mt-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                 {m.copy}
               </p>
             </div>

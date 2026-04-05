@@ -20,7 +20,7 @@ export function RequestDemoFormContact({
   onBlur,
 }: Props) {
   return (
-    <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+    <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
       <LabelInputContainer>
         <Label htmlFor="country">
           Country <span className="text-destructive">*</span>

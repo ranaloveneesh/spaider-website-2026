@@ -8,7 +8,7 @@ export const InvestFormLazy = dynamic(
     ssr: false,
     loading: () => (
       <div
-        className="col-span-2 w-full min-h-[28rem] rounded-2xl border border-border bg-card p-4 shadow-sm animate-pulse md:p-4"
+        className="min-w-0 w-full min-h-[28rem] rounded-2xl border border-border bg-card p-4 shadow-sm animate-pulse sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6"
         role="status"
         aria-label="Loading investor form"
       />

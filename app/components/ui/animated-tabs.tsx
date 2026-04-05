@@ -30,11 +30,11 @@ export const AnimatedTabs = ({
   if (!tabs?.length) return null;
 
   return (
-    <div className={cn("w-full flex flex-col gap-y-1", className)}>
+    <div className={cn("flex w-full min-w-0 flex-col gap-y-1", className)}>
       <div
         role="tablist"
         aria-label={ariaLabel}
-        className="flex flex-row gap-2 border border-white/30 bg-black bg-opacity-50 backdrop-blur-sm rounded-md w-full"
+        className="flex w-full min-w-0 flex-row gap-1 rounded-md border border-white/30 bg-black bg-opacity-50 backdrop-blur-sm sm:gap-2"
       >
         {tabs.map((tab) => (
           <button
@@ -46,7 +46,7 @@ export const AnimatedTabs = ({
             aria-controls={`${panelPrefix}-${tab.id}`}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "relative px-3 py-2 text-sm font-medium rounded-sm text-white outline-none transition-colors w-full focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-black",
+              "relative w-full rounded-sm px-2 py-1.5 text-xs font-medium text-white outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:py-2 sm:text-sm",
             )}
           >
             {activeTab === tab.id && (
@@ -61,7 +61,7 @@ export const AnimatedTabs = ({
         ))}
       </div>
 
-      <div className="p-2 bg-transparent shadow-[0_0_20px_rgba(0,0,0,0.2)] text-white rounded-md border-border border min-h-100 h-full mt-2">
+      <div className="mt-2 h-full min-w-0 rounded-md border border-border bg-transparent p-2 text-white shadow-[0_0_20px_rgba(0,0,0,0.2)] sm:p-3 min-h-100">
         {tabs.map((tab) => (
           <div
             key={tab.id}

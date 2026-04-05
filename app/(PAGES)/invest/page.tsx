@@ -9,16 +9,17 @@ export const metadata: Metadata = {
 
 export default function InvestPage() {
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-3 lg:items-start">
-      <div className="space-y-6 lg:pr-8">
-        <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-3xl lg:text-4xl font-manrope">
+    <div className="grid w-full min-w-0 grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:items-start md:gap-8 lg:grid-cols-3 lg:gap-10">
+      <div className="min-w-0 space-y-4 sm:space-y-5 md:pt-0 lg:pr-8">
+        <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Invest
         </h2>
 
-        <p className="text-base leading-7 text-muted-foreground">
-          Become an early shareholder and help launch SPAIDER's AI in Space.
+        <p className="text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+          Become an early shareholder and help launch SPAIDER&apos;s AI in
+          Space.
         </p>
-        <p className="text-base leading-7 text-muted-foreground">
+        <p className="text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
           Register to receive the investor brief, timeline, and terms for our
           private raise. For qualified investors; this is a non-binding
           expression of interest.

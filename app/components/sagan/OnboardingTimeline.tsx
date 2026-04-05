@@ -39,33 +39,33 @@ function Dot() {
 
 export default function OnboardingTimeline() {
   return (
-    <section className="mx-auto max-w-420 mt-24">
-      <div className="flex items-end justify-between gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope">
+    <section className="mx-auto mt-12 w-full min-w-0 max-w-420 sm:mt-16 md:mt-20 lg:mt-24">
+      <div className="flex items-end justify-between gap-4 sm:gap-6">
+        <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Seamless Onboarding
         </h2>
       </div>
 
-      <div className="relative mt-10">
+      <div className="relative mt-6 sm:mt-8 md:mt-10">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70"
         />
 
-        <div className="-mx-2 overflow-x-auto px-2 pb-2">
-          <ul className="flex w-full gap-10 pr-2 sm:gap-14">
+        <div className="-mx-2 overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
+          <ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">
             {STEPS.map((step) => {
               return (
-                <li key={step.title} className="min-w-[220px] flex-1">
+                <li key={step.title} className="min-w-[200px] flex-1 sm:min-w-[220px]">
                   <div className="relative flex h-4 items-center">
                     <Dot />
                   </div>
 
-                  <div className="mt-2 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
-                    <h4 className="text-lg font-medium tracking-tight text-foreground font-inter">
+                  <div className="mt-2 py-2 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)] sm:py-3">
+                    <h4 className="font-inter text-base font-medium tracking-tight text-foreground sm:text-lg">
                       {step.title}
                     </h4>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-tertiary font-inter">
+                    <p className="mt-1.5 text-xs leading-6 text-muted-foreground font-inter sm:mt-2 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                       {step.description}
                     </p>
                   </div>

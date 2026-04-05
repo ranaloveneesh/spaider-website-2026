@@ -46,18 +46,18 @@ const spanByIndex = (_i: number) => "lg:col-span-6";
 
 export default function KeyFeatures() {
   return (
-    <section className="mx-auto mt-24">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope">
+    <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
         Key Features
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5 md:gap-7 items-stretch">
+      <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7">
         {FEATURES.map((f, i) => (
           <article
             key={f.title}
             className={[
-              "group relative overflow-hidden rounded-2xl border border-border bg-panel/40",
-              "h-full p-6 md:p-7 shadow-md transition-all duration-200 ease-out",
+              "group relative min-w-0 overflow-hidden rounded-xl border border-border bg-panel/40 sm:rounded-2xl",
+              "h-full p-4 shadow-md transition-all duration-200 ease-out sm:p-5 md:p-6 lg:p-7",
               "hover:border-[rgba(78,167,252,0.6)] hover:bg-panel/55 hover:shadow-lg hover:-translate-y-[2px]",
               "before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:content-['']",
               "before:z-0 before:bg-[radial-gradient(650px_260px_at_10%_0%,rgba(78,167,252,0.32),transparent_60%)]",
@@ -69,20 +69,22 @@ export default function KeyFeatures() {
             ].join(" ")}
           >
             <div className="relative z-10 flex h-full flex-col">
-              <div className="mb-4 flex items-start">
-                <h3 className="text-[1.25rem] lg:text-[1.5rem] font-semibold tracking-tight font-manrope">
+              <div className="mb-3 flex items-start sm:mb-4">
+                <h3 className="font-manrope text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
                   {f.title}
                 </h3>
               </div>
 
-              <ul className="space-y-3 text-muted-foreground leading-relaxed font-inter">
+              <ul className="space-y-2 text-muted-foreground font-inter sm:space-y-2.5 md:space-y-3">
                 {f.bullets.map((b, bi) => (
-                  <li key={bi} className="flex items-start gap-3">
+                  <li key={bi} className="flex items-start gap-2 sm:gap-3">
                     <CircleCheck
-                      className="mt-[2px] h-5 w-5 shrink-0 text-[#4ea7fc]"
+                      className="mt-px h-4 w-4 shrink-0 text-[#4ea7fc] sm:mt-[2px] sm:h-5 sm:w-5"
                       aria-hidden
                     />
-                    <span>{b}</span>
+                    <span className="text-xs leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+                      {b}
+                    </span>
                   </li>
                 ))}
               </ul>

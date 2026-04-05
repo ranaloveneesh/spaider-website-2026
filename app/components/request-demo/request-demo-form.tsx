@@ -69,7 +69,7 @@ export function RequestDemoForm() {
   const fieldProps = { values, errors, onChange: handleChange, onBlur: handleBlur };
 
   return (
-    <div className="col-span-2 w-full rounded-2xl border border-border bg-card p-4 shadow-sm md:p-4">
+    <div className="min-w-0 w-full rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6">
       <form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
         <RequestDemoFormPersonal {...fieldProps} />
         <RequestDemoFormWork {...fieldProps} />

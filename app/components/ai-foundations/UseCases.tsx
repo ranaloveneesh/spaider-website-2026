@@ -52,18 +52,18 @@ const spanByIndex = (i: number) => (i < 3 ? "lg:col-span-4" : "lg:col-span-6");
 
 export default function UseCases() {
   return (
-    <section className="mx-auto mt-24">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope md:mb-10 lg:mb-12">
+    <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
         Use Cases
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-5 md:gap-7 items-stretch">
+      <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7">
         {USE_CASES.map(({ t, d, prompt, Icon }, i) => (
           <article
             key={t}
             className={[
-              "group relative overflow-hidden rounded-2xl border border-border bg-panel/40",
-              "h-full p-6 md:p-7 shadow-md transition-all duration-200 ease-out",
+              "group relative min-w-0 overflow-hidden rounded-xl border border-border bg-panel/40 sm:rounded-2xl",
+              "h-full p-4 shadow-md transition-all duration-200 ease-out sm:p-5 md:p-6 lg:p-7",
               "hover:border-[rgba(78,167,252,0.6)] hover:bg-panel/55 hover:shadow-lg hover:-translate-y-[2px]",
               "before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:content-['']",
               "before:z-0 before:bg-[radial-gradient(650px_260px_at_10%_0%,rgba(78,167,252,0.32),transparent_60%)]",
@@ -74,26 +74,28 @@ export default function UseCases() {
               spanByIndex(i),
             ].join(" ")}
           >
-            <div className="relative z-10 flex h-full flex-col pb-16 md:pb-16">
-              <div className="mb-4 flex items-center">
-                <div className="mr-3 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background/20 backdrop-blur">
-                  <Icon className="h-6 w-6 text-foreground/70 transition-colors duration-200 group-hover:text-(--color-blue)" />
+            <div className="relative z-10 flex h-full flex-col pb-28 sm:pb-24 md:pb-16">
+              <div className="mb-3 flex min-w-0 items-center gap-2 sm:mb-4 sm:gap-3">
+                <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-background/20 backdrop-blur sm:h-10 sm:w-10 sm:rounded-xl">
+                  <Icon className="h-5 w-5 text-foreground/70 transition-colors duration-200 group-hover:text-(--color-blue) sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="text-[1.25rem] lg:text-[1.5rem] font-semibold tracking-tight font-manrope">
+                <h3 className="min-w-0 font-manrope text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
                   {t}
                 </h3>
               </div>
 
-              <p className="text-muted-foreground leading-relaxed font-inter">
+              <p className="text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                 {d}
               </p>
             </div>
 
-            <div className="absolute bottom-0 right-0 md:bottom-0 md:left-0 z-10 inline-flex items-center gap-2 rounded-md border border-border bg-background/20 px-3 py-1.5 text-sm text-foreground/70">
-              <span className="rounded-sm bg-[rgba(78,167,252,0.15)] text-(--color-blue) px-2 py-[2px] text-[0.72rem] font-semibold">
+            <div className="absolute bottom-0 left-0 right-0 z-10 flex flex-col gap-1 rounded-md border border-border bg-background/20 p-2 text-foreground/70 sm:left-auto sm:right-0 sm:inline-flex sm:flex-row sm:items-center sm:gap-2 sm:px-3 sm:py-1.5">
+              <span className="w-fit rounded-sm bg-[rgba(78,167,252,0.15)] px-2 py-[2px] text-[0.65rem] font-semibold text-(--color-blue) sm:text-[0.72rem]">
                 Prompt
               </span>
-              <span className="italic text-foreground/90">“{prompt}”</span>
+              <span className="text-xs italic leading-snug text-foreground/90 sm:text-sm">
+                “{prompt}”
+              </span>
             </div>
           </article>
         ))}

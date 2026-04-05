@@ -46,35 +46,35 @@ function Dot() {
 
 export default function GetStarted() {
   return (
-    <section className="mt-32">
-      <div className="flex items-end justify-between gap-6">
-        <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope">
+    <section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
+      <div className="flex items-end justify-between gap-4 sm:gap-6">
+        <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Get started with SPAIDER
         </h2>
       </div>
 
-      <div className="relative mt-12">
+      <div className="relative mt-6 sm:mt-8 md:mt-10">
         {/* timeline line - vertically centered on the dot (dot is h-4 = 16px, center = 8px) */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70"
         />
 
-        <div className="-mx-2 overflow-x-auto px-2 pb-2">
-          <ul className="flex w-full pr-2 gap-10 sm:gap-14">
+        <div className="-mx-2 overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
+          <ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">
             {ITEMS.map((item) => {
               return (
-                <li key={`${item.title}`} className="flex-1 min-w-[200px]">
+                <li key={`${item.title}`} className="min-w-[200px] flex-1 sm:min-w-[220px]">
                   {/* Dot centered on the line */}
-                  <div className="relative h-4 flex items-center">
+                  <div className="relative flex h-4 items-center">
                     <Dot />
                   </div>
 
-                  <div className="mt-2 py-3 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)]">
-                    <h3 className="text-lg font-medium tracking-tight text-foreground font-inter">
+                  <div className="mt-2 py-2 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)] sm:py-3">
+                    <h3 className="font-inter text-base font-medium tracking-tight text-foreground sm:text-lg">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-tertiary font-inter line-clamp-2">
+                    <p className="mt-1.5 line-clamp-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-2 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                       {item.description}
                     </p>
                   </div>

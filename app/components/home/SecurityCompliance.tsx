@@ -11,8 +11,8 @@ const BADGES: Badge[] = [
 
 export default function SecurityCompliance() {
   return (
-    <section className="relative mt-24">
-      <div className="relative overflow-hidden rounded-[24px] border border-border/40 bg-transparent">
+    <section className="relative mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <div className="relative overflow-hidden rounded-xl border border-border/40 bg-transparent sm:rounded-2xl md:rounded-[24px]">
         {/* Gold/Black gradient background */}
         <div
           aria-hidden
@@ -35,7 +35,7 @@ export default function SecurityCompliance() {
         />
 
         {/* ✅ Content */}
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 p-5 md:p-8">
+        <div className="relative z-10 grid grid-cols-1 gap-4 p-4 md:grid-cols-12 md:gap-8 md:p-6 lg:gap-10 lg:p-8">
           {/* Left - Badges */}
           <div className="md:col-span-5">
             <div className="hidden md:flex h-full min-h-[220px] items-center justify-center">
@@ -69,10 +69,10 @@ export default function SecurityCompliance() {
 
           {/* Right - Text */}
           <div className="md:col-span-7 self-center">
-            <h3 className="text-white font-manrope text-[clamp(1.6rem,3.4vw,2.6rem)] font-bold leading-tight text-left">
+            <h3 className="text-left font-manrope text-base font-semibold leading-tight text-white sm:text-lg lg:text-xl">
               Industry-grade security and compliance
             </h3>
-            <p className="mt-4 text-muted text-[clamp(1rem,1.1vw,1.125rem)] leading-relaxed text-left max-w-[60ch] wrap-break-word">
+            <p className="mt-3 max-w-[60ch] text-left text-xs leading-6 text-muted wrap-break-word sm:mt-4 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
               Our AI agents meet the highest security standards for space
               missions. We make sure your data is safe and your operations are
               reliable, following all necessary rules.

@@ -45,29 +45,29 @@ const SECTIONS: Sec[] = [
 
 export default function OurTechPage() {
   return (
-    <div className="space-y-8 md:space-y-10 pb-12">
-      <header className="space-y-4">
-        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-manrope">
+    <div className="w-full min-w-0 space-y-6 pb-10 sm:space-y-8 sm:pb-12 md:space-y-10">
+      <header className="space-y-3 sm:space-y-4">
+        <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Our tech
         </h2>
-        <p className="text-foreground leading-7">
+        <p className="max-w-3xl text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
           A sovereign, modular AI stack built for aerospace teams that need
           reliability, security, and full deployment control.
         </p>
       </header>
 
-      <main className="relative text-foreground">
+      <main className="relative min-w-0 text-foreground">
         {/* 4 repeated sections */}
-        <section className="mx-auto w-full max-w-5xl space-y-6 md:space-y-8">
+        <section className="mx-auto w-full min-w-0 max-w-5xl space-y-5 sm:space-y-6 md:space-y-8">
           {SECTIONS.map((s, i) => {
             const isSvg = s.img.toLowerCase().endsWith(".svg");
             return (
               <article
                 key={s.title}
-                className="grid items-stretch gap-4 rounded-xl border border-border bg-panel/40 p-3 shadow-sm md:grid-cols-2 md:gap-5 md:p-4"
+                className="grid min-w-0 grid-cols-1 items-stretch gap-3 rounded-xl border border-border bg-panel/40 p-3 shadow-sm sm:gap-4 sm:p-4 md:grid-cols-2 md:gap-5"
               >
                 {/* Image left */}
-                <div className="relative overflow-hidden rounded-xl border border-border/70 bg-background/40">
+                <div className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl">
                   <div
                     aria-hidden
                     className="absolute inset-0 z-0"
@@ -100,7 +100,7 @@ export default function OurTechPage() {
                         alt={s.title}
                         fill
                         className="object-cover"
-                        sizes="(min-width:1280px) 512px, (min-width:1024px) 45vw, 92vw"
+                        sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 512px"
                         priority={i === 0}
                         quality={80}
                       />
@@ -109,17 +109,17 @@ export default function OurTechPage() {
                 </div>
 
                 {/* Text right panel */}
-                <div className="relative overflow-hidden rounded-xl border border-border/70 bg-panel">
+                <div className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-panel sm:rounded-xl">
                   <div className="absolute inset-0 bg-linear-to-br from-background/55 via-panel to-background/70" />
-                  <div className="relative p-4 md:p-5">
-                    <h3 className="text-2xl font-medium leading-tight tracking-tight font-manrope md:text-[1.625rem]">
+                  <div className="relative p-3 sm:p-4 md:p-5">
+                    <h3 className="font-manrope text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
                       {s.title}
                     </h3>
-                    <p className="mt-1.5 text-muted text-xs md:text-sm tracking-[0.12em]">
+                    <p className="mt-1.5 text-xs tracking-[0.12em] text-muted-foreground font-inter">
                       {s.subtitle.toUpperCase()}
                     </p>
-                    <div className="mt-3 h-px w-32 md:w-48 bg-border" />
-                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                    <div className="mt-2.5 h-px w-28 bg-border sm:mt-3 sm:w-32 md:w-48" />
+                    <p className="mt-2.5 text-xs leading-6 text-muted-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                       {s.body}
                     </p>
                   </div>

@@ -29,35 +29,25 @@ const ITEMS = [
 
 export default function LLMLimitations() {
   return (
-    <section className="relative mx-auto mt-24">
-      <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl font-manrope">
+    <section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
         What you get with SPAIDER&apos;s Foundations
       </h2>
 
-      <div className="grid gap-8 md:gap-10 sm:grid-cols-2 lg:grid-cols-3 mt-12">
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 md:gap-9 lg:mt-12 lg:grid-cols-3 lg:gap-10">
         {ITEMS.map((it, i) => (
-          <div key={i} className="flex items-start gap-3 text-left">
+          <div key={i} className="flex min-w-0 items-start gap-2 text-left sm:gap-3">
             <span
               aria-hidden
-              className="shrink-0 select-none opacity-90"
-              style={{
-                fontSize: "8rem",
-                fontWeight: 700,
-                lineHeight: 0.75,
-                letterSpacing: "-0.05em",
-                color: "var(--color-accent)",
-                textShadow: "0 0 14px rgba(17, 45, 199, 0.25)",
-                marginRight: "-8px",
-                clipPath: "inset(0 16% 0 0)",
-              }}
+              className="-mr-1 shrink-0 select-none font-bold leading-[0.75] tracking-[-0.05em] text-[var(--color-accent)] opacity-90 [clip-path:inset(0_16%_0_0)] [text-shadow:0_0_14px_rgba(17,45,199,0.25)] text-[2.75rem] sm:-mr-2 sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem]"
             >
               {i + 1}
             </span>
-            <div className="pt-2">
-              <h3 className="font-medium leading-snug text-foreground sm:text-xl font-manrope">
+            <div className="min-w-0 pt-1 sm:pt-2">
+              <h3 className="font-manrope text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">
                 {it.t}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground font-inter">
+              <p className="mt-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                 {it.d}
               </p>
             </div>

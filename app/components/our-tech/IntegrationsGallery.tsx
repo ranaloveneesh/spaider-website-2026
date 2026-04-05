@@ -106,7 +106,7 @@ function LogoItem({ item }: { item: Integration }) {
 
   return (
     <div
-      className="flex w-[160px] shrink-0 items-center justify-center sm:w-[180px] lg:w-[200px]"
+      className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px]"
       title={item.name}
       aria-label={item.name}
     >
@@ -123,12 +123,12 @@ function LogoItem({ item }: { item: Integration }) {
             alt={item.name}
             width={360}
             height={120}
-            className="h-12 w-auto object-contain md:h-14 lg:h-16"
+            className="h-9 w-auto object-contain sm:h-10 md:h-12 lg:h-14 xl:h-16"
             onError={() => setBroken(true)}
           />
         </div>
       ) : (
-        <div className="text-sm font-semibold text-muted-foreground">
+        <div className="text-xs font-semibold text-muted-foreground sm:text-sm">
           {item.name}
         </div>
       )}
@@ -138,25 +138,25 @@ function LogoItem({ item }: { item: Integration }) {
 
 export default function IntegrationsGallery() {
   return (
-    <section className="mt-28">
-      <h2 className="mb-12 text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope">
+    <section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
+      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
         Seamlessly integrate with your workflow
       </h2>
 
       <div
-        className="relative mx-auto w-full overflow-hidden"
+        className="relative mx-auto w-full min-w-0 overflow-hidden"
         aria-label="Integrations logo carousel"
         role="region"
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-background to-transparent"
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-linear-to-r from-background to-transparent sm:w-16 lg:w-20"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-background to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-linear-to-l from-background to-transparent sm:w-16 lg:w-20"
         />
-        <div className="integrations-marquee-track flex w-max items-center gap-x-10 sm:gap-x-14 lg:gap-x-20">
+        <div className="integrations-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
           {[...LOGOS, ...LOGOS].map((item, i) => (
             <LogoItem key={`${item.name}-${i}`} item={item} />
           ))}

@@ -15,13 +15,13 @@ const LOGOS: Logo[] = [
 
 export default function PoweredBy() {
   return (
-    <section className="mt-24">
-      <h2 className="text-2xl font-semibold tracking-tight text-muted sm:text-2xl lg:text-3xl font-manrope mb-12">
+    <section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
         Powered by
       </h2>
 
       <div
-        className="mx-auto w-full grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 items-center justify-items-center"
+        className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4"
         aria-label="Powered by logos"
         role="region"
       >
@@ -40,7 +40,7 @@ export default function PoweredBy() {
               width={360}
               height={120}
               sizes="(max-width: 640px) 160px, (max-width: 1280px) 200px, 220px"
-              className="h-12 md:h-14 lg:h-16 w-auto object-contain filter brightness-0 invert"
+              className="h-9 w-auto object-contain filter brightness-0 invert sm:h-10 md:h-12 lg:h-14 xl:h-16"
               decoding="async"
             />
           </div>

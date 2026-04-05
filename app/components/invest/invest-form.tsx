@@ -113,9 +113,9 @@ export function InvestForm() {
   };
 
   return (
-    <div className="col-span-2 w-full rounded-2xl border border-border bg-card p-4 shadow-sm md:p-4">
+    <div className="min-w-0 w-full rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6">
       <form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
-        <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+        <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="firstname">
               First name <span className="text-destructive">*</span>
@@ -160,7 +160,7 @@ export function InvestForm() {
           </LabelInputContainer>
         </div>
 
-        <div className="mb-4 flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
+        <div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
           <LabelInputContainer>
             <Label htmlFor="email">
               Email <span className="text-destructive">*</span>
@@ -248,7 +248,12 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex w-full flex-col space-y-2", className)}>
+    <div
+      className={cn(
+        "flex w-full min-w-0 flex-col space-y-2 lg:flex-1",
+        className,
+      )}
+    >
       {children}
     </div>
   );

@@ -35,15 +35,15 @@ export default function Visual({
   };
 
   return (
-    <section className={`mx-auto mt-24`}>
+    <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
       {title && (
-        <h2 className="text-2xl font-semibold leading-[1.04] tracking-tight text-foreground sm:text-2xl lg:text-3xl font-manrope">
+        <h2 className="font-manrope text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           {title}
         </h2>
       )}
 
       <div
-        className="relative mt-12 overflow-hidden rounded-2xl border border-border bg-panel shadow-md visual-wrap"
+        className="relative mt-6 overflow-hidden rounded-xl border border-border bg-panel shadow-md visual-wrap sm:mt-8 sm:rounded-2xl md:mt-10 lg:mt-12"
         style={varStyle}
       >
         <div
@@ -79,7 +79,7 @@ export default function Visual({
               alt={alt || title || ""}
               fill
               className="object-contain"
-              sizes="(min-width:1280px) 1000px, (min-width:1024px) 80vw, 94vw"
+              sizes="(max-width: 767px) 100vw, (max-width: 1279px) 90vw, 1000px"
               quality={82}
               priority={false}
             />

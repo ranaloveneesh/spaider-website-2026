@@ -19,7 +19,7 @@ export default function MarketingLayout({
       <Navbar />
       <main
         id="main-content"
-        className="mx-auto w-full max-w-7xl flex-1 px-0 py-8"
+        className="mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
       >
         {children}
       </main>

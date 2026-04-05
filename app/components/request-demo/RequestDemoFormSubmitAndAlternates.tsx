@@ -28,7 +28,7 @@ export function RequestDemoFormSubmitAndAlternates({
       </CeramicButton>
 
       <div className="my-6 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
         <button
           type="button"
           className="group/btn shadow-input relative flex h-10 w-full cursor-pointer items-center justify-start space-x-2 rounded-md border-0 bg-gray-50 px-4 text-start font-medium text-black dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_#262626]"

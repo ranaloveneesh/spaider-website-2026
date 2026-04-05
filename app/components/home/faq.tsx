@@ -284,26 +284,28 @@ function FAQ() {
   };
 
   return (
-    <div className={`relative mt-24 transition-colors duration-700`}>
+    <div className="relative mt-12 w-full min-w-0 transition-colors duration-700 sm:mt-16 md:mt-20 lg:mt-24">
       <section
-        className={`relative z-10 mx-auto flex flex-col gap-12 ${
+        className={`relative z-10 mx-auto flex min-w-0 flex-col gap-8 sm:gap-10 md:gap-12 ${
           hasEntered ? "faq1-fade--ready" : "faq1-fade"
         }`}
       >
-        <header className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="space-y-4">
+        <header className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
+          <div className="space-y-3 sm:space-y-4">
             <h1
-              className={`text-2xl font-semibold leading-tight md:text-3xl font-manrope text-muted`}
+              className={`font-manrope text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}
             >
               FAQs
             </h1>
-            <p className={`max-w-xl text-sm ${palette.muted}`}>
+            <p
+              className={`max-w-xl text-xs leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7 ${palette.muted}`}
+            >
               Everything you need to know about partnering with our team.
             </p>
           </div>
         </header>
 
-        <ul className="space-y-3">
+        <ul className="space-y-2 sm:space-y-3">
           {faqs.map((item, index) => {
             const open = activeIndex === index;
             const panelId = `faq-panel-${index}`;
@@ -312,7 +314,7 @@ function FAQ() {
             return (
               <li
                 key={item.question}
-                className={`group relative overflow-hidden rounded-3xl border backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 focus-within:-translate-y-0.5 ${palette.border} ${palette.panel} ${palette.shadow}`}
+                className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 focus-within:-translate-y-0.5 sm:rounded-3xl ${palette.border} ${palette.panel} ${palette.shadow}`}
                 onMouseMove={setCardGlow}
                 onMouseLeave={clearCardGlow}
               >
@@ -339,10 +341,10 @@ function FAQ() {
                           : "rgba(17,17,17,0.25)",
                     } as CSSProperties
                   }
-                  className="relative flex w-full cursor-pointer items-start gap-5 px-6 py-6 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)]"
+                  className="relative flex w-full cursor-pointer items-start gap-3 px-4 py-4 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)] sm:gap-5 sm:px-6 sm:py-6"
                 >
                   <span
-                    className={`relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-105 ${palette.iconRing} ${palette.iconSurface}`}
+                    className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-105 sm:h-10 sm:w-10 ${palette.iconRing} ${palette.iconSurface}`}
                   >
                     <span
                       className={`pointer-events-none absolute inset-0 rounded-full border opacity-30 ${
@@ -350,7 +352,7 @@ function FAQ() {
                       } ${open ? "animate-ping" : ""}`}
                     />
                     <svg
-                      className={`relative h-4 w-4 transition-transform duration-500 ${palette.icon} ${open ? "rotate-45" : ""}`}
+                      className={`relative h-3.5 w-3.5 transition-transform duration-500 sm:h-4 sm:w-4 ${palette.icon} ${open ? "rotate-45" : ""}`}
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -370,10 +372,10 @@ function FAQ() {
                     </svg>
                   </span>
 
-                  <div className="flex flex-1 flex-col gap-4">
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                  <div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                       <h2
-                        className={`text-base font-medium leading-tight sm:text-lg ${palette.heading}`}
+                        className={`text-sm font-medium leading-snug sm:text-base lg:text-lg ${palette.heading}`}
                       >
                         {item.question}
                       </h2>
@@ -383,7 +385,7 @@ function FAQ() {
                       id={panelId}
                       role="region"
                       aria-labelledby={buttonId}
-                      className={`overflow-hidden text-xs leading-relaxed transition-[max-height] duration-500 ease-out ${
+                      className={`overflow-hidden text-xs leading-relaxed transition-[max-height] duration-500 ease-out sm:text-sm sm:leading-relaxed ${
                         open ? "max-h-64" : "max-h-0"
                       } ${palette.muted}`}
                     >

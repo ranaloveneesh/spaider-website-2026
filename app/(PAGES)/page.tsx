@@ -3,27 +3,36 @@ import Hero from "../components/home/hero";
 
 const Customers = dynamic(() => import("../components/home/customers"), {
   loading: () => (
-    <section className="mt-24 min-h-[200px]" aria-busy="true">
-      <div className="mb-12 h-8 w-48 animate-pulse rounded-md bg-white/10" />
-      <div className="h-16 w-full animate-pulse rounded-md bg-white/5" />
+    <section
+      className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]"
+      aria-busy="true"
+    >
+      <div className="mb-8 h-8 w-48 animate-pulse rounded-md bg-white/10 md:mb-12" />
+      <div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
     </section>
   ),
 });
 
 const PoweredBy = dynamic(() => import("../components/home/powered-by"), {
   loading: () => (
-    <section className="mt-24 min-h-[200px]" aria-busy="true">
-      <div className="mb-12 h-8 w-56 animate-pulse rounded-md bg-white/10" />
-      <div className="h-16 w-full animate-pulse rounded-md bg-white/5" />
+    <section
+      className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]"
+      aria-busy="true"
+    >
+      <div className="mb-8 h-8 w-56 animate-pulse rounded-md bg-white/10 md:mb-12" />
+      <div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
     </section>
   ),
 });
 
 const FAQ = dynamic(() => import("../components/home/faq"), {
   loading: () => (
-    <section className="mt-24 min-h-[28rem]" aria-busy="true">
-      <div className="mb-10 h-10 w-40 animate-pulse rounded-md bg-white/10" />
-      <div className="h-80 w-full animate-pulse rounded-3xl bg-white/5" />
+    <section
+      className="mt-16 min-h-[22rem] md:mt-24 md:min-h-[28rem]"
+      aria-busy="true"
+    >
+      <div className="mb-6 h-9 w-40 animate-pulse rounded-md bg-white/10 md:mb-10 md:h-10" />
+      <div className="h-64 w-full animate-pulse rounded-3xl bg-white/5 md:h-80" />
     </section>
   ),
 });
@@ -33,7 +42,7 @@ const SpaiderSection = dynamic(
   {
     loading: () => (
       <div
-        className="mt-24 min-h-[24rem] w-full animate-pulse rounded-[22px] bg-white/5"
+        className="mt-16 min-h-[18rem] w-full animate-pulse rounded-[22px] bg-white/5 md:mt-24 md:min-h-[24rem]"
         aria-busy="true"
       />
     ),
@@ -56,9 +65,12 @@ const SecurityCompliance = dynamic(
 
 const Agents = dynamic(() => import("../components/home/agents"), {
   loading: () => (
-    <section className="mt-24 min-h-[20rem]" aria-busy="true">
-      <div className="mb-8 h-8 w-64 animate-pulse rounded-md bg-white/10" />
-      <div className="h-72 w-full animate-pulse rounded-md bg-white/5" />
+    <section
+      className="mt-16 min-h-[16rem] md:mt-24 md:min-h-[20rem]"
+      aria-busy="true"
+    >
+      <div className="mb-6 h-8 w-64 max-w-full animate-pulse rounded-md bg-white/10 md:mb-8" />
+      <div className="h-56 w-full animate-pulse rounded-md bg-white/5 md:h-72" />
     </section>
   ),
 });
@@ -66,7 +78,7 @@ const Agents = dynamic(() => import("../components/home/agents"), {
 const GetStarted = dynamic(() => import("../components/home/get-started"), {
   loading: () => (
     <div
-      className="mt-32 min-h-[12rem] animate-pulse rounded-xl bg-white/5"
+      className="mt-20 min-h-[10rem] animate-pulse rounded-xl bg-white/5 md:mt-32 md:min-h-[12rem]"
       aria-busy="true"
     />
   ),
@@ -75,7 +87,7 @@ const GetStarted = dynamic(() => import("../components/home/get-started"), {
 const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
   loading: () => (
     <div
-      className="mt-32 min-h-[14rem] max-w-420 animate-pulse rounded-2xl bg-white/5"
+      className="mx-auto mt-20 min-h-[12rem] w-full max-w-420 animate-pulse rounded-2xl bg-white/5 md:mt-32 md:min-h-[14rem]"
       aria-busy="true"
     />
   ),
@@ -83,7 +95,7 @@ const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
 
 export default function Home() {
   return (
-    <div className="w-full">
+    <div className="mt-4 w-full min-w-0 overflow-x-hidden">
       <Hero />
       <Customers />
       <Agents />
