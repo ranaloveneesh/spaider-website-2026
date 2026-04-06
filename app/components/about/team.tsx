@@ -118,7 +118,15 @@ function PhotoCard({ member, className, hoveredId, onHover }: { member: TeamMemb
 	const isDimmed = hoveredId !== null && !isActive;
 
 	return (
-		<div className={cn("relative cursor-pointer flex-shrink-0 overflow-hidden rounded-xl transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")} onMouseEnter={() => onHover(member.id)} onMouseLeave={() => onHover(null)}>
+		<button
+			type="button"
+			aria-label={`Highlight ${member.name}`}
+			className={cn("relative cursor-pointer flex-shrink-0 overflow-hidden rounded-xl transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")}
+			onMouseEnter={() => onHover(member.id)}
+			onMouseLeave={() => onHover(null)}
+			onFocus={() => onHover(member.id)}
+			onBlur={() => onHover(null)}
+		>
 			<Image
 				src={member.image}
 				alt={member.name}
@@ -129,7 +137,7 @@ function PhotoCard({ member, className, hoveredId, onHover }: { member: TeamMemb
 					filter: isActive ? "grayscale(0) brightness(1)" : "grayscale(1) brightness(0.77)",
 				}}
 			/>
-		</div>
+		</button>
 	);
 }
 
@@ -142,17 +150,23 @@ function MemberRow({ member, hoveredId, onHover }: { member: TeamMember; hovered
 	const isDimmed = hoveredId !== null && !isActive;
 
 	return (
-		<>
-			<div className={cn("cursor-pointer transition-opacity duration-300", isDimmed ? "opacity-50" : "opacity-100")} onMouseEnter={() => onHover(member.id)} onMouseLeave={() => onHover(null)}>
-				{/* Name */}
-				<div className="flex items-center gap-2.5">
-					<span className={cn("w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
-					<span className={cn("text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300", isActive ? "text-foreground" : "text-foreground/80")}>{member.name}</span>
-				</div>
-
-				{/* Role */}
-				<p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{member.role}</p>
+		<button
+			type="button"
+			aria-label={`Highlight ${member.name}`}
+			className={cn("cursor-pointer transition-opacity duration-300 text-left", isDimmed ? "opacity-50" : "opacity-100")}
+			onMouseEnter={() => onHover(member.id)}
+			onMouseLeave={() => onHover(null)}
+			onFocus={() => onHover(member.id)}
+			onBlur={() => onHover(null)}
+		>
+			{/* Name */}
+			<div className="flex items-center gap-2.5">
+				<span className={cn("w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
+				<span className={cn("text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300", isActive ? "text-foreground" : "text-foreground/80")}>{member.name}</span>
 			</div>
-		</>
+
+			{/* Role */}
+			<p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{member.role}</p>
+		</button>
 	);
 }

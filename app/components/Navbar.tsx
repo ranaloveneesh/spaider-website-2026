@@ -28,7 +28,7 @@ const NAV_LINK_CLASSNAME = "relative inline-flex items-center text-xs leading-no
 export default function Navbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [agentsMenuOpen, setAgentsMenuOpen] = useState(false);
-	const agentsNavRef = useRef<HTMLDivElement>(null);
+	const agentsNavRef = useRef<HTMLFieldSetElement>(null);
 	const [progress, setProgress] = useState(0);
 
 	const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
@@ -88,18 +88,17 @@ export default function Navbar() {
 						<nav aria-label="Primary" className="hidden flex-1 items-center justify-end gap-5 xl:gap-10 lg:flex">
 							{PRIMARY_LINKS.map((l) =>
 								l.label === "AGENTS" ? (
-									<div
+									<fieldset
 										key={l.href}
 										ref={agentsNavRef}
 										className="relative"
-										onMouseEnter={() => setAgentsMenuOpen(true)}
-										onMouseLeave={() => setAgentsMenuOpen(false)}
 										onBlur={(e) => {
 											if (!agentsNavRef.current?.contains(e.relatedTarget as Node | null)) {
 												setAgentsMenuOpen(false);
 											}
 										}}
 									>
+										<legend className="sr-only">Agents menu</legend>
 										<button
 											type="button"
 											className="group relative inline-block h-4 cursor-pointer border-0 bg-transparent p-0 text-left font-semibold uppercase text-[13px] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]"
@@ -108,6 +107,8 @@ export default function Navbar() {
 											aria-controls="nav-agents-submenu"
 											aria-label={l.label}
 											onFocus={() => setAgentsMenuOpen(true)}
+											onMouseEnter={() => setAgentsMenuOpen(true)}
+											onMouseLeave={() => setAgentsMenuOpen(false)}
 										>
 											<span aria-hidden="true" className="relative inline-block overflow-hidden h-4">
 												<span className="flex flex-col transition-transform duration-400 ease-out group-hover:-translate-y-1/2">
@@ -124,7 +125,7 @@ export default function Navbar() {
 												</Link>
 											))}
 										</div>
-									</div>
+									</fieldset>
 								) : (
 									<AnimatedNavLink key={l.href} href={l.href}>
 										{l.label}

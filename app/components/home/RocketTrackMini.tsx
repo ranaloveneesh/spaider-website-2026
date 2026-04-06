@@ -56,7 +56,8 @@ export function RocketTrackMini() {
 
 	return (
 		<div ref={wrap} className="relative h-[130px] w-full text-muted-tertiary">
-			<svg viewBox="0 0 560 160" className="absolute inset-0 h-full w-full">
+			<svg viewBox="0 0 560 160" className="absolute inset-0 h-full w-full" role="img" aria-label="Deployment path illustration">
+				<title>Deployment path illustration</title>
 				<path ref={pathRef} d="M60,80 C200,70 360,70 500,80" fill="none" stroke="currentColor" strokeWidth={6} strokeDasharray="12 16" strokeLinecap="round" opacity={0.95} />
 				<g transform={`translate(${rocket.x},${rocket.y}) rotate(${rocket.r},${rocket.s / 2},${rocket.s / 2})`}>
 					<path

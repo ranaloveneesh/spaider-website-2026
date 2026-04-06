@@ -8,6 +8,8 @@ type Logo = {
 	scale?: number; // visual scale only
 };
 
+type MarqueeLogo = Logo & { dup: 0 | 1 };
+
 const LOGOS: Logo[] = [
 	{ src: "/trusted/esa.svg", alt: "ESA", scale: 0.6 },
 	{ src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.7 },
@@ -18,19 +20,24 @@ const LOGOS: Logo[] = [
 	{ src: "/trusted/esa.svg", alt: "OHB", scale: 0.6 },
 ];
 
+const MARQUEE_LOGOS: MarqueeLogo[] = LOGOS.flatMap((l) => [
+	{ ...l, dup: 0 as const },
+	{ ...l, dup: 1 as const },
+]);
+
 export default function Customers() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
 			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">They trust us</h2>
 
-			<div className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Trusted by logo carousel" role="region">
+			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Trusted by logo carousel">
 				{/* Edge fades to make the infinite loop less noticeable */}
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#08090a] to-transparent sm:w-16 lg:w-20" />
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#08090a] to-transparent sm:w-16 lg:w-20" />
 				<div className="customer-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
 					{/* Duplicate logos to create a seamless loop */}
-					{[...LOGOS, ...LOGOS].map(({ src, alt, scale }, i) => (
-						<div key={`${src}-${i}`} className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]">
+					{MARQUEE_LOGOS.map(({ src, alt, scale, dup }) => (
+						<div key={`${src}-${alt}-${dup}`} className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]">
 							<div
 								className="flex items-center justify-center"
 								style={{
@@ -65,7 +72,7 @@ export default function Customers() {
             }
           }
         `}</style>
-			</div>
+			</section>
 		</section>
 	);
 }

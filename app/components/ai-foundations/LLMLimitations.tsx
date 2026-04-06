@@ -38,7 +38,7 @@ export default function LLMLimitations() {
 
 			<div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 md:gap-9 lg:mt-12 lg:grid-cols-3 lg:gap-10">
 				{ITEMS.map((it, i) => (
-					<Reveal key={i} variant="fade-left" threshold={0.2} delayMs={i * 90} className="flex min-w-0 items-start gap-2 text-left sm:gap-3">
+					<Reveal key={it.t} variant="fade-left" threshold={0.2} delayMs={i * 90} className="flex min-w-0 items-start gap-2 text-left sm:gap-3">
 						<span aria-hidden className="-mr-1 shrink-0 select-none font-bold leading-[0.75] tracking-[-0.05em] text-[var(--color-accent)] opacity-90 [clip-path:inset(0_16%_0_0)] [text-shadow:0_0_14px_rgba(17,45,199,0.25)] text-[2.75rem] sm:-mr-2 sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem]">
 							{i + 1}
 						</span>

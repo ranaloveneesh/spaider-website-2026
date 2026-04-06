@@ -99,13 +99,20 @@ const LOGOS: Integration[] = [
 	{ name: "PDF", src: "/integrations/pdf.png", kind: "icon", iconScale: 1.05 },
 ];
 
+type MarqueeIntegration = Integration & { dup: 0 | 1 };
+
+const MARQUEE_LOGOS: MarqueeIntegration[] = LOGOS.flatMap((item) => [
+	{ ...item, dup: 0 as const },
+	{ ...item, dup: 1 as const },
+]);
+
 function LogoItem({ item }: { item: Integration }) {
 	const [broken, setBroken] = useState(false);
 	const kind = item.kind ?? "wordmark";
 	const scale = item.iconScale ?? (kind === "icon" ? 1.08 : 1.0);
 
 	return (
-		<div className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px]" title={item.name} aria-label={item.name}>
+		<div className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px]" title={item.name}>
 			{!broken ? (
 				<div
 					className="flex items-center justify-center"
@@ -128,12 +135,12 @@ export default function IntegrationsGallery() {
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
 			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Seamlessly integrate with your workflow</h2>
 
-			<div className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Integrations logo carousel" role="region">
+			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Integrations logo carousel">
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-linear-to-r from-background to-transparent sm:w-16 lg:w-20" />
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-linear-to-l from-background to-transparent sm:w-16 lg:w-20" />
 				<div className="integrations-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
-					{[...LOGOS, ...LOGOS].map((item, i) => (
-						<LogoItem key={`${item.name}-${i}`} item={item} />
+					{MARQUEE_LOGOS.map((item) => (
+						<LogoItem key={`${item.name}-${item.dup}`} item={item} />
 					))}
 				</div>
 
@@ -158,7 +165,7 @@ export default function IntegrationsGallery() {
             }
           }
         `}</style>
-			</div>
+			</section>
 		</section>
 	);
 }
