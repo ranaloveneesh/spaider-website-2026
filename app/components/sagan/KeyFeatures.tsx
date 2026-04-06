@@ -60,8 +60,8 @@ export default function KeyFeatures() {
 							</div>
 
 							<ul className="space-y-2 text-muted-foreground font-inter sm:space-y-2.5 md:space-y-3">
-								{f.bullets.map((b, bi) => (
-									<li key={bi} className="flex items-start gap-2 sm:gap-3">
+								{f.bullets.map((b) => (
+									<li key={`${f.title}-${b}`} className="flex items-start gap-2 sm:gap-3">
 										<CircleCheck className="mt-px h-4 w-4 shrink-0 text-[#4ea7fc] sm:mt-[2px] sm:h-5 sm:w-5" aria-hidden />
 										<span className="text-xs leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{b}</span>
 									</li>

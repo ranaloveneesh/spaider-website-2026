@@ -39,7 +39,7 @@ export const StickyScroll = ({
 			<div className="relative flex items-start max-w-xl">
 				<div>
 					{content.map((item, index) => (
-						<div key={item.title + index} className="py-10">
+						<div key={item.title} className="py-10">
 							<motion.h2
 								initial={{
 									opacity: 0,

@@ -50,7 +50,7 @@ export default function AudienceBenefits() {
 	const tabListId = useId();
 	const panelId = `${tabListId}-panel`;
 
-	const current = tabs.find((t) => t.id === active)!;
+	const current = tabs.find((t) => t.id === active) ?? tabs[0];
 
 	return (
 		<section className="mx-auto w-[98%] max-w-[110rem] px-6 py-16">
@@ -85,8 +85,8 @@ export default function AudienceBenefits() {
 				</div>
 
 				<ul className="space-y-5 text-white/90">
-					{current.bullets.map((b, i) => (
-						<li key={i} className="flex items-start gap-3">
+					{current.bullets.map((b) => (
+						<li key={`${current.id}-${b}`} className="flex items-start gap-3">
 							<CircleCheck className="h-6 w-6 shrink-0 text-[#5ce1e6] md:h-7 md:w-7" aria-hidden />
 							<span>{b}</span>
 						</li>

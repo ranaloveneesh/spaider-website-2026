@@ -18,10 +18,10 @@ export default function PoweredBy() {
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
 			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Powered by</h2>
 
-			<div className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" aria-label="Powered by logos" role="region">
-				{LOGOS.map(({ src, alt, scale }, i) => (
+			<section className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" aria-label="Powered by logos">
+				{LOGOS.map(({ src, alt, scale }) => (
 					<div
-						key={`${src}-${alt}-${i}`}
+						key={`${src}-${alt}`}
 						className="flex items-center justify-center"
 						style={{
 							transform: `scale(${scale ?? 1})`,
@@ -31,7 +31,7 @@ export default function PoweredBy() {
 						<Image src={src} alt={alt} width={360} height={120} sizes="(max-width: 640px) 160px, (max-width: 1280px) 200px, 220px" className="h-9 w-auto object-contain filter brightness-0 invert sm:h-10 md:h-12 lg:h-14 xl:h-16" decoding="async" />
 					</div>
 				))}
-			</div>
+			</section>
 		</section>
 	);
 }

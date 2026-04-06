@@ -1,6 +1,6 @@
 "use client";
 import type { CSSProperties, MouseEvent } from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const INTRO_STYLE_ID = "faq1-animations";
 
@@ -59,7 +59,7 @@ const palettes = {
 };
 
 function FAQ() {
-	const getRootTheme = () => {
+	const getRootTheme = useCallback(() => {
 		if (typeof document === "undefined") return "dark";
 		if (document.documentElement.classList.contains("dark")) return "dark";
 		if (document.documentElement.classList.contains("light")) return "light";
@@ -67,7 +67,7 @@ function FAQ() {
 			return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 		}
 		return "light";
-	};
+	}, []);
 
 	const [theme, setTheme] = useState<keyof typeof palettes>(() => getRootTheme());
 	const [activeIndex, setActiveIndex] = useState(0);
@@ -229,7 +229,7 @@ function FAQ() {
 			observer.disconnect();
 			window.removeEventListener("storage", handleStorage);
 		};
-	}, []);
+	}, [getRootTheme]);
 
 	const palette = useMemo(() => palettes[theme], [theme]);
 
@@ -316,7 +316,7 @@ function FAQ() {
 								>
 									<span className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-105 sm:h-10 sm:w-10 ${palette.iconRing} ${palette.iconSurface}`}>
 										<span className={`pointer-events-none absolute inset-0 rounded-full border opacity-30 ${palette.iconRing} ${open ? "animate-ping" : ""}`} />
-										<svg className={`relative h-3.5 w-3.5 transition-transform duration-500 sm:h-4 sm:w-4 ${palette.icon} ${open ? "rotate-45" : ""}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<svg aria-hidden="true" focusable="false" className={`relative h-3.5 w-3.5 transition-transform duration-500 sm:h-4 sm:w-4 ${palette.icon} ${open ? "rotate-45" : ""}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M12 5v14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
 											<path d="M5 12h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
 										</svg>
@@ -326,12 +326,11 @@ function FAQ() {
 										<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
 											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg ${palette.heading}`}>{item.question}</h2>
 										</div>
-
-										<div id={panelId} role="region" aria-labelledby={buttonId} className={`overflow-hidden text-xs leading-relaxed transition-[max-height] duration-500 ease-out sm:text-sm sm:leading-relaxed ${open ? "max-h-64" : "max-h-0"} ${palette.muted}`}>
-											<p className="pr-2">{item.answer}</p>
-										</div>
 									</div>
 								</button>
+								<div id={panelId} className={`px-4 pb-4 text-xs leading-relaxed transition-[max-height] duration-500 ease-out sm:px-6 sm:pb-6 sm:text-sm sm:leading-relaxed ${open ? "max-h-64" : "max-h-0"} ${palette.muted}`}>
+									<p className="pr-2">{item.answer}</p>
+								</div>
 							</li>
 						);
 					})}
