@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "./utils/constants";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = SITE_URL.replace(/\/$/, "");
+	const base = SITE_URL.replace(/\/$/, "");
 
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${base}/sitemap.xml`,
-    host: base.replace(/^https?:\/\//, ""),
-  };
+	return {
+		rules: {
+			userAgent: "*",
+			allow: "/",
+		},
+		sitemap: `${base}/sitemap.xml`,
+		host: base.replace(/^https?:\/\//, ""),
+	};
 }
