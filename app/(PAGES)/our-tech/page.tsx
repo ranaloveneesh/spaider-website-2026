@@ -1,5 +1,6 @@
 import CtaPanel from "@/app/components/CtaPanel";
 import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
+import Reveal from "@/app/components/ui/reveal";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -46,7 +47,7 @@ const SECTIONS: Sec[] = [
 export default function OurTechPage() {
   return (
     <div className="w-full min-w-0 space-y-6 pb-10 sm:space-y-8 sm:pb-12 md:space-y-10">
-      <header className="space-y-3 sm:space-y-4">
+      <Reveal as="header" variant="fade-up" threshold={0.35} className="space-y-3 sm:space-y-4">
         <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Our tech
         </h2>
@@ -54,7 +55,7 @@ export default function OurTechPage() {
           A sovereign, modular AI stack built for aerospace teams that need
           reliability, security, and full deployment control.
         </p>
-      </header>
+      </Reveal>
 
       <main className="relative min-w-0 text-foreground">
         {/* 4 repeated sections */}
@@ -67,7 +68,11 @@ export default function OurTechPage() {
                 className="grid min-w-0 grid-cols-1 items-stretch gap-3 rounded-xl border border-border bg-panel/40 p-3 shadow-sm sm:gap-4 sm:p-4 md:grid-cols-2 md:gap-5"
               >
                 {/* Image left */}
-                <div className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl">
+                <Reveal
+                  variant={i % 2 === 0 ? "fade-right" : "fade-left"}
+                  threshold={0.25}
+                  className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl"
+                >
                   <div
                     aria-hidden
                     className="absolute inset-0 z-0"
@@ -106,10 +111,15 @@ export default function OurTechPage() {
                       />
                     </div>
                   )}
-                </div>
+                </Reveal>
 
                 {/* Text right panel */}
-                <div className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-panel sm:rounded-xl">
+                <Reveal
+                  variant={i % 2 === 0 ? "fade-left" : "fade-right"}
+                  threshold={0.25}
+                  delayMs={120}
+                  className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-panel sm:rounded-xl"
+                >
                   <div className="absolute inset-0 bg-linear-to-br from-background/55 via-panel to-background/70" />
                   <div className="relative p-3 sm:p-4 md:p-5">
                     <h3 className="font-manrope text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
@@ -123,21 +133,25 @@ export default function OurTechPage() {
                       {s.body}
                     </p>
                   </div>
-                </div>
+                </Reveal>
               </article>
             );
           })}
         </section>
 
-        <IntegrationsGallery />
+        <Reveal variant="fade-up" threshold={0.2} className="mt-6 sm:mt-8 md:mt-10">
+          <IntegrationsGallery />
+        </Reveal>
 
         {/* CTA PANEL (BEFORE FOOTER) */}
-        <CtaPanel
-          title="Got a use case in mind? Let's make it real."
-          copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
-          ctaHref="/book-demo"
-          ctaLabel="Talk to us"
-        />
+        <Reveal variant="scale" threshold={0.25} className="mt-8 sm:mt-10 md:mt-12">
+          <CtaPanel
+            title="Got a use case in mind? Let's make it real."
+            copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
+            ctaHref="/book-demo"
+            ctaLabel="Talk to us"
+          />
+        </Reveal>
       </main>
     </div>
   );

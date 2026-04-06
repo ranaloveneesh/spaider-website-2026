@@ -6,6 +6,7 @@ import SplitTextLeft from "../../components/ai-foundations/SplitTextLeft";
 import UseCases from "../../components/ai-foundations/UseCases";
 import FinalCTA from "../../components/ai-foundations/FinalCTA";
 import CeramicButton from "@/app/components/ui/button";
+import Reveal from "@/app/components/ui/reveal";
 import Image from "next/image";
 import Pill from "@/app/components/Pill";
 // import { StickyScroll } from "../../components/ui/sticky-scroll-reveal";
@@ -76,15 +77,19 @@ import Pill from "@/app/components/Pill";
 export default function FoundationsPage() {
   return (
     <div className="mt-4 w-full min-w-0 space-y-8 pb-10 sm:mt-6 sm:space-y-10 sm:pb-12 md:space-y-12">
-      <div className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:gap-8 lg:justify-between">
-        <div className="w-full min-w-0 flex-1 lg:max-w-[560px]">
-          <div className="space-y-4 sm:space-y-5 md:space-y-6 flex flex-col items-center lg:items-start">
+      <div className="mt-12 flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
+        <Reveal
+          variant="fade-up"
+          threshold={0.35}
+          className="w-full min-w-0 flex-1 lg:max-w-[560px]"
+        >
+          <div className="flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6 lg:items-start">
             <Pill variant="outline">Talk to your data</Pill>
             <h2 className="font-manrope text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-3xl">
               AI Foundations
             </h2>
 
-            <p className="max-w-lg text-center text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7 lg:text-left">
+            <p className="max-w-lg text-center text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">
               Turn unstructured knowledge into an interactive, compliant
               knowledge base.
               <br />
@@ -107,9 +112,13 @@ export default function FoundationsPage() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="relative w-full min-w-0 flex-1 overflow-hidden rounded-2xl sm:rounded-3xl lg:ml-auto lg:flex lg:justify-end">
+        <Reveal
+          variant="scale"
+          threshold={0.25}
+          className="relative w-full min-w-0 flex-1 overflow-hidden rounded-2xl sm:rounded-3xl lg:ml-auto lg:flex lg:justify-end"
+        >
           <div className="relative h-[min(52vw,280px)] w-full min-w-0 overflow-hidden border border-border p-2 sm:h-[min(48vw,360px)] sm:rounded-2xl sm:p-3 md:h-[400px] md:rounded-3xl md:p-4 lg:h-[min(520px,55vh)] xl:h-[min(600px,60vh)]">
             <Image
               src="/demo.png"
@@ -120,7 +129,7 @@ export default function FoundationsPage() {
               sizes="(max-width: 1023px) 100vw, 560px"
             />
           </div>
-        </div>
+        </Reveal>
       </div>
       {/* <StickyScroll content={stickyScrollContent} /> */}
       <LLMLimitations />

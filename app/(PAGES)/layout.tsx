@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
+import SmoothScrollProvider from "../components/SmoothScrollProvider";
 import Footer from "../components/home/footer";
-
-/** Fully static marketing pages: fresh HTML on each Vercel deploy. No ISR (suits ~monthly content changes via git). */
 
 export default function MarketingLayout({
   children,
@@ -21,7 +20,11 @@ export default function MarketingLayout({
         id="main-content"
         className="mx-auto w-full max-w-7xl flex-1 px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
       >
-        {children}
+        <SmoothScrollProvider>
+          <div className="mt-4 w-full min-w-0 overflow-x-hidden">
+            {children}
+          </div>
+        </SmoothScrollProvider>
       </main>
       <Footer />
     </>

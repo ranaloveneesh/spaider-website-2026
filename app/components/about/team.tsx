@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/app/lib/utils";
+import Reveal from "@/app/components/ui/reveal";
 
 export interface TeamMember {
   id: string;
@@ -83,7 +84,11 @@ export default function TeamShowcase({
   return (
     <div className="flex flex-col md:flex-row items-start gap-8 md:gap-10 lg:gap-14 select-none w-full mx-auto">
       {/* ── Left: photo grid ── */}
-      <div className="flex gap-2 md:gap-3 flex-shrink-0 overflow-x-auto pb-1 md:pb-0">
+      <Reveal
+        variant="fade-right"
+        threshold={0.25}
+        className="no-scrollbar flex gap-2 md:gap-3 flex-shrink-0 overflow-x-auto pb-1 md:pb-0"
+      >
         {/* Column 1 */}
         <div className="flex flex-col gap-2 md:gap-3">
           {col1.map((member) => (
@@ -122,10 +127,14 @@ export default function TeamShowcase({
             />
           ))}
         </div>
-      </div>
+      </Reveal>
 
-      {/* ── Right: member name list*/}
-      <div className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-5 pt-0 md:pt-2 flex-1 w-full">
+      <Reveal
+        variant="fade-left"
+        threshold={0.25}
+        delayMs={120}
+        className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-5 pt-0 md:pt-2 flex-1 w-full"
+      >
         {members.map((member) => (
           <MemberRow
             key={member.id}
@@ -134,7 +143,7 @@ export default function TeamShowcase({
             onHover={setHoveredId}
           />
         ))}
-      </div>
+      </Reveal>
     </div>
   );
 }

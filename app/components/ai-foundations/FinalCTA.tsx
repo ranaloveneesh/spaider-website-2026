@@ -1,11 +1,16 @@
 "use client";
 import Link from "next/link";
 import CeramicButton from "@/app/components/ui/button";
+import Reveal from "@/app/components/ui/reveal";
 
 export default function FinalCTA() {
   return (
     <section className="mx-auto mt-12 w-full min-w-0 max-w-420 sm:mt-16 md:mt-20 lg:mt-24">
-      <div className="relative overflow-hidden rounded-xl border border-border bg-panel px-4 py-6 text-center shadow-md sm:rounded-2xl sm:px-6 sm:py-8 md:px-10 md:py-12">
+      <Reveal
+        variant="scale"
+        threshold={0.25}
+        className="relative overflow-hidden rounded-xl border border-border bg-panel px-4 py-6 text-center shadow-md sm:rounded-2xl sm:px-6 sm:py-8 md:px-10 md:py-12"
+      >
         <div
           aria-hidden
           className="absolute inset-0"
@@ -52,7 +57,7 @@ export default function FinalCTA() {
             </Link>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

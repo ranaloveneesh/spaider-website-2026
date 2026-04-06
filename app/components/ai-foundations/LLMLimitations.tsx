@@ -1,5 +1,7 @@
 "use client";
 
+import Reveal from "@/app/components/ui/reveal";
+
 const ITEMS = [
   {
     t: "More than just a RAG",
@@ -30,13 +32,19 @@ const ITEMS = [
 export default function LLMLimitations() {
   return (
     <section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-      <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+      <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
         What you get with SPAIDER&apos;s Foundations
-      </h2>
+      </Reveal>
 
       <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 md:gap-9 lg:mt-12 lg:grid-cols-3 lg:gap-10">
         {ITEMS.map((it, i) => (
-          <div key={i} className="flex min-w-0 items-start gap-2 text-left sm:gap-3">
+          <Reveal
+            key={i}
+            variant="fade-left"
+            threshold={0.2}
+            delayMs={i * 90}
+            className="flex min-w-0 items-start gap-2 text-left sm:gap-3"
+          >
             <span
               aria-hidden
               className="-mr-1 shrink-0 select-none font-bold leading-[0.75] tracking-[-0.05em] text-[var(--color-accent)] opacity-90 [clip-path:inset(0_16%_0_0)] [text-shadow:0_0_14px_rgba(17,45,199,0.25)] text-[2.75rem] sm:-mr-2 sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem]"
@@ -51,7 +59,7 @@ export default function LLMLimitations() {
                 {it.d}
               </p>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

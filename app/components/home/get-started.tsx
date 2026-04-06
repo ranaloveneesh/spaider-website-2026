@@ -1,5 +1,7 @@
 "use client";
 
+import Reveal from "../ui/reveal";
+
 type ChangelogItem = {
   title: string;
   description: string;
@@ -60,11 +62,18 @@ export default function GetStarted() {
           className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70"
         />
 
-        <div className="-mx-2 overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
+        <div className="-mx-2 no-scrollbar overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
           <ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">
-            {ITEMS.map((item) => {
+            {ITEMS.map((item, index) => {
               return (
-                <li key={`${item.title}`} className="min-w-[200px] flex-1 sm:min-w-[220px]">
+                <Reveal
+                  key={`${item.title}`}
+                  as="li"
+                  variant="fade-right"
+                  threshold={0.25}
+                  delayMs={index * 120}
+                  className="min-w-[200px] flex-1 sm:min-w-[220px]"
+                >
                   {/* Dot centered on the line */}
                   <div className="relative flex h-4 items-center">
                     <Dot />
@@ -78,7 +87,7 @@ export default function GetStarted() {
                       {item.description}
                     </p>
                   </div>
-                </li>
+                </Reveal>
               );
             })}
           </ul>

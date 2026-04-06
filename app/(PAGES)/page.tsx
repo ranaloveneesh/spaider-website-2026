@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Hero from "../components/home/hero";
+import Reveal from "../components/ui/reveal";
 
 const Customers = dynamic(() => import("../components/home/customers"), {
   loading: () => (
@@ -96,20 +97,36 @@ const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
 export default function Home() {
   return (
     <div className="mt-4 w-full min-w-0 overflow-x-hidden">
-      <Hero />
-      <Customers />
-      <Agents />
-      <SpaiderSection />
-      <SecurityCompliance />
+      <Reveal variant="scale" threshold={0.35}>
+        <Hero />
+      </Reveal>
+      <Reveal variant="fade-up">
+        <Customers />
+      </Reveal>
+      <Reveal variant="fade-left">
+        <Agents />
+      </Reveal>
+      <Reveal variant="fade-right">
+        <SpaiderSection />
+      </Reveal>
+      <Reveal variant="zoom" threshold={0.25}>
+        <SecurityCompliance />
+      </Reveal>
       <GetStarted />
-      <PoweredBy />
-      <FAQ />
-      <CtaPanel
-        title="Got a use case in mind? Let's make it real."
-        copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
-        ctaHref="/book-demo"
-        ctaLabel="Talk to us"
-      />
+      <Reveal variant="fade-up">
+        <PoweredBy />
+      </Reveal>
+      <Reveal variant="scale">
+        <FAQ />
+      </Reveal>
+      <Reveal variant="scale">
+        <CtaPanel
+          title="Got a use case in mind? Let's make it real."
+          copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
+          ctaHref="/book-demo"
+          ctaLabel="Talk to us"
+        />
+      </Reveal>
     </div>
   );
 }

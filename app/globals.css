@@ -89,6 +89,156 @@ body {
   font-family: var(--font-montserrat);
 }
 
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.hero-scale-in {
+  transform-origin: center;
+  animation: hero-scale-in 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes hero-scale-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scale-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+}
+
+.reveal--fade-up.is-visible {
+  animation: reveal-fade-up 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal--fade-down.is-visible {
+  animation: reveal-fade-down 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal--fade-left.is-visible {
+  animation: reveal-fade-left 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal--fade-right.is-visible {
+  animation: reveal-fade-right 650ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal--scale.is-visible {
+  animation: reveal-scale 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.reveal--zoom.is-visible {
+  animation: reveal-zoom 750ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes reveal-zoom {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible,
+  .reveal--fade-up.is-visible,
+  .reveal--fade-down.is-visible,
+  .reveal--fade-left.is-visible,
+  .reveal--fade-right.is-visible,
+  .reveal--scale.is-visible,
+  .reveal--zoom.is-visible {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
 .font-playfair-italic {
   font-family: var(--font-playfair), serif;
   font-style: italic;

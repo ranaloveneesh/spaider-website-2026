@@ -3,11 +3,16 @@ import Image from "next/image";
 import CeramicButton from "../ui/button";
 import Link from "next/link";
 import Pill from "../Pill";
+import Reveal from "@/app/components/ui/reveal";
 
 export default function AgentsHero() {
   return (
-    <div className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
-      <div className="w-full min-w-0 flex-1 lg:max-w-[560px]">
+    <div className="mt-12 flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
+      <Reveal
+        variant="fade-up"
+        threshold={0.35}
+        className="w-full min-w-0 flex-1 lg:max-w-[560px]"
+      >
         <div className="flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6 lg:items-start">
           <Pill variant="outline">RFP Manager</Pill>
 
@@ -46,9 +51,13 @@ export default function AgentsHero() {
             </Link>
           </div>
         </div>
-      </div>
+      </Reveal>
 
-      <div className="relative w-full min-w-0 flex-1 overflow-hidden rounded-2xl sm:rounded-3xl lg:ml-auto lg:flex lg:justify-end">
+      <Reveal
+        variant="scale"
+        threshold={0.25}
+        className="relative w-full min-w-0 flex-1 overflow-hidden rounded-2xl sm:rounded-3xl lg:ml-auto lg:flex lg:justify-end"
+      >
         <div className="relative h-[min(52vw,280px)] w-full min-w-0 overflow-hidden border border-border p-2 sm:h-[min(48vw,360px)] sm:rounded-2xl sm:p-3 md:h-[400px] md:rounded-3xl md:p-4 lg:h-[min(520px,55vh)] xl:h-[min(600px,60vh)]">
           <Image
             src="/demo.png"
@@ -59,7 +68,7 @@ export default function AgentsHero() {
             sizes="(max-width: 1023px) 100vw, 560px"
           />
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import Reveal from "@/app/components/ui/reveal";
 
 const CHALLENGES = [
   {
@@ -28,7 +29,11 @@ export default function RfpChallenge() {
     <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-10">
         {/* LEFT: Copy */}
-        <div className="min-w-0 md:col-span-7">
+        <Reveal
+          variant="fade-left"
+          threshold={0.25}
+          className="min-w-0 md:col-span-7"
+        >
           <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
             The RFP Challenge
           </h2>
@@ -62,10 +67,17 @@ export default function RfpChallenge() {
               aria-hidden
             />
           </button>
-        </div>
+        </Reveal>
 
         {/* RIGHT: Aside / bullets */}
-        <aside className="min-w-0 md:col-span-5" id="rfp-more">
+        <Reveal
+          as="aside"
+          variant="fade-right"
+          threshold={0.25}
+          delayMs={120}
+          className="min-w-0 md:col-span-5"
+          id="rfp-more"
+        >
           <div
             className="rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:rounded-2xl sm:p-5 md:p-8"
             style={{
@@ -94,7 +106,7 @@ export default function RfpChallenge() {
               ))}
             </ul>
           </div>
-        </aside>
+        </Reveal>
       </div>
     </section>
   );

@@ -5,7 +5,7 @@ const hero = () => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between"
+      className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between mt-12"
     >
       <div className="w-full min-w-0 flex-1 lg:max-w-[560px]">
         <div className="flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6 lg:items-start">
@@ -14,9 +14,7 @@ const hero = () => {
             className="text-center font-manrope text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-left lg:text-3xl"
           >
             Your Domain Trained
-            <span className="font-playfair-italic mt-1 block">
-              Co-Pilot
-            </span>
+            <span className="font-playfair-italic mt-1 block">Co-Pilot</span>
           </h1>
 
           <p className="max-w-lg text-center text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">

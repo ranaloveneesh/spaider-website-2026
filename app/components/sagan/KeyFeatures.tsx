@@ -1,6 +1,7 @@
 "use client";
 
 import { CircleCheck } from "lucide-react";
+import Reveal from "@/app/components/ui/reveal";
 
 type Feature = { title: string; bullets: string[] };
 
@@ -47,14 +48,23 @@ const spanByIndex = (_i: number) => "lg:col-span-6";
 export default function KeyFeatures() {
   return (
     <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
+      <Reveal
+        as="h2"
+        variant="fade-up"
+        threshold={0.35}
+        className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl"
+      >
         Key Features
-      </h2>
+      </Reveal>
 
       <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7">
         {FEATURES.map((f, i) => (
-          <article
+          <Reveal
             key={f.title}
+            as="article"
+            variant={i % 2 === 0 ? "fade-right" : "fade-left"}
+            threshold={0.2}
+            delayMs={i * 90}
             className={[
               "group relative min-w-0 overflow-hidden rounded-xl border border-border bg-panel/40 sm:rounded-2xl",
               "h-full p-4 shadow-md transition-all duration-200 ease-out sm:p-5 md:p-6 lg:p-7",
@@ -89,7 +99,7 @@ export default function KeyFeatures() {
                 ))}
               </ul>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>

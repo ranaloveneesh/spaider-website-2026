@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { JsonLd } from "@/app/components/seo/JsonLd";
 import CeramicButton from "@/app/components/ui/button";
+import Reveal from "@/app/components/ui/reveal";
 import { getInnoSpaceArticleJsonLd } from "@/app/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -18,7 +19,11 @@ export default function InnoSpaceArticle() {
   return (
     <div className="w-full min-w-0 space-y-6 pb-10 sm:space-y-8 sm:pb-12">
       <JsonLd data={getInnoSpaceArticleJsonLd()} />
-      <div className="relative aspect-video w-full min-w-0 overflow-hidden rounded-xl border border-border sm:rounded-2xl md:aspect-21/9">
+      <Reveal
+        variant="zoom"
+        threshold={0.25}
+        className="relative aspect-video w-full min-w-0 overflow-hidden rounded-xl border border-border sm:rounded-2xl md:aspect-21/9"
+      >
         <Image
           src="/blog/innospace.png"
           alt="SPAIDER Space — INNOspace Masters 2025"
@@ -27,9 +32,9 @@ export default function InnoSpaceArticle() {
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 1280px"
         />
-      </div>
+      </Reveal>
 
-      <header className="space-y-3 sm:space-y-4">
+      <Reveal as="header" variant="fade-up" threshold={0.35} className="space-y-3 sm:space-y-4">
         <h1 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           We Secured 2nd Place at INNOspace Masters 2025 (And We’re Just Getting
           Started)
@@ -40,7 +45,7 @@ export default function InnoSpaceArticle() {
           <span className="h-1 w-1 rounded-full bg-border" aria-hidden />
           <span>3 min read</span>
         </div>
-      </header>
+      </Reveal>
 
       <article className="space-y-0">
         <Section title="Overview">
@@ -184,12 +189,17 @@ export default function InnoSpaceArticle() {
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="mt-8 space-y-3 border-t border-border pt-6 first:mt-0 first:border-t-0 first:pt-0 sm:mt-10 sm:space-y-4 sm:pt-8">
+    <Reveal
+      as="section"
+      variant="fade-up"
+      threshold={0.2}
+      className="mt-8 space-y-3 border-t border-border pt-6 first:mt-0 first:border-t-0 first:pt-0 sm:mt-10 sm:space-y-4 sm:pt-8"
+    >
       <h2 className="font-manrope text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">
         {title}
       </h2>
       <div className="space-y-3 sm:space-y-4">{children}</div>
-    </section>
+    </Reveal>
   );
 }
 

@@ -7,6 +7,7 @@ import {
   CalendarCheck,
   Network,
 } from "lucide-react";
+import Reveal from "@/app/components/ui/reveal";
 
 /* ========== Aerospace-context use cases (EN) ========== */
 const USE_CASES = [
@@ -53,14 +54,23 @@ const spanByIndex = (i: number) => (i < 3 ? "lg:col-span-4" : "lg:col-span-6");
 export default function UseCases() {
   return (
     <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-      <h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">
+      <Reveal
+        as="h2"
+        variant="fade-up"
+        threshold={0.35}
+        className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl"
+      >
         Use Cases
-      </h2>
+      </Reveal>
 
       <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7">
         {USE_CASES.map(({ t, d, prompt, Icon }, i) => (
-          <article
+          <Reveal
             key={t}
+            as="article"
+            variant={i % 2 === 0 ? "fade-right" : "fade-left"}
+            threshold={0.2}
+            delayMs={i * 90}
             className={[
               "group relative min-w-0 overflow-hidden rounded-xl border border-border bg-panel/40 sm:rounded-2xl",
               "h-full p-4 shadow-md transition-all duration-200 ease-out sm:p-5 md:p-6 lg:p-7",
@@ -97,7 +107,7 @@ export default function UseCases() {
                 “{prompt}”
               </span>
             </div>
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>

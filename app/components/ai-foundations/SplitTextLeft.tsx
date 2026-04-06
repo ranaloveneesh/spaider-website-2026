@@ -1,5 +1,7 @@
 "use client";
 
+import Reveal from "@/app/components/ui/reveal";
+
 type StepItem = {
   title: string;
   description: string;
@@ -42,9 +44,14 @@ export default function SplitTextLeft({
   return (
     <section className="mx-auto mt-12 w-full min-w-0 max-w-420 sm:mt-16 md:mt-20 lg:mt-24">
       <div className="flex items-end justify-between gap-4 sm:gap-6">
-        <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+        <Reveal
+          as="h2"
+          variant="fade-up"
+          threshold={0.35}
+          className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl"
+        >
           {title}
-        </h2>
+        </Reveal>
       </div>
       <div className="relative mt-6 sm:mt-8 md:mt-10">
         <div
@@ -52,11 +59,18 @@ export default function SplitTextLeft({
           className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70"
         />
 
-        <div className="-mx-2 overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
+        <div className="-mx-2 no-scrollbar overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
           <ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">
-            {STEPS.map((step) => {
+            {STEPS.map((step, index) => {
               return (
-                <li key={step.title} className="min-w-[200px] flex-1 sm:min-w-[220px]">
+                <Reveal
+                  key={step.title}
+                  as="li"
+                  variant="fade-right"
+                  threshold={0.25}
+                  delayMs={index * 120}
+                  className="min-w-[200px] flex-1 sm:min-w-[220px]"
+                >
                   <div className="relative flex h-4 items-center">
                     <Dot />
                   </div>
@@ -69,7 +83,7 @@ export default function SplitTextLeft({
                       {step.description}
                     </p>
                   </div>
-                </li>
+                </Reveal>
               );
             })}
           </ul>

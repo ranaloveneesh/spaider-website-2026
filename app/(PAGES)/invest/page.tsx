@@ -1,4 +1,5 @@
 import { InvestFormLazy } from "@/app/components/invest/InvestFormLazy";
+import Reveal from "@/app/components/ui/reveal";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,11 @@ export const metadata: Metadata = {
 export default function InvestPage() {
   return (
     <div className="grid w-full min-w-0 grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:items-start md:gap-8 lg:grid-cols-3 lg:gap-10">
-      <div className="min-w-0 space-y-4 sm:space-y-5 md:pt-0 lg:pr-8">
+      <Reveal
+        variant="fade-left"
+        threshold={0.35}
+        className="min-w-0 space-y-4 sm:space-y-5 md:pt-0 lg:pr-8"
+      >
         <h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
           Invest
         </h2>
@@ -24,7 +29,7 @@ export default function InvestPage() {
           private raise. For qualified investors; this is a non-binding
           expression of interest.
         </p>
-      </div>
+      </Reveal>
 
       <InvestFormLazy />
     </div>

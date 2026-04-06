@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Reveal from "@/app/components/ui/reveal";
 
 type Metric = {
   prefix?: string;
@@ -59,11 +60,13 @@ const Big: React.FC<{
   prefix?: string;
   value: number;
   suffix: string;
-}> = ({ prefix, value, suffix }) => {
+  active?: boolean;
+}> = ({ prefix, value, suffix, active = false }) => {
   const reducedMotion = usePrefersReducedMotion();
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
+    if (!active) return;
     if (reducedMotion) {
       setDisplay(value);
       return;
@@ -87,7 +90,7 @@ const Big: React.FC<{
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [reducedMotion, value]);
+  }, [active, reducedMotion, value]);
 
   return (
     <div className="text-[clamp(1.65rem,5vw,3rem)] font-extrabold font-manrope bg-linear-to-r from-[#5ce1e6] to-[#67f0ff] bg-clip-text text-transparent sm:text-[clamp(1.85rem,4.2vw,3.2rem)]">
@@ -101,13 +104,21 @@ const Big: React.FC<{
 export default function Metrics() {
   return (
     <section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-      <h2 className="mb-6 max-w-4xl font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl">
+      <Reveal
+        as="h2"
+        variant="fade-up"
+        threshold={0.35}
+        className="mb-6 max-w-4xl font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl"
+      >
         Measurable Advantage: Accelerate Wins, Scale Ambition
-      </h2>
+      </Reveal>
       <div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:mt-10 md:grid-cols-3 md:gap-6">
-        {METRICS.map((m) => (
-          <div
+        {METRICS.map((m, index) => (
+          <Reveal
             key={m.title}
+            variant="fade-up"
+            threshold={0.25}
+            delayMs={index * 90}
             className={[
               "rounded-xl border border-white/10 p-4 text-center shadow-sm sm:rounded-2xl sm:p-6 md:p-8",
               "bg-linear-to-b from-black/70 via-black/35 to-black/70",
@@ -115,7 +126,7 @@ export default function Metrics() {
             ].join(" ")}
           >
             <div className="relative">
-              <Big prefix={m.prefix} value={m.value} suffix={m.suffix} />
+              <Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
               <div className="mt-2 font-manrope text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">
                 {m.title}
               </div>
@@ -123,7 +134,7 @@ export default function Metrics() {
                 {m.copy}
               </p>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
