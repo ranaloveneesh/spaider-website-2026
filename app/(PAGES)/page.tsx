@@ -3,130 +3,89 @@ import Hero from "../components/home/hero";
 import Reveal from "../components/ui/reveal";
 
 const Customers = dynamic(() => import("../components/home/customers"), {
-  loading: () => (
-    <section
-      className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]"
-      aria-busy="true"
-    >
-      <div className="mb-8 h-8 w-48 animate-pulse rounded-md bg-white/10 md:mb-12" />
-      <div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
-    </section>
-  ),
+	loading: () => (
+		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
+			<div className="mb-8 h-8 w-48 animate-pulse rounded-md bg-white/10 md:mb-12" />
+			<div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
+		</section>
+	),
 });
 
 const PoweredBy = dynamic(() => import("../components/home/powered-by"), {
-  loading: () => (
-    <section
-      className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]"
-      aria-busy="true"
-    >
-      <div className="mb-8 h-8 w-56 animate-pulse rounded-md bg-white/10 md:mb-12" />
-      <div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
-    </section>
-  ),
+	loading: () => (
+		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
+			<div className="mb-8 h-8 w-56 animate-pulse rounded-md bg-white/10 md:mb-12" />
+			<div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
+		</section>
+	),
 });
 
 const FAQ = dynamic(() => import("../components/home/faq"), {
-  loading: () => (
-    <section
-      className="mt-16 min-h-[22rem] md:mt-24 md:min-h-[28rem]"
-      aria-busy="true"
-    >
-      <div className="mb-6 h-9 w-40 animate-pulse rounded-md bg-white/10 md:mb-10 md:h-10" />
-      <div className="h-64 w-full animate-pulse rounded-3xl bg-white/5 md:h-80" />
-    </section>
-  ),
+	loading: () => (
+		<section className="mt-16 min-h-[22rem] md:mt-24 md:min-h-[28rem]" aria-busy="true">
+			<div className="mb-6 h-9 w-40 animate-pulse rounded-md bg-white/10 md:mb-10 md:h-10" />
+			<div className="h-64 w-full animate-pulse rounded-3xl bg-white/5 md:h-80" />
+		</section>
+	),
 });
 
-const SpaiderSection = dynamic(
-  () => import("../components/home/SpaiderSection"),
-  {
-    loading: () => (
-      <div
-        className="mt-16 min-h-[18rem] w-full animate-pulse rounded-[22px] bg-white/5 md:mt-24 md:min-h-[24rem]"
-        aria-busy="true"
-      />
-    ),
-  },
-);
+const SpaiderSection = dynamic(() => import("../components/home/SpaiderSection"), {
+	loading: () => <div className="mt-16 min-h-[18rem] w-full animate-pulse rounded-[22px] bg-white/5 md:mt-24 md:min-h-[24rem]" aria-busy="true" />,
+});
 
-const SecurityCompliance = dynamic(
-  () => import("../components/home/SecurityCompliance"),
-  {
-    loading: () => (
-      <section
-        className="relative min-h-[18rem] pt-8 pb-12 md:min-h-[22rem] md:pt-30 md:pb-16"
-        aria-busy="true"
-      >
-        <div className="h-full min-h-[14rem] w-full animate-pulse rounded-[24px] bg-white/5 md:min-h-[18rem]" />
-      </section>
-    ),
-  },
-);
+const SecurityCompliance = dynamic(() => import("../components/home/SecurityCompliance"), {
+	loading: () => (
+		<section className="relative min-h-[18rem] pt-8 pb-12 md:min-h-[22rem] md:pt-30 md:pb-16" aria-busy="true">
+			<div className="h-full min-h-[14rem] w-full animate-pulse rounded-[24px] bg-white/5 md:min-h-[18rem]" />
+		</section>
+	),
+});
 
 const Agents = dynamic(() => import("../components/home/agents"), {
-  loading: () => (
-    <section
-      className="mt-16 min-h-[16rem] md:mt-24 md:min-h-[20rem]"
-      aria-busy="true"
-    >
-      <div className="mb-6 h-8 w-64 max-w-full animate-pulse rounded-md bg-white/10 md:mb-8" />
-      <div className="h-56 w-full animate-pulse rounded-md bg-white/5 md:h-72" />
-    </section>
-  ),
+	loading: () => (
+		<section className="mt-16 min-h-[16rem] md:mt-24 md:min-h-[20rem]" aria-busy="true">
+			<div className="mb-6 h-8 w-64 max-w-full animate-pulse rounded-md bg-white/10 md:mb-8" />
+			<div className="h-56 w-full animate-pulse rounded-md bg-white/5 md:h-72" />
+		</section>
+	),
 });
 
 const GetStarted = dynamic(() => import("../components/home/get-started"), {
-  loading: () => (
-    <div
-      className="mt-20 min-h-[10rem] animate-pulse rounded-xl bg-white/5 md:mt-32 md:min-h-[12rem]"
-      aria-busy="true"
-    />
-  ),
+	loading: () => <div className="mt-20 min-h-[10rem] animate-pulse rounded-xl bg-white/5 md:mt-32 md:min-h-[12rem]" aria-busy="true" />,
 });
 
 const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
-  loading: () => (
-    <div
-      className="mx-auto mt-20 min-h-[12rem] w-full max-w-420 animate-pulse rounded-2xl bg-white/5 md:mt-32 md:min-h-[14rem]"
-      aria-busy="true"
-    />
-  ),
+	loading: () => <div className="mx-auto mt-20 min-h-[12rem] w-full max-w-420 animate-pulse rounded-2xl bg-white/5 md:mt-32 md:min-h-[14rem]" aria-busy="true" />,
 });
 
 export default function Home() {
-  return (
-    <div className="mt-4 w-full min-w-0 overflow-x-hidden">
-      <Reveal variant="scale" threshold={0.35}>
-        <Hero />
-      </Reveal>
-      <Reveal variant="fade-up">
-        <Customers />
-      </Reveal>
-      <Reveal variant="fade-left">
-        <Agents />
-      </Reveal>
-      <Reveal variant="fade-right">
-        <SpaiderSection />
-      </Reveal>
-      <Reveal variant="zoom" threshold={0.25}>
-        <SecurityCompliance />
-      </Reveal>
-      <GetStarted />
-      <Reveal variant="fade-up">
-        <PoweredBy />
-      </Reveal>
-      <Reveal variant="scale">
-        <FAQ />
-      </Reveal>
-      <Reveal variant="scale">
-        <CtaPanel
-          title="Got a use case in mind? Let's make it real."
-          copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster."
-          ctaHref="/book-demo"
-          ctaLabel="Talk to us"
-        />
-      </Reveal>
-    </div>
-  );
+	return (
+		<div className="mt-4 w-full min-w-0 overflow-x-hidden">
+			<Reveal variant="scale" threshold={0.35}>
+				<Hero />
+			</Reveal>
+			<Reveal variant="fade-up">
+				<Customers />
+			</Reveal>
+			<Reveal variant="fade-left">
+				<Agents />
+			</Reveal>
+			<Reveal variant="fade-right">
+				<SpaiderSection />
+			</Reveal>
+			<Reveal variant="zoom" threshold={0.25}>
+				<SecurityCompliance />
+			</Reveal>
+			<GetStarted />
+			<Reveal variant="fade-up">
+				<PoweredBy />
+			</Reveal>
+			<Reveal variant="scale">
+				<FAQ />
+			</Reveal>
+			<Reveal variant="scale">
+				<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster." ctaHref="/book-demo" ctaLabel="Talk to us" />
+			</Reveal>
+		</div>
+	);
 }

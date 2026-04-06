@@ -1,27 +1,23 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 import { getDb } from "@/app/lib/mongodb";
 
 export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
+	try {
+		const body = await req.json();
 
-    const db = await getDb();
-    const collection = db.collection("invest_submissions");
+		const db = await getDb();
+		const collection = db.collection("invest_submissions");
 
-    const doc = {
-      ...body,
-      createdAt: new Date(),
-    };
+		const doc = {
+			...body,
+			createdAt: new Date(),
+		};
 
-    await collection.insertOne(doc);
+		await collection.insertOne(doc);
 
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("Error saving invest submission", error);
-    return NextResponse.json(
-      { ok: false, error: "Failed to save submission" },
-      { status: 500 },
-    );
-  }
+		return NextResponse.json({ ok: true });
+	} catch (error) {
+		console.error("Error saving invest submission", error);
+		return NextResponse.json({ ok: false, error: "Failed to save submission" }, { status: 500 });
+	}
 }
-
