@@ -21,7 +21,7 @@ export default function AgentsHero() {
 					<div className="flex w-full max-w-md flex-col items-stretch gap-3 pt-1 sm:max-w-none sm:flex-row sm:items-center justify-center lg:justify-start sm:pt-2 lg:max-w-none">
 						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
 							<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-								REQUEST DEMO
+								REQUEST A DEMO
 							</CeramicButton>
 						</div>
 

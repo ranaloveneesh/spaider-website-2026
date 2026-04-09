@@ -30,7 +30,7 @@ function Dot() {
 	return (
 		<span className="relative inline-flex h-4 w-4 items-center justify-center">
 			<span className={["absolute inline-block h-4.5 w-4.5 rounded-full border border-border/70 bg-white/15"].join(" ")} />
-			<span className={["inline-block h-1.5 w-1.5 rounded-full", "bg-muted-tertiary/70"].join(" ")} />
+			<span className={["inline-block h-1.5 w-1.5 rounded-full bg-accent"].join(" ")} />
 		</span>
 	);
 }

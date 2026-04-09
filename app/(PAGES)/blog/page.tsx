@@ -26,7 +26,7 @@ export default function BlogPage() {
 			<div className="grid gap-4 sm:gap-5">
 				{blogs.map((blog, index) => (
 					<Reveal key={blog.href} as="div" variant={index % 2 === 0 ? "fade-right" : "fade-left"} threshold={0.2} delayMs={index * 90}>
-						<Link href={blog.href} className="block min-w-0 rounded-xl border-2 border-border bg-card p-4 transition hover:border-primary/40 hover:bg-muted/40 sm:p-5">
+						<Link href={blog.href} className="block min-w-0 rounded-xl border-2 border-border  p-4 transition hover:border-primary/40 hover:bg-muted/40 sm:p-5">
 							<p className="text-xs text-muted-foreground">{blog.date}</p>
 							<h2 className="mt-1 text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">{blog.title}</h2>
 							<p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm lg:text-base">{blog.excerpt}</p>

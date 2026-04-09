@@ -11,14 +11,7 @@ export default function SaganCTA() {
 			<Reveal variant="scale" threshold={0.25} className="relative overflow-hidden rounded-xl border border-border bg-panel px-4 py-6 text-center shadow-md sm:rounded-2xl sm:px-6 sm:py-8 md:px-10 md:py-12">
 				<div
 					aria-hidden
-					className="absolute inset-0"
-					style={{
-						background: `
-              radial-gradient(900px 450px at 10% 5%, rgba(78,167,252,0.14), transparent 60%),
-              radial-gradient(700px 400px at 90% 15%, rgba(0,112,192,0.12), transparent 60%),
-              linear-gradient(180deg, rgba(15,16,17,0.75), rgba(8,9,10,0.9))
-            `,
-					}}
+					className="absolute inset-0 bg-card border-card-border"
 				/>
 
 				<div className="relative">

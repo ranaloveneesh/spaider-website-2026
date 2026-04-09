@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
+import { PatternCard } from "@/app/components/ui/grid-feature-cards";
 
 type Metric = {
 	prefix?: string;
@@ -93,7 +94,7 @@ const Big: React.FC<{
 	}, [active, reducedMotion, value]);
 
 	return (
-		<div className="text-[clamp(1.65rem,5vw,3rem)] font-extrabold font-manrope bg-linear-to-r from-[#5ce1e6] to-[#67f0ff] bg-clip-text text-transparent sm:text-[clamp(1.85rem,4.2vw,3.2rem)]">
+		<div className="font-manrope text-4xl font-bold">
 			{prefix}
 			{display}
 			{suffix}
@@ -114,13 +115,17 @@ export default function Metrics() {
 						variant="fade-up"
 						threshold={0.25}
 						delayMs={index * 90}
-						className={["rounded-xl border border-white/10 p-4 text-center shadow-sm sm:rounded-2xl sm:p-6 md:p-8", "bg-linear-to-b from-black/70 via-black/35 to-black/70", "transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-md"].join(" ")}
+						className={["rounded-xl border border-white/10 text-center shadow-sm sm:rounded-2xl", "bg-linear-to-b from-black/70 via-black/35 to-black/70", "transition-all duration-200 ease-out hover:-translate-y-[2px] hover:shadow-md"].join(" ")}
 					>
-						<div className="relative">
-							<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
-							<div className="mt-2 font-manrope text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
-							<p className="mt-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{m.copy}</p>
-						</div>
+						<PatternCard className="h-full p-4 sm:p-6 md:p-8">
+							<div className="relative">
+								<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
+								<div className="mt-2 font-manrope text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
+								<p className="mt-2 text-xs leading-6 text-muted-tertiary font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+									{m.copy}
+								</p>
+							</div>
+						</PatternCard>
 					</Reveal>
 				))}
 			</div>
