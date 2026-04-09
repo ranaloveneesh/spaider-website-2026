@@ -7,13 +7,17 @@ import Reveal from "@/app/components/ui/reveal";
 export const StickyScroll = ({
 	content,
 	contentClassName,
+	title = "What you get with SPAIDER Foundations",
+	subtitle = "Capabilities for turning enterprise knowledge into usable, governed AI context.",
 }: {
 	content: {
 		title: string;
-		description: string;
+		description: React.ReactNode;
 		content?: React.ReactNode;
 	}[];
 	contentClassName?: string;
+	title?: string;
+	subtitle?: string;
 }) => {
 	const [activeCard, setActiveCard] = React.useState(0);
 	const ref = useRef<HTMLDivElement | null>(null);
@@ -41,11 +45,11 @@ export const StickyScroll = ({
 	return (
 		<section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
 			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-				What you get with SPAIDER Foundations
+				{title}
 			</Reveal>
 
 			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-				Capabilities for turning enterprise knowledge into usable, governed AI context.
+				{subtitle}
 			</Reveal>
 
 			<motion.div
@@ -63,13 +67,13 @@ export const StickyScroll = ({
 								>
 									{item.title}
 								</motion.h2>
-								<motion.p
+								<motion.div
 									initial={{ opacity: 0 }}
 									animate={{ opacity: activeCard === index ? 1 : 0.3 }}
 									className="mt-10 max-w-sm text-lg text-slate-300"
 								>
 									{item.description}
-								</motion.p>
+								</motion.div>
 							</div>
 						))}
 					</div>
