@@ -26,19 +26,13 @@ const tabs: Tab[] = [
 
 				<div className="flex min-w-0 flex-col gap-y-1.5 sm:gap-y-2">
 					<h2 className="m-0! mt-0 mb-0 font-manrope text-base font-semibold text-white sm:text-lg lg:text-xl">AI Foundations</h2>
-					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">AI Foundations is a comprehensive platform that provides the necessary tools and resources to build and deploy AI models.</p>
+					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Supercharge your everyday company knowledge work with AI.</p>
 					<div className="mt-1 sm:mt-2">
 						<ul className="space-y-1 text-xs text-gray-100 sm:space-y-1.5 sm:text-sm lg:text-base">
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
+							<li>✓  Make your company’s internal and approved external knowledge sources AI ready.</li>
+							<li>✓ Automate daily documentation (reports, minute-of-meeting etc) tasks.</li>
+							<li>✓ Search, chat, and retrieve with traceable context grounded in your data.</li>
+							<li>✓ Enterprise co-work powered by domain-expert AI models.</li>
 						</ul>
 					</div>
 				</div>
@@ -53,19 +47,13 @@ const tabs: Tab[] = [
 				<AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="SAGAN" />
 				<div className="flex min-w-0 flex-col gap-y-1.5 sm:gap-y-2">
 					<h2 className="m-0! mt-0 mb-0 font-manrope text-base font-semibold text-white sm:text-lg lg:text-xl">SAGAN</h2>
-					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">SAGAN is a comprehensive platform that provides the necessary tools and resources to build and deploy AI models.</p>
+					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Your proposal and RFP co-pilot for faster response time.</p>
 					<div className="mt-1 sm:mt-2">
-						<ul className="space-y-1 text-xs text-gray-100 sm:space-y-1.5 sm:text-sm lg:text-base">
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
+						<ul className="space-y-2 text-xs text-gray-100 sm:space-y-1.5 sm:text-sm lg:text-base">
+							<li>✓ Read RFPs and extract requirements automatically.</li>
+							<li>✓ Draft responses using your templates and past materials.</li>
+							<li>✓ Reuse internal knowledge with source-backed outputs.</li>
+							<li>✓ Support reviews, planning, and submission readiness.</li>
 						</ul>
 					</div>
 				</div>
@@ -77,22 +65,16 @@ const tabs: Tab[] = [
 		label: "KEPLER (Coming Soon)",
 		content: (
 			<div className="grid w-full grid-cols-1 gap-3 md:grid-cols-2 md:gap-4 md:h-full">
-				<AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="Kepler" />
+				<AgentsTabVideo src="/platform-videos/SCIXO.mp4" alt="KEPLER (Coming Soon)" />
 				<div className="flex min-w-0 flex-col gap-y-1.5 sm:gap-y-2">
-					<h2 className="m-0! mt-0 mb-0 font-manrope text-base font-semibold text-white sm:text-lg lg:text-xl">Kepler</h2>
-					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Kepler is a comprehensive platform that provides the necessary tools and resources to build and deploy AI models.</p>
+					<h2 className="m-0! mt-0 mb-0 font-manrope text-base font-semibold text-white sm:text-lg lg:text-xl">KEPLER (Coming Soon)</h2>
+					<p className="mt-0 text-xs leading-6 text-gray-200 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">A mission operations co-pilot for monitored, human-in-the-loop workflows.</p>
 					<div className="mt-1 sm:mt-2">
-						<ul className="space-y-1 text-xs text-gray-100 sm:space-y-1.5 sm:text-sm lg:text-base">
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
-							<li>✓ No-code AI workflow builder</li>
-							<li>✓ Model training and fine-tuning</li>
-							<li>✓ Real-time analytics dashboard</li>
-							<li>✓ Secure API and webhook access</li>
-							<li>✓ Team collaboration and versioning</li>
+						<ul className="space-y-2 text-xs text-gray-100 sm:space-y-1.5 sm:text-sm lg:text-base">
+							<li>✓ Query procedures, logs, and mission knowledge faster.</li>
+							<li>✓ Assist anomaly triage and operational review.</li>
+							<li>✓ Support teams with context-aware operational guidance.</li>
+							<li>✓ Keep humans in control for critical decisions.</li>
 						</ul>
 					</div>
 				</div>

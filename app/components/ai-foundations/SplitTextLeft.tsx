@@ -25,8 +25,8 @@ const STEPS: StepItem[] = [
 function Dot() {
 	return (
 		<span className="relative inline-flex h-4 w-4 items-center justify-center">
-			<span className="absolute inline-block h-4.5 w-4.5 rounded-full border border-border/70 bg-white/15" />
-			<span className="inline-block h-1.5 w-1.5 rounded-full bg-muted-tertiary/70" />
+			<span className="absolute inline-block h-4.5 w-4.5 rounded-full border border-border/50 bg-white/10 [box-shadow:0_0_0_6px_color-mix(in_srgb,var(--color-accent)_18%,transparent),0_0_22px_color-mix(in_srgb,var(--color-accent)_55%,transparent)]" />
+			<span className="neon-dot-accent inline-block h-1.5 w-1.5 rounded-full" />
 		</span>
 	);
 }
@@ -40,7 +40,7 @@ export default function SplitTextLeft({ kicker: _kicker, title }: { kicker?: str
 				</Reveal>
 			</div>
 			<div className="relative mt-6 sm:mt-8 md:mt-10">
-				<div aria-hidden="true" className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70" />
+				<div aria-hidden="true" className="fade-edges-x neon-line-accent pointer-events-none absolute left-0 right-0 top-[7px] h-0.5" />
 
 				<div className="-mx-2 no-scrollbar overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
 					<ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">

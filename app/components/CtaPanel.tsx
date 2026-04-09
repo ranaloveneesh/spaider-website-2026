@@ -19,14 +19,7 @@ export default function CtaPanel({
 			<div className="relative overflow-hidden rounded-xl border border-border bg-panel px-4 py-6 text-center shadow-md sm:rounded-2xl sm:px-6 sm:py-8 md:px-10 md:py-12">
 				<div
 					aria-hidden
-					className="absolute inset-0"
-					style={{
-						background: `
-                radial-gradient(900px 450px at 10% 5%, rgba(78,167,252,0.14), transparent 60%),
-                radial-gradient(700px 400px at 90% 15%, rgba(0,112,192,0.12), transparent 60%),
-                linear-gradient(180deg, rgba(15,16,17,0.75), rgba(8,9,10,0.9))
-              `,
-					}}
+					className="absolute inset-0 bg-card border-card-border"
 				/>
 				<div className="relative">
 					<h2 className="font-manrope text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl">{title}</h2>
@@ -36,7 +29,7 @@ export default function CtaPanel({
 					<div className="mt-8 flex justify-center sm:mt-10">
 						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
 							<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-								REQUEST DEMO
+								REQUEST A DEMO
 							</CeramicButton>
 						</div>
 					</div>

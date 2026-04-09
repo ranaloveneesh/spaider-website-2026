@@ -78,7 +78,7 @@ export default function InnoSpaceArticle() {
 				<Section title="Result: 2nd Place in the OHB Challenge">
 					<p className="text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">We were awarded 2nd place — a strong signal that the industry is ready for practical, high-impact AI in operations and that agents which understand real work can meaningfully accelerate it.</p>
 
-					<blockquote className="mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:p-5">
+					<blockquote className="mt-4 rounded-xl border border-border  p-4 sm:mt-6 sm:p-5">
 						<p className="text-sm font-semibold leading-snug text-foreground font-manrope sm:text-base lg:text-lg">
 							“Securing 2nd place at INNOspace Masters this early in our journey validates what we’ve believed from day one — the aerospace industry is ready for AI agents that actually understand the work. This recognition fuels our commitment to push boundaries and bring intelligent automation to space operations
 							worldwide.”
@@ -99,7 +99,7 @@ export default function InnoSpaceArticle() {
 				<div className="mt-8 flex flex-col gap-3 border-t border-border pt-6 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3 sm:pt-8">
 					<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
 						<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-							REQUEST DEMO
+							REQUEST A DEMO
 						</CeramicButton>
 					</div>
 

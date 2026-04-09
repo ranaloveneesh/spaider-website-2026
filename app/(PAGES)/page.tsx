@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import Hero from "../components/home/hero";
 import Reveal from "../components/ui/reveal";
+import Hero from "../components/home/hero";
 
 const Customers = dynamic(() => import("../components/home/customers"), {
 	loading: () => (
@@ -29,7 +29,7 @@ const FAQ = dynamic(() => import("../components/home/faq"), {
 	),
 });
 
-const SpaiderSection = dynamic(() => import("../components/home/SpaiderSection"), {
+const WhySpaider = dynamic(() => import("../components/home/why-spaider"), {
 	loading: () => <div className="mt-16 min-h-[18rem] w-full animate-pulse rounded-[22px] bg-white/5 md:mt-24 md:min-h-[24rem]" aria-busy="true" />,
 });
 
@@ -60,10 +60,8 @@ const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
 
 export default function Home() {
 	return (
-		<div className="mt-4 w-full min-w-0 overflow-x-hidden">
-			<Reveal variant="scale" threshold={0.35}>
-				<Hero />
-			</Reveal>
+		<div className="w-full min-w-0 overflow-x-hidden">
+			<Hero />
 			<Reveal variant="fade-up">
 				<Customers />
 			</Reveal>
@@ -71,7 +69,7 @@ export default function Home() {
 				<Agents />
 			</Reveal>
 			<Reveal variant="fade-right">
-				<SpaiderSection />
+				<WhySpaider />
 			</Reveal>
 			<Reveal variant="zoom" threshold={0.25}>
 				<SecurityCompliance />
@@ -84,7 +82,7 @@ export default function Home() {
 				<FAQ />
 			</Reveal>
 			<Reveal variant="scale">
-				<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster." ctaHref="/book-demo" ctaLabel="Talk to us" />
+				<CtaPanel title="Got a use case in mind? Let's make it real." copy="Tell us the workflow. We'll help define the right knowledge, controls, and deployment setup." ctaHref="/book-demo" ctaLabel="Talk to us" />
 			</Reveal>
 		</div>
 	);

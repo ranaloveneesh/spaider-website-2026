@@ -21,7 +21,7 @@ const AGENTS_DROPDOWN_LINKS: NavLink[] = [
 	{ label: "KEPLER (Coming Soon)", href: "/agents/kepler" },
 ];
 
-const MOBILE_LINKS: NavLink[] = [...PRIMARY_LINKS, { label: "REQUEST DEMO", href: "/request-demo" }];
+const MOBILE_LINKS: NavLink[] = [...PRIMARY_LINKS, { label: "REQUEST A DEMO", href: "/request-demo" }];
 
 const NAV_LINK_CLASSNAME = "relative inline-flex items-center text-xs leading-none font-medium uppercase tracking-[0.08em] text-white";
 
@@ -92,6 +92,8 @@ export default function Navbar() {
 										key={l.href}
 										ref={agentsNavRef}
 										className="relative"
+										onMouseEnter={() => setAgentsMenuOpen(true)}
+										onMouseLeave={() => setAgentsMenuOpen(false)}
 										onBlur={(e) => {
 											if (!agentsNavRef.current?.contains(e.relatedTarget as Node | null)) {
 												setAgentsMenuOpen(false);
@@ -108,7 +110,6 @@ export default function Navbar() {
 											aria-label={l.label}
 											onFocus={() => setAgentsMenuOpen(true)}
 											onMouseEnter={() => setAgentsMenuOpen(true)}
-											onMouseLeave={() => setAgentsMenuOpen(false)}
 										>
 											<span aria-hidden="true" className="relative inline-block overflow-hidden h-4">
 												<span className="flex flex-col transition-transform duration-400 ease-out group-hover:-translate-y-1/2">
@@ -133,7 +134,7 @@ export default function Navbar() {
 								),
 							)}
 							<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px">
-								REQUEST DEMO
+								REQUEST A DEMO
 							</CeramicButton>
 						</nav>
 

@@ -11,29 +11,25 @@ type Logo = {
 type MarqueeLogo = Logo & { dup: 0 | 1 };
 
 const LOGOS: Logo[] = [
-	{ src: "/trusted/esa.svg", alt: "ESA", scale: 0.6 },
-	{ src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.7 },
-	{ src: "/trusted/mirores.svg", alt: "Mirores", scale: 0.8 },
-	{ src: "/trusted/esric.png", alt: "ESRIC", scale: 0.7 },
-	{ src: "/trusted/esa.svg", alt: "SES", scale: 0.6 },
-	{ src: "/trusted/esa.svg", alt: "SREC", scale: 0.6 },
-	{ src: "/trusted/esa.svg", alt: "OHB", scale: 0.6 },
+	{ src: "/trusted/esa.svg", alt: "ESA", scale: 0.5 },
+	{ src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.6 },
+	{ src: "/trusted/mirores.svg", alt: "Mirores", scale: 0.7 },
+	{ src: "/trusted/esric.png", alt: "ESRIC", scale: 0.6 },
+	{ src: "/trusted/ses.png", alt: "SES", scale: 1.5 },
+	{ src: "/trusted/ohb.png", alt: "OHB", scale: 0.5 },
 ];
 
-const MARQUEE_LOGOS: MarqueeLogo[] = LOGOS.flatMap((l) => [
-	{ ...l, dup: 0 as const },
-	{ ...l, dup: 1 as const },
-]);
+const MARQUEE_LOGOS: MarqueeLogo[] = [
+	...LOGOS.map((l) => ({ ...l, dup: 0 as const })),
+	...LOGOS.map((l) => ({ ...l, dup: 1 as const })),
+];
 
 export default function Customers() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">They trust us</h2>
+			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Trusted by industry leaders</h2>
 
 			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Trusted by logo carousel">
-				{/* Edge fades to make the infinite loop less noticeable */}
-				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#08090a] to-transparent sm:w-16 lg:w-20" />
-				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#08090a] to-transparent sm:w-16 lg:w-20" />
 				<div className="customer-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
 					{/* Duplicate logos to create a seamless loop */}
 					{MARQUEE_LOGOS.map(({ src, alt, scale, dup }) => (
@@ -62,7 +58,7 @@ export default function Customers() {
           }
 
           .customer-marquee-track {
-            animation: customerMarquee 30s linear infinite;
+            animation: customerMarquee 60s linear infinite;
             will-change: transform;
           }
 
