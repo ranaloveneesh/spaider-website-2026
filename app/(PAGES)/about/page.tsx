@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TeamShowcase from "@/app/components/about/team";
+import TeamShowcase from "@/app/components/about/Team";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {

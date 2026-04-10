@@ -28,7 +28,7 @@ export default function RfpChallenge() {
 	const icons = [Clock3, Users, BarChart3, FolderKanban] as const;
 
 	return (
-		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-40">
 			<h2 className="mb-6 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl lg:text-3xl">
 				The RFP Challenge
 			</h2>
