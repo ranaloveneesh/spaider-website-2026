@@ -75,7 +75,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
 	const col3 = members.filter((_, i) => i % 3 === 2);
 
 	return (
-		<div className="flex flex-col md:flex-row items-start gap-8 md:gap-10 lg:gap-14 select-none w-full mx-auto">
+		<div className="flex flex-col md:flex-row items-start md:justify-center gap-8 md:gap-10 lg:gap-14 select-none w-full md:w-fit mx-auto">
 			{/* ── Left: photo grid ── */}
 			<Reveal variant="fade-right" threshold={0.25} className="no-scrollbar flex gap-2 md:gap-3 flex-shrink-0 overflow-x-auto pb-1 md:pb-0">
 				{/* Column 1 */}
@@ -100,7 +100,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
 				</div>
 			</Reveal>
 
-			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-5 pt-0 md:pt-2 flex-1 w-full">
+			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-5 pt-0 md:pt-2 w-full md:w-auto">
 				{members.map((member) => (
 					<MemberRow key={member.id} member={member} hoveredId={hoveredId} onHover={setHoveredId} />
 				))}
@@ -162,11 +162,11 @@ function MemberRow({ member, hoveredId, onHover }: { member: TeamMember; hovered
 			{/* Name */}
 			<div className="flex items-center gap-2.5">
 				<span className={cn("w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
-				<span className={cn("text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300", isActive ? "text-foreground" : "text-foreground/80")}>{member.name}</span>
+				<span className={cn("text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300", isActive ? "text-foreground" : "text-muted")}>{member.name}</span>
 			</div>
 
 			{/* Role */}
-			<p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">{member.role}</p>
+			<p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-muted">{member.role}</p>
 		</button>
 	);
 }

@@ -198,18 +198,18 @@ export default function Hero() {
 	return (
 		<div className="relative isolate w-full flex h-[80vh] flex-wrap items-center justify-center overflow-hidden">
 			<GenerativeArtScene />
-			<div className="relative z-10 px-4 text-center text-white mt-72">
+			<div className="relative z-10 px-4 text-center text-white mt-80">
 				<p className="inline-block text-4xl font-bold leading-tight tracking-tight md:text-5xl font-montserrat">
 					Sovereign AI Operating Layer for
 				</p>
 				<br />
-				<span className="hero-illuminated-word relative mt-2 mb-2 inline-block bg-linear-to-b from-[#ffc896] via-[#ffe8d4] to-[#fffaf6] bg-clip-text text-4xl font-bold leading-tight tracking-tight text-transparent md:text-5xl font-montserrat">
+				<span className="hero-illuminated-word relative inline-block text-4xl font-bold leading-tight tracking-tight md:text-5xl font-montserrat">
 					Aerospace Teams
 				</span>
-				<p className="text-lg font-normal tracking-tight text-white/95 md:text-xl">
+				<p className="text-lg font-medium tracking-tight text-white/95 md:text-xl mt-6 font-montserrat">
 					Deploy domain-expert AI models and domain-trained agents in your workflows.
 				</p>
-				<div className="flex w-full max-w-md flex-col items-stretch gap-3 pt-2 mt-4 sm:max-w-none sm:flex-row sm:items-center sm:pt-2 lg:max-w-none justify-center">
+				<div className="flex w-full max-w-md flex-col items-stretch gap-3 mt-6 sm:max-w-none sm:flex-row sm:items-center sm:pt-2 lg:max-w-none justify-center">
 					<CeramicButton
 						href="/request-demo"
 						color="rgba(255, 255, 255, 0.06)"

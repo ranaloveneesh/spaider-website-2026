@@ -22,11 +22,11 @@ export default function CtaPanel({
 					className="absolute inset-0 bg-card border-card-border"
 				/>
 				<div className="relative">
-					<h2 className="font-manrope text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl">{title}</h2>
+					<h2 className="font-montserrat text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl">{title}</h2>
 
-					<p className="mx-auto mt-4 max-w-4xl text-xs leading-6 text-foreground/90 font-inter sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{copy}</p>
+					<p className="mx-auto mt-6 max-w-4xl text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{copy}</p>
 
-					<div className="mt-8 flex justify-center sm:mt-10">
+					<div className="mt-6 flex justify-center">
 						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
 							<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
 								REQUEST A DEMO

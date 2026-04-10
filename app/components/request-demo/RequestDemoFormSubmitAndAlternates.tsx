@@ -16,7 +16,11 @@ export function RequestDemoFormSubmitAndAlternates({ isSubmitting }: Props) {
 				{isSubmitting ? "Submitting..." : "Book demo"}
 			</CeramicButton>
 
-			<div className="my-6 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700" />
+			<div className="my-6 flex items-center gap-3">
+				<div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-neutral-300 to-neutral-300 dark:via-neutral-700 dark:to-neutral-700" />
+				<span className="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">OR</span>
+				<div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-neutral-300 to-neutral-300 dark:via-neutral-700 dark:to-neutral-700" />
+			</div>
 			<div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
 				<button
 					type="button"
@@ -24,8 +28,8 @@ export function RequestDemoFormSubmitAndAlternates({ isSubmitting }: Props) {
 					aria-label="Schedule on Calendly (opens in a new tab)"
 					onClick={() => window.open(CALENDLY_URL, "_blank", "noopener,noreferrer")}
 				>
-					<span className="text-sm text-neutral-700 dark:text-neutral-300 flex items-center gap-2">
-						<CalendarIcon className="h-4 w-4 shrink-0 text-neutral-800 dark:text-neutral-300" aria-hidden />
+					<span className="text-sm text-muted flex items-center gap-2">
+						<CalendarIcon className="h-4 w-4 shrink-0 text-muted" aria-hidden />
 						Calendly
 					</span>
 					<BottomGradient />
@@ -38,8 +42,8 @@ export function RequestDemoFormSubmitAndAlternates({ isSubmitting }: Props) {
 						window.location.href = `mailto:${EMAIL_ADDRESS}`;
 					}}
 				>
-					<span className="text-sm text-neutral-700 dark:text-neutral-300 flex items-center gap-2">
-						<MailIcon className="h-4 w-4 shrink-0 text-neutral-800 dark:text-neutral-300" aria-hidden />
+					<span className="text-sm text-muted flex items-center gap-2">
+						<MailIcon className="h-4 w-4 shrink-0 text-muted" aria-hidden />
 						Mail
 					</span>
 					<BottomGradient />

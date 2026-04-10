@@ -94,7 +94,7 @@ const Big: React.FC<{
 	}, [active, reducedMotion, value]);
 
 	return (
-		<div className="font-manrope text-4xl font-bold">
+		<div className="font-montserrat text-4xl font-bold">
 			{prefix}
 			{display}
 			{suffix}
@@ -105,7 +105,7 @@ const Big: React.FC<{
 export default function Metrics() {
 	return (
 		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-6 max-w-4xl font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-6 max-w-4xl font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl">
 				Measurable Advantage: Accelerate Wins, Scale Ambition
 			</Reveal>
 			<div className="mt-6 grid gap-4 sm:mt-8 sm:gap-5 md:mt-10 md:grid-cols-3 md:gap-6">
@@ -120,8 +120,8 @@ export default function Metrics() {
 						<PatternCard className="h-full p-4 sm:p-6 md:p-8">
 							<div className="relative">
 								<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
-								<div className="mt-2 font-manrope text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
-								<p className="mt-2 text-xs leading-6 text-muted-tertiary font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+								<div className="mt-2 font-montserrat text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
+								<p className="mt-2 text-xs leading-6 text-muted font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
 									{m.copy}
 								</p>
 							</div>

@@ -32,12 +32,12 @@ export default function Onboarding() {
         >
             <div className="mx-auto w-full max-w-7xl py-12 sm:py-16 lg:py-20">
                 <div className="flex items-end justify-between gap-4 sm:gap-6">
-                    <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+                    <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
                         Steps to chat with your data
                     </Reveal>
                 </div>
 
-                <div className="relative mt-10 overflow-hidden sm:mt-12 md:mt-14 px-40">
+                <div className="relative mt-4 overflow-hidden px-40">
                     <div className="timeline-wrapper hidden md:block">
                         <div className="timeline-line" />
                     </div>
@@ -53,10 +53,10 @@ export default function Onboarding() {
                                     />
 
                                     <div className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}>
-                                        <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl">
+                                        <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-montserrat">
                                             {item.title}
                                         </h3>
-                                        <p className="text-left text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+                                        <p className="text-left text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                                             {item.desc}
                                         </p>
                                     </div>

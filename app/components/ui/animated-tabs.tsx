@@ -48,7 +48,7 @@ export const AnimatedTabs = ({ tabs, defaultTab, className, ariaLabel = "Tabs" }
 								transition={{ type: "spring", duration: 0.6 }}
 							/>
 						)}
-						<span className="relative z-10">{tab.label}</span>
+						<span className="relative z-10 font-montserrat">{tab.label}</span>
 					</button>
 				))}
 			</div>

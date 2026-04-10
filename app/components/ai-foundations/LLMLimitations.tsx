@@ -28,11 +28,11 @@ const ITEMS = [
 export default function LLMLimitations() {
 	return (
 		<section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
 				What you get with SPAIDER Foundations
 			</Reveal>
 
-			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
 				Capabilities for turning enterprise knowledge into usable, governed AI context.
 			</Reveal>
 
@@ -42,12 +42,12 @@ export default function LLMLimitations() {
 						<span aria-hidden className="-mr-1 shrink-0 select-none font-bold leading-[0.75] tracking-[-0.05em] text-accent opacity-90 [clip-path:inset(0_16%_0_0)] [text-shadow:0_0_14px_rgba(17,45,199,0.25)] text-[2.75rem] sm:-mr-2 sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem]">
 							{i + 1}
 						</span>
-						<div className="min-w-0 pt-1 sm:pt-2">
-							<h3 className="font-manrope text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">{it.t}</h3>
-							<p className="mt-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{it.d}</p>
+						<div className="min-w-0">
+							<h3 className="font-montserrat text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">{it.t}</h3>
+							<p className="mt-2 text-xs leading-6 text-muted font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{it.d}</p>
 							{"v" in it ? (
-								<p className="mt-3 text-xs leading-6 text-muted-foreground/80 font-inter">
-									<span className="font-medium text-muted-foreground">Suggested visual:</span> {it.v}
+								<p className="mt-3 text-xs leading-6 text-muted font-inter">
+									<span className="font-medium text-muted">Suggested visual:</span> {it.v}
 								</p>
 							) : null}
 						</div>

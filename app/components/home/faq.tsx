@@ -281,11 +281,11 @@ function FAQ() {
 			<section className={`relative z-10 mx-auto flex min-w-0 flex-col gap-8 sm:gap-10 md:gap-12 ${hasEntered ? "faq1-fade--ready" : "faq1-fade"}`}>
 				<header className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
 					<div className="space-y-3 sm:space-y-4">
-						<h2 className={`font-manrope text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}>FAQs</h2>
+						<h2 className={`font-montserrat text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}>FAQs</h2>
 					</div>
 				</header>
 
-				<ul className="space-y-2 sm:space-y-3">
+				<ul className="space-y-2 sm:space-y-4">
 					{faqs.map((item, index) => {
 						const open = activeIndex === index;
 						const panelId = `faq-panel-${index}`;
@@ -328,13 +328,13 @@ function FAQ() {
 
 									<div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4">
 										<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg ${palette.heading}`}>{item.question}</h2>
+											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg text-foreground`}>{item.question}</h2>
 										</div>
 									</div>
 								</button>
 								<div
 									id={panelId}
-									className={`grid text-xs leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:text-sm sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} ${palette.muted}`}
+									className={`grid leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} text-muted`}
 								>
 									<div className="min-h-0 overflow-hidden">
 										<div className={`px-4 transition-all duration-500 ease-out sm:px-6 ${open ? "pb-4 opacity-100 translate-y-0 sm:pb-6" : "pb-0 opacity-0 -translate-y-1"}`}>
