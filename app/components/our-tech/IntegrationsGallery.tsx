@@ -101,10 +101,10 @@ const LOGOS: Integration[] = [
 
 type MarqueeIntegration = Integration & { dup: 0 | 1 };
 
-const MARQUEE_LOGOS: MarqueeIntegration[] = LOGOS.flatMap((item) => [
-	{ ...item, dup: 0 as const },
-	{ ...item, dup: 1 as const },
-]);
+const MARQUEE_LOGOS: MarqueeIntegration[] = [
+	...LOGOS.map((item) => ({ ...item, dup: 0 as const })),
+	...LOGOS.map((item) => ({ ...item, dup: 1 as const })),
+];
 
 function LogoItem({ item }: { item: Integration }) {
 	const [broken, setBroken] = useState(false);
@@ -124,7 +124,7 @@ function LogoItem({ item }: { item: Integration }) {
 					<Image src={item.src} alt={item.name} width={360} height={120} className="h-9 w-auto object-contain sm:h-10 md:h-12 lg:h-14 xl:h-16" onError={() => setBroken(true)} />
 				</div>
 			) : (
-				<div className="text-xs font-semibold text-muted-foreground sm:text-sm">{item.name}</div>
+				<div className="text-xs font-semibold text-muted sm:text-sm">{item.name}</div>
 			)}
 		</div>
 	);
@@ -133,7 +133,7 @@ function LogoItem({ item }: { item: Integration }) {
 export default function IntegrationsGallery() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
-			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Seamlessly integrate with your workflow</h2>
+			<h2 className="mb-6 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Seamlessly integrate with your workflow</h2>
 
 			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Integrations logo carousel">
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-linear-to-r from-background to-transparent sm:w-16 lg:w-20" />

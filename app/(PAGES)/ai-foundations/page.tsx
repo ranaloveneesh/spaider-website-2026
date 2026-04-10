@@ -79,9 +79,9 @@ export default function FoundationsPage() {
       <div className="mt-12 flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
         <Reveal variant="fade-up" threshold={0.35} className="w-full min-w-0 flex-1 lg:max-w-[560px]">
           <div className="flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6 lg:items-start">
-            <Pill variant="outline">Talk to your data</Pill>
-            <h2 className="font-manrope text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-3xl">AI Foundations</h2>
-            <p className="max-w-lg text-center text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">
+            <span className="glass-btn text-left">Talk to your data</span>
+            <h2 className="font-montserrat text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-3xl">AI Foundations</h2>
+            <p className="max-w-lg text-center text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">
               Turn your documents, internal , and approved sources into a governed knowledge layer for your team of experts.
               <br />
               <br />

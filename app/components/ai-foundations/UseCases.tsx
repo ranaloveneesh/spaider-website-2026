@@ -148,31 +148,31 @@ export default function UseCases() {
 
 	return (
 		<>
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-2 font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-2 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
 				Example workflows
 			</Reveal>
 
-			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={60} className="mt-0 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={60} className="mt-0 max-w-3xl text-sm leading-7 text-muted sm:text-base">
 				See how teams can use SPAIDER Foundations across business and technical operations.
 			</Reveal>
 			<div className={`w-full py-16 flex items-center justify-center transition-all duration-500 relative overflow-hidden`}>
 				{/* Navigation Buttons */}
 				<motion.button
 					onClick={moveToStart}
-					className={`absolute left-8 top-1/2 -translate-y-1/2 p-4 rounded-full ${currentTheme.controlBg} border ${currentTheme.toggleBorder} backdrop-blur-sm transition-colors duration-200 z-20`}
-					whileHover={{ scale: 1.1, x: -5 }}
+					className={`absolute left-8 top-1/2 -translate-y-1/2 p-3 rounded-full ${currentTheme.controlBg} border border-accent/80 backdrop-blur-sm transition-colors duration-200 z-20`}
+					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 				>
-					<ChevronLeft className={`w-6 h-6 ${currentTheme.text}`} />
+					<ChevronLeft className="w-6 h-6 text-accent/80 cursor-pointer" />
 				</motion.button>
 
 				<motion.button
 					onClick={moveToEnd}
-					className={`absolute right-8 top-1/2 -translate-y-1/2 p-4 rounded-full ${currentTheme.controlBg} border ${currentTheme.toggleBorder} backdrop-blur-sm transition-colors duration-200 z-20`}
-					whileHover={{ scale: 1.1, x: 5 }}
+					className={`absolute right-8 top-1/2 -translate-y-1/2 p-3 rounded-full ${currentTheme.controlBg} border border-accent/80 backdrop-blur-sm transition-colors duration-200 z-20`}
+					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 				>
-					<ChevronRight className={`w-6 h-6 ${currentTheme.text}`} />
+					<ChevronRight className="w-6 h-6 text-accent/80 cursor-pointer" />
 				</motion.button>
 
 				{/* Card Stack Container */}
@@ -249,24 +249,24 @@ export default function UseCases() {
 										>
 											<div className="flex items-start gap-3">
 												<div className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-black/25 ring-1 ring-white/15 backdrop-blur">
-													<Icon className="h-5 w-5 text-white/90" />
+													<Icon className="h-5 w-5 text-foreground" />
 												</div>
 
 												<div className="min-w-0">
-													<h3 className="text-white font-semibold text-base sm:text-lg leading-snug">
+													<h3 className="text-foreground font-semibold text-base sm:text-lg leading-snug">
 														{title}
 													</h3>
-													<p className="mt-1 text-white/80 text-sm leading-6">
+													<p className="mt-1 text-muted text-sm leading-6">
 														{description}
 													</p>
 												</div>
 											</div>
 
 											<div className="mt-3 rounded-lg bg-black/20 p-2.5 ring-1 ring-white/10 backdrop-blur">
-												<p className="text-[0.72rem] font-semibold tracking-wide text-white/75">
+												<p className="text-[0.72rem] font-semibold tracking-wide text-muted">
 													PROMPT
 												</p>
-												<p className="mt-1 text-white/90 text-sm italic leading-6">
+												<p className="mt-1 text-foreground text-sm italic leading-6">
 													“{prompt}”
 												</p>
 											</div>

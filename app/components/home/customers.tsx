@@ -27,7 +27,7 @@ const MARQUEE_LOGOS: MarqueeLogo[] = [
 export default function Customers() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Trusted by industry leaders</h2>
+			<h2 className="mb-6 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Trusted by industry leaders</h2>
 
 			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Trusted by logo carousel">
 				<div className="customer-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">

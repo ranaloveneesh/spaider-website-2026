@@ -15,7 +15,7 @@ export default function MarketingLayout({
 				Skip to main content
 			</a>
 			<Navbar />
-			<main id="main-content" className="mx-auto w-full max-w-7xl flex-1 ">
+			<main id="main-content" className="mx-auto w-full max-w-7xl flex-1 px-4 py-6">
 				<div className="mt-4 w-full min-w-0 overflow-x-hidden">{children}</div>
 			</main>
 			<Footer />

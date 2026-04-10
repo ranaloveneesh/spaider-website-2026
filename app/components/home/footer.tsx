@@ -29,12 +29,13 @@ function Footer() {
 						<div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
 							<Image src="/logo.png" alt="" width={80} height={100} className="h-10 w-auto sm:h-11 lg:h-12" priority />
 							<div className="min-w-0">
-								<p className="font-montserrat text-xs font-semibold uppercase tracking-wide text-foreground sm:text-sm">Spaider Space</p>
-								<p className="text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
+								<p className="font-montserrat text-xs font-semibold tracking-wide text-foreground sm:text-base"><span className="uppercase mr-1">Spaider</span>
+									Space</p>
+								<p className="text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
 							</div>
 						</div>
 
-						<p className="mt-4 text-xs leading-6 text-muted-tertiary font-inter sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+						<p className="mt-4 text-xs leading-6 text-muted font-inter sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
 							SPAIDER Space S.à r.l.
 							<br />
 							9, avenue des Hauts Fourneaux 4362, Esch sur Alzette, Luxembourg
@@ -47,18 +48,18 @@ function Footer() {
 						<h2 className="m-0 font-montserrat text-xs font-semibold uppercase tracking-wide text-foreground sm:text-sm">Platform</h2>
 						<ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
 							<li>
-								<Link href="/our-tech" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/our-tech" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Our Tech
 								</Link>
 							</li>
 							<li>
-								<Link href="/ai-foundations" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/ai-foundations" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									AI Foundations
 								</Link>
 							</li>
 							<li>
-								<Link href="/agents" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
-									Agents
+								<Link href="/agents/sagan" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									SAGAN
 								</Link>
 							</li>
 						</ul>
@@ -68,27 +69,27 @@ function Footer() {
 						<h2 className="m-0 font-montserrat text-xs font-semibold uppercase tracking-wide text-foreground sm:text-sm">Company</h2>
 						<ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
 							<li>
-								<Link href="/invest" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/invest" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Invest
 								</Link>
 							</li>
 							<li>
-								<Link href="/blog" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/blog" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Blog
 								</Link>
 							</li>
 							<li>
-								<Link href="/request-demo" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/request-demo" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Request a demo
 								</Link>
 							</li>
 							<li>
-								<Link href="/about" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/about" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									About
 								</Link>
 							</li>
 							<li>
-								<Link href="/privacy-policy" className="text-xs leading-6 text-muted-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/privacy-policy" className="text-xs leading-6 text-foreground transition-colors font-inter hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Privacy Policy
 								</Link>
 							</li>
@@ -96,7 +97,7 @@ function Footer() {
 					</nav>
 
 					<section className="min-w-0 sm:col-span-2 lg:row-start-2 lg:col-start-3 lg:col-span-2" aria-labelledby="footer-contact-heading">
-						<h2 id="footer-contact-heading" className="m-0 font-montserrat text-xs font-semibold uppercase tracking-wide text-muted-foreground sm:text-sm">
+						<h2 id="footer-contact-heading" className="m-0 font-montserrat text-xs font-semibold uppercase tracking-wide text-foreground sm:text-sm">
 							CONTACT US
 						</h2>
 						<ul className="mt-3 flex list-none flex-wrap gap-4 p-0 sm:mt-4 sm:gap-6 md:gap-8">
@@ -120,8 +121,8 @@ function Footer() {
 				</div>
 
 				<div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-5 text-center sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-6 sm:text-left">
-					<p className="text-xs leading-6 text-muted-tertiary font-inter sm:text-sm sm:leading-7">Built for mission-ready, European-sovereign AI.</p>
-					<p className="text-xs leading-6 text-muted-tertiary font-inter sm:text-sm sm:leading-7">© {year} Spaider Space. All rights reserved.</p>
+					<p className="text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7">Built for mission-ready, European-sovereign AI.</p>
+					<p className="text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7">© {year} Spaider Space. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>

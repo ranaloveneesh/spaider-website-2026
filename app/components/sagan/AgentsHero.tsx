@@ -10,11 +10,10 @@ export default function AgentsHero() {
 		<div className="mt-12 flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 lg:flex-row lg:items-center lg:justify-between">
 			<Reveal variant="fade-up" threshold={0.35} className="w-full min-w-0 flex-1 lg:max-w-[560px]">
 				<div className="flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6 lg:items-start">
-					<Pill variant="outline">RFP Manager</Pill>
+					<span className="glass-btn text-left">RFP Manager</span>
+					<h2 className="font-montserrat text-center text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-left lg:text-3xl">Meet SAGAN</h2>
 
-					<h2 className="font-manrope text-center text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl lg:text-left lg:text-3xl">Meet SAGAN</h2>
-
-					<p className="max-w-lg text-center text-xs leading-6 text-muted-foreground font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">
+					<p className="max-w-lg text-center text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-left lg:text-base lg:leading-7">
 						Analyze RFPs, extract requirements, flag risks, map traceability, and draft compliant responses with clear sources—so your team focuses on strategy, not copy-paste.
 					</p>
 

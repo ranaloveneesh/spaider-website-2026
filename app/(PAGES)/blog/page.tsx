@@ -19,7 +19,7 @@ const blogs = [
 export default function BlogPage() {
 	return (
 		<section className="w-full min-w-0 space-y-6 sm:space-y-8">
-			<Reveal as="h1" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+			<Reveal as="h1" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
 				Blogs
 			</Reveal>
 
@@ -27,9 +27,9 @@ export default function BlogPage() {
 				{blogs.map((blog, index) => (
 					<Reveal key={blog.href} as="div" variant={index % 2 === 0 ? "fade-right" : "fade-left"} threshold={0.2} delayMs={index * 90}>
 						<Link href={blog.href} className="block min-w-0 rounded-xl border-2 border-border  p-4 transition hover:border-primary/40 hover:bg-muted/40 sm:p-5">
-							<p className="text-xs text-muted-foreground">{blog.date}</p>
-							<h2 className="mt-1 text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">{blog.title}</h2>
-							<p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm lg:text-base">{blog.excerpt}</p>
+							<h2 className="text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl font-montserrat">{blog.title}</h2>
+							<p className="mt-2 text-xs leading-relaxed text-foreground sm:text-sm lg:text-base font-inter">{blog.excerpt}</p>
+							<p className="mt-2 text-xs text-muted">{blog.date}</p>
 						</Link>
 					</Reveal>
 				))}
