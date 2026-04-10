@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import AnimatedNavLink from "./ui/animated-navlink";
 import CeramicButton from "./ui/button";
+import { ChevronDownIcon, XIcon } from "lucide-react";
 
 type NavLink = { label: string; href: string };
 
@@ -21,18 +22,27 @@ const AGENTS_DROPDOWN_LINKS: NavLink[] = [
 	{ label: "KEPLER (Coming Soon)", href: "/agents/kepler" },
 ];
 
-const MOBILE_LINKS: NavLink[] = [...PRIMARY_LINKS, { label: "REQUEST DEMO", href: "/request-demo" }];
+const MOBILE_LINKS: NavLink[] = [...PRIMARY_LINKS, { label: "REQUEST A DEMO", href: "/request-demo" }];
 
-const NAV_LINK_CLASSNAME = "relative inline-flex items-center text-xs leading-none font-medium uppercase tracking-[0.08em] text-white";
+const NAV_LINK_CLASSNAME = "relative inline-flex items-center text-xs leading-none font-medium uppercase tracking-[0.08em] text-white font-montserrat";
 
 export default function Navbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [agentsMenuOpen, setAgentsMenuOpen] = useState(false);
+	const [mobileAgentsMenuOpen, setMobileAgentsMenuOpen] = useState(true);
 	const agentsNavRef = useRef<HTMLFieldSetElement>(null);
 	const [progress, setProgress] = useState(0);
 
-	const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
-	const toggleMobileMenu = useCallback(() => setIsMobileMenuOpen((v) => !v), []);
+	const closeMobileMenu = useCallback(() => {
+		setIsMobileMenuOpen(false);
+		setMobileAgentsMenuOpen(true);
+	}, []);
+	const toggleMobileMenu = useCallback(() => {
+		setIsMobileMenuOpen((v) => {
+			if (!v) setMobileAgentsMenuOpen(true);
+			return !v;
+		});
+	}, []);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -82,7 +92,7 @@ export default function Navbar() {
 						<div className="flex items-center">
 							<Link href="/" aria-label="Home" className="select-none flex flex-row items-center gap-2">
 								<Image src="/logo.png" alt="" width={40} height={80} />
-								<span className="text-2xl font-semibold text-white">SPAIDER Space</span>
+								<span className="text-2xl font-semibold text-white font-montserrat">SPAIDER Space</span>
 							</Link>
 						</div>
 						<nav aria-label="Primary" className="hidden flex-1 items-center justify-end gap-5 xl:gap-10 lg:flex">
@@ -92,6 +102,8 @@ export default function Navbar() {
 										key={l.href}
 										ref={agentsNavRef}
 										className="relative"
+										onMouseEnter={() => setAgentsMenuOpen(true)}
+										onMouseLeave={() => setAgentsMenuOpen(false)}
 										onBlur={(e) => {
 											if (!agentsNavRef.current?.contains(e.relatedTarget as Node | null)) {
 												setAgentsMenuOpen(false);
@@ -101,14 +113,13 @@ export default function Navbar() {
 										<legend className="sr-only">Agents menu</legend>
 										<button
 											type="button"
-											className="group relative inline-block h-4 cursor-pointer border-0 bg-transparent p-0 text-left font-semibold uppercase text-[13px] focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]"
+											className="group relative inline-block h-4 cursor-pointer border-0 bg-transparent p-0 text-left font-semibold uppercase text-[13px] font-montserrat focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]"
 											aria-expanded={agentsMenuOpen}
 											aria-haspopup="true"
 											aria-controls="nav-agents-submenu"
 											aria-label={l.label}
 											onFocus={() => setAgentsMenuOpen(true)}
 											onMouseEnter={() => setAgentsMenuOpen(true)}
-											onMouseLeave={() => setAgentsMenuOpen(false)}
 										>
 											<span aria-hidden="true" className="relative inline-block overflow-hidden h-4">
 												<span className="flex flex-col transition-transform duration-400 ease-out group-hover:-translate-y-1/2">
@@ -120,7 +131,7 @@ export default function Navbar() {
 
 										<div id="nav-agents-submenu" role="menu" aria-label="Agents" className={`absolute left-0 top-full z-60 w-max min-w-[220px] p-1 transition-all duration-300 ease-out ${agentsMenuOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none -translate-y-[120vh] opacity-0"}`}>
 											{AGENTS_DROPDOWN_LINKS.map((link) => (
-												<Link key={link.href} href={link.href} role="menuitem" className="block whitespace-nowrap px-1 py-1 tracking-[0.08em] font-semibold uppercase text-[13px] text-muted transition-colors hover:text-foreground">
+												<Link key={link.href} href={link.href} role="menuitem" className="block whitespace-nowrap px-1 py-1 tracking-[0.08em] font-semibold uppercase text-[13px] font-montserrat text-muted transition-colors hover:text-foreground">
 													{link.label}
 												</Link>
 											))}
@@ -133,7 +144,7 @@ export default function Navbar() {
 								),
 							)}
 							<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px">
-								REQUEST DEMO
+								REQUEST A DEMO
 							</CeramicButton>
 						</nav>
 
@@ -166,18 +177,51 @@ export default function Navbar() {
 			<aside id="spx-mobile-menu" aria-label="Mobile navigation" aria-hidden={!isMobileMenuOpen} className={`fixed right-0 top-0 z-70 h-dvh w-[min(420px,86vw)] border-l border-white/10 bg-black transition-transform duration-300 ease-out lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}>
 				<div className="flex items-center justify-end px-8 pt-6">
 					<button type="button" className={NAV_LINK_CLASSNAME} onClick={closeMobileMenu} aria-label="Close menu">
-						CLOSE
+						<XIcon className="w-4 h-4" />
 					</button>
 				</div>
 				<nav className="px-8 pb-10 pt-6">
-					<ul className="flex flex-col">
-						{MOBILE_LINKS.map((l) => (
-							<li key={`${l.href}-${l.label}`} className="border-b border-white/15">
-								<AnimatedNavLink key={l.href} href={l.href} onClick={closeMobileMenu}>
-									{l.label}
-								</AnimatedNavLink>
-							</li>
-						))}
+					<ul className="flex flex-col space-y-4">
+						{MOBILE_LINKS.map((l) =>
+							l.label === "AGENTS" ? (
+								<li key={`${l.href}-${l.label}`} className="border-b border-border-card pb-3">
+									<button
+										type="button"
+										className="group flex w-full items-center justify-between gap-3 rounded-sm py-1 font-semibold uppercase text-[13px] font-montserrat focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--focus-ring-color)"
+										aria-expanded={mobileAgentsMenuOpen}
+										aria-controls="mobile-agents-submenu"
+										onClick={() => setMobileAgentsMenuOpen((v) => !v)}
+									>
+										<span className="text-muted transition-colors group-hover:text-foreground">AGENTS</span>
+										<ChevronDownIcon
+											aria-hidden="true"
+											className={`h-4 w-4 text-muted transition-transform duration-300 ease-out group-hover:text-foreground ${mobileAgentsMenuOpen ? "rotate-180" : "rotate-0"}`}
+										/>
+									</button>
+
+									<div
+										id="mobile-agents-submenu"
+										className={`grid transition-[grid-template-rows,opacity,margin-top] duration-300 ease-out ${mobileAgentsMenuOpen ? "mt-3 grid-rows-[1fr] opacity-100" : "mt-0 grid-rows-[0fr] opacity-0"}`}
+									>
+										<ul className="min-h-0 overflow-hidden pl-4">
+											{AGENTS_DROPDOWN_LINKS.map((link) => (
+												<li key={`mobile-${link.href}`} className="py-1">
+													<AnimatedNavLink href={link.href} onClick={closeMobileMenu}>
+														{link.label}
+													</AnimatedNavLink>
+												</li>
+											))}
+										</ul>
+									</div>
+								</li>
+							) : (
+								<li key={`${l.href}-${l.label}`} className="border-b border-border-card">
+									<AnimatedNavLink key={l.href} href={l.href} onClick={closeMobileMenu}>
+										{l.label}
+									</AnimatedNavLink>
+								</li>
+							),
+						)}
 					</ul>
 				</nav>
 			</aside>

@@ -30,7 +30,7 @@ function Dot() {
 	return (
 		<span className="relative inline-flex h-4 w-4 items-center justify-center">
 			<span className={["absolute inline-block h-4.5 w-4.5 rounded-full border border-border/70 bg-white/15"].join(" ")} />
-			<span className={["inline-block h-1.5 w-1.5 rounded-full", "bg-muted-tertiary/70"].join(" ")} />
+			<span className={["inline-block h-1.5 w-1.5 rounded-full bg-accent"].join(" ")} />
 		</span>
 	);
 }
@@ -39,7 +39,7 @@ export default function GetStarted() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
 			<div className="flex items-end justify-between gap-4 sm:gap-6">
-				<h2 className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Get started with SPAIDER</h2>
+				<h2 className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Get started with SPAIDER</h2>
 			</div>
 
 			<div className="relative mt-6 sm:mt-8 md:mt-10">
@@ -57,8 +57,8 @@ export default function GetStarted() {
 									</div>
 
 									<div className="mt-2 py-2 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)] sm:py-3">
-										<h3 className="font-inter text-base font-medium tracking-tight text-foreground sm:text-lg">{item.title}</h3>
-										<p className="mt-1.5 line-clamp-2 text-xs leading-6 text-muted-foreground font-inter sm:mt-2 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{item.description}</p>
+										<h3 className="font-montserrat text-base font-medium tracking-tight text-foreground sm:text-lg">{item.title}</h3>
+										<p className="mt-1.5 line-clamp-2 text-xs leading-6 text-muted font-inter sm:mt-2 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{item.description}</p>
 									</div>
 								</Reveal>
 							);

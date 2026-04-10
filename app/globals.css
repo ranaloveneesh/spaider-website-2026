@@ -11,6 +11,9 @@
 	--color-fg-secondary: #d0d6e0;
 	--color-fg-tertiary: #9ca3af;
 
+	--color-card: #ffffff08;
+	--color-card-border: #ffffff1a;
+
 	--color-accent: #0070c0;
 	--color-accent-hover: #005f9e;
 
@@ -64,6 +67,9 @@
 	--color-accent-hover: var(--color-accent-hover);
 	--color-destructive: var(--color-red);
 
+	--color-card: var(--color-card);
+	--color-border-card: var(--color-card-border);
+
 	/* Radii */
 	--radius-sm: var(--radius-8);
 	--radius-md: var(--radius-12);
@@ -84,16 +90,73 @@
 body {
 	background: var(--color-bg-primary);
 	color: var(--color-fg-primary);
-	font-family: var(--font-montserrat);
+	font-family: var(--font-inter);
+}
+
+/* Global accent scrollbar styling */
+html {
+	scrollbar-width: thin;
+	scrollbar-color: color-mix(in srgb, var(--color-accent) 92%, #ffffff) color-mix(in srgb, var(--color-bg-secondary) 85%, transparent);
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: linear-gradient(180deg,
+			color-mix(in srgb, var(--color-bg-secondary) 88%, transparent),
+			color-mix(in srgb, var(--color-accent) 12%, transparent));
+	box-shadow:
+		inset 0 0 10px color-mix(in srgb, var(--color-accent) 22%, transparent),
+		0 0 16px color-mix(in srgb, var(--color-accent) 18%, transparent);
+	border-radius: 9999px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg,
+			color-mix(in srgb, var(--color-accent) 98%, #ffffff),
+			color-mix(in srgb, var(--color-accent) 82%, #000000));
+	border-radius: 9999px;
+	border: 2px solid transparent;
+	background-clip: content-box;
+	box-shadow:
+		0 0 6px color-mix(in srgb, var(--color-accent) 90%, transparent),
+		0 0 16px color-mix(in srgb, var(--color-accent) 76%, transparent),
+		0 0 34px color-mix(in srgb, var(--color-accent) 56%, transparent);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+	background: linear-gradient(180deg,
+			color-mix(in srgb, var(--color-accent) 100%, #ffffff),
+			color-mix(in srgb, var(--color-accent) 88%, #000000));
+	box-shadow:
+		0 0 8px color-mix(in srgb, var(--color-accent) 96%, transparent),
+		0 0 22px color-mix(in srgb, var(--color-accent) 84%, transparent),
+		0 0 46px color-mix(in srgb, var(--color-accent) 64%, transparent);
+}
+
+*::-webkit-scrollbar-thumb:active {
+	background: linear-gradient(180deg,
+			color-mix(in srgb, var(--color-accent) 95%, #ffffff),
+			color-mix(in srgb, var(--color-accent) 74%, #000000));
+	box-shadow:
+		0 0 6px color-mix(in srgb, var(--color-accent) 88%, transparent),
+		0 0 18px color-mix(in srgb, var(--color-accent) 74%, transparent),
+		0 0 38px color-mix(in srgb, var(--color-accent) 52%, transparent);
 }
 
 .no-scrollbar {
-	scrollbar-width: none; /* Firefox */
-	-ms-overflow-style: none; /* IE/Edge legacy */
+	scrollbar-width: none;
+	/* Firefox */
+	-ms-overflow-style: none;
+	/* IE/Edge legacy */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-	display: none; /* Chrome/Safari */
+	display: none;
+	/* Chrome/Safari */
 }
 
 .hero-scale-in {
@@ -106,6 +169,7 @@ body {
 		opacity: 0;
 		transform: translateY(10px) scale(0.96);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0) scale(1);
@@ -158,6 +222,7 @@ body {
 		opacity: 0;
 		transform: translateY(16px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -169,6 +234,7 @@ body {
 		opacity: 0;
 		transform: translateY(-16px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -180,6 +246,7 @@ body {
 		opacity: 0;
 		transform: translateX(-18px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateX(0);
@@ -191,6 +258,7 @@ body {
 		opacity: 0;
 		transform: translateX(18px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateX(0);
@@ -202,6 +270,7 @@ body {
 		opacity: 0;
 		transform: scale(0.96);
 	}
+
 	to {
 		opacity: 1;
 		transform: scale(1);
@@ -214,6 +283,7 @@ body {
 		transform: translateY(10px) scale(0.92);
 		filter: blur(8px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0) scale(1);
@@ -222,6 +292,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
 	.reveal,
 	.reveal.is-visible,
 	.reveal--fade-up.is-visible,
@@ -250,6 +321,10 @@ body {
 	font-family: var(--font-manrope);
 }
 
+.font-montserrat {
+	font-family: var(--font-montserrat);
+}
+
 /* Shared layout for agents pages: consistent section dividers */
 .section-wrap {
 	position: relative;
@@ -265,4 +340,114 @@ body {
 	height: 1px;
 	opacity: 0.18;
 	background: linear-gradient(90deg, rgba(92, 225, 230, 0) 0%, rgba(92, 225, 230, 0.6) 50%, rgba(92, 225, 230, 0) 100%);
+}
+
+
+.shadow-bgt,
+.shadow-bgb {
+	box-shadow: inset 0 0 4em 3em #eec8af33, inset 0 0 2em .4em #eec8af33, 0 0 .1em .1em #eec8af33, 0 0 1em .4em #eec8af4d;
+}
+
+.animate-[onloadbgb_1s_ease-in-out_forwards] {
+	animation: 1s ease-in-out forwards onloadbgb;
+}
+
+@keyframes onloadbgb {
+	0% {
+		opacity: .3;
+		translate: 0 70%;
+	}
+
+	100% {
+		opacity: .8;
+		translate: 0 64%;
+	}
+}
+
+/* How we work timeline helpers */
+.how-we-work-section {
+	--how-we-work-accent: var(--color-accent);
+}
+
+.timeline-wrapper {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+
+.timeline-line {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 3px;
+	background: linear-gradient(180deg,
+			color-mix(in srgb, var(--how-we-work-accent) 85%, transparent),
+			color-mix(in srgb, var(--how-we-work-accent) 28%, transparent));
+	border-radius: 9999px;
+	-webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+	mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+	box-shadow:
+		0 0 18px color-mix(in srgb, var(--how-we-work-accent) 80%, transparent),
+		0 0 52px color-mix(in srgb, var(--how-we-work-accent) 55%, transparent),
+		0 0 120px color-mix(in srgb, var(--how-we-work-accent) 32%, transparent);
+}
+
+.timeline-dot {
+	width: 0.875rem;
+	height: 0.875rem;
+	border-radius: 9999px;
+	background: color-mix(in srgb, var(--how-we-work-accent) 96%, white);
+	box-shadow:
+		0 0 0 6px color-mix(in srgb, var(--how-we-work-accent) 28%, transparent),
+		0 0 22px color-mix(in srgb, var(--how-we-work-accent) 85%, transparent),
+		0 0 62px color-mix(in srgb, var(--how-we-work-accent) 50%, transparent),
+		0 0 140px color-mix(in srgb, var(--how-we-work-accent) 26%, transparent);
+}
+
+.neon-dot-accent {
+	background: color-mix(in srgb, var(--color-accent) 96%, white);
+	box-shadow:
+		0 0 0 6px color-mix(in srgb, var(--color-accent) 28%, transparent),
+		0 0 22px color-mix(in srgb, var(--color-accent) 85%, transparent),
+		0 0 62px color-mix(in srgb, var(--color-accent) 50%, transparent),
+		0 0 140px color-mix(in srgb, var(--color-accent) 26%, transparent);
+}
+
+/* Fade line ends (useful for dividers/timelines) */
+.fade-edges-x {
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+	mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.neon-line-accent {
+	background: linear-gradient(90deg,
+			color-mix(in srgb, var(--color-accent) 20%, transparent),
+			color-mix(in srgb, var(--color-accent) 92%, transparent),
+			color-mix(in srgb, var(--color-accent) 20%, transparent));
+	box-shadow:
+		0 0 16px color-mix(in srgb, var(--color-accent) 70%, transparent),
+		0 0 44px color-mix(in srgb, var(--color-accent) 48%, transparent),
+		0 0 110px color-mix(in srgb, var(--color-accent) 28%, transparent);
+}
+
+
+.glass-btn {
+	-webkit-backdrop-filter: blur(20px);
+	color: rgba(255, 255, 255, .9);
+	letter-spacing: -.01em;
+	z-index: 1;
+	will-change: transform;
+	background: rgba(255, 255, 255, .08);
+	border: 1px solid rgba(255, 255, 255, .18);
+	border-radius: 9999px;
+	padding: 6px 14px;
+	font-size: 12px;
+	font-family: var(--font-montserrat);
+	font-weight: 400;
+	line-height: 20px;
+	transition: transform .2s ease-out, background-color .2s ease-out;
+	position: relative;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 1px 2px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .1);
 }

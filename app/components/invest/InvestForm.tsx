@@ -109,7 +109,7 @@ export function InvestForm() {
 	};
 
 	return (
-		<div className="min-w-0 w-full rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6">
+		<div className="min-w-0 w-full rounded-2xl border border-border p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6">
 			<form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
 				<div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
 					<LabelInputContainer>

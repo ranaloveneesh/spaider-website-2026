@@ -7,16 +7,16 @@ type Logo = {
 };
 
 const LOGOS: Logo[] = [
-	{ src: "/powered/nvidia.png", alt: "NVIDIA Inception", scale: 1.2 },
-	{ src: "/powered/googlecloud.svg", alt: "GCP", scale: 2.5 },
-	{ src: "/powered/aws.png", alt: "AWS", scale: 0.7 },
-	{ src: "/powered/luxprovide.png", alt: "LuxProvide", scale: 0.9 },
+	{ src: "/powered/nvidia.png", alt: "NVIDIA Inception", scale: 1 },
+	{ src: "/powered/googlecloud.svg", alt: "GCP", scale: 2.3 },
+	{ src: "/powered/aws.png", alt: "AWS", scale: 0.6 },
+	{ src: "/powered/luxprovide.png", alt: "LuxProvide", scale: 0.8 },
 ];
 
 export default function PoweredBy() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<h2 className="mb-6 font-manrope text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Powered by</h2>
+			<h2 className="mb-6 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Powered by</h2>
 
 			<section className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" aria-label="Powered by logos">
 				{LOGOS.map(({ src, alt, scale }) => (

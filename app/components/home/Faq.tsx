@@ -6,20 +6,25 @@ const INTRO_STYLE_ID = "faq1-animations";
 
 const faqs = [
 	{
-		question: "How do you decide which problems to solve first?",
-		answer: "We map opportunities across impact, feasibility, and effort, then prototype the riskiest assumption within 72 hours to make sure we are shipping momentum, not guesswork.",
+		question: "How does SPAIDER fit into our existing workflow?",
+		answer: "SPAIDER connects to your documents, tools, and approved data sources so teams can work inside existing processes rather than replace them.",
 	},
 	{
-		question: "What does collaboration look like once we start?",
-		answer: "A dedicated trio of design, engineering, and strategy meets daily in a shared async dashboard. Decisions are recorded in-line, so the team, stakeholders, and audit trail stay perfectly aligned.",
+		question: "Can SPAIDER run on-prem or in a private environment?",
+		answer: "Yes. Deployment can be aligned to your security, compliance, and infrastructure requirements.",
 	},
 	{
-		question: "Can you adapt to an existing design system or stack?",
-		answer: "Yes. We map tokens, components, and build steps into our pipeline on day one. If a gap appears, we patch the system with regression tests so velocity never compromises fidelity.",
+		question: "What is the best first use case?",
+		answer:
+			"Start with a workflow that is repetitive, document-heavy, and high value — such as proposal response, knowledge retrieval, or internal engineering support.",
 	},
 	{
-		question: "How is quality validated before release?",
-		answer: "Accessibility sweeps, automated visual diffs, and performance budgets run on every merge. We ship only after the experience hits the expected thresholds on real devices.",
+		question: "How do you keep outputs reliable?",
+		answer: "SPAIDER grounds outputs in approved sources, applies workflow guardrails, and keeps humans in the loop where decisions matter.",
+	},
+	{
+		question: "What do we need to get started?",
+		answer: "A focused use case, a relevant set of documents or data sources, and a team willing to validate the workflow with us.",
 	},
 ];
 
@@ -276,12 +281,11 @@ function FAQ() {
 			<section className={`relative z-10 mx-auto flex min-w-0 flex-col gap-8 sm:gap-10 md:gap-12 ${hasEntered ? "faq1-fade--ready" : "faq1-fade"}`}>
 				<header className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
 					<div className="space-y-3 sm:space-y-4">
-						<h1 className={`font-manrope text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}>FAQs</h1>
-						<p className={`max-w-xl text-xs leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7 ${palette.muted}`}>Everything you need to know about partnering with our team.</p>
+						<h2 className={`font-montserrat text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}>FAQs</h2>
 					</div>
 				</header>
 
-				<ul className="space-y-2 sm:space-y-3">
+				<ul className="space-y-2 sm:space-y-4">
 					{faqs.map((item, index) => {
 						const open = activeIndex === index;
 						const panelId = `faq-panel-${index}`;
@@ -290,7 +294,7 @@ function FAQ() {
 						return (
 							<li
 								key={item.question}
-								className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 focus-within:-translate-y-0.5 sm:rounded-3xl ${palette.border} ${palette.panel} ${palette.shadow}`}
+								className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-500 will-change-transform hover:-translate-y-0.5 focus-within:-translate-y-0.5 sm:rounded-3xl ${palette.border} ${palette.panel} ${palette.shadow}`}
 								onMouseMove={setCardGlow}
 								onMouseLeave={clearCardGlow}
 							>
@@ -312,11 +316,11 @@ function FAQ() {
 											["--faq-outline" as any]: theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(17,17,17,0.25)",
 										} as CSSProperties
 									}
-									className="relative flex w-full cursor-pointer items-start gap-3 px-4 py-4 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)] sm:gap-5 sm:px-6 sm:py-6"
+									className={`relative flex w-full cursor-pointer gap-3 px-4 py-4 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)] sm:gap-5 sm:px-6 sm:py-6 ${open ? "items-start" : "items-center"}`}
 								>
 									<span className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-105 sm:h-10 sm:w-10 ${palette.iconRing} ${palette.iconSurface}`}>
 										<span className={`pointer-events-none absolute inset-0 rounded-full border opacity-30 ${palette.iconRing} ${open ? "animate-ping" : ""}`} />
-										<svg aria-hidden="true" focusable="false" className={`relative h-3.5 w-3.5 transition-transform duration-500 sm:h-4 sm:w-4 ${palette.icon} ${open ? "rotate-45" : ""}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<svg aria-hidden="true" focusable="false" className={`relative h-3.5 w-3.5 transition-transform duration-500 will-change-transform sm:h-4 sm:w-4 ${palette.icon} ${open ? "rotate-45" : ""}`} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M12 5v14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
 											<path d="M5 12h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
 										</svg>
@@ -324,12 +328,19 @@ function FAQ() {
 
 									<div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4">
 										<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg ${palette.heading}`}>{item.question}</h2>
+											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg text-foreground`}>{item.question}</h2>
 										</div>
 									</div>
 								</button>
-								<div id={panelId} className={`px-4 pb-4 text-xs leading-relaxed transition-[max-height] duration-500 ease-out sm:px-6 sm:pb-6 sm:text-sm sm:leading-relaxed ${open ? "max-h-64" : "max-h-0"} ${palette.muted}`}>
-									<p className="pr-2">{item.answer}</p>
+								<div
+									id={panelId}
+									className={`grid leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} text-muted`}
+								>
+									<div className="min-h-0 overflow-hidden">
+										<div className={`px-4 transition-all duration-500 ease-out sm:px-6 ${open ? "pb-4 opacity-100 translate-y-0 sm:pb-6" : "pb-0 opacity-0 -translate-y-1"}`}>
+											<p className="pr-2">{item.answer}</p>
+										</div>
+									</div>
 								</div>
 							</li>
 						);

@@ -1,69 +1,88 @@
 "use client";
 
+import Image from "next/image";
 import Reveal from "@/app/components/ui/reveal";
 
 type StepItem = {
 	title: string;
-	description: string;
+	desc: string;
+	imgSrc: string;
+	imgAlt: string;
 };
 
 const STEPS: StepItem[] = [
 	{
 		title: "Assign Oversight",
-		description: "Designate a SAGAN Manager responsible for configuration and operational oversight.",
+		desc: "Designate a SAGAN Manager responsible for configuration, approvals, and operational oversight.",
+		imgSrc: "/foundations/inforag1.png",
+		imgAlt: "Assign Oversight",
 	},
 	{
 		title: "Configure Core Intelligence",
-		description: "Set access, tone, creativity/accuracy balance, autonomy and guardrails.",
+		desc: "Set access, tone, creativity/accuracy balance, and guardrails for safe autonomy.",
+		imgSrc: "/foundations/inforag2.png",
+		imgAlt: "Configure Core Intelligence",
 	},
 	{
 		title: "Integrate Knowledge Base",
-		description: "Connect internal repositories, tools, and external databases with citations.",
+		desc: "Connect repositories and tools so SAGAN can draft with citations and up-to-date context.",
+		imgSrc: "/foundations/inforag3.png",
+		imgAlt: "Integrate Knowledge Base",
 	},
 	{
 		title: "Orchestrate Proposal Workflow",
-		description: "Requirements intake, section drafting, format checks, review cycles and submission.",
+		desc: "Standardize intake, drafting, compliance checks, review cycles, and submission-ready exports.",
+		imgSrc: "/foundations/inforag3.png",
+		imgAlt: "Orchestrate Proposal Workflow",
 	},
 ];
 
-function Dot() {
-	return (
-		<span className="relative inline-flex h-4 w-4 items-center justify-center">
-			<span className="absolute inline-block h-4.5 w-4.5 rounded-full border border-border/70 bg-white/15" />
-			<span className="inline-block h-1.5 w-1.5 rounded-full bg-muted-tertiary/70" />
-		</span>
-	);
-}
-
 export default function OnboardingTimeline() {
 	return (
-		<section className="mx-auto mt-12 w-full min-w-0 max-w-420 sm:mt-16 md:mt-20 lg:mt-24">
-			<div className="flex items-end justify-between gap-4 sm:gap-6">
-				<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-manrope text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-					Seamless Onboarding
-				</Reveal>
-			</div>
+		<section id="how-we-work" className="how-we-work-section relative w-full text-foreground">
+			<div className="mx-auto w-full max-w-7xl py-0">
+				<div className="flex items-end justify-between gap-4 sm:gap-6">
+					<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+						Seamless Onboarding
+					</Reveal>
+				</div>
 
-			<div className="relative mt-6 sm:mt-8 md:mt-10">
-				<div aria-hidden="true" className="pointer-events-none absolute left-0 right-0 top-[7px] h-0.5 bg-border/70" />
+				<div className="relative mt-10 overflow-hidden px-40 sm:mt-12 md:mt-14">
+					<div className="timeline-wrapper hidden md:block">
+						<div className="timeline-line" />
+					</div>
 
-				<div className="-mx-2 no-scrollbar overflow-x-auto px-2 pb-2 [-webkit-overflow-scrolling:touch]">
-					<ul className="flex w-full gap-6 pr-2 sm:gap-10 md:gap-12">
-						{STEPS.map((step, index) => {
+					<div className="space-y-0">
+						{STEPS.map((item, index) => {
+							const even = index % 2 === 1;
 							return (
-								<Reveal key={step.title} as="li" variant="fade-right" threshold={0.25} delayMs={index * 120} className="min-w-[200px] flex-1 sm:min-w-[220px]">
-									<div className="relative flex h-4 items-center">
-										<Dot />
+								<div key={item.title} className="relative flex flex-col items-center justify-between md:flex-row">
+									<div className="timeline-dot absolute left-1/2 hidden -translate-x-1/2 md:block" style={{ top: "1.25rem" }} />
+
+									<div className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}>
+										<h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-montserrat">
+											{item.title}
+										</h3>
+										<p className="text-left text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+											{item.desc}
+										</p>
 									</div>
 
-									<div className="mt-2 py-2 shadow-[0_14px_40px_-26px_rgba(0,0,0,0.9)] sm:py-3">
-										<h4 className="font-inter text-base font-medium tracking-tight text-foreground sm:text-lg">{step.title}</h4>
-										<p className="mt-1.5 text-xs leading-6 text-muted-foreground font-inter sm:mt-2 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{step.description}</p>
+									<div className={`${even ? "order-1" : "order-2"} relative z-10 hidden h-32 w-full items-center justify-center md:flex md:h-72 md:w-1/2`}>
+										<Image
+											alt={item.imgAlt}
+											src={item.imgSrc}
+											width={300}
+											height={300}
+											loading="lazy"
+											className="drop-shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_55%,transparent)] h-full w-auto object-contain"
+											sizes="(min-width:1280px) 380px, 280px"
+										/>
 									</div>
-								</Reveal>
+								</div>
 							);
 						})}
-					</ul>
+					</div>
 				</div>
 			</div>
 		</section>

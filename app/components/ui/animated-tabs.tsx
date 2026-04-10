@@ -36,21 +36,24 @@ export const AnimatedTabs = ({ tabs, defaultTab, className, ariaLabel = "Tabs" }
 						aria-selected={activeTab === tab.id}
 						aria-controls={`${panelPrefix}-${tab.id}`}
 						onClick={() => setActiveTab(tab.id)}
-						className={cn("relative w-full rounded-sm px-2 py-1.5 text-xs font-medium text-white outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:py-2 sm:text-sm")}
+						className={cn(
+							"relative w-full rounded-sm px-2 py-1.5 text-xs font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:py-2 sm:text-sm",
+							activeTab === tab.id ? "text-white" : "text-white/80 hover:text-white"
+						)}
 					>
 						{activeTab === tab.id && (
 							<motion.div
 								layoutId="active-tab"
-								className="absolute inset-0 rounded-sm! bg-[linear-gradient(135deg,#3a3a3d_0%,#111113_25%,#111113_75%,#3a3a3d_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.18),inset_0_-1px_0_rgba(255,255,255,0.06),0_10px_24px_rgba(0,0,0,0.5)]"
+								className="absolute inset-0 rounded-sm! border border-accent/45 bg-linear-to-br from-accent/40 via-accent/18 to-black/75 shadow-[inset_0_1px_0_rgba(255,255,255,0.16),inset_0_-1px_0_rgba(0,0,0,0.2),0_0_0_1px_rgba(0,0,0,0.2),0_0_18px_rgba(0,112,192,0.20),0_10px_24px_rgba(0,0,0,0.55)]"
 								transition={{ type: "spring", duration: 0.6 }}
 							/>
 						)}
-						<span className="relative z-10">{tab.label}</span>
+						<span className="relative z-10 font-montserrat">{tab.label}</span>
 					</button>
 				))}
 			</div>
 
-			<div className="mt-2 h-full min-w-0 rounded-md border border-border bg-transparent p-2 text-white shadow-[0_0_20px_rgba(0,0,0,0.2)] sm:p-3 min-h-100">
+			<div className="mt-2 h-full min-w-0 rounded-md bg-card p-2 text-white shadow-[0_0_20px_rgba(0,0,0,0.2)] sm:p-3 min-h-100">
 				{tabs.map((tab) => (
 					<div key={tab.id} id={`${panelPrefix}-${tab.id}`} role="tabpanel" aria-labelledby={`${tabPrefix}-${tab.id}`} hidden={activeTab !== tab.id}>
 						{activeTab === tab.id && (
