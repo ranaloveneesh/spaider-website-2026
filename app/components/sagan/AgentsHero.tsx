@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/app/components/ui/reveal";
-import Pill from "../Pill";
 import CeramicButton from "../ui/button";
 
 export default function AgentsHero() {

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Pill from "@/app/components/Pill";
 import CeramicButton from "@/app/components/ui/button";
 import Reveal from "@/app/components/ui/reveal";
 import FinalCTA from "../../components/ai-foundations/FinalCTA";
