@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 import Reveal from "../components/ui/reveal";
-import Hero from "../components/home/hero";
+import Hero from "../components/home/Hero";
 
-const Customers = dynamic(() => import("../components/home/customers"), {
+const Customers = dynamic(() => import("../components/home/Customers"), {
 	loading: () => (
 		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
 			<div className="mb-8 h-8 w-48 animate-pulse rounded-md bg-white/10 md:mb-12" />
@@ -11,7 +11,7 @@ const Customers = dynamic(() => import("../components/home/customers"), {
 	),
 });
 
-const PoweredBy = dynamic(() => import("../components/home/powered-by"), {
+const PoweredBy = dynamic(() => import("../components/home/PoweredBy"), {
 	loading: () => (
 		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
 			<div className="mb-8 h-8 w-56 animate-pulse rounded-md bg-white/10 md:mb-12" />
@@ -20,7 +20,7 @@ const PoweredBy = dynamic(() => import("../components/home/powered-by"), {
 	),
 });
 
-const FAQ = dynamic(() => import("../components/home/faq"), {
+const FAQ = dynamic(() => import("../components/home/Faq"), {
 	loading: () => (
 		<section className="mt-16 min-h-[22rem] md:mt-24 md:min-h-[28rem]" aria-busy="true">
 			<div className="mb-6 h-9 w-40 animate-pulse rounded-md bg-white/10 md:mb-10 md:h-10" />
@@ -29,7 +29,7 @@ const FAQ = dynamic(() => import("../components/home/faq"), {
 	),
 });
 
-const WhySpaider = dynamic(() => import("../components/home/why-spaider"), {
+const WhySpaider = dynamic(() => import("../components/home/WhySpaider"), {
 	loading: () => <div className="mt-16 min-h-[18rem] w-full animate-pulse rounded-[22px] bg-white/5 md:mt-24 md:min-h-[24rem]" aria-busy="true" />,
 });
 
@@ -41,7 +41,7 @@ const SecurityCompliance = dynamic(() => import("../components/home/SecurityComp
 	),
 });
 
-const Agents = dynamic(() => import("../components/home/agents"), {
+const Agents = dynamic(() => import("../components/home/Agents"), {
 	loading: () => (
 		<section className="mt-16 min-h-[16rem] md:mt-24 md:min-h-[20rem]" aria-busy="true">
 			<div className="mb-6 h-8 w-64 max-w-full animate-pulse rounded-md bg-white/10 md:mb-8" />
@@ -50,7 +50,7 @@ const Agents = dynamic(() => import("../components/home/agents"), {
 	),
 });
 
-const GetStarted = dynamic(() => import("../components/home/get-started"), {
+const GetStarted = dynamic(() => import("../components/home/GetStarted"), {
 	loading: () => <div className="mt-20 min-h-[10rem] animate-pulse rounded-xl bg-white/5 md:mt-32 md:min-h-[12rem]" aria-busy="true" />,
 });
 

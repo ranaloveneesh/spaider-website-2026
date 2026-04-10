@@ -5,22 +5,22 @@ import Reveal from "../ui/reveal";
 
 const steps = [
     {
-        title: "Ingest",
-        desc: "Ingest your local files and cloud data into knowledge graphs and vector databases",
+        title: "Connect your sources",
+        desc: "Add the documents, tools, and approved data sources your team already uses.",
         imgSrc: "/foundations/inforag1.png",
-        imgAlt: "Ingest",
+        imgAlt: "Connect your sources",
     },
     {
-        title: "Set up",
-        desc: "Set up your agent by defining instructions, selecting trusted web sources, providing credentials and APIs, and choosing your model",
+        title: "Configure the workspace",
+        desc: "Set permissions, source rules, instructions, and the workflows you want the system to support.",
         imgSrc: "/foundations/inforag2.png",
-        imgAlt: "Set up",
+        imgAlt: "Configure the workspace",
     },
     {
-        title: "Start",
-        desc: "Finally start the conversation to turn your content into governed, searchable context that powers accurate answers and workflows.",
+        title: "Start working with your knowledge",
+        desc: "Search, query, and interact with your data through a governed AI interface.",
         imgSrc: "/foundations/inforag3.png",
-        imgAlt: "Start",
+        imgAlt: "Start working with your knowledge",
     },
 ] as const;
 
@@ -30,10 +30,15 @@ export default function Onboarding() {
             id="how-we-work"
             className="how-we-work-section relative w-full text-foreground"
         >
-            <div className="mx-auto w-full max-w-7xl py-12 sm:py-16 lg:py-20">
-                <div className="flex items-end justify-between gap-4 sm:gap-6">
+            <div className="mx-auto w-full max-w-7xl py-0">
+                <div className="flex flex-col items-start justify-between">
                     <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-                        Steps to chat with your data
+                        Get started in 3 steps
+                    </Reveal>
+
+
+                    <Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
+                        A simple path from source setup to a working knowledge workspace.
                     </Reveal>
                 </div>
 

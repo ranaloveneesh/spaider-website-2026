@@ -40,7 +40,7 @@ const STEPS: StepItem[] = [
 export default function OnboardingTimeline() {
 	return (
 		<section id="how-we-work" className="how-we-work-section relative w-full text-foreground">
-			<div className="mx-auto w-full max-w-7xl py-12 sm:py-16 lg:py-20">
+			<div className="mx-auto w-full max-w-7xl py-0">
 				<div className="flex items-end justify-between gap-4 sm:gap-6">
 					<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
 						Seamless Onboarding
