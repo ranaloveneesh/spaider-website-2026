@@ -148,7 +148,7 @@ export default function UseCases() {
 
 	return (
 		<>
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-2 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-2 font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
 				Example workflows
 			</Reveal>
 
@@ -253,7 +253,7 @@ export default function UseCases() {
 												</div>
 
 												<div className="min-w-0">
-													<h3 className="text-foreground font-semibold text-base sm:text-lg leading-snug">
+													<h3 className="text-foreground font-medium text-base sm:text-lg leading-snug font-outfit">
 														{title}
 													</h3>
 													<p className="mt-1 text-muted text-sm leading-6">
@@ -263,7 +263,7 @@ export default function UseCases() {
 											</div>
 
 											<div className="mt-3 rounded-lg bg-black/20 p-2.5 ring-1 ring-white/10 backdrop-blur">
-												<p className="text-[0.72rem] font-semibold tracking-wide text-muted">
+												<p className="text-[0.72rem] font-medium tracking-wide text-muted font-montserrat">
 													PROMPT
 												</p>
 												<p className="mt-1 text-foreground text-sm italic leading-6">

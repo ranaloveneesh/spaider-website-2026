@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
 			<Reveal as="section" variant="fade-up" threshold={0.2} className="space-y-2.5 sm:space-y-3">
 				<h2 className="text-base font-semibold text-foreground sm:text-lg lg:text-xl">7. Your rights</h2>
 				<p className="text-xs leading-6 text-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-					Under the GDPR and applicable law, you may have the right to access, rectify, or erase your personal data, restrict or object to certain processing, and data portability where applicable. You may lodge a complaint with a supervisory authority—in Luxembourg, the Commission nationale pour la protection des
+					Under the GDPR and applicable law, you may have the right to access, rectify, or erase your personal data, restrict or object to certain processing, and data portability where applicable. You may lodge a complaint with a supervisory authority-in Luxembourg, the Commission nationale pour la protection des
 					données (CNPD). To exercise your rights, contact us at the email address above.
 				</p>
 			</Reveal>

@@ -26,13 +26,13 @@ const SECTIONS: Sec[] = [
 	{
 		title: "Adopt AI step by step",
 		subtitle: "Start with your data. Add agents when ready",
-		body: "First we set up a secure retrieval layer (RAG) over your documents and tools. Then we plug in ready-made agents for high-value tasks (like RFP analysis). When you need more, you customise and orchestrate on the same base—no rework, no new pipelines.",
+		body: "First we set up a secure retrieval layer (RAG) over your documents and tools. Then we plug in ready-made agents for high-value tasks (like RFP analysis). When you need more, you customise and orchestrate on the same base-no rework, no new pipelines.",
 		img: "/tech/infotech2.svg",
 	},
 	{
 		title: "You choose where it runs",
 		subtitle: "EU cloud or on-prem. Full audit and access control",
-		body: "The stack is modular and containerised. Run in your VPC or inside your network, even in isolated environments. You keep control of data, identities, permissions, and logs—with clean integration into your existing systems and no vendor lock-in.",
+		body: "The stack is modular and containerised. Run in your VPC or inside your network, even in isolated environments. You keep control of data, identities, permissions, and logs-with clean integration into your existing systems and no vendor lock-in.",
 		img: "/tech/infotech3.svg",
 	},
 	{
@@ -113,7 +113,7 @@ export default function OurTechPage() {
 
 				{/* CTA PANEL (BEFORE FOOTER) */}
 				<Reveal variant="scale" threshold={0.25} className="mt-8 sm:mt-10 md:mt-12">
-					<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster." ctaHref="/book-demo" ctaLabel="Talk to us" />
+					<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life - faster." ctaHref="/book-demo" ctaLabel="Talk to us" />
 				</Reveal>
 			</main>
 		</div>

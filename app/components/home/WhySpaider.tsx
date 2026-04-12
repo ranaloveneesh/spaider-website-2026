@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
+import Image from "next/image";
 
 const ITEMS = [
     {
@@ -18,29 +20,84 @@ const ITEMS = [
 ];
 
 export default function WhySpaider() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
     return (
         <section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-            <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-                Why choose SPAIDER
-            </Reveal>
+            <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
-            <Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-2 max-w-2xl text-sm leading-7 text-muted sm:text-base">
-                Built by aerospace experts for the aerospace industry.
-            </Reveal>
-
-            <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 sm:gap-8 md:gap-9 lg:mt-12 lg:grid-cols-3 lg:gap-12">
-                {ITEMS.map((it, i) => (
-                    <Reveal key={it.t} variant="fade-left" threshold={0.2} delayMs={i * 90} className="flex min-w-0 items-start gap-2 text-left sm:gap-3">
-                        <span aria-hidden className="-mr-1 shrink-0 select-none font-bold leading-[0.75] tracking-[-0.05em] text-accent opacity-90 [clip-path:inset(0_16%_0_0)] [text-shadow:0_0_14px_rgba(17,45,199,0.25)] text-[2.75rem] sm:-mr-2 sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] xl:text-[7rem]">
-                            {i + 1}
-                        </span>
-                        <div className="min-w-0">
-                            <h3 className="font-montserrat text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl">{it.t}</h3>
-                            <p className="mt-2 text-xs leading-6 text-muted font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{it.d}</p>
-                        </div>
+                {/* ── Left: heading + accordion + CTA ── */}
+                <div>
+                    <Reveal
+                        as="h2"
+                        variant="fade-up"
+                        threshold={0.35}
+                        className="font-outfit text-4xl font-medium leading-tight tracking-tight sm:text-5xl"
+                    >
+                        <span className="text-foreground">Why choose</span>{" "}
+                        <span className="text-accent">SPAIDER</span>
                     </Reveal>
-                ))}
+
+                    {/* Accordion list */}
+                    <div className="mt-10 sm:mt-12">
+                        {ITEMS.map((item, i) => (
+                            <Reveal key={item.t} variant="fade-up" threshold={0.2} delayMs={i * 60}>
+                                <div className="border-t border-border/60">
+                                    <button
+                                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                        className="group flex w-full items-center justify-between py-[1.1rem] text-left"
+                                        aria-expanded={openIndex === i}
+                                    >
+                                        <span
+                                            className={`font-outfit text-base font-medium transition-colors duration-200 sm:text-lg ${openIndex === i ? "text-foreground" : "text-foreground/70"
+                                                } group-hover:text-foreground`}
+                                        >
+                                            {item.t}
+                                        </span>
+                                        <span
+                                            aria-hidden
+                                            className={`ml-5 shrink-0 text-xl font-light leading-none transition-all duration-300 ${openIndex === i
+                                                ? "rotate-45 text-accent"
+                                                : "text-muted/50 group-hover:text-muted"
+                                                }`}
+                                        >
+                                            +
+                                        </span>
+                                    </button>
+
+                                    {/* Collapsible body */}
+                                    <div
+                                        className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${openIndex === i
+                                            ? "max-h-48 pb-5 opacity-100"
+                                            : "max-h-0 opacity-0"
+                                            }`}
+                                    >
+                                        <p className="text-sm leading-7 text-muted sm:text-base">
+                                            {item.d}
+                                        </p>
+                                    </div>
+                                </div>
+                            </Reveal>
+                        ))}
+                        {/* closing rule */}
+                        <div className="border-t border-border" />
+                    </div>
+
+
+                </div>
+
+                {/* ── Right: 3-D slab stack (desktop only) ── */}
+                <Reveal
+                    variant="fade-up"
+                    threshold={0.2}
+                    delayMs={80}
+                    className="hidden items-center justify-center lg:flex"
+                >
+                    <Image src="/logo.png" alt="SPAIDER 3D Slab" width={500} height={500} className="logo-3d" />
+                </Reveal>
             </div>
         </section>
     );
 }
+
+

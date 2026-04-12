@@ -48,12 +48,6 @@ export default function AIFoundationsHero() {
             }}
         >
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        
-        * {
-          font-family: 'Poppins', sans-serif;
-        }
-        
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -64,7 +58,7 @@ export default function AIFoundationsHero() {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes slideDown {
           from {
             opacity: 0;
@@ -91,7 +85,7 @@ export default function AIFoundationsHero() {
             >
                 AI Foundations           </h1>
 
-            <p className="max-w-lg text-center text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+            <p className="max-w-lg text-center text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                 Turn your documents, internal , and approved sources into a governed knowledge layer for your team of experts.
                 Search, query, and work with your enterprise knowledge through a domain-aware AI workspace.
             </p>

@@ -13,9 +13,9 @@ export default function FinalCTA() {
 				/>
 
 				<div className="relative">
-					<h3 className="font-montserrat text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl">Ready to turn enterprise knowledge into action?
+					<h3 className="font-outfit text-2xl font-medium leading-tight text-foreground sm:text-3xl lg:text-4xl">Ready to turn enterprise knowledge into action?
 					</h3>
-					<p className="mx-auto mt-6 max-w-4xl text-xs leading-6 text-muted font-inter sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Connect your internal sources, apply the right controls, and deploy a governed AI workspace for your team.</p>
+					<p className="mx-auto mt-6 max-w-4xl text-xs leading-6 text-muted sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Connect your internal sources, apply the right controls, and deploy a governed AI workspace for your team.</p>
 
 					<div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:justify-center">
 						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npx next:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:0.email)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:giga.ai)",
+      "WebFetch(domain:www.framer.com)",
+      "WebFetch(domain:giga.framer.ai)",
+      "WebFetch(domain:welcome.ai)",
+      "WebFetch(domain:www.ycombinator.com)",
+      "WebFetch(domain:www.gigaml.com)",
+      "WebFetch(domain:resend.com)",
+      "Bash(curl -s \"https://resend.com\")",
+      "Bash(npm install:*)",
+      "Bash(npm search:*)"
+    ]
+  }
+}

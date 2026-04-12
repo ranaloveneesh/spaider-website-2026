@@ -1,21 +1,22 @@
 import dynamic from "next/dynamic";
 import Reveal from "../components/ui/reveal";
 import Hero from "../components/home/Hero";
-
-const Customers = dynamic(() => import("../components/home/Customers"), {
-	loading: () => (
-		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
-			<div className="mb-8 h-8 w-48 animate-pulse rounded-md bg-white/10 md:mb-12" />
-			<div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
-		</section>
-	),
-});
+import FooterWordmark from "../components/home/FooterWordmark";
 
 const PoweredBy = dynamic(() => import("../components/home/PoweredBy"), {
 	loading: () => (
 		<section className="mt-16 min-h-[160px] md:mt-24 md:min-h-[200px]" aria-busy="true">
 			<div className="mb-8 h-8 w-56 animate-pulse rounded-md bg-white/10 md:mb-12" />
 			<div className="h-14 w-full animate-pulse rounded-md bg-white/5 md:h-16" />
+		</section>
+	),
+});
+
+const Testimonials = dynamic(() => import("../components/home/Testimonials"), {
+	loading: () => (
+		<section className="mt-16 min-h-[18rem] md:mt-24 md:min-h-[22rem]" aria-busy="true">
+			<div className="mb-8 h-8 w-64 animate-pulse rounded-md bg-white/10 md:mb-12" />
+			<div className="h-40 w-full animate-pulse rounded-md bg-white/5 md:h-52" />
 		</section>
 	),
 });
@@ -60,30 +61,38 @@ const CtaPanel = dynamic(() => import("../components/CtaPanel"), {
 
 export default function Home() {
 	return (
-		<div className="w-full min-w-0 overflow-x-hidden">
+		<div className="w-full min-w-0">
+			{/* Hero is full-bleed - uses negative margins to escape layout padding */}
 			<Hero />
-			<Reveal variant="fade-up">
-				<Customers />
-			</Reveal>
-			<Reveal variant="fade-left">
-				<Agents />
-			</Reveal>
-			<Reveal variant="fade-right">
-				<WhySpaider />
-			</Reveal>
-			<Reveal variant="zoom" threshold={0.25}>
-				<SecurityCompliance />
-			</Reveal>
-			<GetStarted />
-			<Reveal variant="fade-up">
-				<PoweredBy />
-			</Reveal>
-			<Reveal variant="scale">
-				<FAQ />
-			</Reveal>
-			<Reveal variant="scale">
-				<CtaPanel title="Got a use case in mind? Let's make it real." copy="Tell us the workflow. We'll help define the right knowledge, controls, and deployment setup." ctaHref="/book-demo" ctaLabel="Talk to us" />
-			</Reveal>
+
+			{/* Remaining sections: back inside normal layout flow */}
+			<div className="overflow-x-hidden">
+				<Reveal variant="fade-left">
+					<Agents />
+				</Reveal>
+				<Reveal variant="fade-right">
+					<WhySpaider />
+				</Reveal>
+				<Reveal variant="zoom" threshold={0.25}>
+					<SecurityCompliance />
+				</Reveal>
+				<GetStarted />
+				<Reveal variant="fade-up">
+					<PoweredBy />
+				</Reveal>
+				<Reveal variant="fade-up">
+					<Testimonials />
+				</Reveal>
+				<Reveal variant="scale">
+					<FAQ />
+				</Reveal>
+				<Reveal variant="scale">
+					<CtaPanel title="Got a use case in mind? Let's make it real." ctaHref="/book-demo" ctaLabel="Talk to us" />
+				</Reveal>
+
+				{/* <FooterWordmark /> */}
+
+			</div>
 		</div>
 	);
 }

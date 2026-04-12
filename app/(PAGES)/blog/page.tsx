@@ -11,7 +11,7 @@ const blogs = [
 	{
 		href: "/blog/innospace",
 		title: "We Secured 2nd Place at INNOspace Masters 2025",
-		excerpt: "AI agents in mission-grade environments at Europe’s leading space innovation arena — OHB Challenge, Bonn.",
+		excerpt: "AI agents in mission-grade environments at Europe’s leading space innovation arena - OHB Challenge, Bonn.",
 		date: "September 2025",
 	},
 ];

@@ -96,7 +96,7 @@ const Big: React.FC<{
 	}, [active, reducedMotion, value]);
 
 	return (
-		<div className="font-montserrat text-4xl font-semibold">
+		<div className="font-outfit text-4xl font-medium">
 			{prefix}
 			{display}
 			{suffix}
@@ -107,7 +107,7 @@ const Big: React.FC<{
 export default function Metrics() {
 	return (
 		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-6 max-w-4xl font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-6 max-w-4xl font-outfit text-4xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-5xl md:mb-10">
 				Measurable Advantage: Accelerate Wins, Scale Ambition
 			</Reveal>
 			<div className="mt-6 grid grid-cols-1 items-stretch gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 md:mt-10 md:gap-6 lg:grid-cols-12 lg:gap-7">
@@ -132,7 +132,7 @@ export default function Metrics() {
 					>
 						<div className="relative z-10 flex h-full flex-col items-center justify-center">
 							<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
-							<div className="mt-2 font-montserrat text-base font-semibold tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
+							<div className="mt-2 font-outfit text-base font-medium tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
 							<span className="mt-3 text-xs text-center leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7 text-muted">{m.description}</span>
 						</div>
 					</Reveal>

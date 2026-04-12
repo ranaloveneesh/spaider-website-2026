@@ -1,23 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope, Montserrat, Playfair_Display } from "next/font/google";
+import { Outfit, Montserrat } from "next/font/google";
+import "@carrot-kpi/switzer-font/latin.css";
 import { JsonLd } from "@/app/components/seo/JsonLd";
 import { Toaster } from "@/app/components/Toaster";
-import { StarsBackground } from "@/app/components/ui/stars-background";
 import { getSiteJsonLd } from "@/app/lib/structured-data";
 import "./globals.css";
 
-const manrope = Manrope({
-	variable: "--font-manrope",
+
+const outfit = Outfit({
+	variable: "--font-outfit",
 	subsets: ["latin"],
 	display: "swap",
 });
 
-const inter = Inter({
-	variable: "--font-inter",
-	subsets: ["latin"],
-	preload: false,
-	display: "swap",
-});
 
 const montserrat = Montserrat({
 	variable: "--font-montserrat",
@@ -25,13 +20,6 @@ const montserrat = Montserrat({
 	display: "swap",
 });
 
-const playfair = Playfair_Display({
-	variable: "--font-playfair",
-	subsets: ["latin"],
-	style: "italic",
-	preload: false,
-	display: "swap",
-});
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.spaiderspace.com"),
@@ -84,7 +72,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
-	themeColor: "#08090a",
+	themeColor: "#0f0f0f",
 };
 
 export default function RootLayout({
@@ -93,15 +81,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${manrope.variable} ${inter.variable} ${montserrat.variable} ${playfair.variable} h-full antialiased`}>
-			<body className="min-h-full flex flex-col bg-background text-foreground">
+		<html lang="en" className={`${outfit.variable} ${montserrat.variable} h-full antialiased`}>
+			<body className="min-h-full flex flex-col bg-[#0f0f0f] text-foreground">
 				<JsonLd data={getSiteJsonLd()} />
 				<Toaster />
-				<div className="min-h-screen relative bg-[radial-gradient(circle_at_15%_25%,rgba(255,255,255,0.10),transparent_35%),radial-gradient(circle_at_85%_15%,rgba(255,255,255,0.06),transparent_40%),linear-gradient(to_bottom,#0b0b0c,#000000)]">
-					<StarsBackground />
-					{/* <SmoothScrollProvider>{children}</SmoothScrollProvider> */}
-					<div className="relative z-10">{children}</div>
-				</div>
+				{/* <StarsBackground /> */}
+				{/* <SmoothScrollProvider>{children}</SmoothScrollProvider> */}
+				<div className="relative z-10">{children}</div>
 			</body>
 		</html>
 	);

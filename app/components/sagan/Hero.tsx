@@ -48,12 +48,6 @@ export default function SaganHero() {
             }}
         >
             <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        
-        * {
-          font-family: 'Poppins', sans-serif;
-        }
-        
         @keyframes fadeIn {
           from {
             opacity: 0;
@@ -64,7 +58,7 @@ export default function SaganHero() {
             transform: translateY(0);
           }
         }
-        
+
         @keyframes slideDown {
           from {
             opacity: 0;
@@ -91,8 +85,8 @@ export default function SaganHero() {
             >
                 Meet SAGAN           </h1>
 
-            <p className="max-w-lg text-center text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-                Analyze RFPs, extract requirements, flag risks, map traceability, and draft compliant responses with clear sources—so your team focuses on strategy, not copy-paste.
+            <p className="max-w-lg text-center text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+                Analyze RFPs, extract requirements, flag risks, map traceability, and draft compliant responses with clear sources-so your team focuses on strategy, not copy-paste.
             </p>
 
             <div className="flex flex-col items-stretch gap-3 mt-4 sm:flex-row sm:items-center sm:pt-2">

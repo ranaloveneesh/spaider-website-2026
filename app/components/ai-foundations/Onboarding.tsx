@@ -32,7 +32,7 @@ export default function Onboarding() {
         >
             <div className="mx-auto w-full max-w-7xl py-0">
                 <div className="flex flex-col items-start justify-between">
-                    <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+                    <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
                         Get started in 3 steps
                     </Reveal>
 
@@ -58,10 +58,10 @@ export default function Onboarding() {
                                     />
 
                                     <div className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}>
-                                        <h3 className="mt-4 text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-montserrat">
+                                        <h3 className="mt-4 text-lg font-medium leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-outfit">
                                             {item.title}
                                         </h3>
-                                        <p className="text-left text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+                                        <p className="text-left text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                                             {item.desc}
                                         </p>
                                     </div>

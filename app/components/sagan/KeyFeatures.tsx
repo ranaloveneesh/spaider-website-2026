@@ -31,7 +31,7 @@ export default function KeyFeatures() {
 	const content = FEATURES.map((feature, index) => ({
 		title: feature.title,
 		description: (
-			<ul className="space-y-2 text-slate-300 font-inter sm:space-y-2.5 md:space-y-3">
+			<ul className="space-y-2 text-slate-300 sm:space-y-2.5 md:space-y-3">
 				{feature.bullets.map((b) => (
 					<li key={`${feature.title}-${b}`} className="flex items-start gap-2 sm:gap-3">
 						<CircleCheck className="mt-px h-4 w-4 shrink-0 text-[#4ea7fc] sm:mt-[2px] sm:h-5 sm:w-5" aria-hidden />

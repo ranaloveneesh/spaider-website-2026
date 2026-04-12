@@ -133,7 +133,7 @@ function LogoItem({ item }: { item: Integration }) {
 export default function IntegrationsGallery() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24 xl:mt-28">
-			<h2 className="mb-6 font-montserrat text-xl font-semibold tracking-tight text-foreground sm:mb-8 sm:text-2xl md:mb-10 lg:mb-12 lg:text-3xl">Seamlessly integrate with your workflow</h2>
+			<h2 className="mb-6 font-outfit text-4xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-5xl md:mb-10 lg:mb-12">Seamlessly integrate with your workflow</h2>
 
 			<section className="relative mx-auto w-full min-w-0 overflow-hidden" aria-label="Integrations logo carousel">
 				<div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-linear-to-r from-background to-transparent sm:w-16 lg:w-20" />

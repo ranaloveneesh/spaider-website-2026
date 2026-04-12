@@ -8,6 +8,7 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@carrot-kpi/switzer-font": "^0.1.0",
 		"@radix-ui/react-label": "^2.1.8",
 		"@studio-freight/lenis": "^1.0.42",
 		"@types/nodemailer": "^8.0.0",

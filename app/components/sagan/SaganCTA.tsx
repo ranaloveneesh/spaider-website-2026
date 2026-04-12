@@ -15,9 +15,9 @@ export default function SaganCTA() {
 				/>
 
 				<div className="relative">
-					<h3 className="font-montserrat text-xl font-semibold leading-tight text-foreground sm:text-2xl lg:text-3xl">Activate Your Strategic Proposal Engine</h3>
+					<h3 className="font-outfit text-2xl font-medium leading-tight text-foreground sm:text-3xl lg:text-4xl">Activate Your Strategic Proposal Engine</h3>
 
-					<p className="mx-auto mt-4 max-w-4xl text-xs leading-6 text-muted font-inter sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">See how SAGAN transforms your aerospace bid process. Schedule a focused demo tailored to your challenges and opportunities.</p>
+					<p className="mx-auto mt-4 max-w-4xl text-xs leading-6 text-muted sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">See how SAGAN transforms your aerospace bid process. Schedule a focused demo tailored to your challenges and opportunities.</p>
 
 					<div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">
 						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
