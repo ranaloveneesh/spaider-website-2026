@@ -56,7 +56,7 @@ const PRODUCTS = [
 			"Search, chat, and retrieve with traceable context grounded in your data.",
 			"Enterprise co-work powered by domain-expert AI models.",
 		],
-		image: "/agents/kepler/1.png",
+		image: "/agents/ai-foundations/9.png",
 		href: "/ai-foundations",
 		comingSoon: false,
 	},
@@ -72,7 +72,7 @@ const PRODUCTS = [
 			"Reuse internal knowledge with source-backed outputs.",
 			"Support reviews, planning, and submission readiness.",
 		],
-		image: "/agents/kepler/1.png",
+		image: "/agents/ai-foundations/6.png",
 		href: "/agents/sagan",
 		comingSoon: false,
 	},
@@ -172,27 +172,48 @@ function ProductSection({
 					variants={columnSlide}
 					custom={flip ? -20 : 20}
 				>
+					{/*
+					  Resend-style gradient border:
+					  - 1px padding on the outer wrapper exposes the gradient background as a border
+					  - Gradient runs top-left → bottom-right: bright at top, fades to near-invisible at bottom
+					  - box-shadow layers a depth shadow + faint accent-blue glow
+					  - On hover the blue glow brightens, reinforcing the "lit" feel
+					*/}
 					<motion.div
-						className="relative overflow-hidden rounded-xl border border-white/[0.09] bg-white/[0.02] shadow-[0_0_60px_rgba(0,0,0,0.5)]"
-						whileHover={{ scale: 1.015, transition: { duration: 0.3, ease: [0.25, 1, 0.5, 1] } }}
+						className="relative rounded-[14px] p-px"
+						style={{
+							background:
+								"linear-gradient(155deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.015) 100%)",
+							boxShadow:
+								"0 4px 40px rgba(0,0,0,0.55), 0 0 80px rgba(29,99,232,0.05)",
+						}}
+						whileHover={{
+							scale: 1.015,
+							boxShadow:
+								"0 6px 56px rgba(0,0,0,0.72), 0 0 120px rgba(29,99,232,0.15)",
+							transition: { duration: 0.3, ease: [0.25, 1, 0.5, 1] },
+						}}
 					>
-						{/* Subtle inner top glow */}
-						<div
-							aria-hidden
-							className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px"
-							style={{
-								background:
-									"linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)",
-							}}
-						/>
-						<div className="relative aspect-video w-full">
-							<Image
-								src={image}
-								alt={`${heading} product preview`}
-								fill
-								className="object-cover"
-								sizes="(max-width: 768px) 100vw, 50vw"
+						{/* Inner: overflow-hidden clips the Image corners cleanly to the inner radius */}
+						<div className="relative overflow-hidden rounded-[13px] bg-[#0c0c0d]">
+							{/* Top-edge highlight — the bright terminus of the gradient border */}
+							<div
+								aria-hidden
+								className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px"
+								style={{
+									background:
+										"linear-gradient(90deg, transparent 8%, rgba(255,255,255,0.22) 50%, transparent 92%)",
+								}}
 							/>
+							<div className="relative aspect-video w-full">
+								<Image
+									src={image}
+									alt={`${heading} product preview`}
+									fill
+									className="object-cover"
+									sizes="(max-width: 768px) 100vw, 50vw"
+								/>
+							</div>
 						</div>
 					</motion.div>
 				</motion.div>
