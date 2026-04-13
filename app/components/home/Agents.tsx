@@ -95,7 +95,6 @@ const PRODUCTS = [
 ] as const;
 
 function ProductSection({
-	number,
 	tag,
 	heading,
 	description,

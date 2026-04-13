@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import Reveal from "../components/ui/reveal";
 import Hero from "../components/home/Hero";
-import FooterWordmark from "../components/home/FooterWordmark";
 
 const PoweredBy = dynamic(() => import("../components/home/PoweredBy"), {
 	loading: () => (
