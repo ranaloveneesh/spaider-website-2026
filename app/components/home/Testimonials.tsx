@@ -99,10 +99,13 @@ export default function Testimonials() {
 				Trusted by aerospace teams
 			</h2>
 
-			{/* Carousel - extends past the layout's px-4 to bleed edge-to-edge */}
+			{/* Carousel - bleeds to viewport edge regardless of any ancestor max-width container */}
 			<div
-				className="group relative -mx-4 overflow-hidden"
+				className="group relative overflow-hidden"
 				style={{
+					marginLeft: "calc(50% - 50vw)",
+					marginRight: "calc(50% - 50vw)",
+					width: "100vw",
 					WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
 					maskImage: "linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%)",
 				}}

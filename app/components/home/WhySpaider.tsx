@@ -24,7 +24,7 @@ export default function WhySpaider() {
 
     return (
         <section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-            <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
+            <div className="grid grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-16 lg:gap-20">
 
                 {/* ── Left: heading + accordion + CTA ── */}
                 <div>
@@ -91,7 +91,7 @@ export default function WhySpaider() {
                     variant="fade-up"
                     threshold={0.2}
                     delayMs={80}
-                    className="hidden items-center justify-center lg:flex"
+                    className="hidden items-center justify-center md:flex"
                 >
                     <Image src="/logo.png" alt="SPAIDER 3D Slab" width={500} height={500} className="logo-3d" />
                 </Reveal>

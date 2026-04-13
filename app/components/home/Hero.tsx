@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "motion/react";
 import CeramicButton from "../ui/button";
 
 type Logo = { src: string; alt: string; scale?: number };
@@ -19,6 +20,51 @@ const MARQUEE_LOGOS: MarqueeLogo[] = [
 	...LOGOS.map((l) => ({ ...l, dup: 0 as const })),
 	...LOGOS.map((l) => ({ ...l, dup: 1 as const })),
 ];
+
+// ─── Animation constants ──────────────────────────────────────────────────────
+// Expo-out easing — Emil Kowalski's preferred curve for cinematic UI
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
+
+/** Outer content container: staggers h1 block → sub-headline → CTAs */
+const heroContainer = {
+	hidden: {},
+	show: {
+		transition: {
+			staggerChildren: 0.18,
+			delayChildren: 0.1,
+		},
+	},
+};
+
+/** h1 wrapper: staggers the three headline lines */
+const headlineContainer = {
+	hidden: {},
+	show: {
+		transition: { staggerChildren: 0.09 },
+	},
+};
+
+/** Each headline line: blur + fade + lift — feels like a sensor acquiring lock */
+const headlineLine = {
+	hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+	show: {
+		opacity: 1,
+		y: 0,
+		filter: "blur(0px)",
+		transition: { duration: 0.85, ease: EASE_EXPO },
+	},
+};
+
+/** Sub-headline and CTA row: clean fade + lift, no blur */
+const heroItem = {
+	hidden: { opacity: 0, y: 14 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.65, ease: EASE_EXPO },
+	},
+};
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Hero() {
 	return (
@@ -44,16 +90,6 @@ export default function Hero() {
 			{/* Dark base overlay */}
 			<div className="absolute inset-0 bg-black/50" aria-hidden />
 
-			{/* Radial vignette - reveals galaxy centre, dark at edges */}
-			{/* <div
-				className="absolute inset-0"
-				aria-hidden
-				style={{
-					background:
-						"radial-gradient(ellipse at 62% 48%, transparent 18%, rgba(0,0,0,0.5) 52%, rgba(0,0,0,0.88) 88%)",
-				}}
-			/> */}
-
 			{/* Top gradient - keeps the floating navbar readable */}
 			<div
 				className="pointer-events-none absolute left-0 right-0 top-0 h-52"
@@ -64,46 +100,45 @@ export default function Hero() {
 				}}
 			/>
 
-			{/* Bottom gradient - dissolves into the page background */}
-			{/* <div
-				className="pointer-events-none absolute bottom-0 left-0 right-0 h-72"
-				aria-hidden
-				style={{
-					background:
-						"linear-gradient(to top, #0f0f0f 0%, #0f0f0f 12%, rgba(15,15,15,0.72) 55%, transparent 100%)",
-				}}
-			/> */}
-
 			{/* ── Hero content ── */}
-			<div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-36 pb-10 text-center">
-
-				{/* Headline */}
-				<h1
-					className="hero-scale-in font-outfit font-medium leading-[1] tracking-[-0.025em] text-white"
-					style={{
-						fontSize: "clamp(3.5rem, 7vw, 6rem)",
-						maxWidth: "16ch",
-						animationDelay: "80ms",
-					}}
+			<motion.div
+				className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-36 pb-10 text-center"
+				variants={heroContainer}
+				initial="hidden"
+				animate="show"
+			>
+				{/* Headline — three lines stagger in with blur-to-sharp */}
+				<motion.h1
+					variants={headlineContainer}
+					className="font-outfit font-medium leading-[1] tracking-[-0.025em] text-white"
+					style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", maxWidth: "16ch" }}
 				>
-					Sovereign AI<br />
-					Operating Layer<br />
-					for{" "}
-					<span className="hero-illuminated-word">Aerospace Teams</span>
-				</h1>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						Sovereign AI
+					</motion.span>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						Operating Layer
+					</motion.span>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						for{" "}
+						<span className="hero-illuminated-word">Aerospace Teams</span>
+					</motion.span>
+				</motion.h1>
 
 				{/* Sub-headline */}
-				<p
-					className="hero-scale-in mt-7 text-base leading-7 text-white/70 sm:text-lg sm:leading-8"
-					style={{ maxWidth: "52ch", animationDelay: "160ms" }}
+				<motion.p
+					variants={heroItem}
+					className="mt-7 text-base leading-7 text-white/70 sm:text-lg sm:leading-8"
+					style={{ maxWidth: "52ch" }}
 				>
-					Deploy domain-expert AI models and agents in your workflows - securely, compliantly, mission-ready from day one.
-				</p>
+					Deploy domain-expert AI models and agents in your workflows - securely,
+					compliantly, mission-ready from day one.
+				</motion.p>
 
 				{/* CTA row */}
-				<div
-					className="hero-scale-in mt-10 flex flex-wrap items-center justify-center gap-4"
-					style={{ animationDelay: "240ms" }}
+				<motion.div
+					variants={heroItem}
+					className="mt-10 flex flex-wrap items-center justify-center gap-4"
 				>
 					<CeramicButton
 						href="/request-demo"
@@ -127,11 +162,16 @@ export default function Hero() {
 					>
 						Explore Our Tech
 					</CeramicButton>
-				</div>
-			</div>
+				</motion.div>
+			</motion.div>
 
-			{/* ── Trusted-by strip (merged from Customers) ── */}
-			<div className="relative z-10 w-full pb-14 pt-2">
+			{/* ── Trusted-by strip — fades in after the main content settles ── */}
+			<motion.div
+				className="relative z-10 w-full pb-14 pt-2"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+			>
 				<p className="mb-6 text-center font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white/25">
 					Trusted by industry leaders
 				</p>
@@ -184,7 +224,7 @@ export default function Hero() {
             .hero-marquee-track { animation: none; }
           }
         `}</style>
-			</div>
+			</motion.div>
 		</section>
 	);
 }

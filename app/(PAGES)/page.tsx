@@ -65,33 +65,31 @@ export default function Home() {
 			{/* Hero is full-bleed - uses negative margins to escape layout padding */}
 			<Hero />
 
-			{/* Remaining sections: back inside normal layout flow */}
+			{/* Remaining sections: max-width container prevents over-stretching on large screens */}
 			<div className="overflow-x-hidden">
-				<Reveal variant="fade-left">
+				<div className="mx-auto w-full max-w-7xl">
+					{/* Agents handles its own internal per-element animations */}
 					<Agents />
-				</Reveal>
-				<Reveal variant="fade-right">
-					<WhySpaider />
-				</Reveal>
-				<Reveal variant="zoom" threshold={0.25}>
-					<SecurityCompliance />
-				</Reveal>
-				<GetStarted />
-				<Reveal variant="fade-up">
-					<PoweredBy />
-				</Reveal>
-				<Reveal variant="fade-up">
-					<Testimonials />
-				</Reveal>
-				<Reveal variant="scale">
-					<FAQ />
-				</Reveal>
-				<Reveal variant="scale">
-					<CtaPanel title="Got a use case in mind? Let's make it real." ctaHref="/book-demo" ctaLabel="Talk to us" />
-				</Reveal>
-
-				{/* <FooterWordmark /> */}
-
+					<Reveal variant="fade-right">
+						<WhySpaider />
+					</Reveal>
+					<Reveal variant="zoom" threshold={0.25}>
+						<SecurityCompliance />
+					</Reveal>
+					<GetStarted />
+					<Reveal variant="fade-up">
+						<PoweredBy />
+					</Reveal>
+					<Reveal variant="fade-up">
+						<Testimonials />
+					</Reveal>
+					<Reveal variant="scale">
+						<FAQ />
+					</Reveal>
+					<Reveal variant="scale">
+						<CtaPanel title="Got a use case in mind? Let's make it real." ctaHref="/book-demo" ctaLabel="Talk to us" />
+					</Reveal>
+				</div>
 			</div>
 		</div>
 	);

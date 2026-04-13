@@ -17,7 +17,8 @@
       "WebFetch(domain:resend.com)",
       "Bash(curl -s \"https://resend.com\")",
       "Bash(npm install:*)",
-      "Bash(npm search:*)"
+      "Bash(npm search:*)",
+      "Bash(node -e ':*)"
     ]
   }
 }

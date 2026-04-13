@@ -1,8 +1,34 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "motion/react";
 import { Check } from "lucide-react";
 import CeramicButton from "@/app/components/ui/button";
+
+// ─── Animation constants ──────────────────────────────────────────────────────
+const EASE = [0.25, 1, 0.5, 1] as const;
+
+/** Section header: h2 then p stagger in */
+const headerContainer = {
+	hidden: {},
+	show: { transition: { staggerChildren: 0.09 } },
+};
+const headerItem = {
+	hidden: { opacity: 0, y: 18 },
+	show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
+};
+
+/** Each product row: text and image columns stagger in from opposite sides */
+const productRow = {
+	hidden: {},
+	show: { transition: { staggerChildren: 0.12 } },
+};
+/** custom = the x offset direction; each column receives its own custom value */
+const columnSlide = {
+	hidden: (x: number) => ({ opacity: 0, x }),
+	show: () => ({ opacity: 1, x: 0, transition: { duration: 0.55, ease: EASE } }),
+};
+// ─────────────────────────────────────────────────────────────────────────────
 
 function CheckItem({ children }: { children: React.ReactNode }) {
 	return (
@@ -80,10 +106,20 @@ function ProductSection({
 	flip,
 }: (typeof PRODUCTS)[number] & { flip: boolean }) {
 	return (
-		<div className="border-t border-white/[0.07] py-14 sm:py-18 md:py-20 lg:py-24">
+		<motion.div
+			className="border-t border-white/[0.07] py-14 sm:py-18 md:py-20 lg:py-24"
+			variants={productRow}
+			initial="hidden"
+			whileInView="show"
+			viewport={{ once: true, amount: 0.08 }}
+		>
 			<div className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}>
-				{/* ── Text column ── */}
-				<div className={`flex flex-col ${flip ? "md:order-2" : ""}`}>
+				{/* ── Text column — slides in from its natural side ── */}
+				<motion.div
+					className={`flex flex-col ${flip ? "md:order-2" : ""}`}
+					variants={columnSlide}
+					custom={flip ? 20 : -20}
+				>
 					{/* Eyebrow */}
 					<div className="mb-5 flex flex-wrap items-center gap-3">
 						<span className="font-montserrat text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
@@ -129,11 +165,18 @@ function ProductSection({
 							</CeramicButton>
 						</div>
 					)}
-				</div>
+				</motion.div>
 
-				{/* ── Media column ── */}
-				<div className={flip ? "md:order-1" : ""}>
-					<div className="relative overflow-hidden rounded-xl border border-white/[0.09] bg-white/[0.02] shadow-[0_0_60px_rgba(0,0,0,0.5)]">
+				{/* ── Media column — slides in from the opposite side ── */}
+				<motion.div
+					className={flip ? "md:order-1" : ""}
+					variants={columnSlide}
+					custom={flip ? -20 : 20}
+				>
+					<motion.div
+						className="relative overflow-hidden rounded-xl border border-white/[0.09] bg-white/[0.02] shadow-[0_0_60px_rgba(0,0,0,0.5)]"
+						whileHover={{ scale: 1.015, transition: { duration: 0.3, ease: [0.25, 1, 0.5, 1] } }}
+					>
 						{/* Subtle inner top glow */}
 						<div
 							aria-hidden
@@ -152,25 +195,37 @@ function ProductSection({
 								sizes="(max-width: 768px) 100vw, 50vw"
 							/>
 						</div>
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }
 
 export default function Agents() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			{/* Section header */}
-			<div className="mb-6 sm:mb-8">
-				<h2 className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+			{/* Section header — h2 then subtext stagger in on first pixel */}
+			<motion.div
+				className="mb-6 sm:mb-8"
+				variants={headerContainer}
+				initial="hidden"
+				whileInView="show"
+				viewport={{ once: true, amount: 0 }}
+			>
+				<motion.h2
+					variants={headerItem}
+					className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl"
+				>
 					Explore our Products
-				</h2>
-				<p className="mt-3 text-sm leading-7 text-muted sm:text-base">
+				</motion.h2>
+				<motion.p
+					variants={headerItem}
+					className="mt-3 text-sm leading-7 text-muted sm:text-base"
+				>
 					Three products. One sovereign AI platform built for aerospace.
-				</p>
-			</div>
+				</motion.p>
+			</motion.div>
 
 			{/* Product sections */}
 			{PRODUCTS.map((product, i) => (

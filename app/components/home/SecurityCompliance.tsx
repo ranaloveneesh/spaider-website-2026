@@ -4,7 +4,7 @@ const DEPLOYMENT_ENVS = ["EU cloud", "Private Cloud", "On Prem"] as const;
 
 export default function SecurityCompliance() {
 	return (
-		<section className="relative -mx-4 mt-6 w-[calc(100%+2rem)] overflow-hidden sm:mt-8 md:mt-10 lg:mt-12">
+		<section className="relative mt-6 overflow-hidden sm:mt-8 md:mt-10 lg:mt-12">
 
 			{/* Content */}
 			<div className="relative z-10 mx-auto flex flex-col items-center px-4 py-12 text-center sm:py-16 md:py-20">
