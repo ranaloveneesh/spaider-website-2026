@@ -9,34 +9,35 @@ export const metadata: Metadata = {
 
 export default function RequestDemoPage() {
 	return (
-		<div className="grid w-full min-w-0 grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:items-start md:gap-8 lg:grid-cols-3 lg:gap-10">
-			<Reveal variant="fade-left" threshold={0.35} className="min-w-0 space-y-4 sm:space-y-5 md:pt-0 lg:pr-8">
-				<h2 className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Request a demo</h2>
-
-				<p className="text-xs leading-6 text-foreground font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-					See how SPAIDER can enhance your way of working and connect to your data. In a short live session, we&apos;ll show what&apos;s possible, listen to your goals, and outline the simplest path forward.
-				</p>
-				<ul className="space-y-2.5 font-inter sm:space-y-3">
-					<li className="flex items-start gap-2 text-xs leading-6 font-medium text-foreground sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-						<span className="shrink-0 leading-6 sm:leading-7" aria-hidden>
-							✓
-						</span>
-						<span>Walk through your specific use case</span>
-					</li>
-					<li className="flex items-start gap-2 text-xs leading-6 font-medium text-foreground sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-						<span className="shrink-0 leading-6 sm:leading-7" aria-hidden>
-							✓
-						</span>
-						<span>Discuss security, deployment, and integrations</span>
-					</li>
-					<li className="flex items-start gap-2 text-xs leading-6 font-medium text-foreground sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-						<span className="shrink-0 leading-6 sm:leading-7" aria-hidden>
-							✓
-						</span>
-						<span>Get pricing and next steps</span>
-					</li>
-				</ul>
-			</Reveal>
+		<div className="grid w-full min-w-0 grid-cols-1 gap-10 pt-10 pb-16 sm:gap-12 sm:pt-16 sm:pb-20 md:grid-cols-[5fr_7fr] md:items-start md:gap-12 md:pt-20 md:pb-24 lg:grid-cols-3 lg:gap-16 mx-auto max-w-7xl">
+			<div className="min-w-0 space-y-5 lg:pr-6 lg:pt-2">
+				<Reveal variant="fade-up" threshold={0.2}>
+					<h2 className="font-outfit text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-5xl">
+						Request a demo
+					</h2>
+				</Reveal>
+				<Reveal variant="fade-up" threshold={0.2} delayMs={80}>
+					<p className="text-sm leading-7 text-muted sm:text-base">
+						See how SPAIDER can enhance your way of working and connect to your data. In a short live session, we&apos;ll show what&apos;s possible, listen to your goals, and outline the simplest path forward.
+					</p>
+				</Reveal>
+				<Reveal variant="fade-up" threshold={0.2} delayMs={150}>
+					<ul className="space-y-2.5 sm:space-y-3">
+						<li className="flex items-start gap-2.5 text-sm leading-7 text-muted sm:text-base">
+							<span className="shrink-0 font-medium leading-7 text-accent" aria-hidden>✓</span>
+							<span>Walk through your specific use case</span>
+						</li>
+						<li className="flex items-start gap-2.5 text-sm leading-7 text-muted sm:text-base">
+							<span className="shrink-0 font-medium leading-7 text-accent" aria-hidden>✓</span>
+							<span>Discuss security, deployment, and integrations</span>
+						</li>
+						<li className="flex items-start gap-2.5 text-sm leading-7 text-muted sm:text-base">
+							<span className="shrink-0 font-medium leading-7 text-accent" aria-hidden>✓</span>
+							<span>Get pricing and next steps</span>
+						</li>
+					</ul>
+				</Reveal>
+			</div>
 
 			<RequestDemoFormLazy />
 		</div>

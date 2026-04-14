@@ -75,32 +75,32 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
 	const col3 = members.filter((_, i) => i % 3 === 2);
 
 	return (
-		<div className="flex flex-col md:flex-row items-start md:justify-center gap-8 md:gap-10 lg:gap-14 select-none w-full md:w-fit mx-auto">
+		<div className="mx-auto flex w-full select-none flex-col items-start gap-8 md:flex-row md:justify-between md:gap-10 lg:gap-14">
 			{/* ── Left: photo grid ── */}
-			<Reveal variant="fade-right" threshold={0.25} className="no-scrollbar flex gap-2 md:gap-3 flex-shrink-0 overflow-x-auto pb-1 md:pb-0">
+			<Reveal variant="fade-right" threshold={0.25} className="no-scrollbar flex w-full gap-2 overflow-x-auto pb-2 sm:gap-3 md:w-auto md:shrink-0 md:pb-0">
 				{/* Column 1 */}
-				<div className="flex flex-col gap-2 md:gap-3">
+				<div className="flex flex-col gap-2 sm:gap-3">
 					{col1.map((member) => (
-						<PhotoCard key={member.id} member={member} className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[96px] w-[90px] sm:h-[128px] sm:w-[120px] md:h-[165px] md:w-[155px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 
 				{/* Column 2 */}
-				<div className="flex flex-col gap-2 md:gap-3 mt-[48px] sm:mt-[56px] md:mt-[68px]">
+				<div className="mt-[34px] flex flex-col gap-2 sm:mt-[48px] sm:gap-3 md:mt-[68px]">
 					{col2.map((member) => (
-						<PhotoCard key={member.id} member={member} className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[108px] w-[102px] sm:h-[143px] sm:w-[135px] md:h-[182px] md:w-[172px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 
 				{/* Column 3 */}
-				<div className="flex flex-col gap-2 md:gap-3 mt-[22px] sm:mt-[26px] md:mt-[32px]">
+				<div className="mt-[16px] flex flex-col gap-2 sm:mt-[22px] sm:gap-3 md:mt-[32px]">
 					{col3.map((member) => (
-						<PhotoCard key={member.id} member={member} className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[100px] w-[94px] sm:h-[136px] sm:w-[128px] md:h-[172px] md:w-[162px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 			</Reveal>
 
-			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="flex flex-col sm:grid sm:grid-cols-2 md:flex md:flex-col gap-4 md:gap-5 pt-0 md:pt-2 w-full md:w-auto">
+			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="grid w-full grid-cols-1 gap-4 pt-1 sm:grid-cols-2 md:pt-2 lg:grid-cols-1 lg:max-w-sm">
 				{members.map((member) => (
 					<MemberRow key={member.id} member={member} hoveredId={hoveredId} onHover={setHoveredId} />
 				))}
@@ -121,11 +121,12 @@ function PhotoCard({ member, className, hoveredId, onHover }: { member: TeamMemb
 		<button
 			type="button"
 			aria-label={`Highlight ${member.name}`}
-			className={cn("relative cursor-pointer flex-shrink-0 overflow-hidden rounded-xl transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")}
+			className={cn("relative cursor-pointer shrink-0 overflow-hidden rounded-xl transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")}
 			onMouseEnter={() => onHover(member.id)}
 			onMouseLeave={() => onHover(null)}
 			onFocus={() => onHover(member.id)}
 			onBlur={() => onHover(null)}
+			onClick={() => onHover(isActive ? null : member.id)}
 		>
 			<Image
 				src={member.image}
@@ -153,16 +154,17 @@ function MemberRow({ member, hoveredId, onHover }: { member: TeamMember; hovered
 		<button
 			type="button"
 			aria-label={`Highlight ${member.name}`}
-			className={cn("cursor-pointer transition-opacity duration-300 text-left", isDimmed ? "opacity-50" : "opacity-100")}
+			className={cn("cursor-pointer rounded-lg p-1 transition-opacity duration-300 text-left", isDimmed ? "opacity-50" : "opacity-100")}
 			onMouseEnter={() => onHover(member.id)}
 			onMouseLeave={() => onHover(null)}
 			onFocus={() => onHover(member.id)}
 			onBlur={() => onHover(null)}
+			onClick={() => onHover(isActive ? null : member.id)}
 		>
 			{/* Name */}
 			<div className="flex items-center gap-2.5">
-				<span className={cn("w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
-				<span className={cn("text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300", isActive ? "text-foreground" : "text-muted")}>{member.name}</span>
+				<span className={cn("h-3 w-4 shrink-0 rounded-[5px] transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
+				<span className={cn("text-base font-semibold leading-none tracking-tight transition-colors duration-300 md:text-[18px]", isActive ? "text-foreground" : "text-muted")}>{member.name}</span>
 			</div>
 
 			{/* Role */}

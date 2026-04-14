@@ -9,9 +9,8 @@ export default function SecurityCompliance() {
 			{/* Content */}
 			<div className="relative z-10 mx-auto flex flex-col items-center px-4 py-12 text-center sm:py-16 md:py-20">
 				<h2
-					className="font-outfit bg-clip-text font-medium leading-tight tracking-tight text-transparent"
+					className="font-outfit text-accent font-medium leading-tight tracking-tight"
 					style={{
-						backgroundImage: "url(/abstract1.png)",
 						backgroundSize: "cover",
 						backgroundPosition: "center",
 						fontSize: "clamp(2.8rem,5vw,3.75rem)", maxWidth: "24ch"

@@ -3,22 +3,13 @@
 import { Linkedin, Mail, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { EMAIL_ADDRESS, LINKEDIN_URL, YOUTUBE_URL } from "@/app/utils/constants";
 
 function Footer() {
 	const year = new Date().getFullYear();
 
-	const path = usePathname();
-
-	const isHome = path === "/";
-
-	if (!isHome) {
-		return null;
-	}
-
 	return (
-		<footer className="relative mt-12 w-full min-w-0 overflow-hidden bg-[#1a1a1a] sm:mt-16 md:mt-20">
+		<footer className="relative w-full min-w-0 overflow-hidden bg-[#1a1a1a]">
 			{/* Central spotlight - pure white, no blue */}
 			<div
 				aria-hidden
@@ -62,9 +53,12 @@ function Footer() {
 						</div>
 
 						<p className="mt-4 text-xs leading-6 text-muted font-switzer sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-							SPAIDER Space S.à r.l.
+							SPAIDER Space S.à r.l.<br />
+							9 avenue des Hauts Fourneaux
 							<br />
-							9, avenue des Hauts Fourneaux 4362, Esch sur Alzette, Luxembourg
+							Esch sur Alzette, L-4362
+							<br />
+							Luxembourg
 							<br />
 							VAT: LU36772970
 						</p>
@@ -107,6 +101,11 @@ function Footer() {
 							<li>
 								<Link href="/request-demo" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Request a demo
+								</Link>
+							</li>
+							<li>
+								<Link href="/careers" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Careers
 								</Link>
 							</li>
 							<li>
