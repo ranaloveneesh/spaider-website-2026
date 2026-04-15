@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Reveal from "@/app/components/ui/reveal";
 import KeyFeatures from "../../../components/sagan/KeyFeatures";
 import Metrics from "../../../components/sagan/Metrics";
 import OnboardingTimeline from "../../../components/sagan/OnboardingTimeline";
@@ -14,28 +13,13 @@ export const metadata: Metadata = {
 
 export default function SaganPage() {
 	return (
-		<div className="mt-4 w-full min-w-0 space-y-8 pb-10 sm:mt-6 sm:space-y-10 sm:pb-12 md:space-y-12">
-			{/* Audience Benefits */}
-			<Reveal variant="scale" threshold={0.35}>
-			</Reveal>
-			<Reveal variant="scale" threshold={0.35}>
-				<SaganHero />
-			</Reveal>
-			<Reveal variant="fade-up">
-				<RfpChallenge />
-			</Reveal>
-			<Reveal variant="fade-up">
-				<KeyFeatures />
-			</Reveal>
-			<Reveal variant="fade-up">
-				<OnboardingTimeline />
-			</Reveal>
-			<Reveal variant="fade-up">
-				<Metrics />
-			</Reveal>
-			<Reveal variant="scale" threshold={0.25}>
-				<SaganCTA />
-			</Reveal>
+		<div className="w-full min-w-0 mx-auto max-w-7xl">
+			<SaganHero />
+			<RfpChallenge />
+			<KeyFeatures />
+			<OnboardingTimeline />
+			<Metrics />
+			<SaganCTA />
 		</div>
 	);
 }

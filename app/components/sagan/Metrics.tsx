@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "motion/react";
 import Reveal from "@/app/components/ui/reveal";
 
 type Metric = {
@@ -46,7 +47,6 @@ function usePrefersReducedMotion() {
 		const update = () => setReduced(!!mq.matches);
 		update();
 
-		// Safari fallback
 		if (mq.addEventListener) mq.addEventListener("change", update);
 		else mq.addListener(update);
 
@@ -105,12 +105,19 @@ const Big: React.FC<{
 };
 
 export default function Metrics() {
+	// Trigger counter only when the grid scrolls into view
+	const gridRef = useRef<HTMLDivElement>(null);
+	const inView = useInView(gridRef, { once: true, amount: 0.4 });
+
 	return (
 		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="mb-6 max-w-4xl font-outfit text-4xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-5xl md:mb-10">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="max-w-4xl font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
 				Measurable Advantage: Accelerate Wins, Scale Ambition
 			</Reveal>
-			<div className="mt-6 grid grid-cols-1 items-stretch gap-4 sm:mt-8 sm:grid-cols-2 sm:gap-5 md:mt-10 md:gap-6 lg:grid-cols-12 lg:gap-7">
+			<div
+				ref={gridRef}
+				className="mt-10 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7"
+			>
 				{METRICS.map((m, index) => (
 					<Reveal
 						key={m.title}
@@ -118,9 +125,13 @@ export default function Metrics() {
 						threshold={0.25}
 						delayMs={index * 90}
 						className={[
-							"group relative min-w-0 overflow-hidden rounded-xl border border-border bg-panel/40 sm:rounded-2xl",
-							"h-full p-4 shadow-md transition-all duration-200 ease-out sm:p-5 md:p-6 lg:p-7",
-							"hover:border-[rgba(78,167,252,0.6)] hover:bg-panel/55 hover:shadow-lg hover:-translate-y-[2px]",
+							"group relative min-w-0 overflow-hidden rounded-xl sm:rounded-2xl",
+							"h-full p-4 sm:p-5 md:p-6 lg:p-7",
+							"border border-white/[0.12] bg-white/[0.06] backdrop-blur-xl",
+							"shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)]",
+							"transition-all duration-300 ease-out hover:-translate-y-[2px]",
+							"hover:border-[rgba(78,167,252,0.5)] hover:bg-white/[0.09]",
+							"hover:shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.12)]",
 							"before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:content-['']",
 							"before:z-0 before:bg-[radial-gradient(650px_260px_at_10%_0%,rgba(78,167,252,0.32),transparent_60%)]",
 							"before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-200",
@@ -131,7 +142,7 @@ export default function Metrics() {
 						].join(" ")}
 					>
 						<div className="relative z-10 flex h-full flex-col items-center justify-center">
-							<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active />
+							<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active={inView} />
 							<div className="mt-2 font-outfit text-base font-medium tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
 							<span className="mt-3 text-xs text-center leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7 text-muted">{m.description}</span>
 						</div>

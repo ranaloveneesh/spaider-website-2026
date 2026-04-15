@@ -1,37 +1,79 @@
-// src/app/agents/sagan/SaganCTA.tsx
 "use client";
 
-import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import CeramicButton from "@/app/components/ui/button";
-import Reveal from "@/app/components/ui/reveal";
+
+const EXPO = [0.16, 1, 0.3, 1] as const;
+
+const V = {
+	container: {
+		hidden: {},
+		show: { transition: { staggerChildren: 0.1 } },
+	},
+	item: {
+		hidden: { opacity: 0, y: 16 },
+		show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EXPO } },
+	},
+} as const;
 
 export default function SaganCTA() {
+	const reduced = useReducedMotion();
+
 	return (
-		<section className="mx-auto mt-12 w-full min-w-0 max-w-420 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal variant="scale" threshold={0.25} className="relative overflow-hidden rounded-xl border border-border bg-panel px-4 py-6 text-center shadow-md sm:rounded-2xl sm:px-6 sm:py-8 md:px-10 md:py-12">
-				<div
-					aria-hidden
-					className="absolute inset-0 bg-card border-card-border"
-				/>
+		<div className="relative w-full overflow-hidden mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+			<motion.div
+				className="relative z-10 mx-auto flex flex-col items-center px-6 py-10 text-center sm:py-14 md:py-16"
+				style={{ maxWidth: "64rem" }}
+				variants={V.container}
+				initial={reduced ? false : "hidden"}
+				whileInView="show"
+				viewport={{ once: true, amount: 0.3 }}
+			>
+				<motion.h2
+					variants={V.item}
+					className="font-outfit font-medium leading-[0.9] tracking-[-0.03em] text-white"
+					style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", maxWidth: "15ch" }}
+				>
+					Activate Your Strategic Proposal Engine
+				</motion.h2>
 
-				<div className="relative">
-					<h3 className="font-outfit text-2xl font-medium leading-tight text-foreground sm:text-3xl lg:text-4xl">Activate Your Strategic Proposal Engine</h3>
+				<motion.p
+					variants={V.item}
+					className="mt-6 text-base leading-7 text-white/45 sm:text-lg sm:leading-8"
+					style={{ maxWidth: "48ch" }}
+				>
+					See how SAGAN transforms your aerospace bid process. Schedule a focused demo
+					tailored to your challenges and opportunities.
+				</motion.p>
 
-					<p className="mx-auto mt-4 max-w-4xl text-xs leading-6 text-muted sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">See how SAGAN transforms your aerospace bid process. Schedule a focused demo tailored to your challenges and opportunities.</p>
-
-					<div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">
-						<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
-							<CeramicButton href="/book-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-								REQUEST SAGAN DEMO
-							</CeramicButton>
-						</div>
-
-						<Link href="/briefs/sagan-onepager.pdf" target="_blank" rel="noopener" className="inline-flex min-h-9 w-full items-center justify-center rounded-full border border-white/25 px-4 py-2 text-xs font-semibold text-white transition hover:bg-white/5 sm:min-h-10 sm:w-auto sm:px-6 sm:text-sm uppercase">
-							Read the brief
-						</Link>
-					</div>
-				</div>
-			</Reveal>
-		</section>
+				<motion.div
+					variants={V.item}
+					className="mt-10 flex flex-wrap items-center justify-center gap-4"
+				>
+					<CeramicButton
+						href="/request-demo"
+						color="#ffffff"
+						textColor="#0a0a0b"
+						ringColor="rgba(255,255,255,0.22)"
+						borderRadius={8}
+						padding="12px 28px"
+						fontSize={13}
+					>
+						REQUEST SAGAN DEMO
+					</CeramicButton>
+					<CeramicButton
+						href="/briefs/sagan-onepager.pdf"
+						color="rgba(255,255,255,0.05)"
+						textColor="#ffffff"
+						ringColor="rgba(255,255,255,0.14)"
+						borderRadius={8}
+						padding="12px 28px"
+						fontSize={13}
+					>
+						READ THE BRIEF
+					</CeramicButton>
+				</motion.div>
+			</motion.div>
+		</div>
 	);
 }

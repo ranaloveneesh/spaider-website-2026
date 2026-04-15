@@ -7,19 +7,19 @@ const steps = [
     {
         title: "Connect your sources",
         desc: "Add the documents, tools, and approved data sources your team already uses.",
-        imgSrc: "/foundations/inforag1.png",
+        imgSrc: "/abstract/1.png",
         imgAlt: "Connect your sources",
     },
     {
         title: "Configure the workspace",
         desc: "Set permissions, source rules, instructions, and the workflows you want the system to support.",
-        imgSrc: "/foundations/inforag2.png",
+        imgSrc: "/abstract/2.png",
         imgAlt: "Configure the workspace",
     },
     {
         title: "Start working with your knowledge",
         desc: "Search, query, and interact with your data through a governed AI interface.",
-        imgSrc: "/foundations/inforag3.png",
+        imgSrc: "/abstract/3.png",
         imgAlt: "Start working with your knowledge",
     },
 ] as const;
@@ -28,21 +28,20 @@ export default function Onboarding() {
     return (
         <section
             id="how-we-work"
-            className="how-we-work-section relative w-full text-foreground"
+            className="how-we-work-section relative w-full text-foreground mt-12 sm:mt-16 md:mt-20 lg:mt-24"
         >
-            <div className="mx-auto w-full max-w-7xl py-0">
+            <div>
                 <div className="flex flex-col items-start justify-between">
                     <Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
                         Get started in 3 steps
                     </Reveal>
-
 
                     <Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
                         A simple path from source setup to a working knowledge workspace.
                     </Reveal>
                 </div>
 
-                <div className="relative mt-4 overflow-hidden px-40">
+                <div className="relative mt-10 overflow-hidden px-0 md:px-8 lg:px-16 max-w-5xl mx-auto">
                     <div className="timeline-wrapper hidden md:block">
                         <div className="timeline-line" />
                     </div>
@@ -57,16 +56,46 @@ export default function Onboarding() {
                                         style={{ top: "1.25rem" }}
                                     />
 
-                                    <div className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}>
+                                    {/* Text block — slides in from its natural side */}
+                                    <Reveal
+                                        variant={even ? "fade-right" : "fade-left"}
+                                        threshold={0.2}
+                                        delayMs={80}
+                                        className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}
+                                    >
                                         <h3 className="mt-4 text-lg font-medium leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-outfit">
                                             {item.title}
                                         </h3>
                                         <p className="text-left text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
                                             {item.desc}
                                         </p>
-                                    </div>
+                                    </Reveal>
 
-                                    <div className={`${even ? "order-1" : "order-2"} relative z-10 hidden h-32 w-full items-center justify-center md:flex md:h-72 md:w-1/2`}>
+                                    {/* Mobile image — compact, fades up */}
+                                    <Reveal
+                                        variant="fade-up"
+                                        threshold={0.2}
+                                        delayMs={120}
+                                        className="mt-3 flex w-full items-center justify-center md:hidden"
+                                    >
+                                        <Image
+                                            alt={item.imgAlt}
+                                            src={item.imgSrc}
+                                            width={160}
+                                            height={160}
+                                            loading="lazy"
+                                            className="drop-shadow-[0_0_16px_color-mix(in_srgb,var(--color-accent)_40%,transparent)] h-28 w-auto object-contain opacity-80"
+                                            sizes="160px"
+                                        />
+                                    </Reveal>
+
+                                    {/* Desktop image — slides in from opposite side */}
+                                    <Reveal
+                                        variant={even ? "fade-left" : "fade-right"}
+                                        threshold={0.2}
+                                        delayMs={0}
+                                        className={`${even ? "order-1" : "order-2"} relative z-10 hidden h-32 w-full items-center justify-center md:flex md:h-72 md:w-1/2`}
+                                    >
                                         <Image
                                             alt={item.imgAlt}
                                             src={item.imgSrc}
@@ -76,7 +105,7 @@ export default function Onboarding() {
                                             className="drop-shadow-[0_0_24px_color-mix(in_srgb,var(--color-accent)_55%,transparent)] w-auto h-full object-contain"
                                             sizes="(min-width:1280px) 380px, 280px"
                                         />
-                                    </div>
+                                    </Reveal>
                                 </div>
                             );
                         })}

@@ -3,68 +3,44 @@
 import Image from "next/image";
 import FinalCTA from "../../components/ai-foundations/FinalCTA";
 import UseCases from "../../components/ai-foundations/UseCases";
-import { StickyScroll } from "../../components/ui/sticky-scroll-reveal";
 import Onboarding from "../../components/ai-foundations/Onboarding";
 import AIFoundationsHero from "../../components/ai-foundations/Hero";
+import WhySpaider from "../../components/home/WhySpaider";
 
-const stickyScrollContent = [
+const foundationsItems = [
   {
-    title: "Grounded knowledge retrieval",
-    description:
-      "Turn scattered documents and data into answers grounded in approved internal and external sources.",
+    t: "Grounded knowledge retrieval",
+    d: "Turn scattered documents and data into answers grounded in approved internal and external sources.",
     content: (
-      <div className="relative flex h-full w-full items-center justify-center text-white">
-        <Image
-          src="/foundations/inforag1.png"
-          alt="real time changes demo"
-          fill
-          className="object-cover"
-        />
+      <div className="relative flex h-full w-full items-center justify-center">
+        <Image src="/agents/ai-foundations/12.png" alt="Grounded knowledge retrieval" fill className="object-cover" />
       </div>
     ),
   },
   {
-    title: "Interactive AI workspace",
-    description:
-      "Query knowledge, issue commands, and work with your data through a chat-based interface built for real workflows.",
+    t: "Interactive AI workspace",
+    d: "Query knowledge, issue commands, and work with your data through a chat-based interface built for real workflows.",
     content: (
-      <div className="relative flex h-full w-full items-center justify-center text-white">
-        <Image
-          src="/foundations/inforag2.png"
-          alt="real time changes demo"
-          fill
-          className="object-cover"
-        />
+      <div className="relative flex h-full w-full items-center justify-center">
+        <Image src="/agents/ai-foundations/12.png" alt="Interactive AI workspace" fill className="object-cover" />
       </div>
     ),
   },
   {
-    title: "Continuous knowledge management",
-    description:
-      "Keep your knowledge layer current by organizing trusted sources, ingestion rules, and update workflows.",
+    t: "Continuous knowledge management",
+    d: "Keep your knowledge layer current by organizing trusted sources, ingestion rules, and update workflows.",
     content: (
-      <div className="relative flex h-full w-full items-center justify-center text-white">
-        <Image
-          src="/foundations/inforag3.png"
-          alt="real time changes demo"
-          fill
-          className="object-cover"
-        />
+      <div className="relative flex h-full w-full items-center justify-center">
+        <Image src="/agents/ai-foundations/12.png" alt="Continuous knowledge management" fill className="object-cover" />
       </div>
     ),
   },
   {
-    title: "Controlled deployment",
-    description:
-      "Deploy on EU cloud, private cloud, or on-prem to match security, governance, and infrastructure needs.",
+    t: "Controlled deployment",
+    d: "Deploy on EU cloud, private cloud, or on-prem to match security, governance, and infrastructure needs.",
     content: (
-      <div className="relative flex h-full w-full items-center justify-center text-white">
-        <Image
-          src="/foundations/inforag1.png"
-          alt="real time changes demo"
-          fill
-          className="object-cover"
-        />
+      <div className="relative flex h-full w-full items-center justify-center">
+        <Image src="/agents/ai-foundations/12.png" alt="Controlled deployment" fill className="object-cover" />
       </div>
     ),
   },
@@ -72,9 +48,13 @@ const stickyScrollContent = [
 
 export default function FoundationsPage() {
   return (
-    <div className="mt-4 w-full min-w-0 space-y-8 pb-10 sm:mt-6 sm:space-y-10 sm:pb-12 md:space-y-12">
+    <div className="w-full min-w-0 mx-auto max-w-7xl">
       <AIFoundationsHero />
-      <StickyScroll title="What you get with SPAIDER Foundations" subtitle="Capabilities for turning enterprise knowledge into usable, governed AI context." content={stickyScrollContent} />
+      <WhySpaider
+        title={<span className="text-foreground">What you get</span>}
+        subtitle="Capabilities for turning enterprise knowledge into usable, governed AI context."
+        items={foundationsItems}
+      />
       <Onboarding />
       <UseCases />
       <FinalCTA />

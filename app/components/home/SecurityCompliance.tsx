@@ -32,7 +32,7 @@ export default function SecurityCompliance() {
 					{DEPLOYMENT_ENVS.map((env) => (
 						<span
 							key={env}
-							className="inline-flex items-center gap-2 rounded-sm border border-accent/45 px-3 py-1.5 font-mono text-xs tracking-wide text-white/80"
+							className="inline-flex items-center gap-2 rounded-sm border border-accent/45 px-3 py-1.5 font-mono text-sm tracking-wide text-white/80"
 						>
 							<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
 							{env}
