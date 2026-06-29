@@ -16,6 +16,10 @@
 .env
 AGENTS.md
 CLAUDE.md
+kepler-backup.md
+changes.txt
+aws-changes-session.md
+.claude/
 
 # next.js
 /.next/

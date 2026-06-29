@@ -39,7 +39,7 @@ export function getSiteJsonLd() {
 				"@id": websiteId,
 				url: base,
 				name: "SPAIDER",
-				description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents on your data—securely and compliantly.",
+				description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents on your data-securely and compliantly.",
 				publisher: { "@id": orgId },
 				inLanguage: "en-US",
 			},
@@ -49,7 +49,7 @@ export function getSiteJsonLd() {
 
 const INNOSPACE_HEADLINE = "We Secured 2nd Place at INNOspace Masters 2025 (And We're Just Getting Started)";
 
-const INNOSPACE_DESCRIPTION = "SPAIDER secured 2nd place at INNOspace Masters 2025 in the OHB Challenge — AI agents for aerospace operations.";
+const INNOSPACE_DESCRIPTION = "SPAIDER secured 2nd place at INNOspace Masters 2025 in the OHB Challenge - AI agents for aerospace operations.";
 
 /** Blog post /blog/innospace + breadcrumbs. */
 export function getInnoSpaceArticleJsonLd() {

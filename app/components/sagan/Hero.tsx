@@ -1,134 +1,138 @@
-import React from "react";
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
 import CeramicButton from "../ui/button";
 
-// Inline Button Component
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "default" | "secondary" | "ghost" | "gradient";
-    size?: "default" | "sm" | "lg";
-    children: React.ReactNode;
-}
+// Emil Kowalski–style expo-out: fast start, hard stop
+const EXPO = [0.16, 1, 0.3, 1] as const;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-    ({ variant = "default", size = "default", className = "", children, ...props }, ref) => {
-        const baseStyles = "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
-
-        const variants = {
-            default: "bg-white text-black hover:bg-gray-100",
-            secondary: "bg-gray-800 text-white hover:bg-gray-700",
-            ghost: "hover:bg-gray-800/50 text-white",
-            gradient: "bg-gradient-to-b from-white via-white/95 to-white/60 text-black hover:scale-105 active:scale-95"
-        };
-
-        const sizes = {
-            default: "h-10 px-4 py-2 text-sm",
-            sm: "h-10 px-5 text-sm",
-            lg: "h-12 px-8 text-base"
-        };
-
-        return (
-            <button
-                ref={ref}
-                className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
-                {...props}
-            >
-                {children}
-            </button>
-        );
-    }
-);
-
-Button.displayName = "Button";
+/**
+ * Variant map - container stagger drives sequencing,
+ * each child owns its own duration.
+ */
+const V = {
+	container: {
+		hidden: {},
+		show: { transition: { staggerChildren: 0.09 } },
+	},
+	chip: {
+		hidden: { opacity: 0, y: 10, scale: 0.95 },
+		show: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			transition: { duration: 0.38, ease: EXPO },
+		},
+	},
+	heading: {
+		hidden: { opacity: 0, y: 18 },
+		show: { opacity: 1, y: 0, transition: { duration: 0.52, ease: EXPO } },
+	},
+	body: {
+		hidden: { opacity: 0, y: 12 },
+		show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: EXPO } },
+	},
+	cta: {
+		hidden: { opacity: 0, y: 10 },
+		show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: EXPO } },
+	},
+	/** Cinematic: blur + scale collapse as dashboard lands */
+	dashboard: {
+		hidden: { opacity: 0, y: 44, scale: 0.96, filter: "blur(14px)" },
+		show: {
+			opacity: 1,
+			y: 0,
+			scale: 1,
+			filter: "blur(0px)",
+			transition: { duration: 1.0, ease: EXPO },
+		},
+	},
+} as const;
 
 export default function SaganHero() {
-    return (
-        <section
-            className="relative min-h-screen flex flex-col items-center justify-start"
-            style={{
-                animation: "fadeIn 0.6s ease-out"
-            }}
-        >
-            <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-        
-        * {
-          font-family: 'Poppins', sans-serif;
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+	const reduced = useReducedMotion();
 
-            <span className="glass-btn text-left">RFP Manager</span>
+	return (
+		<motion.section
+			className="relative flex flex-col items-center justify-start pt-12 pb-12 sm:pt-16 sm:pb-16 lg:min-h-screen lg:pt-24 lg:pb-0"
+			variants={V.container}
+			initial={reduced ? false : "hidden"}
+			animate="show"
+		>
+			<motion.span variants={V.chip} className="glass-btn text-left">
+				RFP Manager
+			</motion.span>
 
-            <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-medium text-center max-w-3xl px-6 leading-tight mb-6 mt-2"
-                style={{
-                    background: "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    letterSpacing: "-0.05em"
-                }}
-            >
-                Meet SAGAN           </h1>
+			<motion.h1
+				variants={V.heading}
+				className="mt-2 mb-4 sm:mb-6 font-outfit text-4xl font-medium text-center max-w-3xl px-4 leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl"
+				style={{
+					background:
+						"linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
+					WebkitBackgroundClip: "text",
+					WebkitTextFillColor: "transparent",
+					backgroundClip: "text",
+				}}
+			>
+				Meet SAGAN
+			</motion.h1>
 
-            <p className="max-w-lg text-center text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-                Analyze RFPs, extract requirements, flag risks, map traceability, and draft compliant responses with clear sources—so your team focuses on strategy, not copy-paste.
-            </p>
+			<motion.p
+				variants={V.body}
+				className="max-w-lg text-center text-xs leading-6 text-muted px-4 sm:text-sm sm:leading-7 lg:text-base lg:leading-7"
+			>
+				Your proposal and RFP co-pilot for faster response time. Draft winning
+				bids using your own past materials, templates, and source-backed
+				institutional knowledge.
+			</motion.p>
 
-            <div className="flex flex-col items-stretch gap-3 mt-4 sm:flex-row sm:items-center sm:pt-2">
-                <div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
-                    <CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-                        REQUEST A DEMO
-                    </CeramicButton>
-                </div>
-            </div>
+			<motion.div
+				variants={V.cta}
+				className="flex flex-col items-stretch gap-3 mt-4 sm:flex-row sm:items-center sm:pt-2"
+			>
+				<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
+					<CeramicButton
+						href="/request-demo"
+						color="rgba(255, 255, 255, 0.06)"
+						ringColor="rgba(255, 255, 255, 0.22)"
+						textColor="var(--color-white)"
+						borderRadius={9999}
+						padding="8px 16px"
+						centered
+					>
+						REQUEST A DEMO
+					</CeramicButton>
+				</div>
+			</motion.div>
 
-            <div className="w-full max-w-5xl relative mt-16">
-                <div
-                    className="absolute left-1/2 w-[90%] pointer-events-none z-0"
-                    style={{
-                        top: "-23%",
-                        transform: "translateX(-50%)"
-                    }}
-                    aria-hidden="true"
-                >
-                    <img
-                        src="https://i.postimg.cc/Ss6yShGy/glows.png"
-                        alt=""
-                        className="w-full h-auto filter-[hue-rotate(205deg)_saturate(220%)]"
-                        loading="eager"
-                    />
-                </div>
-
-                <div className="relative z-10">
-                    <img
-                        src="https://i.postimg.cc/SKcdVTr1/Dashboard2.png"
-                        alt="Dashboard preview showing analytics and metrics interface"
-                        className="w-full h-auto rounded-lg shadow-2xl"
-                        loading="eager"
-                    />
-                </div>
-            </div>
-        </section>
-    );
+			{/* Dashboard - cinematic entrance, glow breathes on loop */}
+			<motion.div
+				variants={V.dashboard}
+				className="relative w-full max-w-5xl mt-10 sm:mt-16"
+			>
+				<motion.div
+					className="absolute left-1/2 w-[90%] pointer-events-none z-0"
+					style={{ top: "-23%", transform: "translateX(-50%)" }}
+					animate={reduced ? {} : { opacity: [0.75, 1, 0.75] }}
+					transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+					aria-hidden="true"
+				>
+					<img
+						src="https://i.postimg.cc/Ss6yShGy/glows.png"
+						alt=""
+						className="w-full h-auto filter-[hue-rotate(205deg)_saturate(220%)]"
+						loading="eager"
+					/>
+				</motion.div>
+				<div className="relative z-10">
+					<img
+						src="https://i.postimg.cc/SKcdVTr1/Dashboard2.png"
+						alt="Dashboard preview showing analytics and metrics interface"
+						className="w-full h-auto rounded-lg shadow-2xl"
+						loading="eager"
+					/>
+				</div>
+			</motion.div>
+		</motion.section>
+	);
 }

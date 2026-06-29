@@ -39,7 +39,7 @@ export const StickyScroll = ({
 
 	return (
 		<section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-32">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
 				{title}
 			</Reveal>
 
@@ -58,7 +58,7 @@ export const StickyScroll = ({
 								<motion.h2
 									initial={{ opacity: 0 }}
 									animate={{ opacity: activeCard === index ? 1 : 0.3 }}
-									className="text-2xl font-semibold text-foreground font-montserrat"
+									className="text-2xl font-medium text-foreground font-outfit"
 								>
 									{item.title}
 								</motion.h2>

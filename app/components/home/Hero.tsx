@@ -1,228 +1,232 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
-
+import Image from "next/image";
+import { motion } from "motion/react";
 import CeramicButton from "../ui/button";
 
-function parseHslCssVarToThreeColor(varName: string, fallback: THREE.Color) {
-	try {
-		const raw = getComputedStyle(document.documentElement)
-			.getPropertyValue(varName)
-			.trim();
+type Logo = { src: string; alt: string; scale?: number };
+type MarqueeLogo = Logo & { dup: 0 | 1 };
 
-		// Expected formats:
-		// - "198 93% 60%"
-		// - "198deg 93% 60%"
-		// - "198, 93%, 60%" (less likely but tolerable)
-		if (!raw) return fallback;
+const LOGOS: Logo[] = [
+	{ src: "/trusted/esa.svg", alt: "ESA", scale: 0.5 },
+	{ src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.6 },
+	{ src: "/trusted/mirores.svg", alt: "Mirores", scale: 0.7 },
+	{ src: "/trusted/esric.png", alt: "ESRIC", scale: 0.6 },
+	{ src: "/trusted/ses.png", alt: "SES", scale: 1.5 },
+	{ src: "/trusted/ohb.png", alt: "OHB", scale: 0.5 },
+];
 
-		const normalized = raw.replaceAll(",", " ").replaceAll("/", " ");
-		const parts = normalized.split(/\s+/).filter(Boolean);
-		if (parts.length < 3) return fallback;
+const MARQUEE_LOGOS: MarqueeLogo[] = [
+	...LOGOS.map((l) => ({ ...l, dup: 0 as const })),
+	...LOGOS.map((l) => ({ ...l, dup: 1 as const })),
+];
 
-		const h = Number(parts[0].replace("deg", ""));
-		const s = Number(parts[1].replace("%", ""));
-		const l = Number(parts[2].replace("%", ""));
+// ─── Animation constants ──────────────────────────────────────────────────────
+// Expo-out easing - Emil Kowalski's preferred curve for cinematic UI
+const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
 
-		if (![h, s, l].every((n) => Number.isFinite(n))) return fallback;
+/** Outer content container: staggers h1 block → sub-headline → CTAs */
+const heroContainer = {
+	hidden: {},
+	show: {
+		transition: {
+			staggerChildren: 0.18,
+			delayChildren: 0.1,
+		},
+	},
+};
 
-		const c = new THREE.Color();
-		c.setHSL(((h % 360) + 360) % 360 / 360, THREE.MathUtils.clamp(s / 100, 0, 1), THREE.MathUtils.clamp(l / 100, 0, 1));
-		return c;
-	} catch {
-		return fallback;
-	}
-}
+/** h1 wrapper: staggers the three headline lines */
+const headlineContainer = {
+	hidden: {},
+	show: {
+		transition: { staggerChildren: 0.09 },
+	},
+};
 
-function GenerativeArtScene() {
-	const mountRef = useRef<HTMLDivElement | null>(null);
+/** Each headline line: blur + fade + lift - feels like a sensor acquiring lock */
+const headlineLine = {
+	hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
+	show: {
+		opacity: 1,
+		y: 0,
+		filter: "blur(0px)",
+		transition: { duration: 0.85, ease: EASE_EXPO },
+	},
+};
 
-	useEffect(() => {
-		const currentMount = mountRef.current;
-		if (!currentMount) return;
-
-		const scene = new THREE.Scene();
-		const camera = new THREE.PerspectiveCamera(
-			75,
-			currentMount.clientWidth / currentMount.clientHeight,
-			0.1,
-			1000,
-		);
-		camera.position.z = 3;
-
-		const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-		renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
-		renderer.setPixelRatio(Math.min(window.devicePixelRatio ?? 1, 2));
-		currentMount.appendChild(renderer.domElement);
-
-		const geometry = new THREE.IcosahedronGeometry(1.2, 64);
-		const baseColor = parseHslCssVarToThreeColor("--sky-300", new THREE.Color(0x7dd3fc));
-
-		const material = new THREE.ShaderMaterial({
-			uniforms: {
-				time: { value: 0 },
-				pointLightPos: { value: new THREE.Vector3(0, 0, 5) },
-				color: { value: baseColor },
-			},
-			vertexShader: `
-uniform float time;
-varying vec3 vNormal;
-varying vec3 vPosition;
-
-vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
-vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
-float snoise(vec3 v) {
-  const vec2 C = vec2(1.0/6.0, 1.0/3.0);
-  const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
-  vec3 i = floor(v + dot(v, C.yyy));
-  vec3 x0 = v - i + dot(i, C.xxx);
-  vec3 g = step(x0.yzx, x0.xyz);
-  vec3 l = 1.0 - g;
-  vec3 i1 = min(g.xyz, l.zxy);
-  vec3 i2 = max(g.xyz, l.zxy);
-  vec3 x1 = x0 - i1 + C.xxx;
-  vec3 x2 = x0 - i2 + C.yyy;
-  vec3 x3 = x0 - D.yyy;
-  i = mod289(i);
-  vec4 p = permute(permute(permute(
-    i.z + vec4(0.0, i1.z, i2.z, 1.0))
-    + i.y + vec4(0.0, i1.y, i2.y, 1.0))
-    + i.x + vec4(0.0, i1.x, i2.x, 1.0));
-  float n_ = 0.142857142857;
-  vec3 ns = n_ * D.wyz - D.xzx;
-  vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
-  vec4 x_ = floor(j * ns.z);
-  vec4 y_ = floor(j - 7.0 * x_);
-  vec4 x = x_ * ns.x + ns.yyyy;
-  vec4 y = y_ * ns.x + ns.yyyy;
-  vec4 h = 1.0 - abs(x) - abs(y);
-  vec4 b0 = vec4(x.xy, y.xy);
-  vec4 b1 = vec4(x.zw, y.zw);
-  vec4 s0 = floor(b0) * 2.0 + 1.0;
-  vec4 s1 = floor(b1) * 2.0 + 1.0;
-  vec4 sh = -step(h, vec4(0.0));
-  vec4 a0 = b0.xzyw + s0.xzyw * sh.xxyy;
-  vec4 a1 = b1.xzyw + s1.xzyw * sh.zzww;
-  vec3 p0 = vec3(a0.xy, h.x);
-  vec3 p1 = vec3(a0.zw, h.y);
-  vec3 p2 = vec3(a1.xy, h.z);
-  vec3 p3 = vec3(a1.zw, h.w);
-  vec4 norm = taylorInvSqrt(vec4(dot(p0, p0), dot(p1, p1), dot(p2, p2), dot(p3, p3)));
-  p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
-  vec4 m = max(0.6 - vec4(dot(x0, x0), dot(x1, x1), dot(x2, x2), dot(x3, x3)), 0.0);
-  m = m * m;
-  return 42.0 * dot(m * m, vec4(dot(p0, x0), dot(p1, x1), dot(p2, x2), dot(p3, x3)));
-}
-
-void main() {
-  vNormal = normalMatrix * normal;
-  vPosition = (modelMatrix * vec4(position, 1.0)).xyz;
-  float displacement = snoise(position * 2.0 + time * 0.5) * 0.2;
-  vec3 newPosition = position + normal * displacement;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
-}
-`,
-			fragmentShader: `
-uniform vec3 color;
-uniform vec3 pointLightPos;
-varying vec3 vNormal;
-varying vec3 vPosition;
-
-void main() {
-  vec3 normal = normalize(vNormal);
-  vec3 lightDir = normalize(pointLightPos - vPosition);
-  float diffuse = max(dot(normal, lightDir), 0.0);
-
-  float fresnel = 1.0 - max(dot(normal, vec3(0.0, 0.0, 1.0)), 0.0);
-  fresnel = pow(fresnel, 2.0);
-
-  vec3 finalColor = color * diffuse + color * fresnel * 0.5;
-  gl_FragColor = vec4(finalColor, 1.0);
-}
-`,
-			wireframe: true,
-			transparent: true,
-		});
-
-		const mesh = new THREE.Mesh(geometry, material);
-		// Push the mesh slightly upward in the frame
-		mesh.position.y = 0.15;
-		// Slightly larger presence for shorter heroes (e.g. h-[80vh])
-		mesh.scale.setScalar(1.20);
-		scene.add(mesh);
-
-		const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-		pointLight.position.set(0, 0, 5);
-		scene.add(pointLight);
-
-		let frameId = 0;
-		const animate = (t: number) => {
-			material.uniforms.time.value = t * 0.0003;
-			mesh.rotation.y += 0.0005;
-			mesh.rotation.x += 0.0002;
-			renderer.render(scene, camera);
-			frameId = window.requestAnimationFrame(animate);
-		};
-		frameId = window.requestAnimationFrame(animate);
-
-		const handleResize = () => {
-			if (!mountRef.current) return;
-			camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
-			camera.updateProjectionMatrix();
-			renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-		};
-
-		window.addEventListener("resize", handleResize);
-
-		return () => {
-			window.cancelAnimationFrame(frameId);
-			window.removeEventListener("resize", handleResize);
-
-			if (renderer.domElement.parentNode === currentMount) {
-				currentMount.removeChild(renderer.domElement);
-			}
-
-			geometry.dispose();
-			material.dispose();
-			renderer.dispose();
-		};
-	}, []);
-
-	return <div ref={mountRef} className="absolute inset-0 h-full w-full z-0" />;
-}
+/** Sub-headline and CTA row: clean fade + lift, no blur */
+const heroItem = {
+	hidden: { opacity: 0, y: 14 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.65, ease: EASE_EXPO },
+	},
+};
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Hero() {
 	return (
-		<div className="relative isolate w-full flex h-[80vh] flex-wrap items-center justify-center overflow-hidden">
-			<GenerativeArtScene />
-			<div className="relative z-10 px-4 text-center text-white mt-80">
-				<p className="inline-block text-4xl font-bold leading-tight tracking-tight md:text-5xl font-montserrat">
-					Sovereign AI Operating Layer for
-				</p>
-				<br />
-				<span className="hero-illuminated-word relative inline-block text-4xl font-bold leading-tight tracking-tight md:text-5xl font-montserrat">
-					Aerospace Teams
-				</span>
-				<p className="text-lg font-medium tracking-tight text-white/95 md:text-xl mt-6 font-montserrat">
-					Deploy domain-expert AI models and domain-trained agents in your workflows.
-				</p>
-				<div className="flex w-full max-w-md flex-col items-stretch gap-3 mt-6 sm:max-w-none sm:flex-row sm:items-center sm:pt-2 lg:max-w-none justify-center">
+		<section
+			className="relative flex min-h-screen flex-col overflow-hidden bg-black"
+			style={{
+				marginTop: "-7rem",
+				marginLeft: "-1rem",
+				marginRight: "-1rem",
+				width: "calc(100% + 2rem)",
+			}}
+		>
+			{/* ── Background image ── */}
+			<Image
+				src="/space.png"
+				alt=""
+				fill
+				priority
+				className="object-cover object-[center_-10%]"
+				sizes="100vw"
+			/>
+
+			{/* Dark base overlay */}
+			<div className="absolute inset-0 bg-black/50" aria-hidden />
+
+			{/* Top gradient - keeps the floating navbar readable */}
+			<div
+				className="pointer-events-none absolute left-0 right-0 top-0 h-52"
+				aria-hidden
+				style={{
+					background:
+						"linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.38) 55%, transparent 100%)",
+				}}
+			/>
+
+			{/* ── Hero content ── */}
+			<motion.div
+				className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pt-36 pb-10 text-center"
+				variants={heroContainer}
+				initial="hidden"
+				animate="show"
+			>
+				{/* Headline - three lines stagger in with blur-to-sharp */}
+				<motion.h1
+					variants={headlineContainer}
+					className="font-outfit font-medium leading-[1] tracking-[-0.025em] text-white"
+					style={{ fontSize: "clamp(3.5rem, 7vw, 6rem)", maxWidth: "16ch" }}
+				>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						Sovereign AI
+					</motion.span>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						Operating Layer
+					</motion.span>
+					<motion.span variants={headlineLine} style={{ display: "block" }}>
+						for <span className="hero-illuminated-word">Aerospace Teams</span>
+					</motion.span>
+				</motion.h1>
+
+				{/* Sub-headline */}
+				<motion.p
+					variants={heroItem}
+					className="mt-7 text-base leading-7 text-white/70 sm:text-lg sm:leading-8"
+					style={{ maxWidth: "52ch" }}
+				>
+					Deploy domain-expert AI models and agents in your workflows -
+					securely, compliantly, mission-ready from day one.
+				</motion.p>
+
+				{/* CTA row */}
+				<motion.div
+					variants={heroItem}
+					className="mt-10 flex flex-wrap items-center justify-center gap-4"
+				>
 					<CeramicButton
 						href="/request-demo"
-						color="rgba(255, 255, 255, 0.06)"
-						ringColor="rgba(255, 255, 255, 0.22)"
-						textColor="var(--color-white)"
-						borderRadius={9999}
-						padding="8px 16px"
-						centered
+						color="#ffffff"
+						textColor="#0a0a0b"
+						ringColor="rgba(255,255,255,0.22)"
+						borderRadius={8}
+						padding="11px 24px"
+						fontSize={13}
 					>
-						REQUEST A DEMO
+						Request a Demo
 					</CeramicButton>
-				</div>
-			</div>
-		</div>
+					<CeramicButton
+						href="/our-tech"
+						color="rgba(255,255,255,0.05)"
+						textColor="#ffffff"
+						ringColor="rgba(255,255,255,0.14)"
+						borderRadius={8}
+						padding="11px 24px"
+						fontSize={13}
+					>
+						Explore Our Tech
+					</CeramicButton>
+				</motion.div>
+			</motion.div>
+
+			{/* ── Trusted-by strip - fades in after the main content settles ── */}
+			<motion.div
+				className="relative z-10 w-full pb-14 pt-2"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
+			>
+				<p className="mb-6 text-center font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-white/25">
+					Trusted by industry leaders
+				</p>
+
+				<section
+					className="relative mx-auto w-full min-w-0 overflow-hidden"
+					aria-label="Trusted by logo carousel"
+					style={{
+						WebkitMaskImage:
+							"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+						maskImage:
+							"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+					}}
+				>
+					<div className="hero-marquee-track flex w-max items-center gap-x-6 sm:gap-x-10 md:gap-x-12 lg:gap-x-16 xl:gap-x-20">
+						{MARQUEE_LOGOS.map(({ src, alt, scale, dup }) => (
+							<div
+								key={`${src}-${alt}-${dup}`}
+								className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px]"
+							>
+								<div
+									className="flex items-center justify-center"
+									style={{
+										transform: `scale(${scale ?? 1})`,
+										transformOrigin: "center",
+									}}
+								>
+									<Image
+										src={src}
+										alt={alt}
+										width={360}
+										height={120}
+										sizes="(max-width: 640px) 160px, 200px"
+										className="h-9 w-auto object-contain brightness-0 invert opacity-35 transition-opacity duration-300 hover:opacity-65 sm:h-10 md:h-11"
+										decoding="async"
+									/>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
+
+				<style jsx>{`
+          @keyframes heroMarquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .hero-marquee-track {
+            animation: heroMarquee 60s linear infinite;
+            will-change: transform;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .hero-marquee-track { animation: none; }
+          }
+        `}</style>
+			</motion.div>
+		</section>
 	);
 }

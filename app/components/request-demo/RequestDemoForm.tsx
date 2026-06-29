@@ -2,7 +2,10 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { motion } from "motion/react";
 import toast from "react-hot-toast";
+
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 import { type FormErrors, type FormValues, initialValues, validate, validateField } from "./form-types-validation";
 import { RequestDemoFormContact } from "./RequestDemoFormContact";
 import { RequestDemoFormHelp } from "./RequestDemoFormHelp";
@@ -63,7 +66,12 @@ export function RequestDemoForm() {
 	const fieldProps = { values, errors, onChange: handleChange, onBlur: handleBlur };
 
 	return (
-		<div className="min-w-0 w-full rounded-2xl border border-border  p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6">
+		<motion.div
+			className="min-w-0 w-full rounded-2xl border border-border p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6"
+			initial={{ opacity: 0, y: 20, scale: 0.98 }}
+			animate={{ opacity: 1, y: 0, scale: 1 }}
+			transition={{ duration: 0.5, ease: EASE_OUT }}
+		>
 			<form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
 				<RequestDemoFormPersonal {...fieldProps} />
 				<RequestDemoFormWork {...fieldProps} />
@@ -71,6 +79,6 @@ export function RequestDemoForm() {
 				<RequestDemoFormHelp {...fieldProps} />
 				<RequestDemoFormSubmitAndAlternates isSubmitting={isSubmitting} />
 			</form>
-		</div>
+		</motion.div>
 	);
 }

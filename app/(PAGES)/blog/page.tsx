@@ -1,39 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Reveal from "@/app/components/ui/reveal";
+import BlogClient from "./BlogClient";
 
 export const metadata: Metadata = {
-	title: "Blog - SPAIDER",
+	title: "Blog",
 	description: "News and deep dives from the SPAIDER team - AI, aerospace, and sovereignty.",
 };
 
-const blogs = [
-	{
-		href: "/blog/innospace",
-		title: "We Secured 2nd Place at INNOspace Masters 2025",
-		excerpt: "AI agents in mission-grade environments at Europe’s leading space innovation arena — OHB Challenge, Bonn.",
-		date: "September 2025",
-	},
-];
 
 export default function BlogPage() {
-	return (
-		<section className="w-full min-w-0 space-y-6 sm:space-y-8">
-			<Reveal as="h1" variant="fade-up" threshold={0.35} className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">
-				Blogs
-			</Reveal>
-
-			<div className="grid gap-4 sm:gap-5">
-				{blogs.map((blog, index) => (
-					<Reveal key={blog.href} as="div" variant={index % 2 === 0 ? "fade-right" : "fade-left"} threshold={0.2} delayMs={index * 90}>
-						<Link href={blog.href} className="block min-w-0 rounded-xl border-2 border-border  p-4 transition hover:border-primary/40 hover:bg-muted/40 sm:p-5">
-							<h2 className="text-base font-semibold leading-snug text-foreground sm:text-lg lg:text-xl font-montserrat">{blog.title}</h2>
-							<p className="mt-2 text-xs leading-relaxed text-foreground sm:text-sm lg:text-base font-inter">{blog.excerpt}</p>
-							<p className="mt-2 text-xs text-muted">{blog.date}</p>
-						</Link>
-					</Reveal>
-				))}
-			</div>
-		</section>
-	);
+	return <BlogClient />;
 }

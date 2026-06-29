@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import CtaPanel from "@/app/components/CtaPanel";
 import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
+import AnimatedHeader from "@/app/components/our-tech/AnimatedHeader";
+import AnimatedCardText from "@/app/components/our-tech/AnimatedCardText";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: "Our Tech - SPAIDER",
-	description: "European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+	title: "Our Tech",
+	description:
+		"European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
 };
 
 type Sec = {
@@ -26,13 +29,13 @@ const SECTIONS: Sec[] = [
 	{
 		title: "Adopt AI step by step",
 		subtitle: "Start with your data. Add agents when ready",
-		body: "First we set up a secure retrieval layer (RAG) over your documents and tools. Then we plug in ready-made agents for high-value tasks (like RFP analysis). When you need more, you customise and orchestrate on the same base—no rework, no new pipelines.",
+		body: "First we set up a secure retrieval layer (RAG) over your documents and tools. Then we plug in ready-made agents for high-value tasks (like RFP analysis). When you need more, you customise and orchestrate on the same base-no rework, no new pipelines.",
 		img: "/tech/infotech2.svg",
 	},
 	{
 		title: "You choose where it runs",
 		subtitle: "EU cloud or on-prem. Full audit and access control",
-		body: "The stack is modular and containerised. Run in your VPC or inside your network, even in isolated environments. You keep control of data, identities, permissions, and logs—with clean integration into your existing systems and no vendor lock-in.",
+		body: "The stack is modular and containerised. Run in your VPC or inside your network, even in isolated environments. You keep control of data, identities, permissions, and logs-with clean integration into your existing systems and no vendor lock-in.",
 		img: "/tech/infotech3.svg",
 	},
 	{
@@ -45,11 +48,8 @@ const SECTIONS: Sec[] = [
 
 export default function OurTechPage() {
 	return (
-		<div className="w-full min-w-0 space-y-6 pb-10 sm:space-y-8 sm:pb-12 md:space-y-10">
-			<Reveal as="header" variant="fade-up" threshold={0.35} className="space-y-3 sm:space-y-4">
-				<h2 className="font-montserrat text-xl font-semibold tracking-tight text-foreground sm:text-2xl lg:text-3xl">Our tech</h2>
-				<p className="text-xs leading-6 text-muted font-inter sm:text-sm sm:leading-7 lg:text-base lg:leading-7">A sovereign, modular AI stack built for aerospace teams that need reliability, security, and full deployment control.</p>
-			</Reveal>
+		<div className="min-w-0 mx-auto w-full max-w-7xl">
+			<AnimatedHeader />
 
 			<main className="relative min-w-0 text-foreground">
 				{/* 4 repeated sections */}
@@ -57,9 +57,16 @@ export default function OurTechPage() {
 					{SECTIONS.map((s, i) => {
 						const isSvg = s.img.toLowerCase().endsWith(".svg");
 						return (
-							<article key={s.title} className="grid min-w-0 grid-cols-1 items-stretch gap-3 rounded-xl border border-border-card bg-card p-3 shadow-sm sm:gap-4 sm:p-4 md:grid-cols-2 md:gap-5">
+							<article
+								key={s.title}
+								className="grid min-w-0 grid-cols-1 items-stretch gap-4 rounded-xl border border-border-card bg-card p-4 shadow-sm sm:gap-5 sm:p-5 md:grid-cols-2 md:gap-6 md:p-5"
+							>
 								{/* Image left */}
-								<Reveal variant={i % 2 === 0 ? "fade-right" : "fade-left"} threshold={0.25} className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl">
+								<Reveal
+									variant={i % 2 === 0 ? "fade-right" : "fade-left"}
+									threshold={0.25}
+									className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl"
+								>
 									<div
 										aria-hidden
 										className="absolute inset-0 z-0"
@@ -87,33 +94,46 @@ export default function OurTechPage() {
 										/>
 									) : (
 										<div className="relative z-10 aspect-4/3 md:aspect-3/2">
-											<Image src={s.img} alt={s.title} fill className="object-cover" sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 512px" priority={i === 0} quality={80} />
+											<Image
+												src={s.img}
+												alt={s.title}
+												fill
+												className="object-cover"
+												sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 512px"
+												priority={i === 0}
+												quality={80}
+											/>
 										</div>
 									)}
 								</Reveal>
 
 								{/* Text right panel */}
-								<Reveal variant={i % 2 === 0 ? "fade-left" : "fade-right"} threshold={0.25} delayMs={120} className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-panel sm:rounded-xl">
-									<div className="absolute inset-0 bg-linear-to-br from-background/55 via-panel to-background/70" />
-									<div className="relative p-3 sm:p-4 md:p-5">
-										<h3 className="font-montserrat text-base font-semibold tracking-tight text-foreground sm:text-lg lg:text-xl">{s.title}</h3>
-										<p className="mt-1.5 text-xs tracking-[0.12em] leading-5 text-muted font-inter">{s.subtitle.toUpperCase()}</p>
-										<div className="mt-2.5 h-px w-28 bg-border-card sm:mt-3 sm:w-32 md:w-48" />
-										<p className="mt-2.5 text-xs leading-6 text-foreground font-inter sm:mt-3 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{s.body}</p>
-									</div>
-								</Reveal>
+								<AnimatedCardText
+									title={s.title}
+									subtitle={s.subtitle}
+									body={s.body}
+								/>
 							</article>
 						);
 					})}
 				</section>
 
-				<Reveal variant="fade-up" threshold={0.2} className="mt-6 sm:mt-8 md:mt-10">
+				<Reveal variant="fade-up" threshold={0.2}>
 					<IntegrationsGallery />
 				</Reveal>
 
 				{/* CTA PANEL (BEFORE FOOTER) */}
-				<Reveal variant="scale" threshold={0.25} className="mt-8 sm:mt-10 md:mt-12">
-					<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life — faster." ctaHref="/book-demo" ctaLabel="Talk to us" />
+				<Reveal
+					variant="scale"
+					threshold={0.25}
+					className="mt-12 sm:mt-16 md:mt-20"
+				>
+					<CtaPanel
+						title="Got a use case in mind? Let's make it real."
+						copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life - faster."
+						ctaHref="/request-demo"
+						ctaLabel="Talk to us"
+					/>
 				</Reveal>
 			</main>
 		</div>

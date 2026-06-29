@@ -16,7 +16,7 @@ const faqs = [
 	{
 		question: "What is the best first use case?",
 		answer:
-			"Start with a workflow that is repetitive, document-heavy, and high value — such as proposal response, knowledge retrieval, or internal engineering support.",
+			"Start with a workflow that is repetitive, document-heavy, and high value - such as proposal response, knowledge retrieval, or internal engineering support.",
 	},
 	{
 		question: "How do you keep outputs reliable?",
@@ -278,10 +278,10 @@ function FAQ() {
 
 	return (
 		<div className="relative mt-12 w-full min-w-0 transition-colors duration-700 sm:mt-16 md:mt-20 lg:mt-24">
-			<section className={`relative z-10 mx-auto flex min-w-0 flex-col gap-8 sm:gap-10 md:gap-12 ${hasEntered ? "faq1-fade--ready" : "faq1-fade"}`}>
-				<header className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between md:gap-8">
-					<div className="space-y-3 sm:space-y-4">
-						<h2 className={`font-montserrat text-xl font-semibold leading-tight text-muted sm:text-2xl lg:text-3xl`}>FAQs</h2>
+			<section className={`relative z-10 mx-auto flex min-w-0 flex-col gap-6 sm:gap-8 md:gap-10 ${hasEntered ? "faq1-fade--ready" : "faq1-fade"}`}>
+				<header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
+					<div className="space-y-2 sm:space-y-3">
+						<h2 className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">FAQs</h2>
 					</div>
 				</header>
 
@@ -316,7 +316,7 @@ function FAQ() {
 											["--faq-outline" as any]: theme === "dark" ? "rgba(255,255,255,0.35)" : "rgba(17,17,17,0.25)",
 										} as CSSProperties
 									}
-									className={`relative flex w-full cursor-pointer gap-3 px-4 py-4 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)] sm:gap-5 sm:px-6 sm:py-6 ${open ? "items-start" : "items-center"}`}
+									className={`relative flex w-full cursor-pointer gap-3 px-4 py-3 text-left transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--faq-outline)] sm:gap-4 sm:px-5 sm:py-5 ${open ? "items-start" : "items-center"}`}
 								>
 									<span className={`relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-105 sm:h-10 sm:w-10 ${palette.iconRing} ${palette.iconSurface}`}>
 										<span className={`pointer-events-none absolute inset-0 rounded-full border opacity-30 ${palette.iconRing} ${open ? "animate-ping" : ""}`} />
@@ -326,9 +326,9 @@ function FAQ() {
 										</svg>
 									</span>
 
-									<div className="flex min-w-0 flex-1 flex-col gap-3 sm:gap-4">
-										<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-											<h2 className={`text-sm font-medium leading-snug sm:text-base lg:text-lg text-foreground`}>{item.question}</h2>
+									<div className="flex min-w-0 flex-1 flex-col gap-2 sm:gap-3">
+										<div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
+											<h2 className={`text-base font-medium leading-snug sm:text-lg text-foreground`}>{item.question}</h2>
 										</div>
 									</div>
 								</button>
@@ -337,7 +337,7 @@ function FAQ() {
 									className={`grid leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} text-muted`}
 								>
 									<div className="min-h-0 overflow-hidden">
-										<div className={`px-4 transition-all duration-500 ease-out sm:px-6 ${open ? "pb-4 opacity-100 translate-y-0 sm:pb-6" : "pb-0 opacity-0 -translate-y-1"}`}>
+										<div className={`px-4 transition-all duration-500 ease-out sm:px-5 ${open ? "pb-3 opacity-100 translate-y-0 sm:pb-5" : "pb-0 opacity-0 -translate-y-1"}`}>
 											<p className="pr-2">{item.answer}</p>
 										</div>
 									</div>
