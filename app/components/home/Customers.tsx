@@ -43,7 +43,7 @@ export default function Customers() {
 					{MARQUEE_LOGOS.map(({ src, alt, scale, dup }) => (
 						<div
 							key={`${src}-${alt}-${dup}`}
-							className="flex w-[132px] shrink-0 items-center justify-center sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]"
+							className="flex w-[132px] shrink-0 flex-col items-center gap-2 sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]"
 						>
 							<div
 								className="flex items-center justify-center"
@@ -59,6 +59,7 @@ export default function Customers() {
 									decoding="async"
 								/>
 							</div>
+							<span className="font-montserrat text-[10px] font-medium tracking-wide text-muted/50">{alt}</span>
 						</div>
 					))}
 				</div>

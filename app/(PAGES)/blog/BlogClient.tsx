@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRightIcon } from "lucide-react";
 
-// Cinematic expo ease — identical to CareersHero heading
+// Cinematic expo ease - identical to CareersHero heading
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
-// Strong ease-out for cards — starts fast, lands clean
+// Strong ease-out for cards - starts fast, lands clean
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 const gridVariants = {
@@ -39,7 +39,7 @@ const blogs: Blog[] = [
 		image: "/blog/innospace.png",
 		title: "We Secured 2nd Place at INNOspace Masters 2025",
 		excerpt:
-			"AI agents in mission-grade environments at Europe's leading space innovation arena — OHB Challenge, Bonn.",
+			"AI agents in mission-grade environments at Europe's leading space innovation arena - OHB Challenge, Bonn.",
 		date: "September 2025",
 	},
 ];
@@ -47,7 +47,7 @@ const blogs: Blog[] = [
 export default function BlogClient() {
 	return (
 		<section className="w-full min-w-0 max-w-7xl mx-auto pb-16 sm:pb-20 md:pb-24 space-y-8 sm:space-y-10 md:space-y-12">
-			{/* Heading — cinematic blur + rise */}
+			{/* Heading - cinematic blur + rise */}
 			<motion.h1
 				className="font-outfit text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-5xl"
 				initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
@@ -57,7 +57,7 @@ export default function BlogClient() {
 				Blog
 			</motion.h1>
 
-			{/* Card grid — stagger after heading settles */}
+			{/* Card grid - stagger after heading settles */}
 			<motion.div
 				className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6"
 				variants={gridVariants}
@@ -65,7 +65,11 @@ export default function BlogClient() {
 				animate="show"
 			>
 				{blogs.map((blog) => (
-					<motion.div key={blog.href} variants={cardVariants} className="h-full">
+					<motion.div
+						key={blog.href}
+						variants={cardVariants}
+						className="h-full"
+					>
 						<Link
 							href={blog.href}
 							className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition-colors duration-200 hover:border-accent/30 sm:rounded-2xl"

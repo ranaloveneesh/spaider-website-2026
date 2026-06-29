@@ -22,7 +22,7 @@ const MARQUEE_LOGOS: MarqueeLogo[] = [
 ];
 
 // ─── Animation constants ──────────────────────────────────────────────────────
-// Expo-out easing — Emil Kowalski's preferred curve for cinematic UI
+// Expo-out easing - Emil Kowalski's preferred curve for cinematic UI
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
 
 /** Outer content container: staggers h1 block → sub-headline → CTAs */
@@ -44,7 +44,7 @@ const headlineContainer = {
 	},
 };
 
-/** Each headline line: blur + fade + lift — feels like a sensor acquiring lock */
+/** Each headline line: blur + fade + lift - feels like a sensor acquiring lock */
 const headlineLine = {
 	hidden: { opacity: 0, y: 22, filter: "blur(6px)" },
 	show: {
@@ -107,7 +107,7 @@ export default function Hero() {
 				initial="hidden"
 				animate="show"
 			>
-				{/* Headline — three lines stagger in with blur-to-sharp */}
+				{/* Headline - three lines stagger in with blur-to-sharp */}
 				<motion.h1
 					variants={headlineContainer}
 					className="font-outfit font-medium leading-[1] tracking-[-0.025em] text-white"
@@ -120,8 +120,7 @@ export default function Hero() {
 						Operating Layer
 					</motion.span>
 					<motion.span variants={headlineLine} style={{ display: "block" }}>
-						for{" "}
-						<span className="hero-illuminated-word">Aerospace Teams</span>
+						for <span className="hero-illuminated-word">Aerospace Teams</span>
 					</motion.span>
 				</motion.h1>
 
@@ -131,8 +130,8 @@ export default function Hero() {
 					className="mt-7 text-base leading-7 text-white/70 sm:text-lg sm:leading-8"
 					style={{ maxWidth: "52ch" }}
 				>
-					Deploy domain-expert AI models and agents in your workflows - securely,
-					compliantly, mission-ready from day one.
+					Deploy domain-expert AI models and agents in your workflows -
+					securely, compliantly, mission-ready from day one.
 				</motion.p>
 
 				{/* CTA row */}
@@ -165,7 +164,7 @@ export default function Hero() {
 				</motion.div>
 			</motion.div>
 
-			{/* ── Trusted-by strip — fades in after the main content settles ── */}
+			{/* ── Trusted-by strip - fades in after the main content settles ── */}
 			<motion.div
 				className="relative z-10 w-full pb-14 pt-2"
 				initial={{ opacity: 0 }}
@@ -194,7 +193,10 @@ export default function Hero() {
 							>
 								<div
 									className="flex items-center justify-center"
-									style={{ transform: `scale(${scale ?? 1})`, transformOrigin: "center" }}
+									style={{
+										transform: `scale(${scale ?? 1})`,
+										transformOrigin: "center",
+									}}
 								>
 									<Image
 										src={src}

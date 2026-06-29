@@ -10,7 +10,7 @@ import { Label } from "@/app/components/ui/label";
 import { Textarea } from "@/app/components/ui/textarea";
 import { cn } from "@/app/lib/utils";
 
-// Strong ease-out — starts fast, feels immediately responsive (Emil principle)
+// Strong ease-out - starts fast, feels immediately responsive (Emil principle)
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 type FormValues = {
@@ -31,11 +31,19 @@ const initialValues: FormValues = {
 	message: "",
 };
 
-const requiredFields: Array<keyof FormValues> = ["firstname", "lastname", "email"];
+const requiredFields: Array<keyof FormValues> = [
+	"firstname",
+	"lastname",
+	"email",
+];
 
 function validateField(name: keyof FormValues, values: FormValues): string {
 	const value = values[name];
-	if (requiredFields.includes(name) && typeof value === "string" && !value.trim()) {
+	if (
+		requiredFields.includes(name) &&
+		typeof value === "string" &&
+		!value.trim()
+	) {
 		return "This field is required.";
 	}
 	if (name === "email" && values.email.trim()) {
@@ -51,7 +59,11 @@ function validateField(name: keyof FormValues, values: FormValues): string {
 
 function validate(values: FormValues): FormErrors {
 	const nextErrors: FormErrors = {};
-	(["firstname", "lastname", "email", "phone", "message"] as Array<keyof FormValues>).forEach((field) => {
+	(
+		["firstname", "lastname", "email", "phone", "message"] as Array<
+			keyof FormValues
+		>
+	).forEach((field) => {
 		const error = validateField(field, values);
 		if (error) nextErrors[field] = error;
 	});
@@ -102,7 +114,7 @@ export function InvestForm() {
 	};
 
 	return (
-		// Card entry: fade-up + scale from 0.98 (nothing appears from nothing — Emil)
+		// Card entry: fade-up + scale from 0.98 (nothing appears from nothing - Emil)
 		<motion.div
 			className="min-w-0 w-full rounded-2xl border border-border p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6"
 			initial={{ opacity: 0, y: 20, scale: 0.98 }}
@@ -110,8 +122,7 @@ export function InvestForm() {
 			transition={{ duration: 0.5, ease: EASE_OUT }}
 		>
 			<form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
-
-				{/* Row 1 — Name fields */}
+				{/* Row 1 - Name fields */}
 				<motion.div
 					className="mb-4 flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2"
 					initial={{ opacity: 0, y: 8 }}
@@ -122,7 +133,19 @@ export function InvestForm() {
 						<Label htmlFor="firstname">
 							First name <span className="text-destructive">*</span>
 						</Label>
-						<Input id="firstname" name="firstname" placeholder="John" type="text" value={values.firstname} onChange={(e) => handleChange("firstname", e.target.value)} onBlur={() => handleBlur("firstname")} aria-invalid={!!errors.firstname} aria-describedby={errors.firstname ? "firstname-error" : undefined} />
+						<Input
+							id="firstname"
+							name="firstname"
+							placeholder="John"
+							type="text"
+							value={values.firstname}
+							onChange={(e) => handleChange("firstname", e.target.value)}
+							onBlur={() => handleBlur("firstname")}
+							aria-invalid={!!errors.firstname}
+							aria-describedby={
+								errors.firstname ? "firstname-error" : undefined
+							}
+						/>
 						<AnimatePresence>
 							{errors.firstname && (
 								<motion.p
@@ -144,7 +167,17 @@ export function InvestForm() {
 						<Label htmlFor="lastname">
 							Last name <span className="text-destructive">*</span>
 						</Label>
-						<Input id="lastname" name="lastname" placeholder="Doe" type="text" value={values.lastname} onChange={(e) => handleChange("lastname", e.target.value)} onBlur={() => handleBlur("lastname")} aria-invalid={!!errors.lastname} aria-describedby={errors.lastname ? "lastname-error" : undefined} />
+						<Input
+							id="lastname"
+							name="lastname"
+							placeholder="Doe"
+							type="text"
+							value={values.lastname}
+							onChange={(e) => handleChange("lastname", e.target.value)}
+							onBlur={() => handleBlur("lastname")}
+							aria-invalid={!!errors.lastname}
+							aria-describedby={errors.lastname ? "lastname-error" : undefined}
+						/>
 						<AnimatePresence>
 							{errors.lastname && (
 								<motion.p
@@ -164,7 +197,7 @@ export function InvestForm() {
 					</LabelInputContainer>
 				</motion.div>
 
-				{/* Row 2 — Email + Phone */}
+				{/* Row 2 - Email + Phone */}
 				<motion.div
 					className="mb-4 flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2"
 					initial={{ opacity: 0, y: 8 }}
@@ -175,7 +208,17 @@ export function InvestForm() {
 						<Label htmlFor="email">
 							Email <span className="text-destructive">*</span>
 						</Label>
-						<Input id="email" name="email" placeholder="you@email.com" type="email" value={values.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+						<Input
+							id="email"
+							name="email"
+							placeholder="you@email.com"
+							type="email"
+							value={values.email}
+							onChange={(e) => handleChange("email", e.target.value)}
+							onBlur={() => handleBlur("email")}
+							aria-invalid={!!errors.email}
+							aria-describedby={errors.email ? "email-error" : undefined}
+						/>
 						<AnimatePresence>
 							{errors.email && (
 								<motion.p
@@ -195,7 +238,17 @@ export function InvestForm() {
 					</LabelInputContainer>
 					<LabelInputContainer>
 						<Label htmlFor="phone">Mobile number</Label>
-						<Input id="phone" name="phone" placeholder="+352 6x xx xx xx" type="tel" value={values.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
+						<Input
+							id="phone"
+							name="phone"
+							placeholder="+352 6x xx xx xx"
+							type="tel"
+							value={values.phone}
+							onChange={(e) => handleChange("phone", e.target.value)}
+							onBlur={() => handleBlur("phone")}
+							aria-invalid={!!errors.phone}
+							aria-describedby={errors.phone ? "phone-error" : undefined}
+						/>
 						<AnimatePresence>
 							{errors.phone && (
 								<motion.p
@@ -215,7 +268,7 @@ export function InvestForm() {
 					</LabelInputContainer>
 				</motion.div>
 
-				{/* Row 3 — Message */}
+				{/* Row 3 - Message */}
 				<motion.div
 					initial={{ opacity: 0, y: 8 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -223,7 +276,17 @@ export function InvestForm() {
 				>
 					<LabelInputContainer className="mb-4">
 						<Label htmlFor="message">Message</Label>
-						<Textarea id="message" name="message" placeholder="Tell us more..." rows={3} value={values.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
+						<Textarea
+							id="message"
+							name="message"
+							placeholder="Tell us more..."
+							rows={3}
+							value={values.message}
+							onChange={(e) => handleChange("message", e.target.value)}
+							onBlur={() => handleBlur("message")}
+							aria-invalid={!!errors.message}
+							aria-describedby={errors.message ? "message-error" : undefined}
+						/>
 						<AnimatePresence>
 							{errors.message && (
 								<motion.p
@@ -243,7 +306,7 @@ export function InvestForm() {
 					</LabelInputContainer>
 				</motion.div>
 
-				{/* Row 4 — Submit (whileTap scale — Emil button press rule) */}
+				{/* Row 4 - Submit (whileTap scale - Emil button press rule) */}
 				<motion.div
 					initial={{ opacity: 0, y: 8 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -270,6 +333,21 @@ export function InvestForm() {
 	);
 }
 
-const LabelInputContainer = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-	return <div className={cn("flex w-full min-w-0 flex-col space-y-2 sm:flex-1", className)}>{children}</div>;
+const LabelInputContainer = ({
+	children,
+	className,
+}: {
+	children: React.ReactNode;
+	className?: string;
+}) => {
+	return (
+		<div
+			className={cn(
+				"flex w-full min-w-0 flex-col space-y-2 sm:flex-1",
+				className,
+			)}
+		>
+			{children}
+		</div>
+	);
 };

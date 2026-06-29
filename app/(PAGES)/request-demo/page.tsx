@@ -3,7 +3,7 @@ import { RequestDemoFormLazy } from "@/app/components/request-demo/RequestDemoFo
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: "Request a demo - SPAIDER",
+	title: "Request a Demo",
 	description: "Book a demo of SPAIDER - sovereign AI agents for your aerospace team.",
 };
 

@@ -44,11 +44,22 @@ export default function OnboardingTimeline() {
 			className="how-we-work-section relative w-full text-foreground mt-12 sm:mt-16 md:mt-20 lg:mt-24"
 		>
 			<div className="flex flex-col items-start justify-between">
-				<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+				<Reveal
+					as="h2"
+					variant="fade-up"
+					threshold={0.35}
+					className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl"
+				>
 					Seamless Onboarding
 				</Reveal>
 
-				<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
+				<Reveal
+					as="p"
+					variant="fade-up"
+					threshold={0.35}
+					delayMs={80}
+					className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base"
+				>
 					Four steps from setup to a fully operational AI proposal engine.
 				</Reveal>
 			</div>
@@ -62,13 +73,16 @@ export default function OnboardingTimeline() {
 					{STEPS.map((item, index) => {
 						const even = index % 2 === 1;
 						return (
-							<div key={item.title} className="relative flex flex-col items-center justify-between md:flex-row">
+							<div
+								key={item.title}
+								className="relative flex flex-col items-center justify-between md:flex-row"
+							>
 								<div
 									className="timeline-dot absolute left-1/2 hidden -translate-x-1/2 md:block"
 									style={{ top: "1.25rem" }}
 								/>
 
-								{/* Text block — slides in from its natural side */}
+								{/* Text block - slides in from its natural side */}
 								<Reveal
 									variant={even ? "fade-right" : "fade-left"}
 									threshold={0.2}
@@ -83,7 +97,7 @@ export default function OnboardingTimeline() {
 									</p>
 								</Reveal>
 
-								{/* Mobile image — compact, fades up */}
+								{/* Mobile image - compact, fades up */}
 								<Reveal
 									variant="fade-up"
 									threshold={0.2}
@@ -101,7 +115,7 @@ export default function OnboardingTimeline() {
 									/>
 								</Reveal>
 
-								{/* Desktop image — slides in from opposite side */}
+								{/* Desktop image - slides in from opposite side */}
 								<Reveal
 									variant={even ? "fade-left" : "fade-right"}
 									threshold={0.2}

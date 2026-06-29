@@ -13,6 +13,7 @@ const PRIMARY_LINKS: NavLink[] = [
 	{ label: "OUR TECH", href: "/our-tech" },
 	{ label: "AI FOUNDATIONS", href: "/ai-foundations" },
 	{ label: "AGENTS", href: "/agents" },
+	{ label: "PRICING", href: "/pricing" },
 	{ label: "INVEST", href: "/invest" },
 	{ label: "BLOG", href: "/blog" },
 ];
@@ -21,7 +22,6 @@ type AgentLink = { label: string; href: string; description: string; comingSoon?
 
 const AGENTS_DROPDOWN_LINKS: AgentLink[] = [
 	{ label: "SAGAN", href: "/agents/sagan", description: "Autonomous proposal intelligence for aerospace procurement." },
-	{ label: "KEPLER", href: "/agents/kepler", description: "Mission planning & systems analysis agent.", comingSoon: true },
 ];
 
 const MOBILE_LINKS: NavLink[] = [...PRIMARY_LINKS, { label: "REQUEST A DEMO", href: "/request-demo" }];

@@ -4,7 +4,7 @@ import { EMAIL_ADDRESS } from "@/app/utils/constants";
 import PrivacyHero from "@/app/components/privacy/PrivacyHero";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - SPAIDER",
+	title: "Privacy Policy",
 	description: "How Spaider Space collects, uses, and protects personal data when you use spaiderspace.com.",
 };
 

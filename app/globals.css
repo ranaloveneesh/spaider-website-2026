@@ -73,7 +73,18 @@ body {
 	--color-destructive: var(--color-red);
 
 	--color-card: var(--color-card);
+	--color-card-foreground: var(--color-fg-primary);
 	--color-border-card: var(--color-card-border);
+
+	/* shadcn-compatible tokens */
+	--color-primary: var(--color-accent);
+	--color-primary-foreground: var(--color-fg-primary);
+	--color-secondary: var(--color-bg-secondary);
+	--color-secondary-foreground: var(--color-fg-primary);
+	--color-muted-foreground: var(--color-fg-tertiary);
+	--color-input: var(--color-border-primary);
+	--color-ring: var(--color-accent);
+	--color-destructive-foreground: var(--color-fg-primary);
 
 	/* Radii */
 	--radius-sm: var(--radius-8);

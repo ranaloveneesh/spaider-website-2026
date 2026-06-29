@@ -7,7 +7,7 @@ import SaganCTA from "../../../components/sagan/SaganCTA";
 import SaganHero from "../../../components/sagan/Hero";
 
 export const metadata: Metadata = {
-	title: "Sagan - SPAIDER",
+	title: "SAGAN",
 	description: "SAGAN - SPAIDER agent capabilities for aerospace programs and technical collaboration.",
 };
 

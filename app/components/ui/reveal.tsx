@@ -3,7 +3,13 @@
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 
-export type RevealVariant = "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale" | "zoom";
+export type RevealVariant =
+	| "fade-up"
+	| "fade-down"
+	| "fade-left"
+	| "fade-right"
+	| "scale"
+	| "zoom";
 
 type BaseRevealProps = {
 	variant?: RevealVariant;
@@ -17,11 +23,12 @@ type BaseRevealProps = {
 	replay?: boolean;
 };
 
-export type RevealProps<T extends React.ElementType = "div"> = BaseRevealProps & {
-	as?: T;
-} & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseRevealProps | "as">;
+export type RevealProps<T extends React.ElementType = "div"> =
+	BaseRevealProps & {
+		as?: T;
+	} & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseRevealProps | "as">;
 
-// ─── Pre-built motion element map — avoids runtime component creation ─────────
+// ─── Pre-built motion element map - avoids runtime component creation ─────────
 const MOTION_ELEMENTS = {
 	div: motion.div,
 	section: motion.section,
@@ -49,30 +56,30 @@ const MOTION_ELEMENTS = {
 const EASE = [0.25, 1, 0.5, 1] as const;
 
 const INITIAL = {
-	"fade-up":    { opacity: 0, y: 16 },
-	"fade-down":  { opacity: 0, y: -16 },
-	"fade-left":  { opacity: 0, x: -18 },
+	"fade-up": { opacity: 0, y: 16 },
+	"fade-down": { opacity: 0, y: -16 },
+	"fade-left": { opacity: 0, x: -18 },
 	"fade-right": { opacity: 0, x: 18 },
-	"scale":      { opacity: 0, scale: 0.96 },
-	"zoom":       { opacity: 0, y: 10, scale: 0.92, filter: "blur(8px)" },
+	scale: { opacity: 0, scale: 0.96 },
+	zoom: { opacity: 0, y: 10, scale: 0.92, filter: "blur(8px)" },
 } as const;
 
 const VISIBLE = {
-	"fade-up":    { opacity: 1, y: 0 },
-	"fade-down":  { opacity: 1, y: 0 },
-	"fade-left":  { opacity: 1, x: 0 },
+	"fade-up": { opacity: 1, y: 0 },
+	"fade-down": { opacity: 1, y: 0 },
+	"fade-left": { opacity: 1, x: 0 },
 	"fade-right": { opacity: 1, x: 0 },
-	"scale":      { opacity: 1, scale: 1 },
-	"zoom":       { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+	scale: { opacity: 1, scale: 1 },
+	zoom: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
 } as const;
 
 const DURATIONS = {
-	"fade-up":    0.5,
-	"fade-down":  0.5,
-	"fade-left":  0.55,
+	"fade-up": 0.5,
+	"fade-down": 0.5,
+	"fade-left": 0.55,
 	"fade-right": 0.55,
-	"scale":      0.5,
-	"zoom":       0.65,
+	scale: 0.5,
+	zoom: 0.65,
 } as const;
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -90,7 +97,7 @@ export default function Reveal<T extends React.ElementType = "div">({
 }: RevealProps<T>) {
 	const shouldReduceMotion = useReducedMotion();
 
-	// Respect prefers-reduced-motion — render immediately, no animation
+	// Respect prefers-reduced-motion - render immediately, no animation
 	if (shouldReduceMotion) {
 		const Tag = (as ?? "div") as React.ElementType;
 		return (
@@ -101,8 +108,9 @@ export default function Reveal<T extends React.ElementType = "div">({
 	}
 
 	const MotionTag =
-		(MOTION_ELEMENTS as Record<string, React.ComponentType<any>>)[as as string]
-		?? motion.div;
+		(MOTION_ELEMENTS as Record<string, React.ComponentType<any>>)[
+			as as string
+		] ?? motion.div;
 
 	return (
 		<MotionTag

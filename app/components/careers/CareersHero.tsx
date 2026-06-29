@@ -43,15 +43,18 @@ export default function CareersHero() {
 			<div
 				className="pointer-events-none absolute inset-0 select-none"
 				style={{
-					backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
+					backgroundImage:
+						"radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px)",
 					backgroundSize: "32px 32px",
-					WebkitMaskImage: "radial-gradient(ellipse 75% 90% at 50% 50%, black 20%, transparent 100%)",
-					maskImage: "radial-gradient(ellipse 75% 90% at 50% 50%, black 20%, transparent 100%)",
+					WebkitMaskImage:
+						"radial-gradient(ellipse 75% 90% at 50% 50%, black 20%, transparent 100%)",
+					maskImage:
+						"radial-gradient(ellipse 75% 90% at 50% 50%, black 20%, transparent 100%)",
 				}}
 				aria-hidden
 			/>
 
-			{/* Accent radial glow — center */}
+			{/* Accent radial glow - center */}
 			<div
 				className="pointer-events-none absolute rounded-full"
 				style={{
@@ -61,12 +64,13 @@ export default function CareersHero() {
 					left: "50%",
 					marginTop: -260,
 					marginLeft: -260,
-					background: "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 15%, transparent) 0%, transparent 65%)",
+					background:
+						"radial-gradient(circle, color-mix(in srgb, var(--color-accent) 15%, transparent) 0%, transparent 65%)",
 				}}
 				aria-hidden
 			/>
 
-			{/* Orbit ring — outer (clockwise) */}
+			{/* Orbit ring - outer (clockwise) */}
 			<motion.div
 				className="pointer-events-none absolute rounded-full"
 				style={{
@@ -91,7 +95,7 @@ export default function CareersHero() {
 				/>
 			</motion.div>
 
-			{/* Orbit ring — inner (counter-clockwise) */}
+			{/* Orbit ring - inner (counter-clockwise) */}
 			<motion.div
 				className="pointer-events-none absolute rounded-full"
 				style={{
@@ -117,7 +121,7 @@ export default function CareersHero() {
 				/>
 			</motion.div>
 
-			{/* Logo — ghosted, slow breathing */}
+			{/* Logo - ghosted, slow breathing */}
 			<motion.div
 				className="pointer-events-none absolute select-none"
 				style={{ top: "50%", left: "50%", x: "-50%", y: "-50%" }}
@@ -136,7 +140,6 @@ export default function CareersHero() {
 
 			{/* ── Content ── */}
 			<div className="relative z-10 flex flex-col items-center gap-6">
-
 				<motion.h1
 					variants={headingVar}
 					className="mx-auto max-w-[18ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl md:text-6xl"
@@ -144,10 +147,7 @@ export default function CareersHero() {
 					We&apos;re solving AI solution for Aerospace Teams once and for all.
 				</motion.h1>
 
-				<motion.div
-					variants={fadeVar}
-					className="pt-1"
-				>
+				<motion.div variants={fadeVar} className="pt-1">
 					<CeramicButton
 						href="#open-roles"
 						color="#ffffff"

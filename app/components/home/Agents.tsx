@@ -26,7 +26,11 @@ const productRow = {
 /** custom = the x offset direction; each column receives its own custom value */
 const columnSlide = {
 	hidden: (x: number) => ({ opacity: 0, x }),
-	show: () => ({ opacity: 1, x: 0, transition: { duration: 0.55, ease: EASE } }),
+	show: () => ({
+		opacity: 1,
+		x: 0,
+		transition: { duration: 0.55, ease: EASE },
+	}),
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -76,22 +80,6 @@ const PRODUCTS = [
 		href: "/agents/sagan",
 		comingSoon: false,
 	},
-	{
-		number: "03",
-		tag: "Mission Operations",
-		heading: "KEPLER",
-		description:
-			"A mission operations co-pilot for monitored, human-in-the-loop workflows. Query procedures, triage anomalies, and stay in control - with AI as your co-pilot, not your autopilot.",
-		bullets: [
-			"Query procedures, logs, and mission knowledge faster.",
-			"Assist anomaly triage and operational review.",
-			"Support teams with context-aware operational guidance.",
-			"Keep humans in control for critical decisions.",
-		],
-		image: "/agents/kepler/2.png",
-		href: null,
-		comingSoon: true,
-	},
 ] as const;
 
 function ProductSection({
@@ -112,8 +100,10 @@ function ProductSection({
 			whileInView="show"
 			viewport={{ once: true, amount: 0.08 }}
 		>
-			<div className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}>
-				{/* ── Text column — slides in from its natural side ── */}
+			<div
+				className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}
+			>
+				{/* ── Text column - slides in from its natural side ── */}
 				<motion.div
 					className={`flex flex-col ${flip ? "md:order-2" : ""}`}
 					variants={columnSlide}
@@ -166,7 +156,7 @@ function ProductSection({
 					)}
 				</motion.div>
 
-				{/* ── Media column — slides in from the opposite side ── */}
+				{/* ── Media column - slides in from the opposite side ── */}
 				<motion.div
 					className={flip ? "md:order-1" : ""}
 					variants={columnSlide}
@@ -196,7 +186,7 @@ function ProductSection({
 					>
 						{/* Inner: overflow-hidden clips the Image corners cleanly to the inner radius */}
 						<div className="relative overflow-hidden rounded-[13px] bg-[#0c0c0d]">
-							{/* Top-edge highlight — the bright terminus of the gradient border */}
+							{/* Top-edge highlight - the bright terminus of the gradient border */}
 							<div
 								aria-hidden
 								className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px"
@@ -225,7 +215,7 @@ function ProductSection({
 export default function Agents() {
 	return (
 		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			{/* Section header — h2 then subtext stagger in on first pixel */}
+			{/* Section header - h2 then subtext stagger in on first pixel */}
 			<motion.div
 				className="mb-6 sm:mb-8"
 				variants={headerContainer}

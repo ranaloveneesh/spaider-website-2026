@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
 import Image from "next/image";
 import { ChevronDownIcon } from "lucide-react";
@@ -42,6 +42,20 @@ export default function WhySpaider({
 } = {}) {
     const activeItems = items ?? DEFAULT_ITEMS;
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const sectionRef = useRef<HTMLElement>(null);
+    const [sectionMinH, setSectionMinH] = useState<number | undefined>();
+
+    // After fonts load, snapshot the section height with item 0 open (the
+    // default and tallest state). This value becomes a floor so that
+    // switching to shorter accordion items never shrinks the section and
+    // shifts content below it.
+    useEffect(() => {
+        document.fonts.ready.then(() => {
+            if (sectionRef.current) {
+                setSectionMinH(sectionRef.current.offsetHeight);
+            }
+        });
+    }, []);
 
     useEffect(() => {
         const id = window.setTimeout(() => {
@@ -56,7 +70,7 @@ export default function WhySpaider({
     const hasPerItemContent = activeItems.some((item) => item.content != null);
 
     return (
-        <section className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
+        <section ref={sectionRef} style={{ minHeight: sectionMinH }} className="relative mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
             <div className="grid grid-cols-1 items-center gap-14 md:grid-cols-2 md:gap-16 lg:gap-20">
 
                 {/* ── Left: heading + accordion ── */}
@@ -106,7 +120,7 @@ export default function WhySpaider({
                                     <div>
                                         <button
                                             type="button"
-                                            onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                            onClick={() => setOpenIndex(i)}
                                             className="group flex w-full items-center justify-between py-[1.1rem] text-left"
                                             aria-expanded={openIndex === i}
                                         >

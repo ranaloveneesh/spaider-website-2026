@@ -120,7 +120,10 @@ function LogoItem({ item }: { item: Integration }) {
 	const scale = item.iconScale ?? (kind === "icon" ? 1.08 : 1.0);
 
 	return (
-		<div className="flex w-[96px] shrink-0 items-center justify-center sm:w-[132px] md:w-[160px] lg:w-[200px]" title={item.name}>
+		<div
+			className="flex w-[96px] shrink-0 items-center justify-center sm:w-[132px] md:w-[160px] lg:w-[200px]"
+			title={item.name}
+		>
 			{!broken ? (
 				<div
 					className="flex items-center justify-center"
@@ -129,10 +132,19 @@ function LogoItem({ item }: { item: Integration }) {
 						transformOrigin: "center",
 					}}
 				>
-					<Image src={item.src} alt={item.name} width={360} height={120} className="h-6 w-auto object-contain sm:h-8 md:h-10 lg:h-12" onError={() => setBroken(true)} />
+					<Image
+						src={item.src}
+						alt={item.name}
+						width={360}
+						height={120}
+						className="h-6 w-auto object-contain sm:h-8 md:h-10 lg:h-12"
+						onError={() => setBroken(true)}
+					/>
 				</div>
 			) : (
-				<div className="text-xs font-semibold text-muted sm:text-sm">{item.name}</div>
+				<div className="text-xs font-semibold text-muted sm:text-sm">
+					{item.name}
+				</div>
 			)}
 		</div>
 	);
@@ -141,24 +153,28 @@ function LogoItem({ item }: { item: Integration }) {
 export default function IntegrationsGallery() {
 	return (
 		<section className="mt-8 w-full min-w-0 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-24">
-			<h2 className="mb-6 font-outfit text-3xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-4xl md:mb-10 md:text-5xl lg:mb-12">Seamlessly integrate with your workflow</h2>
+			<h2 className="mb-6 font-outfit text-3xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-4xl md:mb-10 md:text-5xl lg:mb-12">
+				Seamlessly integrate with your workflow
+			</h2>
 
 			<section
 				className="mx-auto w-full min-w-0 space-y-4 overflow-hidden sm:space-y-16"
 				aria-label="Integrations logo carousel"
 				style={{
-					WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
-					maskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+					WebkitMaskImage:
+						"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+					maskImage:
+						"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
 				}}
 			>
-				{/* Row 1 — scrolls left */}
+				{/* Row 1 - scrolls left */}
 				<div className="integrations-marquee-left flex w-max items-center gap-x-4 sm:gap-x-8 md:gap-x-10 lg:gap-x-14 xl:gap-x-20">
 					{MARQUEE_ROW1.map((item) => (
 						<LogoItem key={`r1-${item.name}-${item.dup}`} item={item} />
 					))}
 				</div>
 
-				{/* Row 2 — scrolls right (same keyframe, reversed) */}
+				{/* Row 2 - scrolls right (same keyframe, reversed) */}
 				<div className="integrations-marquee-right flex w-max items-center gap-x-4 sm:mt-6 sm:gap-x-8 md:gap-x-10 lg:gap-x-14 xl:gap-x-20">
 					{MARQUEE_ROW2.map((item) => (
 						<LogoItem key={`r2-${item.name}-${item.dup}`} item={item} />

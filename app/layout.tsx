@@ -6,13 +6,11 @@ import { Toaster } from "@/app/components/Toaster";
 import { getSiteJsonLd } from "@/app/lib/structured-data";
 import "./globals.css";
 
-
 const outfit = Outfit({
 	variable: "--font-outfit",
 	subsets: ["latin"],
 	display: "swap",
 });
-
 
 const montserrat = Montserrat({
 	variable: "--font-montserrat",
@@ -20,26 +18,39 @@ const montserrat = Montserrat({
 	display: "swap",
 });
 
-
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.spaiderspace.com"),
 
-	title: "SPAIDER - The Sovereign AI Layer for Aerospace",
-	description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents that collaborate with your team on your data - securely, compliantly, and at scale.",
+	title: {
+		default: "SPAIDER Space - Sovereign AI for Aerospace",
+		template: "%s | SPAIDER Space",
+	},
+	description:
+		"SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents that collaborate with your team on your data - securely, compliantly, and at scale.",
 
-	keywords: ["SPAIDER", "AI for aerospace", "sovereign AI", "EU data sovereignty AI", "aerospace AI platform", "AI agents aerospace", "proposal automation aerospace", "SAGAN AI"],
+	keywords: [
+		"SPAIDER",
+		"AI for aerospace",
+		"sovereign AI",
+		"EU data sovereignty AI",
+		"aerospace AI platform",
+		"AI agents aerospace",
+		"proposal automation aerospace",
+		"SAGAN AI",
+	],
 
 	openGraph: {
-		title: "SPAIDER - The Sovereign AI Layer for Aerospace",
-		description: "Secure, European-sovereign AI infrastructure for aerospace. AI agents that work as domain-expert coworkers - on your data, inside your ecosystem.",
+		title: "SPAIDER Space - Sovereign AI for Aerospace",
+		description:
+			"Secure, European-sovereign AI infrastructure for aerospace. AI agents that work as domain-expert coworkers - on your data, inside your ecosystem.",
 		url: "https://www.spaiderspace.com",
-		siteName: "SPAIDER",
+		siteName: "SPAIDER Space",
 		images: [
 			{
 				url: "/og-image.png",
 				width: 1200,
 				height: 630,
-				alt: "SPAIDER - Sovereign AI Layer for Aerospace",
+				alt: "SPAIDER Space - Sovereign AI for Aerospace",
 			},
 		],
 		locale: "en_US",
@@ -48,10 +59,11 @@ export const metadata: Metadata = {
 
 	twitter: {
 		card: "summary_large_image",
-		title: "SPAIDER - The Sovereign AI Layer for Aerospace",
-		description: "AI agents for aerospace teams. Secure, sovereign, mission-ready.",
+		title: "SPAIDER Space - Sovereign AI for Aerospace",
+		description:
+			"AI agents for aerospace teams. Secure, sovereign, mission-ready.",
 		images: ["/og-image.png"],
-		creator: "@spaider_ai", // optional
+		creator: "@spaider_ai",
 	},
 
 	robots: {
@@ -81,12 +93,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${outfit.variable} ${montserrat.variable} h-full antialiased`}>
+		<html
+			lang="en"
+			className={`${outfit.variable} ${montserrat.variable} h-full antialiased`}
+		>
 			<body className="min-h-full flex flex-col bg-[#0f0f0f] text-foreground">
 				<JsonLd data={getSiteJsonLd()} />
 				<Toaster />
-				{/* <StarsBackground /> */}
-				{/* <SmoothScrollProvider>{children}</SmoothScrollProvider> */}
 				<div className="relative z-10">{children}</div>
 			</body>
 		</html>

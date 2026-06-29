@@ -1,6 +1,12 @@
 "use client";
 
-import { BarChart3, ChevronDown, Clock3, FolderKanban, Users } from "lucide-react";
+import {
+	BarChart3,
+	ChevronDown,
+	Clock3,
+	FolderKanban,
+	Users,
+} from "lucide-react";
 import { useState } from "react";
 import { motion } from "motion/react";
 import Reveal from "@/app/components/ui/reveal";
@@ -33,14 +39,26 @@ export default function RfpChallenge() {
 
 	return (
 		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
+			<Reveal
+				as="h2"
+				variant="fade-up"
+				threshold={0.35}
+				className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl"
+			>
 				The RFP Challenge
 			</Reveal>
 			<div className="mt-10 flex flex-col gap-10 md:flex-row md:justify-between md:gap-16 lg:gap-20">
 				<Reveal variant="fade-left" threshold={0.25} className="max-w-md">
-					<p className="w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">Every year, space organizations handle hundreds of RFPs, each requiring significant time from specialized engineering teams.</p>
+					<p className="w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+						Every year, space organizations handle hundreds of RFPs, each
+						requiring significant time from specialized engineering teams.
+					</p>
 
-					<p className="mt-3 w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 md:mt-4 lg:text-base lg:leading-7">With limited resources and growing competition, teams face tough choices on where to invest effort—risking delays and missed opportunities.</p>
+					<p className="mt-3 w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 md:mt-4 lg:text-base lg:leading-7">
+						With limited resources and growing competition, teams face tough
+						choices on where to invest effort-risking delays and missed
+						opportunities.
+					</p>
 
 					{/* Toggle (mobile only) */}
 					<button
@@ -51,11 +69,14 @@ export default function RfpChallenge() {
 						aria-controls="rfp-more"
 					>
 						{expanded ? "Read less" : "Read more"}
-						<ChevronDown className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`} aria-hidden />
+						<ChevronDown
+							className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+							aria-hidden
+						/>
 					</button>
 				</Reveal>
 
-				{/* RIGHT: challenge items — stagger in on scroll */}
+				{/* RIGHT: challenge items - stagger in on scroll */}
 				<Reveal
 					as="aside"
 					variant="fade-right"
@@ -78,12 +99,19 @@ export default function RfpChallenge() {
 								>
 									<div className="flex items-center gap-3">
 										<span className="relative inline-flex h-8 w-8 items-center justify-center text-[#ff595a]">
-											<span aria-hidden className="absolute inset-0 rounded-full bg-[#ff595a]/10 blur-[6px]" />
+											<span
+												aria-hidden
+												className="absolute inset-0 rounded-full bg-[#ff595a]/10 blur-[6px]"
+											/>
 											<Icon className="relative h-4 w-4" aria-hidden />
 										</span>
 									</div>
-									<h4 className="mt-3 font-montserrat text-sm font-medium text-foreground sm:text-base">{c.k}</h4>
-									<p className="mt-1.5 text-xs leading-6 text-muted sm:text-sm sm:leading-7">{c.v}</p>
+									<h4 className="mt-3 font-montserrat text-sm font-medium text-foreground sm:text-base">
+										{c.k}
+									</h4>
+									<p className="mt-1.5 text-xs leading-6 text-muted sm:text-sm sm:leading-7">
+										{c.v}
+									</p>
 								</motion.div>
 							);
 						})}

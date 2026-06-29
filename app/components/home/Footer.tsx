@@ -82,6 +82,11 @@ function Footer() {
 									SAGAN
 								</Link>
 							</li>
+							<li>
+								<Link href="/pricing" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Pricing
+								</Link>
+							</li>
 						</ul>
 					</nav>
 

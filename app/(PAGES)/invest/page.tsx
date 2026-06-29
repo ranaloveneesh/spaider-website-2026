@@ -3,7 +3,7 @@ import { InvestFormLazy } from "@/app/components/invest/InvestFormLazy";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: "Invest - SPAIDER",
+	title: "Invest",
 	description: "Investor information for SPAIDER - European sovereign AI for aerospace.",
 };
 
