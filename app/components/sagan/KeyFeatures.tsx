@@ -1,50 +1,27 @@
 "use client";
 
-import Image from "next/image";
 import { CircleCheck } from "lucide-react";
+import Image from "next/image";
 import WhySpaider from "@/app/components/home/WhySpaider";
 
-const IMAGE_BY_INDEX = [
-	"/agents/ai-foundations/12.png",
-	"/agents/ai-foundations/12.png",
-	"/agents/ai-foundations/12.png",
-] as const;
+const IMAGE_BY_INDEX = ["/agents/ai-foundations/1.png", "/agents/ai-foundations/2.png", "/agents/ai-foundations/3.png", "/agents/ai-foundations/4.png"] as const;
 
 const FEATURES = [
 	{
 		title: "Direct RFP/ITT Integration & Formatting",
-		bullets: [
-			"In-document writing (EU Horizon, ESA ITT, FNR, LSA, SBIR, etc.)",
-			"Instant population of boilerplate / reusable content",
-			"Requirement mapping & traceability",
-			"Real-time format validation",
-		],
+		bullets: ["In-document writing (EU Horizon, ESA ITT, FNR, LSA, SBIR, etc.)", "Instant population of boilerplate / reusable content", "Requirement mapping & traceability", "Real-time format validation"],
 	},
 	{
 		title: "Targeted Research & Synthesis",
-		bullets: [
-			"Accelerated lit review & SOTA summaries",
-			"Query internal repositories and vaults",
-			"Connect AIAA / IEEE / arXiv / Patent DBs",
-			"Extract key findings with citations",
-		],
+		bullets: ["Accelerated lit review & SOTA summaries", "Query internal repositories and vaults", "Connect AIAA / IEEE / arXiv / Patent DBs", "Extract key findings with citations"],
 	},
 	{
 		title: "Strategic Planning Assistance",
-		bullets: [
-			"Structure proposals effectively",
-			"Draft Work Breakdown Structures (WBS)",
-			"Create Work Packages (WPs) & budget outlines",
-		],
+		bullets: ["Structure proposals effectively", "Draft Work Breakdown Structures (WBS)", "Create Work Packages (WPs) & budget outlines"],
 	},
 	{
 		title: "Collaboration & Meeting Facilitation",
-		bullets: [
-			"Calendar & comms integration (Teams/Meet)",
-			"Automated scheduling & participant coordination",
-			"Targeted agendas & expert questions",
-			"Live transcription & action items",
-		],
+		bullets: ["Calendar & comms integration (Teams/Meet)", "Automated scheduling & participant coordination", "Targeted agendas & expert questions", "Live transcription & action items"],
 	},
 ];
 
@@ -62,22 +39,11 @@ const items = FEATURES.map((feature, index) => ({
 	),
 	content: (
 		<div className="relative flex h-full w-full items-center justify-center">
-			<Image
-				src={IMAGE_BY_INDEX[index % IMAGE_BY_INDEX.length]}
-				alt={feature.title}
-				fill
-				className="object-cover"
-			/>
+			<Image src={IMAGE_BY_INDEX[index % IMAGE_BY_INDEX.length]} alt={feature.title} fill className="object-cover" />
 		</div>
 	),
 }));
 
 export default function KeyFeatures() {
-	return (
-		<WhySpaider
-			title={<span className="text-foreground">Key Features</span>}
-			subtitle="Core capabilities that accelerate proposal writing, research, and coordination with SAGAN."
-			items={items}
-		/>
-	);
+	return <WhySpaider title={<span className="text-foreground">Key Features</span>} subtitle="Core capabilities that accelerate proposal writing, research, and coordination with SAGAN." items={items} />;
 }

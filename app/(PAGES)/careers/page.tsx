@@ -1,12 +1,28 @@
 import type { Metadata } from "next";
-import Reveal from "@/app/components/ui/reveal";
 import CareersHero from "@/app/components/careers/CareersHero";
 import JobListings from "@/app/components/careers/JobListings";
+import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
 	title: "Careers",
-	description:
-		"Join SPAIDER Space and help build the sovereign AI layer for aerospace.",
+	description: "Join SPAIDER Space and help build the sovereign AI layer for aerospace.",
+	alternates: { canonical: "https://www.spaiderspace.com/careers" },
+	openGraph: {
+		title: "Careers | SPAIDER Space",
+		description: "Join SPAIDER Space and help build the sovereign AI layer for aerospace.",
+		url: "https://www.spaiderspace.com/careers",
+		siteName: "SPAIDER Space",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "SPAIDER Space - Careers",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
 };
 
 const VALUES = [
@@ -44,9 +60,7 @@ export default function CareersPage() {
 
 			<section id="open-roles" className="scroll-mt-28">
 				<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-12">
-					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">
-						Open roles
-					</h2>
+					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">Open roles</h2>
 				</Reveal>
 				<Reveal variant="fade-up" threshold={0.05} delayMs={80}>
 					<JobListings />
@@ -54,34 +68,17 @@ export default function CareersPage() {
 			</section>
 
 			<section>
-				<Reveal
-					variant="fade-up"
-					threshold={0.1}
-					className="mb-8 sm:mb-12 md:mb-16"
-				>
-					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">
-						What we value
-					</h2>
+				<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
+					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">What we value</h2>
 				</Reveal>
 
 				<div className="grid gap-x-16 md:grid-cols-2 lg:gap-x-24">
 					{VALUES.map((v, i) => (
-						<Reveal
-							key={v.number}
-							variant="fade-up"
-							threshold={0.1}
-							delayMs={i * 55}
-						>
+						<Reveal key={v.number} variant="fade-up" threshold={0.1} delayMs={i * 55}>
 							<div className="border-t border-white/10 py-8 sm:py-10">
-								<span className="font-montserrat text-[11px] font-medium tracking-[0.08em] text-white/55">
-									{v.number}
-								</span>
-								<h3 className="mt-2 font-outfit text-xl font-medium tracking-tight text-foreground sm:text-2xl">
-									{v.title}
-								</h3>
-								<p className="mt-4 max-w-[52ch] text-sm leading-7 text-muted/90">
-									{v.body}
-								</p>
+								<span className="font-montserrat text-[11px] font-medium tracking-[0.08em] text-white/55">{v.number}</span>
+								<h3 className="mt-2 font-outfit text-xl font-medium tracking-tight text-foreground sm:text-2xl">{v.title}</h3>
+								<p className="mt-4 max-w-[52ch] text-sm leading-7 text-muted/90">{v.body}</p>
 							</div>
 						</Reveal>
 					))}

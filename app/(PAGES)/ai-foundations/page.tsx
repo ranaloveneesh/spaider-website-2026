@@ -3,8 +3,8 @@ import FoundationsPageClient from "./FoundationsPageClient";
 
 export const metadata: Metadata = {
 	title: "AI Foundations",
-	description:
-		"Sovereign AI infrastructure for aerospace organisations. Turn your internal and approved external knowledge into a governed, AI-ready layer - deployed on your infrastructure.",
+	description: "Sovereign AI infrastructure for aerospace organisations. Turn your internal and approved external knowledge into a governed, AI-ready layer - deployed on your infrastructure.",
+	alternates: { canonical: "https://www.spaiderspace.com/ai-foundations" },
 };
 
 export default function FoundationsPage() {
