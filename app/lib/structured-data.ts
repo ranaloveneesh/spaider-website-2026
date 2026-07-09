@@ -1,4 +1,4 @@
-import { EMAIL_ADDRESS, LINKEDIN_URL, SITE_URL, YOUTUBE_URL } from "@/app/utils/constants";
+import { EMAIL_ADDRESS, LINKEDIN_URL, SITE_URL } from "@/app/utils/constants";
 
 function origin(): string {
 	return SITE_URL.replace(/\/$/, "");
@@ -32,7 +32,9 @@ export function getSiteJsonLd() {
 					postalCode: "4362",
 					addressCountry: "LU",
 				},
-				sameAs: [LINKEDIN_URL, YOUTUBE_URL],
+				// YouTube omitted: no real channel exists yet, and a placeholder
+				// link here invalidates the sameAs identity signal for search engines.
+				sameAs: [LINKEDIN_URL],
 			},
 			{
 				"@type": "WebSite",

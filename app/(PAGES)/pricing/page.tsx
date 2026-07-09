@@ -1,11 +1,27 @@
+import { Building2, Layers, Users } from "lucide-react";
 import type { Metadata } from "next";
-import { Layers, Users, Building2 } from "lucide-react";
 import { PricingModule } from "@/app/components/ui/pricing-module";
 
 export const metadata: Metadata = {
 	title: "Pricing",
-	description:
-		"Enterprise pricing for SPAIDER's sovereign AI platform. Built for aerospace teams. Contact us for a tailored quote.",
+	description: "Enterprise pricing for SPAIDER's sovereign AI platform. Built for aerospace teams. Contact us for a tailored quote.",
+	alternates: { canonical: "https://www.spaiderspace.com/pricing" },
+	openGraph: {
+		title: "Pricing | SPAIDER Space",
+		description: "Enterprise pricing for SPAIDER's sovereign AI platform. Built for aerospace teams. Contact us for a tailored quote.",
+		url: "https://www.spaiderspace.com/pricing",
+		siteName: "SPAIDER Space",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "SPAIDER Space - Pricing",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
 };
 
 const plans = [
@@ -58,12 +74,5 @@ const plans = [
 ];
 
 export default function PricingPage() {
-	return (
-		<PricingModule
-			annualBillingLabel="Pay annually and save 10%"
-			buttonLabel="Request a demo"
-			plans={plans}
-			defaultAnnual={false}
-		/>
-	);
+	return <PricingModule annualBillingLabel="Pay annually and save 10%" buttonLabel="Request a demo" plans={plans} defaultAnnual={false} />;
 }

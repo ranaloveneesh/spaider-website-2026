@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import PrivacyHero from "@/app/components/privacy/PrivacyHero";
 import Reveal from "@/app/components/ui/reveal";
 import { EMAIL_ADDRESS } from "@/app/utils/constants";
-import PrivacyHero from "@/app/components/privacy/PrivacyHero";
 
 export const metadata: Metadata = {
 	title: "Privacy Policy",
 	description: "How Spaider Space collects, uses, and protects personal data when you use spaiderspace.com.",
+	alternates: { canonical: "https://www.spaiderspace.com/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {
@@ -50,7 +51,8 @@ export default function PrivacyPolicyPage() {
 			<Reveal as="section" variant="fade-up" threshold={0.2} className="space-y-3 sm:space-y-4">
 				<h2 className="font-outfit text-lg font-medium tracking-tight text-foreground sm:text-xl md:text-2xl">4. Retention</h2>
 				<p className="w-full text-base leading-7 text-muted/80 sm:leading-8">
-					We keep personal data only as long as needed for the purposes above, including legal, accounting, or security requirements. Log information is retained for a limited period typical for server operations. Enquiry and CRM-related data are kept while the relationship is active and for a reasonable period afterwards unless a longer period is required by law.
+					We keep personal data only as long as needed for the purposes above, including legal, accounting, or security requirements. Log information is retained for a limited period typical for server operations. Enquiry and CRM-related data are kept while the relationship is active and for a reasonable period
+					afterwards unless a longer period is required by law.
 				</p>
 			</Reveal>
 
@@ -71,7 +73,8 @@ export default function PrivacyPolicyPage() {
 			<Reveal as="section" variant="fade-up" threshold={0.2} className="space-y-3 sm:space-y-4">
 				<h2 className="font-outfit text-lg font-medium tracking-tight text-foreground sm:text-xl md:text-2xl">7. Your rights</h2>
 				<p className="w-full text-base leading-7 text-muted/80 sm:leading-8">
-					Under the GDPR and applicable law, you may have the right to access, rectify, or erase your personal data, restrict or object to certain processing, and data portability where applicable. You may lodge a complaint with a supervisory authority-in Luxembourg, the Commission nationale pour la protection des données (CNPD). To exercise your rights, contact us at the email address above.
+					Under the GDPR and applicable law, you may have the right to access, rectify, or erase your personal data, restrict or object to certain processing, and data portability where applicable. You may lodge a complaint with a supervisory authority-in Luxembourg, the Commission nationale pour la protection des
+					données (CNPD). To exercise your rights, contact us at the email address above.
 				</p>
 			</Reveal>
 
@@ -84,9 +87,7 @@ export default function PrivacyPolicyPage() {
 
 			<Reveal as="section" variant="fade-up" threshold={0.2} className="space-y-3 sm:space-y-4">
 				<h2 className="font-outfit text-lg font-medium tracking-tight text-foreground sm:text-xl md:text-2xl">9. Changes</h2>
-				<p className="w-full text-base leading-7 text-muted/80 sm:leading-8">
-					We may update this policy from time to time. The &quot;Last updated&quot; date at the top will change when we do. Material changes will be indicated on this page or as otherwise required by law.
-				</p>
+				<p className="w-full text-base leading-7 text-muted/80 sm:leading-8">We may update this policy from time to time. The &quot;Last updated&quot; date at the top will change when we do. Material changes will be indicated on this page or as otherwise required by law.</p>
 			</Reveal>
 		</div>
 	);

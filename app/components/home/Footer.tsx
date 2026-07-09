@@ -1,9 +1,9 @@
 "use client";
 
-import { Linkedin, Mail, Youtube } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { EMAIL_ADDRESS, LINKEDIN_URL, YOUTUBE_URL } from "@/app/utils/constants";
+import { EMAIL_ADDRESS, LINKEDIN_URL } from "@/app/utils/constants";
 
 function Footer() {
 	const year = new Date().getFullYear();
@@ -39,22 +39,23 @@ function Footer() {
 				}}
 			/>
 
-
 			<div className="relative mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-9 lg:grid-cols-4 lg:gap-10">
 					<div className="min-w-0 sm:col-span-2 lg:col-span-2">
 						<div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
 							<Image src="/logo.png" alt="" width={80} height={100} className="h-10 w-auto sm:h-11 lg:h-12" priority />
 							<div className="min-w-0">
-								<p className="font-montserrat text-xs font-medium tracking-wide text-foreground sm:text-base"><span className="uppercase mr-1">Spaider</span>
-									Space</p>
+								<p className="font-montserrat text-xs font-medium tracking-wide text-foreground sm:text-base">
+									<span className="uppercase mr-1">Spaider</span>
+									Space
+								</p>
 								<p className="text-xs leading-6 text-muted font-switzer sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
 							</div>
 						</div>
 
 						<p className="mt-4 text-xs leading-6 text-muted font-switzer sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-							SPAIDER Space S.à r.l.<br />
-							9 avenue des Hauts Fourneaux
+							SPAIDER Space S.à r.l.
+							<br />9 avenue des Hauts Fourneaux
 							<br />
 							Esch sur Alzette, L-4362
 							<br />
@@ -139,11 +140,6 @@ function Footer() {
 							<li>
 								<a href={LINKEDIN_URL} className="flex min-h-10 min-w-10 items-center justify-center rounded-md text-foreground transition-opacity hover:opacity-90" aria-label="Spaider Space on LinkedIn (opens in a new tab)" target="_blank" rel="noopener noreferrer">
 									<Linkedin className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
-								</a>
-							</li>
-							<li>
-								<a href={YOUTUBE_URL} className="flex min-h-10 min-w-10 items-center justify-center rounded-md text-foreground transition-opacity hover:opacity-90" aria-label="Spaider Space on YouTube (opens in a new tab)" target="_blank" rel="noopener noreferrer">
-									<Youtube className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
 								</a>
 							</li>
 						</ul>

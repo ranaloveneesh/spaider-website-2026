@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import CtaPanel from "@/app/components/CtaPanel";
-import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
-import AnimatedHeader from "@/app/components/our-tech/AnimatedHeader";
 import AnimatedCardText from "@/app/components/our-tech/AnimatedCardText";
+import AnimatedHeader from "@/app/components/our-tech/AnimatedHeader";
+import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
 	title: "Our Tech",
-	description:
-		"European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+	description: "European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+	alternates: { canonical: "https://www.spaiderspace.com/our-tech" },
+	openGraph: {
+		title: "Our Tech | SPAIDER Space",
+		description: "European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+		url: "https://www.spaiderspace.com/our-tech",
+		siteName: "SPAIDER Space",
+		images: [
+			{
+				url: "/og-image.png",
+				width: 1200,
+				height: 630,
+				alt: "SPAIDER Space - Our Tech",
+			},
+		],
+		locale: "en_US",
+		type: "website",
+	},
 };
 
 type Sec = {
@@ -57,16 +73,9 @@ export default function OurTechPage() {
 					{SECTIONS.map((s, i) => {
 						const isSvg = s.img.toLowerCase().endsWith(".svg");
 						return (
-							<article
-								key={s.title}
-								className="grid min-w-0 grid-cols-1 items-stretch gap-4 rounded-xl border border-border-card bg-card p-4 shadow-sm sm:gap-5 sm:p-5 md:grid-cols-2 md:gap-6 md:p-5"
-							>
+							<article key={s.title} className="grid min-w-0 grid-cols-1 items-stretch gap-4 rounded-xl border border-border-card bg-card p-4 shadow-sm sm:gap-5 sm:p-5 md:grid-cols-2 md:gap-6 md:p-5">
 								{/* Image left */}
-								<Reveal
-									variant={i % 2 === 0 ? "fade-right" : "fade-left"}
-									threshold={0.25}
-									className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl"
-								>
+								<Reveal variant={i % 2 === 0 ? "fade-right" : "fade-left"} threshold={0.25} className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-background/40 sm:rounded-xl">
 									<div
 										aria-hidden
 										className="absolute inset-0 z-0"
@@ -94,25 +103,13 @@ export default function OurTechPage() {
 										/>
 									) : (
 										<div className="relative z-10 aspect-4/3 md:aspect-3/2">
-											<Image
-												src={s.img}
-												alt={s.title}
-												fill
-												className="object-cover"
-												sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 512px"
-												priority={i === 0}
-												quality={80}
-											/>
+											<Image src={s.img} alt={s.title} fill className="object-cover" sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 512px" priority={i === 0} quality={80} />
 										</div>
 									)}
 								</Reveal>
 
 								{/* Text right panel */}
-								<AnimatedCardText
-									title={s.title}
-									subtitle={s.subtitle}
-									body={s.body}
-								/>
+								<AnimatedCardText title={s.title} subtitle={s.subtitle} body={s.body} />
 							</article>
 						);
 					})}
@@ -123,17 +120,8 @@ export default function OurTechPage() {
 				</Reveal>
 
 				{/* CTA PANEL (BEFORE FOOTER) */}
-				<Reveal
-					variant="scale"
-					threshold={0.25}
-					className="mt-12 sm:mt-16 md:mt-20"
-				>
-					<CtaPanel
-						title="Got a use case in mind? Let's make it real."
-						copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life - faster."
-						ctaHref="/request-demo"
-						ctaLabel="Talk to us"
-					/>
+				<Reveal variant="scale" threshold={0.25} className="mt-12 sm:mt-16 md:mt-20">
+					<CtaPanel title="Got a use case in mind? Let's make it real." copy="Our team of AI experts is just a call away. Whether you're exploring ideas or ready to build, we'll help you bring your AI agent to life - faster." ctaHref="/request-demo" ctaLabel="Talk to us" />
 				</Reveal>
 			</main>
 		</div>
