@@ -38,7 +38,7 @@ export const AnimatedTabs = ({ tabs, defaultTab, className, ariaLabel = "Tabs" }
 						onClick={() => setActiveTab(tab.id)}
 						className={cn(
 							"relative w-full rounded-sm px-2 py-1.5 text-xs font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:px-3 sm:py-2 sm:text-sm",
-							activeTab === tab.id ? "text-white" : "text-white/80 hover:text-white"
+							activeTab === tab.id ? "text-white" : "text-white/80 hover:text-white",
 						)}
 					>
 						{activeTab === tab.id && (

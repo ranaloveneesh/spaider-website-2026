@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, AnimatePresence } from "motion/react";
 import { Braces, Briefcase, CalendarCheck, ChevronLeft, ChevronRight, Network } from "lucide-react";
+import { AnimatePresence, motion, useMotionValue, useTransform } from "motion/react";
 import { useState } from "react";
 import Reveal from "../ui/reveal";
 
@@ -79,10 +79,16 @@ export default function UseCases() {
 		if (Math.abs(offset.y) > SWIPE_THRESHOLD || Math.abs(velocity.y) > 500) {
 			if (offset.y < 0 || velocity.y < 0) {
 				setDragDirection("up");
-				setTimeout(() => { moveToEnd(); setDragDirection(null); }, 150);
+				setTimeout(() => {
+					moveToEnd();
+					setDragDirection(null);
+				}, 150);
 			} else {
 				setDragDirection("down");
-				setTimeout(() => { moveToStart(); setDragDirection(null); }, 150);
+				setTimeout(() => {
+					moveToStart();
+					setDragDirection(null);
+				}, 150);
 			}
 		}
 		dragY.set(0);
@@ -101,23 +107,11 @@ export default function UseCases() {
 			<div className="mt-10 flex flex-col items-center gap-5">
 				{/* Nav + card stack row */}
 				<div className="relative flex w-full items-center justify-center">
-					<motion.button
-						onClick={moveToStart}
-						className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex"
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.9 }}
-						aria-label="Previous card"
-					>
+					<motion.button onClick={moveToStart} className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Previous card">
 						<ChevronLeft className="h-5 w-5 text-muted" />
 					</motion.button>
 
-					<motion.button
-						onClick={moveToEnd}
-						className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex"
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.9 }}
-						aria-label="Next card"
-					>
+					<motion.button onClick={moveToEnd} className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Next card">
 						<ChevronRight className="h-5 w-5 text-muted" />
 					</motion.button>
 
@@ -135,9 +129,7 @@ export default function UseCases() {
 												borderRadius: BORDER_RADIUS,
 												cursor: isFront ? "grab" : "auto",
 												touchAction: "none",
-												boxShadow: isFront
-													? "0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)"
-													: "0 15px 30px rgba(0,0,0,0.3)",
+												boxShadow: isFront ? "0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08)" : "0 15px 30px rgba(0,0,0,0.3)",
 												rotateX: isFront ? rotateX : 0,
 												transformPerspective: 1000,
 											}}
@@ -153,18 +145,14 @@ export default function UseCases() {
 											drag={isFront ? "y" : false}
 											dragConstraints={{ top: 0, bottom: 0 }}
 											dragElastic={0.7}
-											onDrag={(_, info) => { if (isFront) dragY.set(info.offset.y); }}
+											onDrag={(_, info) => {
+												if (isFront) dragY.set(info.offset.y);
+											}}
 											onDragEnd={handleDragEnd}
 											whileDrag={isFront ? { zIndex: cards.length + 1, cursor: "grabbing", scale: 1.05 } : {}}
 										>
 											{/* Subtle texture grain */}
-											<img
-												src={texture}
-												alt=""
-												aria-hidden="true"
-												draggable={false}
-												className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-[0.06] mix-blend-overlay"
-											/>
+											<img src={texture} alt="" aria-hidden="true" draggable={false} className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-[0.06] mix-blend-overlay" />
 
 											<div className="relative flex h-full flex-col p-4 sm:p-6">
 												{/* Icon */}
@@ -172,22 +160,14 @@ export default function UseCases() {
 
 												{/* Title + description */}
 												<div className="mt-5">
-													<h3 className="font-outfit text-lg sm:text-xl font-medium leading-snug text-foreground">
-														{title}
-													</h3>
-													<p className="mt-2 text-sm leading-6 text-muted">
-														{description}
-													</p>
+													<h3 className="font-outfit text-lg sm:text-xl font-medium leading-snug text-foreground">{title}</h3>
+													<p className="mt-2 text-sm leading-6 text-muted">{description}</p>
 												</div>
 
 												{/* Prompt box */}
 												<div className="mt-6 rounded-lg bg-black/20 p-3 ring-1 ring-white/[0.10] backdrop-blur-sm">
-													<p className="font-montserrat text-[0.65rem] font-medium uppercase tracking-[0.12em] text-accent">
-														Prompt
-													</p>
-													<p className="mt-1.5 text-xs sm:text-sm italic leading-5 sm:leading-6 text-foreground/75">
-														"{prompt}"
-													</p>
+													<p className="font-montserrat text-[0.65rem] font-medium uppercase tracking-[0.12em] text-accent">Prompt</p>
+													<p className="mt-1.5 text-xs sm:text-sm italic leading-5 sm:leading-6 text-foreground/75">"{prompt}"</p>
 												</div>
 											</div>
 										</motion.li>
@@ -196,25 +176,21 @@ export default function UseCases() {
 							</AnimatePresence>
 						</ul>
 					</div>
-				</div>{/* end nav + stack row */}
+				</div>
+				{/* end nav + stack row */}
 
 				{/* Progress dots */}
 				<div className="flex flex-col items-center gap-2">
 					<div className="flex gap-2">
 						{initialCards.map((_, i) => (
-							<motion.div
-								key={i}
-								className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex % initialCards.length
-									? "w-8 bg-white"
-									: "w-1.5 bg-white/20"
-									}`}
-								whileHover={{ scale: 1.2 }}
-							/>
+							// biome-ignore lint/suspicious/noArrayIndexKey: initialCards is a static, fixed-length list of progress dots
+							<motion.div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex % initialCards.length ? "w-8 bg-white" : "w-1.5 bg-white/20"}`} whileHover={{ scale: 1.2 }} />
 						))}
 					</div>
 					<p className="text-xs text-muted/40 sm:hidden">Swipe to browse</p>
 				</div>
-			</div>{/* end flex col */}
+			</div>
+			{/* end flex col */}
 		</section>
 	);
 }

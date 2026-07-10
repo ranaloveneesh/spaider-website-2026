@@ -38,35 +38,16 @@ type Props = {
 
 export default function AnimatedCardText({ title, subtitle, body }: Props) {
 	return (
-		<motion.div
-			className="relative min-w-0 overflow-hidden rounded-lg border border-border/70 bg-panel sm:rounded-xl"
-			variants={panelVar}
-			initial="hidden"
-			whileInView="show"
-			viewport={{ once: true, amount: 0.2 }}
-		>
-			<div className="absolute inset-0 bg-linear-to-br from-background/55 via-panel to-background/70" />
+		<motion.div className="relative min-w-0 overflow-hidden rounded-xs border border-spx-rule bg-spx-void" variants={panelVar} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
 			<motion.div className="relative p-4 sm:p-5 md:p-6" variants={contentVar}>
-				<motion.h3
-					variants={itemVar}
-					className="font-outfit text-xl font-medium tracking-tight text-foreground sm:text-2xl md:text-3xl"
-				>
+				<motion.h3 variants={itemVar} className="spx-h3 text-foreground">
 					{title}
 				</motion.h3>
-				<motion.p
-					variants={itemVar}
-					className="mt-2 font-montserrat text-[11px] leading-5 tracking-[0.12em] text-muted sm:text-xs"
-				>
-					{subtitle.toUpperCase()}
+				<motion.p variants={itemVar} className="spx-label mt-2 text-spx-cyan">
+					{subtitle}
 				</motion.p>
-				<motion.div
-					variants={dividerVar}
-					className="mt-3 h-px w-20 origin-left bg-border-card sm:w-32 md:w-48"
-				/>
-				<motion.p
-					variants={itemVar}
-					className="mt-3 text-sm leading-7 text-foreground sm:leading-7 lg:text-base lg:leading-7"
-				>
+				<motion.div variants={dividerVar} className="mt-3 h-px w-20 origin-left bg-spx-rule-2 sm:w-32 md:w-48" />
+				<motion.p variants={itemVar} className="mt-3 text-sm leading-7 text-spx-ink-2 sm:leading-7 lg:text-base lg:leading-7">
 					{body}
 				</motion.p>
 			</motion.div>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Outfit, Montserrat } from "next/font/google";
+import { Geist_Mono, Montserrat, Outfit } from "next/font/google";
 import "@carrot-kpi/switzer-font/latin.css";
 import { JsonLd } from "@/app/components/seo/JsonLd";
 import { Toaster } from "@/app/components/Toaster";
@@ -18,6 +18,12 @@ const montserrat = Montserrat({
 	display: "swap",
 });
 
+const geistMono = Geist_Mono({
+	variable: "--font-geist-mono",
+	subsets: ["latin"],
+	display: "swap",
+});
+
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.spaiderspace.com"),
 
@@ -25,24 +31,13 @@ export const metadata: Metadata = {
 		default: "SPAIDER Space - Sovereign AI for Aerospace",
 		template: "%s | SPAIDER Space",
 	},
-	description:
-		"SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents that collaborate with your team on your data - securely, compliantly, and at scale.",
+	description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents that collaborate with your team on your data - securely, compliantly, and at scale.",
 
-	keywords: [
-		"SPAIDER",
-		"AI for aerospace",
-		"sovereign AI",
-		"EU data sovereignty AI",
-		"aerospace AI platform",
-		"AI agents aerospace",
-		"proposal automation aerospace",
-		"SAGAN AI",
-	],
+	keywords: ["SPAIDER", "AI for aerospace", "sovereign AI", "EU data sovereignty AI", "aerospace AI platform", "AI agents aerospace", "proposal automation aerospace", "SAGAN AI"],
 
 	openGraph: {
 		title: "SPAIDER Space - Sovereign AI for Aerospace",
-		description:
-			"Secure, European-sovereign AI infrastructure for aerospace. AI agents that work as domain-expert coworkers - on your data, inside your ecosystem.",
+		description: "Secure, European-sovereign AI infrastructure for aerospace. AI agents that work as domain-expert coworkers - on your data, inside your ecosystem.",
 		url: "https://www.spaiderspace.com",
 		siteName: "SPAIDER Space",
 		images: [
@@ -60,8 +55,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: "SPAIDER Space - Sovereign AI for Aerospace",
-		description:
-			"AI agents for aerospace teams. Secure, sovereign, mission-ready.",
+		description: "AI agents for aerospace teams. Secure, sovereign, mission-ready.",
 		images: ["/og-image.png"],
 		creator: "@spaider_ai",
 	},
@@ -84,7 +78,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
 	width: "device-width",
 	initialScale: 1,
-	themeColor: "#0f0f0f",
+	themeColor: "#07080c",
 };
 
 export default function RootLayout({
@@ -93,11 +87,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html
-			lang="en"
-			className={`${outfit.variable} ${montserrat.variable} h-full antialiased`}
-		>
-			<body className="min-h-full flex flex-col bg-[#0f0f0f] text-foreground">
+		<html lang="en" className={`${outfit.variable} ${montserrat.variable} ${geistMono.variable} h-full antialiased`}>
+			<body className="min-h-full flex flex-col bg-spx-void text-foreground">
 				<JsonLd data={getSiteJsonLd()} />
 				<Toaster />
 				<div className="relative z-10">{children}</div>

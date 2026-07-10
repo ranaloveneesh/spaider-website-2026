@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
+import CtaBand from "../../../components/CtaBand";
 import SaganHero from "../../../components/sagan/Hero";
-import KeyFeatures from "../../../components/sagan/KeyFeatures";
 import Metrics from "../../../components/sagan/Metrics";
 import OnboardingTimeline from "../../../components/sagan/OnboardingTimeline";
+import ProposalWalkthrough from "../../../components/sagan/ProposalWalkthrough";
 import RfpChallenge from "../../../components/sagan/RFPChallenge";
-import SaganCTA from "../../../components/sagan/SaganCTA";
+import Reveal from "../../../components/ui/reveal";
 
 export const metadata: Metadata = {
 	title: "SAGAN",
@@ -30,13 +32,18 @@ export const metadata: Metadata = {
 
 export default function SaganPage() {
 	return (
-		<div className="w-full min-w-0 mx-auto max-w-7xl">
-			<SaganHero />
-			<RfpChallenge />
-			<KeyFeatures />
-			<OnboardingTimeline />
-			<Metrics />
-			<SaganCTA />
+		// Page-scoped cyan accent, fluid-gutter full-bleed layout (see page-revamp-playbook.md)
+		<div className="w-full min-w-0 overflow-x-clip" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
+			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)]" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+				<SaganHero />
+				<RfpChallenge />
+				<ProposalWalkthrough />
+				<OnboardingTimeline />
+				<Metrics />
+				<Reveal variant="fade-up" threshold={0.25}>
+					<CtaBand title="Pilot SAGAN on your next tender." copy="Deployed in your infrastructure, grounded in your proposal history." ctaHref="/request-demo" ctaLabel="Book a Demo" />
+				</Reveal>
+			</div>
 		</div>
 	);
 }

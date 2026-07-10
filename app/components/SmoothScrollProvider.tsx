@@ -30,9 +30,11 @@ type SmoothScrollProviderProps = {
 	children: React.ReactNode;
 	/**
 	 * Smooth scroll interpolation amount. Lower = smoother/floatier, higher = snappier.
-	 * Recommended around 0.1 for most marketing sites.
+	 * Ignored when `duration` is set (Lenis uses duration-based easing instead).
 	 */
 	lerp?: number;
+	/** Eased scroll duration in seconds. Takes precedence over `lerp` when set. */
+	duration?: number;
 	/** Smooth mouse wheel scrolling. */
 	smoothWheel?: boolean;
 	/** Smooth touch scrolling (often better left false for native feel). */
@@ -48,7 +50,7 @@ type SmoothScrollProviderProps = {
  * - Cleans up on unmount to avoid memory leaks
  * - Makes hash links (#section) work with Lenis (initial load + hash changes + clicks)
  */
-export default function SmoothScrollProvider({ children, lerp = 0.1, smoothWheel = true, smoothTouch = false }: SmoothScrollProviderProps) {
+export default function SmoothScrollProvider({ children, lerp, duration, smoothWheel = true, smoothTouch = false }: SmoothScrollProviderProps) {
 	const lenisRef = useRef<Lenis | null>(null);
 	const rafIdRef = useRef<number | null>(null);
 
@@ -71,9 +73,11 @@ export default function SmoothScrollProvider({ children, lerp = 0.1, smoothWheel
 		// Guard: only create once, even if React re-runs effects in dev.
 		if (lenisRef.current) return;
 
+		const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 		const lenis = new Lenis({
-			lerp,
-			smoothWheel,
+			...(duration != null ? { duration } : { lerp: lerp ?? 0.1 }),
+			smoothWheel: smoothWheel && !prefersReducedMotion,
 			// `smoothTouch` isn't part of the installed LenisOptions type.
 			// The equivalent option in this version is `syncTouch`.
 			syncTouch: smoothTouch,
@@ -146,7 +150,7 @@ export default function SmoothScrollProvider({ children, lerp = 0.1, smoothWheel
 			lenis.destroy();
 			lenisRef.current = null;
 		};
-	}, [lerp, smoothWheel, smoothTouch, scrollTo]);
+	}, [lerp, duration, smoothWheel, smoothTouch, scrollTo]);
 
 	return <SmoothScrollContext.Provider value={contextValue}>{children}</SmoothScrollContext.Provider>;
 }

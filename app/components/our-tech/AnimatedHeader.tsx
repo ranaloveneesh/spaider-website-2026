@@ -23,25 +23,17 @@ const subVar = {
 	show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: EASE_EXPO } },
 };
 
+/** Page hero - port of source's Technology `pageHero` (same treatment as the about page hero). */
 export default function AnimatedHeader() {
 	return (
-		<motion.header
-			className="mb-8 w-full max-w-7xl space-y-3 sm:mb-12 md:mb-16 lg:mb-20"
-			variants={container}
-			initial="hidden"
-			animate="show"
-		>
-			<motion.h2
-				variants={headingVar}
-				className="font-outfit text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-5xl"
-			>
-				Tech that we follow
-			</motion.h2>
-			<motion.p
-				variants={subVar}
-				className="max-w-2xl text-sm leading-7 text-muted lg:text-base lg:leading-7"
-			>
-				A sovereign, modular AI stack built for aerospace teams that need reliability, security, and full deployment control.
+		<motion.header className="w-full border-b border-spx-rule pb-12 pt-6 sm:pb-16 sm:pt-10" variants={container} initial="hidden" animate="show">
+			<motion.h1 variants={headingVar} className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
+				Not just a chatbot.
+				<br />
+				<span className="spx-grad-text">An operating stack.</span>
+			</motion.h1>
+			<motion.p variants={subVar} className="spx-lede mt-7">
+				A layered aerospace AI architecture connecting enterprise knowledge, domain models, agentic workflows, and trust mechanisms into one operational system.
 			</motion.p>
 		</motion.header>
 	);

@@ -27,27 +27,17 @@ export const metadata: Metadata = {
 
 const VALUES = [
 	{
-		number: "01",
+		number: "/ 01",
 		title: "Precision over speed",
 		body: "We build for aerospace - where accuracy and reliability are non-negotiable. We move deliberately, verify rigorously, and never trade correctness for velocity.",
 	},
 	{
-		number: "02",
-		title: "Sovereign by design",
-		body: "Organisations have the right to control their own data and AI. Every architectural decision we make reinforces sovereignty, compliance, and trust.",
-	},
-	{
-		number: "03",
+		number: "/ 02",
 		title: "Deep domain respect",
 		body: "Aerospace is a discipline earned over decades. We approach domain experts with humility, building AI that amplifies their judgment - never replacing it.",
 	},
 	{
-		number: "04",
-		title: "Radical ownership",
-		body: "Every team member owns their work end-to-end - from scoping to shipping to supporting. We don't hand off problems; we solve them.",
-	},
-	{
-		number: "05",
+		number: "/ 03",
 		title: "Transparent and accountable",
 		body: "We build AI that explains itself. Internally, we operate the same way: open communication, clear decisions, and accountability at every level.",
 	},
@@ -55,35 +45,43 @@ const VALUES = [
 
 export default function CareersPage() {
 	return (
-		<div className="w-full min-w-0 space-y-16 sm:space-y-24 md:space-y-32 max-w-7xl mx-auto">
-			<CareersHero />
+		<div className="w-full min-w-0 overflow-x-clip">
+			<div className="w-full space-y-16 sm:space-y-24 md:space-y-32" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+				<CareersHero />
 
-			<section id="open-roles" className="scroll-mt-28">
-				<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-12">
-					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">Open roles</h2>
-				</Reveal>
-				<Reveal variant="fade-up" threshold={0.05} delayMs={80}>
-					<JobListings />
-				</Reveal>
-			</section>
+				<section id="open-roles" className="scroll-mt-28">
+					<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-12">
+						<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Open roles</h2>
+					</Reveal>
+					<Reveal variant="fade-up" threshold={0.05} delayMs={80}>
+						<JobListings />
+					</Reveal>
+				</section>
 
-			<section>
-				<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
-					<h2 className="max-w-[10ch] font-outfit text-4xl font-medium leading-tight tracking-tight text-foreground sm:text-5xl">What we value</h2>
-				</Reveal>
+				<section>
+					<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
+						<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+							Aerospace runs the hardest
+							<br />
+							knowledge work on Earth.
+							<br />
+							<span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>Generic AI never boarded.</span>
+						</h2>
+					</Reveal>
 
-				<div className="grid gap-x-16 md:grid-cols-2 lg:gap-x-24">
-					{VALUES.map((v, i) => (
-						<Reveal key={v.number} variant="fade-up" threshold={0.1} delayMs={i * 55}>
-							<div className="border-t border-white/10 py-8 sm:py-10">
-								<span className="font-montserrat text-[11px] font-medium tracking-[0.08em] text-white/55">{v.number}</span>
-								<h3 className="mt-2 font-outfit text-xl font-medium tracking-tight text-foreground sm:text-2xl">{v.title}</h3>
-								<p className="mt-4 max-w-[52ch] text-sm leading-7 text-muted/90">{v.body}</p>
-							</div>
-						</Reveal>
-					))}
-				</div>
-			</section>
+					<div className="grid gap-x-10 border-t border-spx-rule md:grid-cols-3 lg:gap-x-14">
+						{VALUES.map((v, i) => (
+							<Reveal key={v.number} variant="fade-up" threshold={0.1} delayMs={i * 55}>
+								<div className="border-b border-spx-rule py-8 md:border-b-0 md:border-r md:border-spx-rule md:py-10 md:pr-8 md:last:border-r-0 md:last:pr-0">
+									<span className="font-geist-mono text-[0.68rem] uppercase tracking-[0.2em] text-spx-faint">{v.number}</span>
+									<h3 className="mt-14 font-outfit text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{v.title}</h3>
+									<p className="mt-4 max-w-[34ch] text-sm leading-6 text-spx-mute sm:text-base sm:leading-7">{v.body}</p>
+								</div>
+							</Reveal>
+						))}
+					</div>
+				</section>
+			</div>
 		</div>
 	);
 }

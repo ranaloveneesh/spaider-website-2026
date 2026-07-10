@@ -3,13 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import type React from "react";
 
-export type RevealVariant =
-	| "fade-up"
-	| "fade-down"
-	| "fade-left"
-	| "fade-right"
-	| "scale"
-	| "zoom";
+export type RevealVariant = "fade-up" | "fade-down" | "fade-left" | "fade-right" | "scale" | "zoom";
 
 type BaseRevealProps = {
 	variant?: RevealVariant;
@@ -23,10 +17,9 @@ type BaseRevealProps = {
 	replay?: boolean;
 };
 
-export type RevealProps<T extends React.ElementType = "div"> =
-	BaseRevealProps & {
-		as?: T;
-	} & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseRevealProps | "as">;
+export type RevealProps<T extends React.ElementType = "div"> = BaseRevealProps & {
+	as?: T;
+} & Omit<React.ComponentPropsWithoutRef<T>, keyof BaseRevealProps | "as">;
 
 // ─── Pre-built motion element map - avoids runtime component creation ─────────
 const MOTION_ELEMENTS = {
@@ -83,18 +76,7 @@ const DURATIONS = {
 } as const;
 // ─────────────────────────────────────────────────────────────────────────────
 
-export default function Reveal<T extends React.ElementType = "div">({
-	children,
-	className,
-	variant = "fade-up",
-	delayMs,
-	threshold = 0.2,
-	rootMargin = "0px 0px -10% 0px",
-	replay = false,
-	as,
-	style,
-	...rest
-}: RevealProps<T>) {
+export default function Reveal<T extends React.ElementType = "div">({ children, className, variant = "fade-up", delayMs, threshold = 0.2, rootMargin = "0px 0px -10% 0px", replay = false, as, style, ...rest }: RevealProps<T>) {
 	const shouldReduceMotion = useReducedMotion();
 
 	// Respect prefers-reduced-motion - render immediately, no animation
@@ -107,10 +89,7 @@ export default function Reveal<T extends React.ElementType = "div">({
 		);
 	}
 
-	const MotionTag =
-		(MOTION_ELEMENTS as Record<string, React.ComponentType<any>>)[
-			as as string
-		] ?? motion.div;
+	const MotionTag = (MOTION_ELEMENTS as Record<string, React.ComponentType<any>>)[as as string] ?? motion.div;
 
 	return (
 		<MotionTag

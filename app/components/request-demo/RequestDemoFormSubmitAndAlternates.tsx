@@ -11,18 +11,7 @@ type Props = {
 export function RequestDemoFormSubmitAndAlternates({ isSubmitting }: Props) {
 	return (
 		<>
-			<CeramicButton
-				color="#ffffff"
-				textColor="#0a0a0b"
-				ringColor="rgba(255,255,255,0.22)"
-				borderRadius={8}
-				padding="11px 24px"
-				fontSize={13}
-				centered
-				style={{ width: "100%", textAlign: "center" }}
-				type="submit"
-				disabled={isSubmitting}
-			>
+			<CeramicButton color="#ffffff" textColor="#0a0a0b" ringColor="rgba(255,255,255,0.22)" borderRadius={8} padding="11px 24px" fontSize={13} centered style={{ width: "100%", textAlign: "center" }} type="submit" disabled={isSubmitting}>
 				{isSubmitting ? "Submitting..." : "Submit"}
 			</CeramicButton>
 

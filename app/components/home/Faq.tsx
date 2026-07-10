@@ -15,8 +15,7 @@ const faqs = [
 	},
 	{
 		question: "What is the best first use case?",
-		answer:
-			"Start with a workflow that is repetitive, document-heavy, and high value - such as proposal response, knowledge retrieval, or internal engineering support.",
+		answer: "Start with a workflow that is repetitive, document-heavy, and high value - such as proposal response, knowledge retrieval, or internal engineering support.",
 	},
 	{
 		question: "How do you keep outputs reliable?",
@@ -277,11 +276,11 @@ function FAQ() {
 	};
 
 	return (
-		<div className="relative mt-12 w-full min-w-0 transition-colors duration-700 sm:mt-16 md:mt-20 lg:mt-24">
+		<div className="relative mt-[var(--spx-section-gap)] w-full min-w-0 transition-colors duration-700">
 			<section className={`relative z-10 mx-auto flex min-w-0 flex-col gap-6 sm:gap-8 md:gap-10 ${hasEntered ? "faq1-fade--ready" : "faq1-fade"}`}>
 				<header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-6">
 					<div className="space-y-2 sm:space-y-3">
-						<h2 className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">FAQs</h2>
+						<h2 className="spx-heading text-foreground">FAQs</h2>
 					</div>
 				</header>
 
@@ -294,7 +293,7 @@ function FAQ() {
 						return (
 							<li
 								key={item.question}
-								className={`group relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-500 will-change-transform hover:-translate-y-0.5 focus-within:-translate-y-0.5 sm:rounded-3xl ${palette.border} ${palette.panel} ${palette.shadow}`}
+								className={`group relative overflow-hidden rounded-xs border backdrop-blur-xl transition-all duration-500 will-change-transform hover:-translate-y-0.5 focus-within:-translate-y-0.5 ${palette.border} ${palette.panel} ${palette.shadow}`}
 								onMouseMove={setCardGlow}
 								onMouseLeave={clearCardGlow}
 							>
@@ -332,10 +331,7 @@ function FAQ() {
 										</div>
 									</div>
 								</button>
-								<div
-									id={panelId}
-									className={`grid leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} text-muted`}
-								>
+								<div id={panelId} className={`grid leading-relaxed transition-[grid-template-rows] duration-500 ease-out sm:leading-relaxed ${open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"} text-spx-mute`}>
 									<div className="min-h-0 overflow-hidden">
 										<div className={`px-4 transition-all duration-500 ease-out sm:px-5 ${open ? "pb-3 opacity-100 translate-y-0 sm:pb-5" : "pb-0 opacity-0 -translate-y-1"}`}>
 											<p className="pr-2">{item.answer}</p>

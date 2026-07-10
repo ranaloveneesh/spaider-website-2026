@@ -4,37 +4,20 @@ const DEPLOYMENT_ENVS = ["EU cloud", "Private Cloud", "On Prem"] as const;
 
 export default function SecurityCompliance() {
 	return (
-		<section className="relative mt-6 overflow-hidden sm:mt-8 md:mt-10 lg:mt-12">
-
-			{/* Content */}
-			<div className="relative z-10 mx-auto flex flex-col items-center px-4 py-12 text-center sm:py-16 md:py-20">
-				<h2
-					className="font-outfit text-accent font-medium leading-tight tracking-tight"
-					style={{
-						backgroundSize: "cover",
-						backgroundPosition: "center",
-						fontSize: "clamp(2.8rem,5vw,3.75rem)", maxWidth: "24ch"
-					}}
-				>
-					Secure deployment for sensitive aerospace environments
+		// Full-bleed hairline band (like the homepage GetStarted band), left-aligned per source.
+		<section className="relative left-1/2 right-1/2 -mx-[50vw] mt-[var(--spx-section-gap)] w-screen border-b border-t border-spx-rule bg-spx-void-2" style={{ paddingInline: "var(--spx-gutter)" }}>
+			<div className="py-14 sm:py-16 md:py-20">
+				<h2 className="spx-heading text-foreground">
+					Secure deployment for sensitive <span className="spx-grad-text">aerospace environments</span>
 				</h2>
 
-				<p
-					className="mt-4 text-sm leading-7 text-muted sm:mt-5 sm:text-base sm:leading-8"
-					style={{ maxWidth: "60ch" }}
-				>
-					Control where your data runs, which sources are approved, and how
-					outputs are governed across your organization.
-				</p>
+				<p className="spx-lede mt-4">Control where your data runs, which sources are approved, and how outputs are governed across your organization.</p>
 
-				{/* Deployment environment badges */}
-				<div className="mt-5 flex flex-wrap justify-center gap-2 sm:mt-6">
+				{/* Deployment environment pills - source `.flow` pill spec */}
+				<div className="mt-8 flex flex-wrap gap-2.5">
 					{DEPLOYMENT_ENVS.map((env) => (
-						<span
-							key={env}
-							className="inline-flex items-center gap-2 rounded-sm border border-accent/45 px-3 py-1.5 font-mono text-sm tracking-wide text-white/80"
-						>
-							<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
+						<span key={env} className="inline-flex items-center gap-2.5 rounded-xs border border-spx-rule-2 bg-spx-void px-5 py-[0.9375rem] font-geist-mono text-[0.76rem] uppercase tracking-[0.12em] text-spx-ink-2">
+							<span className="h-1.5 w-1.5 shrink-0 rounded-full bg-spx-cyan" aria-hidden />
 							{env}
 						</span>
 					))}

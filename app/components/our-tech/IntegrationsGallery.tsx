@@ -105,10 +105,7 @@ const ROW2 = LOGOS.slice(10);
 type MarqueeIntegration = Integration & { dup: 0 | 1 };
 
 function makeRow(logos: Integration[]): MarqueeIntegration[] {
-	return [
-		...logos.map((item) => ({ ...item, dup: 0 as const })),
-		...logos.map((item) => ({ ...item, dup: 1 as const })),
-	];
+	return [...logos.map((item) => ({ ...item, dup: 0 as const })), ...logos.map((item) => ({ ...item, dup: 1 as const }))];
 }
 
 const MARQUEE_ROW1 = makeRow(ROW1);
@@ -120,10 +117,7 @@ function LogoItem({ item }: { item: Integration }) {
 	const scale = item.iconScale ?? (kind === "icon" ? 1.08 : 1.0);
 
 	return (
-		<div
-			className="flex w-[96px] shrink-0 items-center justify-center sm:w-[132px] md:w-[160px] lg:w-[200px]"
-			title={item.name}
-		>
+		<div className="flex w-[96px] shrink-0 items-center justify-center sm:w-[132px] md:w-[160px] lg:w-[200px]" title={item.name}>
 			{!broken ? (
 				<div
 					className="flex items-center justify-center"
@@ -132,19 +126,10 @@ function LogoItem({ item }: { item: Integration }) {
 						transformOrigin: "center",
 					}}
 				>
-					<Image
-						src={item.src}
-						alt={item.name}
-						width={360}
-						height={120}
-						className="h-6 w-auto object-contain sm:h-8 md:h-10 lg:h-12"
-						onError={() => setBroken(true)}
-					/>
+					<Image src={item.src} alt={item.name} width={360} height={120} className="h-6 w-auto object-contain sm:h-8 md:h-10 lg:h-12" onError={() => setBroken(true)} />
 				</div>
 			) : (
-				<div className="text-xs font-semibold text-muted sm:text-sm">
-					{item.name}
-				</div>
+				<div className="text-xs font-semibold text-spx-mute sm:text-sm">{item.name}</div>
 			)}
 		</div>
 	);
@@ -152,19 +137,18 @@ function LogoItem({ item }: { item: Integration }) {
 
 export default function IntegrationsGallery() {
 	return (
-		<section className="mt-8 w-full min-w-0 sm:mt-12 md:mt-16 lg:mt-20 xl:mt-24">
-			<h2 className="mb-6 font-outfit text-3xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-4xl md:mb-10 md:text-5xl lg:mb-12">
-				Seamlessly integrate with your workflow
+		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
+			<h2 className="spx-heading text-foreground">
+				Plugs into <span className="spx-grad-text">what you already use.</span>
 			</h2>
+			<p className="spx-lede mb-10 mt-3 sm:mb-14">SPAIDER connects to your documents, libraries, project spaces, and collaboration tools, so your teams can use AI where knowledge already lives.</p>
 
 			<section
 				className="mx-auto w-full min-w-0 space-y-4 overflow-hidden sm:space-y-16"
 				aria-label="Integrations logo carousel"
 				style={{
-					WebkitMaskImage:
-						"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
-					maskImage:
-						"linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+					WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
+					maskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)",
 				}}
 			>
 				{/* Row 1 - scrolls left */}

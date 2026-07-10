@@ -1,4 +1,4 @@
-import { Building2, Layers, Users } from "lucide-react";
+import { Crown, Rocket, Zap } from "lucide-react";
 import type { Metadata } from "next";
 import { PricingModule } from "@/app/components/ui/pricing-module";
 
@@ -26,53 +26,34 @@ export const metadata: Metadata = {
 
 const plans = [
 	{
-		id: "starter",
-		name: "Starter",
-		description: "For small teams exploring sovereign AI",
-		icon: <Layers className="w-8 h-8 text-primary" />,
-		priceMonthly: 299,
-		priceYearly: 2990,
-		users: "Up to 5 users",
-		features: [
-			{ label: "Sovereign data processing", included: true },
-			{ label: "Standard model access", included: true },
-			{ label: "Priority support", included: false },
-			{ label: "Custom fine-tuning", included: false },
-		],
+		id: "essential",
+		name: "Essential",
+		description: "For small teams",
+		icon: <Zap className="w-8 h-8 text-primary" strokeWidth={1.5} />,
+		priceMonthly: 999,
+		priceYearly: 12000,
+		features: ["1-Seat Expert Agent", "3-Seats AI Foundations", "Continuous upgrades", "Standard support"],
 	},
 	{
-		id: "team",
-		name: "Team",
-		description: "For mission-critical deployments",
-		icon: <Users className="w-8 h-8 text-primary" />,
+		id: "pro",
+		name: "Pro",
+		description: "SMEs",
+		icon: <Rocket className="w-8 h-8 text-primary" strokeWidth={1.5} />,
 		priceMonthly: 1999,
-		priceYearly: 19990,
-		users: "Up to 100 users",
-		features: [
-			{ label: "Sovereign data processing", included: true },
-			{ label: "Full model suite", included: true },
-			{ label: "Dedicated success manager", included: true },
-			{ label: "Custom fine-tuning", included: true },
-		],
-		recommended: true,
+		priceYearly: 24000,
+		features: ["3-Seats Expert Agent", "5-Seats AI Foundations", "Continuous upgrades", "Priority support"],
 	},
 	{
-		id: "enterprise",
-		name: "Enterprise",
-		description: "For large organisations with custom needs",
-		icon: <Building2 className="w-8 h-8 text-primary" />,
-		priceMonthly: 4999,
-		priceYearly: 49990,
-		users: "Unlimited users",
-		features: [
-			{ label: "On-premise deployment", included: true },
-			{ label: "Custom SLAs & audit logs", included: true },
-			{ label: "24/7 priority support", included: true },
-			{ label: "Private cloud hosting", included: true },
-		],
+		id: "premium",
+		name: "Premium",
+		description: "Large organizations",
+		icon: <Crown className="w-8 h-8 text-primary" strokeWidth={1.5} />,
+		priceMonthly: 2899,
+		priceYearly: 35000,
+		features: ["5-Seats Expert Agent", "7-Seats AI Foundations", "SLA and dedicated support"],
 	},
 ];
 
 export default function PricingPage() {
-	return <PricingModule annualBillingLabel="Pay annually and save 10%" buttonLabel="Request a demo" plans={plans} defaultAnnual={false} />;
+	return <PricingModule annualBillingLabel="Annual billing" buttonLabel="Request a demo" plans={plans} defaultAnnual={true} />;
 }

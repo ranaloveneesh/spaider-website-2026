@@ -2,7 +2,8 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
-import CeramicButton from "../ui/button";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 // Emil Kowalski–style expo-out: fast start, hard stop
 const EXPO = [0.16, 1, 0.3, 1] as const;
@@ -55,33 +56,27 @@ export default function SaganHero() {
 
 	return (
 		<motion.section className="relative flex flex-col items-center justify-start pt-12 pb-12 sm:pt-16 sm:pb-16 lg:min-h-screen lg:pt-24 lg:pb-0" variants={V.container} initial={reduced ? false : "hidden"} animate="show">
-			<motion.span variants={V.chip} className="glass-btn text-left">
+			<motion.span variants={V.chip} className="rounded-xs border border-spx-rule-2 px-3.5 py-2 font-geist-mono text-[0.7rem] uppercase tracking-[0.16em] text-spx-cyan">
 				RFP Manager
 			</motion.span>
 
-			<motion.h1
-				variants={V.heading}
-				className="mt-2 mb-4 sm:mb-6 font-outfit text-4xl font-medium text-center max-w-3xl px-4 leading-tight tracking-[-0.05em] sm:text-5xl lg:text-6xl"
-				style={{
-					background: "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
-					WebkitBackgroundClip: "text",
-					WebkitTextFillColor: "transparent",
-					backgroundClip: "text",
-				}}
-			>
-				Meet SAGAN
+			<motion.h1 variants={V.heading} className="mt-4 mb-4 max-w-3xl px-4 text-center font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground sm:mb-6">
+				Meet <span className="spx-grad-text">SAGAN</span>
 			</motion.h1>
 
-			<motion.p variants={V.body} className="max-w-lg text-center text-xs leading-6 text-muted px-4 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+			<motion.p variants={V.body} className="spx-lede px-4 text-center">
 				Your proposal and RFP co-pilot for faster response time. Draft winning bids using your own past materials, templates, and source-backed institutional knowledge.
 			</motion.p>
 
 			<motion.div variants={V.cta} className="flex flex-col items-stretch gap-3 mt-4 sm:flex-row sm:items-center sm:pt-2">
-				<div className="w-full sm:w-fit [&_a]:w-full sm:[&_a]:w-auto">
-					<CeramicButton href="/request-demo" color="rgba(255, 255, 255, 0.06)" ringColor="rgba(255, 255, 255, 0.22)" textColor="var(--color-white)" borderRadius={9999} padding="8px 16px" centered>
-						REQUEST A DEMO
-					</CeramicButton>
-				</div>
+				<Button asChild variant="solid">
+					<Link href="/request-demo">
+						Request a Demo
+						<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+							→
+						</span>
+					</Link>
+				</Button>
 			</motion.div>
 
 			{/* Dashboard - cinematic entrance, glow breathes on loop */}
@@ -90,7 +85,7 @@ export default function SaganHero() {
 					<Image src="/sagan/hero-glows.png" alt="" width={1078} height={800} className="w-full h-auto filter-[hue-rotate(205deg)_saturate(220%)]" priority />
 				</motion.div>
 				<div className="relative z-10">
-					<Image src="/sagan/hero-dashboard.png" alt="Dashboard preview showing analytics and metrics interface" width={1106} height={800} className="w-full h-auto rounded-lg shadow-2xl" priority />
+					<Image src="/sagan/hero-dashboard.png" alt="Dashboard preview showing analytics and metrics interface" width={1106} height={800} className="w-full h-auto rounded-xs border border-spx-rule-2 shadow-2xl" priority />
 				</div>
 			</motion.div>
 		</motion.section>

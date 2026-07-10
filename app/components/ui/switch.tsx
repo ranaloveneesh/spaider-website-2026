@@ -1,22 +1,10 @@
 "use client";
 
-import {
-	Switch as AriaSwitch,
-	type SwitchProps as AriaSwitchProps,
-	composeRenderProps,
-} from "react-aria-components";
+import { Switch as AriaSwitch, type SwitchProps as AriaSwitchProps, composeRenderProps } from "react-aria-components";
 import { cn } from "@/app/lib/utils";
 
 const Switch = ({ children, className, ...props }: AriaSwitchProps) => (
-	<AriaSwitch
-		className={composeRenderProps(className, (className) =>
-			cn(
-				"group inline-flex items-center gap-2 text-sm font-medium leading-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70",
-				className,
-			)
-		)}
-		{...props}
-	>
+	<AriaSwitch className={composeRenderProps(className, (className) => cn("group inline-flex items-center gap-2 text-sm font-medium leading-none data-[disabled]:cursor-not-allowed data-[disabled]:opacity-70", className))} {...props}>
 		{composeRenderProps(children, (children) => (
 			<>
 				<div
@@ -29,12 +17,7 @@ const Switch = ({ children, className, ...props }: AriaSwitchProps) => (
 						"focus-visible:outline-none",
 					)}
 				>
-					<div
-						className={cn(
-							"pointer-events-none block size-5 rounded-full bg-background shadow-lg ring-0 transition-transform",
-							"translate-x-0 group-data-[selected]:translate-x-5",
-						)}
-					/>
+					<div className={cn("pointer-events-none block size-5 rounded-full bg-background shadow-lg ring-0 transition-transform", "translate-x-0 group-data-[selected]:translate-x-5")} />
 				</div>
 				{children}
 			</>

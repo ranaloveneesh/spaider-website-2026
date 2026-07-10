@@ -9,27 +9,7 @@ function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className="relative w-full min-w-0 overflow-hidden bg-[#1a1a1a]">
-			{/* Central spotlight - pure white, no blue */}
-			<div
-				aria-hidden
-				className="pointer-events-none absolute inset-x-0 top-0"
-				style={{
-					height: "70%",
-					background: "radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255,255,255,0.11) 0%, transparent 70%)",
-				}}
-			/>
-
-			{/* Softer secondary bloom */}
-			<div
-				aria-hidden
-				className="pointer-events-none absolute inset-x-0 top-0"
-				style={{
-					height: "45%",
-					background: "radial-gradient(ellipse 45% 40% at 50% 0%, rgba(255,255,255,0.07) 0%, transparent 65%)",
-				}}
-			/>
-
+		<footer className="relative w-full min-w-0 overflow-hidden">
 			{/* Top separator hairline */}
 			<div
 				aria-hidden
@@ -39,7 +19,7 @@ function Footer() {
 				}}
 			/>
 
-			<div className="relative mx-auto w-full min-w-0 max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12">
+			<div className="relative w-full min-w-0 py-8 sm:py-10 lg:py-12" style={{ paddingInline: "var(--spx-gutter)" }}>
 				<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-9 lg:grid-cols-4 lg:gap-10">
 					<div className="min-w-0 sm:col-span-2 lg:col-span-2">
 						<div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
@@ -49,11 +29,11 @@ function Footer() {
 									<span className="uppercase mr-1">Spaider</span>
 									Space
 								</p>
-								<p className="text-xs leading-6 text-muted font-switzer sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
+								<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
 							</div>
 						</div>
 
-						<p className="mt-4 text-xs leading-6 text-muted font-switzer sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
+						<p className="mt-4 text-xs leading-6 text-muted font-geist-mono sm:mt-5 sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
 							SPAIDER Space S.à r.l.
 							<br />9 avenue des Hauts Fourneaux
 							<br />
@@ -66,25 +46,25 @@ function Footer() {
 					</div>
 
 					<nav className="min-w-0" aria-label="Footer - Platform">
-						<h2 className="m-0 font-montserrat text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">Platform</h2>
+						<h2 className="m-0 font-geist-mono text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">Platform</h2>
 						<ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
 							<li>
-								<Link href="/our-tech" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
-									Our Tech
+								<Link href="/our-tech" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Tech Stack
 								</Link>
 							</li>
 							<li>
-								<Link href="/ai-foundations" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/ai-foundations" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									AI Foundations
 								</Link>
 							</li>
 							<li>
-								<Link href="/agents/sagan" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/agents/sagan" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									SAGAN
 								</Link>
 							</li>
 							<li>
-								<Link href="/pricing" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/pricing" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Pricing
 								</Link>
 							</li>
@@ -92,35 +72,35 @@ function Footer() {
 					</nav>
 
 					<nav className="min-w-0" aria-label="Footer - Company">
-						<h2 className="m-0 font-montserrat text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">Company</h2>
+						<h2 className="m-0 font-geist-mono text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">Company</h2>
 						<ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
 							<li>
-								<Link href="/invest" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/invest" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Invest
 								</Link>
 							</li>
 							<li>
-								<Link href="/blog" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
-									Blog
-								</Link>
-							</li>
-							<li>
-								<Link href="/request-demo" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/request-demo" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Request a demo
 								</Link>
 							</li>
 							<li>
-								<Link href="/careers" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/blog" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Blog
+								</Link>
+							</li>
+							<li>
+								<Link href="/careers" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Careers
 								</Link>
 							</li>
 							<li>
-								<Link href="/about" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/about" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									About
 								</Link>
 							</li>
 							<li>
-								<Link href="/privacy-policy" className="text-xs leading-6 text-foreground transition-colors font-switzer hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+								<Link href="/privacy-policy" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Privacy Policy
 								</Link>
 							</li>
@@ -128,7 +108,7 @@ function Footer() {
 					</nav>
 
 					<section className="min-w-0 sm:col-span-2 lg:row-start-2 lg:col-start-3 lg:col-span-2" aria-labelledby="footer-contact-heading">
-						<h2 id="footer-contact-heading" className="m-0 font-montserrat text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">
+						<h2 id="footer-contact-heading" className="m-0 font-geist-mono text-xs font-medium uppercase tracking-wide text-foreground sm:text-sm">
 							CONTACT US
 						</h2>
 						<ul className="mt-3 flex list-none flex-wrap gap-4 p-0 sm:mt-4 sm:gap-6 md:gap-8">
@@ -147,8 +127,8 @@ function Footer() {
 				</div>
 
 				<div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-5 text-center sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-6 sm:text-left">
-					<p className="text-xs leading-6 text-muted font-switzer sm:text-sm sm:leading-7">Built for mission-ready, European-sovereign AI.</p>
-					<p className="text-xs leading-6 text-muted font-switzer sm:text-sm sm:leading-7">© {year} Spaider Space. All rights reserved.</p>
+					<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">Built for mission-ready, European-sovereign AI.</p>
+					<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">© {year} Spaider Space. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>

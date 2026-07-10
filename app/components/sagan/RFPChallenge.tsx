@@ -1,14 +1,8 @@
 "use client";
 
-import {
-	BarChart3,
-	ChevronDown,
-	Clock3,
-	FolderKanban,
-	Users,
-} from "lucide-react";
-import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
+import { useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
 
 const EXPO = [0.16, 1, 0.3, 1] as const;
@@ -34,87 +28,41 @@ const CHALLENGES = [
 
 export default function RfpChallenge() {
 	const [expanded, setExpanded] = useState(false);
-	const items = CHALLENGES;
-	const icons = [Clock3, Users, BarChart3, FolderKanban] as const;
 
 	return (
-		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal
-				as="h2"
-				variant="fade-up"
-				threshold={0.35}
-				className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl"
-			>
-				The RFP Challenge
+		<section className="mx-auto mt-[var(--spx-section-gap)] w-full min-w-0">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
+				RFPs are complex, <span className="spx-grad-text">deadlines are not.</span>
 			</Reveal>
 			<div className="mt-10 flex flex-col gap-10 md:flex-row md:justify-between md:gap-16 lg:gap-20">
 				<Reveal variant="fade-left" threshold={0.25} className="max-w-md">
-					<p className="w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">
-						Every year, space organizations handle hundreds of RFPs, each
-						requiring significant time from specialized engineering teams.
-					</p>
+					<p className="spx-body">Every year, space organizations handle hundreds of RFPs, each requiring significant time from specialized engineering teams.</p>
 
-					<p className="mt-3 w-full text-xs leading-6 text-muted sm:text-sm sm:leading-7 md:mt-4 lg:text-base lg:leading-7">
-						With limited resources and growing competition, teams face tough
-						choices on where to invest effort-risking delays and missed
-						opportunities.
-					</p>
+					<p className="spx-body mt-3 md:mt-4">With limited resources and growing competition, teams face tough choices on where to invest effort, risking delays and missed opportunities.</p>
 
 					{/* Toggle (mobile only) */}
 					<button
 						type="button"
 						onClick={() => setExpanded((v) => !v)}
-						className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-background/20 px-3 py-2 text-xs text-foreground/70 transition hover:bg-background/30 sm:px-4 sm:text-sm md:hidden"
+						className="mt-5 inline-flex items-center gap-2 rounded-xs border border-spx-rule-2 px-4 py-2.5 font-geist-mono text-[0.7rem] uppercase tracking-[0.16em] text-spx-ink-2 transition-colors hover:border-spx-cyan hover:text-white md:hidden"
 						aria-expanded={expanded}
 						aria-controls="rfp-more"
 					>
 						{expanded ? "Read less" : "Read more"}
-						<ChevronDown
-							className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}
-							aria-hidden
-						/>
+						<ChevronDown className={`h-3.5 w-3.5 transition-transform ${expanded ? "rotate-180" : ""}`} aria-hidden />
 					</button>
 				</Reveal>
 
-				{/* RIGHT: challenge items - stagger in on scroll */}
-				<Reveal
-					as="aside"
-					variant="fade-right"
-					threshold={0.25}
-					delayMs={120}
-					className={`min-w-0 md:col-span-5 ${expanded ? "block" : "hidden"} md:block`}
-					id="rfp-more"
-				>
-					<div className="mt-4 grid grid-cols-1 gap-6 sm:mt-5 sm:grid-cols-2 md:mt-6 lg:grid-cols-2">
-						{items.map((c, i) => {
-							const Icon = icons[i] ?? Clock3;
-							return (
-								<motion.div
-									key={c.k}
-									initial={{ opacity: 0, y: 14 }}
-									whileInView={{ opacity: 1, y: 0 }}
-									viewport={{ once: true, amount: 0.3 }}
-									transition={{ duration: 0.4, ease: EXPO, delay: i * 0.07 }}
-									className="min-w-0 lg:border-l lg:border-[#ff595a]/15 lg:pl-6"
-								>
-									<div className="flex items-center gap-3">
-										<span className="relative inline-flex h-8 w-8 items-center justify-center text-[#ff595a]">
-											<span
-												aria-hidden
-												className="absolute inset-0 rounded-full bg-[#ff595a]/10 blur-[6px]"
-											/>
-											<Icon className="relative h-4 w-4" aria-hidden />
-										</span>
-									</div>
-									<h4 className="mt-3 font-montserrat text-sm font-medium text-foreground sm:text-base">
-										{c.k}
-									</h4>
-									<p className="mt-1.5 text-xs leading-6 text-muted sm:text-sm sm:leading-7">
-										{c.v}
-									</p>
-								</motion.div>
-							);
-						})}
+				{/* RIGHT: challenge items - hairline tenet cells, stagger in on scroll */}
+				<Reveal as="aside" variant="fade-right" threshold={0.25} delayMs={120} className={`min-w-0 md:col-span-5 ${expanded ? "block" : "hidden"} md:block`} id="rfp-more">
+					<div className="grid grid-cols-1 gap-x-10 sm:grid-cols-2">
+						{CHALLENGES.map((c, i) => (
+							<motion.div key={c.k} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.4, ease: EXPO, delay: i * 0.07 }} className="min-w-0 border-t border-spx-rule py-6 sm:py-7">
+								<span className="spx-index text-[#ff595a]">/ 0{i + 1}</span>
+								<h3 className="mt-4 font-outfit text-base font-semibold tracking-tight text-foreground sm:text-lg">{c.k}</h3>
+								<p className="mt-2 max-w-[34ch] text-sm leading-6 text-spx-mute sm:text-[0.95rem]">{c.v}</p>
+							</motion.div>
+						))}
 					</div>
 				</Reveal>
 			</div>

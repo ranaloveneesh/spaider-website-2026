@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { type CSSProperties, type ReactNode, useState } from "react";
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import Link from "next/link";
+import * as React from "react";
+import { type CSSProperties, type ReactNode, useState } from "react";
 import { cn } from "@/app/lib/utils";
 
 // ─────────────────────────────────────────────
@@ -173,7 +173,7 @@ export default function CeramicButton({ children, color, textColor = "#ffffff", 
 // shadcn-compatible Button (named export)
 // ─────────────────────────────────────────────
 const buttonVariants = cva(
-	"inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+	"group inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-colors outline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
 	{
 		variants: {
 			variant: {
@@ -183,6 +183,8 @@ const buttonVariants = cva(
 				secondary: "bg-secondary text-secondary-foreground shadow-sm shadow-black/5 hover:bg-secondary/80",
 				ghost: "hover:bg-accent hover:text-accent-foreground",
 				link: "text-primary underline-offset-4 hover:underline",
+				solid: "gap-3 rounded-xs bg-spx-ink font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-void hover:bg-spx-cyan",
+				line: "gap-3 rounded-xs bg-transparent font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-ink shadow-[inset_0_0_0_1px_var(--spx-rule-2)] hover:bg-spx-cyan/8 hover:text-white hover:shadow-[inset_0_0_0_1px_var(--spx-cyan)]",
 			},
 			size: {
 				default: "h-9 px-4 py-2",
@@ -191,6 +193,10 @@ const buttonVariants = cva(
 				icon: "h-9 w-9",
 			},
 		},
+		compoundVariants: [
+			// solid/line have their own fixed padding (source's .btn), independent of `size`
+			{ variant: ["solid", "line"], className: "h-auto px-[1.625rem] py-4" },
+		],
 		defaultVariants: {
 			variant: "default",
 			size: "default",
@@ -198,20 +204,29 @@ const buttonVariants = cva(
 	},
 );
 
-interface ButtonProps
-	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-		VariantProps<typeof buttonVariants> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
 	asChild?: boolean;
+	/** Append a trailing arrow that nudges right on hover (solid/line variants) */
+	arrow?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-	({ className, variant, size, asChild = false, ...props }, ref) => {
-		const Comp = asChild ? Slot : "button";
-		return (
-			<Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-		);
-	},
-);
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, arrow = false, children, ...props }, ref) => {
+	const Comp = asChild ? Slot : "button";
+	return (
+		<Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+			{arrow && !asChild ? (
+				<>
+					{children}
+					<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+						→
+					</span>
+				</>
+			) : (
+				children
+			)}
+		</Comp>
+	);
+});
 Button.displayName = "Button";
 
 export { Button, buttonVariants };

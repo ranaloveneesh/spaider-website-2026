@@ -77,32 +77,32 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
 	return (
 		<div className="mx-auto flex w-full select-none flex-col items-start gap-8 md:flex-row md:justify-between md:gap-10 lg:gap-14">
 			{/* ── Left: photo grid ── */}
-			<Reveal variant="fade-right" threshold={0.25} className="no-scrollbar flex w-full gap-2 overflow-x-auto pb-2 sm:gap-3 md:w-auto md:shrink-0 md:pb-0">
+			<Reveal variant="fade-right" threshold={0.25} className="no-scrollbar flex w-full gap-3 overflow-x-auto pb-2 sm:gap-4 md:w-auto md:shrink-0 md:gap-5 md:pb-0">
 				{/* Column 1 */}
-				<div className="flex flex-col gap-2 sm:gap-3">
+				<div className="flex flex-col gap-3 sm:gap-4 md:gap-5">
 					{col1.map((member) => (
-						<PhotoCard key={member.id} member={member} className="h-[96px] w-[90px] sm:h-[128px] sm:w-[120px] md:h-[165px] md:w-[155px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[112px] w-[104px] sm:h-[148px] sm:w-[138px] md:h-[190px] md:w-[178px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 
 				{/* Column 2 */}
-				<div className="mt-[34px] flex flex-col gap-2 sm:mt-[48px] sm:gap-3 md:mt-[68px]">
+				<div className="mt-[40px] flex flex-col gap-3 sm:mt-[56px] sm:gap-4 md:mt-[80px] md:gap-5">
 					{col2.map((member) => (
-						<PhotoCard key={member.id} member={member} className="h-[108px] w-[102px] sm:h-[143px] sm:w-[135px] md:h-[182px] md:w-[172px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[124px] w-[116px] sm:h-[164px] sm:w-[155px] md:h-[208px] md:w-[198px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 
 				{/* Column 3 */}
-				<div className="mt-[16px] flex flex-col gap-2 sm:mt-[22px] sm:gap-3 md:mt-[32px]">
+				<div className="mt-[19px] flex flex-col gap-3 sm:mt-[26px] sm:gap-4 md:mt-[38px] md:gap-5">
 					{col3.map((member) => (
-						<PhotoCard key={member.id} member={member} className="h-[100px] w-[94px] sm:h-[136px] sm:w-[128px] md:h-[172px] md:w-[162px]" hoveredId={hoveredId} onHover={setHoveredId} />
+						<PhotoCard key={member.id} member={member} className="h-[116px] w-[108px] sm:h-[156px] sm:w-[148px] md:h-[198px] md:w-[186px]" hoveredId={hoveredId} onHover={setHoveredId} />
 					))}
 				</div>
 			</Reveal>
 
-			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="grid w-full grid-cols-1 gap-4 pt-1 sm:grid-cols-2 md:pt-2 lg:grid-cols-1 lg:max-w-sm">
-				{members.map((member) => (
-					<MemberRow key={member.id} member={member} hoveredId={hoveredId} onHover={setHoveredId} />
+			<Reveal variant="fade-left" threshold={0.25} delayMs={120} className="grid w-full grid-cols-1 gap-4 pt-1 sm:grid-cols-2 md:pt-2 lg:grid-cols-1 lg:max-w-lg">
+				{members.map((member, i) => (
+					<MemberRow key={member.id} member={member} hoveredId={hoveredId} onHover={setHoveredId} align={i % 2 === 1 ? "end" : "start"} />
 				))}
 			</Reveal>
 		</div>
@@ -146,7 +146,7 @@ function PhotoCard({ member, className, hoveredId, onHover }: { member: TeamMemb
    Member name section
 ───────────────────────────────────────── */
 
-function MemberRow({ member, hoveredId, onHover }: { member: TeamMember; hoveredId: string | null; onHover: (id: string | null) => void }) {
+function MemberRow({ member, hoveredId, onHover, align = "start" }: { member: TeamMember; hoveredId: string | null; onHover: (id: string | null) => void; align?: "start" | "end" }) {
 	const isActive = hoveredId === member.id;
 	const isDimmed = hoveredId !== null && !isActive;
 
@@ -154,7 +154,7 @@ function MemberRow({ member, hoveredId, onHover }: { member: TeamMember; hovered
 		<button
 			type="button"
 			aria-label={`Highlight ${member.name}`}
-			className={cn("cursor-pointer rounded-lg p-1 transition-opacity duration-300 text-left", isDimmed ? "opacity-50" : "opacity-100")}
+			className={cn("w-fit max-w-full cursor-pointer rounded-lg p-1 transition-opacity duration-300", align === "end" ? "justify-self-end text-right" : "justify-self-start text-left", isDimmed ? "opacity-50" : "opacity-100")}
 			onMouseEnter={() => onHover(member.id)}
 			onMouseLeave={() => onHover(null)}
 			onFocus={() => onHover(member.id)}

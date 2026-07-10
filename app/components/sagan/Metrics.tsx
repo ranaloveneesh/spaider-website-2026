@@ -1,151 +1,24 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import { useInView } from "motion/react";
 import Reveal from "@/app/components/ui/reveal";
 
-type Metric = {
-	prefix?: string;
-	value: number;
-	suffix: string;
-	title: string;
-	description: string;
-};
-
-const METRICS: Metric[] = [
-	{
-		prefix: "Up to ",
-		value: 2,
-		suffix: "×",
-		title: "Increase in Proposal Throughput",
-		description:
-			"Submit significantly more high-quality, compliant proposals with the same team by automating ~65% of manual effort.",
-	},
-	{
-		prefix: "Up to ",
-		value: 50,
-		suffix: "%",
-		title: "Reduction in Proposal Cycle Time",
-		description: "Compress timelines from RFP release to submission by accelerating research, drafting, and compliance checks.",
-	},
-	{
-		value: 70,
-		suffix: "%+",
-		title: "Expert Time Reclaimed",
-		description: "Free your experts from tedious tasks to focus on solution design and strategy.",
-	},
-];
-
-const spanByIndex = (_i: number) => "lg:col-span-4";
-
-function usePrefersReducedMotion() {
-	const [reduced, setReduced] = useState(false);
-
-	useEffect(() => {
-		const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-		if (!mq) return;
-		const update = () => setReduced(!!mq.matches);
-		update();
-
-		if (mq.addEventListener) mq.addEventListener("change", update);
-		else mq.addListener(update);
-
-		return () => {
-			if (mq.removeEventListener) mq.removeEventListener("change", update);
-			else mq.removeListener(update);
-		};
-	}, []);
-
-	return reduced;
-}
-
-const Big: React.FC<{
-	prefix?: string;
-	value: number;
-	suffix: string;
-	active?: boolean;
-}> = ({ prefix, value, suffix, active = false }) => {
-	const reducedMotion = usePrefersReducedMotion();
-	const [display, setDisplay] = useState(0);
-
-	useEffect(() => {
-		if (!active) return;
-		if (reducedMotion) {
-			setDisplay(value);
-			return;
-		}
-
-		const durationMs = 950;
-		const start = performance.now();
-
-		let raf = 0;
-		const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
-
-		const tick = (now: number) => {
-			const elapsed = now - start;
-			const t = Math.min(1, elapsed / durationMs);
-			const eased = easeOutCubic(t);
-			const current = Math.round(value * eased);
-			setDisplay(current);
-
-			if (t < 1) raf = requestAnimationFrame(tick);
-		};
-
-		raf = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(raf);
-	}, [active, reducedMotion, value]);
-
-	return (
-		<div className="font-outfit text-4xl font-medium">
-			{prefix}
-			{display}
-			{suffix}
-		</div>
-	);
-};
+// Source's SAGAN `stats`, rendered in its `.num-grid` style: big mono value,
+// small uppercase mono label underneath, hairline-divided columns.
+const METRICS = [
+	{ value: "weeks → hours", label: "first structured, costed draft" },
+	{ value: "100%", label: "requirements traced to source" },
+	{ value: "PSS-ready", label: "official agency cost forms populated" },
+] as const;
 
 export default function Metrics() {
-	// Trigger counter only when the grid scrolls into view
-	const gridRef = useRef<HTMLDivElement>(null);
-	const inView = useInView(gridRef, { once: true, amount: 0.4 });
-
 	return (
-		<section className="mx-auto mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="max-w-4xl font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-				Measurable Advantage: Accelerate Wins, Scale Ambition
+		<section className="mx-auto mt-[var(--spx-section-gap)] w-full min-w-0">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
+				Less grunt work, <span className="spx-grad-text">stronger bids.</span>
 			</Reveal>
-			<div
-				ref={gridRef}
-				className="mt-10 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3 sm:gap-5 md:gap-6 lg:grid-cols-12 lg:gap-7"
-			>
+			<div className="mt-10 grid grid-cols-1 border-t border-spx-rule sm:grid-cols-3 sm:gap-x-8">
 				{METRICS.map((m, index) => (
-					<Reveal
-						key={m.title}
-						variant="fade-up"
-						threshold={0.25}
-						delayMs={index * 90}
-						className={[
-							"group relative min-w-0 overflow-hidden rounded-xl sm:rounded-2xl",
-							"h-full p-4 sm:p-5 md:p-6 lg:p-7",
-							"border border-white/[0.12] bg-white/[0.06] backdrop-blur-xl",
-							"shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.08)]",
-							"transition-all duration-300 ease-out hover:-translate-y-[2px]",
-							"hover:border-[rgba(78,167,252,0.5)] hover:bg-white/[0.09]",
-							"hover:shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.12)]",
-							"before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:content-['']",
-							"before:z-0 before:bg-[radial-gradient(650px_260px_at_10%_0%,rgba(78,167,252,0.32),transparent_60%)]",
-							"before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-200",
-							"after:pointer-events-none after:absolute after:inset-0 after:rounded-2xl after:content-[''] after:z-0",
-							"after:bg-[linear-gradient(120deg,transparent_0%,rgba(78,167,252,0.26)_40%,transparent_70%)]",
-							"after:opacity-0 after:-translate-x-10 group-hover:after:opacity-100 group-hover:after:translate-x-10 after:transition-all after:duration-400",
-							spanByIndex(index),
-						].join(" ")}
-					>
-						<div className="relative z-10 flex h-full flex-col items-center justify-center">
-							<Big prefix={m.prefix} value={m.value} suffix={m.suffix} active={inView} />
-							<div className="mt-2 font-outfit text-base font-medium tracking-tight text-foreground sm:mt-3 sm:text-lg lg:text-xl">{m.title}</div>
-							<span className="mt-3 text-xs text-center leading-6 sm:text-sm sm:leading-7 lg:text-base lg:leading-7 text-muted">{m.description}</span>
-						</div>
+					<Reveal key={m.label} variant="fade-up" threshold={0.25} delayMs={index * 90} className="border-b border-spx-rule py-8 sm:border-b-0 sm:border-r sm:py-11 sm:pr-8 sm:last:border-r-0 sm:last:pr-0">
+						<b className="block font-geist-mono text-[clamp(1.9rem,3.4vw,3rem)] font-medium leading-[1.1] tracking-[-0.03em] text-spx-ink">{m.value}</b>
+						<span className="mt-3 block max-w-[22ch] font-geist-mono text-[0.74rem] uppercase tracking-[0.14em] text-spx-mute">{m.label}</span>
 					</Reveal>
 				))}
 			</div>

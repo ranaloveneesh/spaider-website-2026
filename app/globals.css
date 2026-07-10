@@ -2,11 +2,13 @@
 
 html,
 body {
-	overflow-x: hidden;
+	/* clip, not hidden - "hidden" makes html/body a scroll container and silently
+	   breaks position:sticky for every descendant (e.g. the pinned Six Gates section). */
+	overflow-x: clip;
 }
 
 :root {
-	--color-bg-primary: #0f0f0f;
+	--color-bg-primary: var(--spx-void);
 	--color-bg-secondary: #1c1c1f;
 	--color-bg-tertiary: #232326;
 	--color-bg-panel: #0f1011;
@@ -58,6 +60,27 @@ body {
 	--cursor-pointer: pointer;
 	--cursor-disabled: not-allowed;
 	--focus-ring-color: #5e6ad2;
+
+	/* Void-dark palette used by Navbar and the Button solid/line variants. */
+	--spx-void: #07080c;
+	--spx-void-2: #0b0d13;
+	--spx-ink: #f2f5fa;
+	--spx-ink-2: #cbd3e1;
+	--spx-mute: #939db1;
+	--spx-faint: #606b7e;
+	--spx-cyan: #59e8f5;
+	--spx-green: #6ee7a8;
+	--spx-amber: #eeb95c;
+	--spx-rule: rgba(190, 198, 214, 0.16);
+	--spx-rule-2: rgba(190, 198, 214, 0.28);
+	--spx-grad: linear-gradient(96deg, #8ff7cf 0%, #59e8f5 48%, #7d95ff 100%);
+
+	/* Fluid edge padding - scales with viewport instead of capping content at a fixed max-width. */
+	--spx-gutter: clamp(20px, 4.5vw, 72px);
+
+	/* Fluid vertical rhythm between stacked full-width sections.
+	   (Source's value was clamp(110px,16vw,220px); tightened by decision.) */
+	--spx-section-gap: clamp(100px, 12vw, 180px);
 }
 
 @theme inline {
@@ -77,7 +100,7 @@ body {
 	--color-border-card: var(--color-card-border);
 
 	/* shadcn-compatible tokens */
-	--color-primary: var(--color-accent);
+	--color-primary: var(--spx-cyan);
 	--color-primary-foreground: var(--color-fg-primary);
 	--color-secondary: var(--color-bg-secondary);
 	--color-secondary-foreground: var(--color-fg-primary);
@@ -101,6 +124,19 @@ body {
 	--duration-fast: var(--speed-quickTransition);
 	--duration-base: var(--speed-regularTransition);
 	--ease-standard: var(--ease-in-out-cubic);
+
+	/* Void-dark palette */
+	--color-spx-void: var(--spx-void);
+	--color-spx-void-2: var(--spx-void-2);
+	--color-spx-ink: var(--spx-ink);
+	--color-spx-ink-2: var(--spx-ink-2);
+	--color-spx-mute: var(--spx-mute);
+	--color-spx-faint: var(--spx-faint);
+	--color-spx-cyan: var(--spx-cyan);
+	--color-spx-green: var(--spx-green);
+	--color-spx-amber: var(--spx-amber);
+	--color-spx-rule: var(--spx-rule);
+	--color-spx-rule-2: var(--spx-rule-2);
 }
 
 body {
@@ -109,55 +145,14 @@ body {
 	font-family: "Switzer", system-ui, sans-serif;
 }
 
-/* Global accent scrollbar styling */
-html {
-	scrollbar-width: thin;
-	scrollbar-color: color-mix(in srgb, var(--color-accent) 92%, #ffffff) color-mix(in srgb, var(--color-bg-secondary) 85%, transparent);
-}
-
+/* Scrollbar styling */
 *::-webkit-scrollbar {
-	width: 10px;
-	height: 10px;
-}
-
-*::-webkit-scrollbar-track {
-	background: linear-gradient(180deg,
-			color-mix(in srgb, var(--color-bg-secondary) 88%, transparent),
-			color-mix(in srgb, var(--color-accent) 12%, transparent));
-	box-shadow:
-		inset 0 0 10px color-mix(in srgb, var(--color-accent) 22%, transparent),
-		0 0 16px color-mix(in srgb, var(--color-accent) 18%, transparent);
-	border-radius: 9999px;
+	width: 9px;
 }
 
 *::-webkit-scrollbar-thumb {
-	background: linear-gradient(180deg,
-			color-mix(in srgb, var(--color-accent) 90%, #ffffff),
-			color-mix(in srgb, var(--color-accent) 72%, #000000));
-	border-radius: 9999px;
-	border: 2px solid transparent;
-	background-clip: content-box;
-	box-shadow:
-		0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
-		0 0 10px color-mix(in srgb, var(--color-accent) 40%, transparent);
-}
-
-*::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(180deg,
-			color-mix(in srgb, var(--color-accent) 95%, #ffffff),
-			color-mix(in srgb, var(--color-accent) 80%, #000000));
-	box-shadow:
-		0 0 6px color-mix(in srgb, var(--color-accent) 70%, transparent),
-		0 0 14px color-mix(in srgb, var(--color-accent) 50%, transparent);
-}
-
-*::-webkit-scrollbar-thumb:active {
-	background: linear-gradient(180deg,
-			color-mix(in srgb, var(--color-accent) 88%, #ffffff),
-			color-mix(in srgb, var(--color-accent) 68%, #000000));
-	box-shadow:
-		0 0 4px color-mix(in srgb, var(--color-accent) 60%, transparent),
-		0 0 10px color-mix(in srgb, var(--color-accent) 38%, transparent);
+	background: #232833;
+	border-radius: 0;
 }
 
 .no-scrollbar {
@@ -209,7 +204,6 @@ html {
 	}
 }
 
-
 .font-switzer {
 	font-family: "Switzer", system-ui, sans-serif;
 }
@@ -220,6 +214,104 @@ html {
 
 .font-outfit {
 	font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+.font-geist-mono {
+	font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Statement section heading - port of source's `.stmt` (size/weight slightly
+   reduced by decision). Use for every top-level section heading; color is
+   intentionally not set here (text-foreground / text-white / text-accent vary
+   per section). */
+.spx-heading {
+	max-width: 20ch;
+	font-family: var(--font-outfit), system-ui, sans-serif;
+	font-size: clamp(1.9rem, 4.8vw, 3.8rem);
+	font-weight: 600;
+	line-height: 1;
+	letter-spacing: -0.015em;
+}
+
+/* Section subtitle - port of source's `.lede` (cascade-resolved values; source
+   defines it twice). Pairs under `.spx-heading`. Margin-top intentionally left
+   to the call site. */
+.spx-lede {
+	max-width: 56ch;
+	font-size: clamp(1.08rem, 1.4vw, 1.22rem);
+	line-height: 1.7;
+	color: var(--spx-ink-2);
+}
+
+@media (max-width: 600px) {
+	.spx-lede {
+		font-size: 1.05rem;
+	}
+}
+
+/* Hero subtitle - port of source's `.hero-sub`, a slightly tighter one-off for
+   the main hero only (44ch measure, 1.65 line-height). */
+.spx-hero-sub {
+	max-width: 44ch;
+	font-size: clamp(1.06rem, 1.4vw, 1.22rem);
+	line-height: 1.65;
+	color: var(--spx-ink-2);
+}
+
+/* The rest of source's type system. In @layer components (not unlayered like
+   the classes above) so Tailwind utilities can override individual properties
+   per call site (e.g. `spx-label text-spx-cyan`). */
+@layer components {
+	/* Mono cyan eyebrow above a section heading - source's `.idx` */
+	.spx-eyebrow {
+		display: block;
+		font-family: var(--font-geist-mono), ui-monospace, monospace;
+		font-size: 0.76rem;
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		color: var(--spx-cyan);
+	}
+
+	/* Gradient statement text - source's `.stmt em` / `.cta-title em` */
+	.spx-grad-text {
+		background: var(--spx-grad);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	/* Card-level title - source's `.cta-card h3` / `.tenet h3` band */
+	.spx-h3 {
+		font-family: var(--font-outfit), system-ui, sans-serif;
+		font-size: clamp(1.45rem, 2vw, 1.8rem);
+		font-weight: 600;
+		line-height: 1.15;
+		letter-spacing: -0.015em;
+	}
+
+	/* Small uppercase mono meta label - source's `.c-role` band */
+	.spx-label {
+		font-family: var(--font-geist-mono), ui-monospace, monospace;
+		font-size: 0.75rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--spx-mute);
+	}
+
+	/* Faint mono index number - source's `.c-idx` / `.t-idx` band */
+	.spx-index {
+		font-family: var(--font-geist-mono), ui-monospace, monospace;
+		font-size: 0.74rem;
+		letter-spacing: 0.2em;
+		color: var(--spx-faint);
+	}
+
+	/* Reading/body copy inside cards and lists - source's readability-pass `p` */
+	.spx-body {
+		font-size: 1rem;
+		line-height: 1.65;
+		color: var(--spx-mute);
+	}
 }
 
 /* Hero illuminated word - accent glow, no gradient text */
@@ -244,16 +336,16 @@ html {
 	width: min(72rem, 92%);
 	height: 1px;
 	opacity: 0.22;
-	background: linear-gradient(90deg,
-			transparent 0%,
-			color-mix(in srgb, var(--color-accent) 70%, transparent) 50%,
-			transparent 100%);
+	background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--color-accent) 70%, transparent) 50%, transparent 100%);
 }
-
 
 .shadow-bgt,
 .shadow-bgb {
-	box-shadow: inset 0 0 4em 3em #eec8af33, inset 0 0 2em .4em #eec8af33, 0 0 .1em .1em #eec8af33, 0 0 1em .4em #eec8af4d;
+	box-shadow:
+		inset 0 0 4em 3em #eec8af33,
+		inset 0 0 2em 0.4em #eec8af33,
+		0 0 0.1em 0.1em #eec8af33,
+		0 0 1em 0.4em #eec8af4d;
 }
 
 .animate-[onloadbgb_1s_ease-in-out_forwards] {
@@ -262,12 +354,12 @@ html {
 
 @keyframes onloadbgb {
 	0% {
-		opacity: .3;
+		opacity: 0.3;
 		translate: 0 70%;
 	}
 
 	100% {
-		opacity: .8;
+		opacity: 0.8;
 		translate: 0 64%;
 	}
 }
@@ -290,9 +382,7 @@ html {
 	left: 50%;
 	transform: translateX(-50%);
 	width: 3px;
-	background: linear-gradient(180deg,
-			color-mix(in srgb, var(--how-we-work-accent) 85%, transparent),
-			color-mix(in srgb, var(--how-we-work-accent) 28%, transparent));
+	background: linear-gradient(180deg, color-mix(in srgb, var(--how-we-work-accent) 85%, transparent), color-mix(in srgb, var(--how-we-work-accent) 28%, transparent));
 	border-radius: 9999px;
 	-webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
 	mask-image: linear-gradient(180deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
@@ -330,34 +420,35 @@ html {
 }
 
 .neon-line-accent {
-	background: linear-gradient(90deg,
-			color-mix(in srgb, var(--color-accent) 20%, transparent),
-			color-mix(in srgb, var(--color-accent) 92%, transparent),
-			color-mix(in srgb, var(--color-accent) 20%, transparent));
+	background: linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 20%, transparent), color-mix(in srgb, var(--color-accent) 92%, transparent), color-mix(in srgb, var(--color-accent) 20%, transparent));
 	box-shadow:
 		0 0 16px color-mix(in srgb, var(--color-accent) 70%, transparent),
 		0 0 44px color-mix(in srgb, var(--color-accent) 48%, transparent),
 		0 0 110px color-mix(in srgb, var(--color-accent) 28%, transparent);
 }
 
-
 .glass-btn {
 	-webkit-backdrop-filter: blur(20px);
-	color: rgba(255, 255, 255, .9);
-	letter-spacing: -.01em;
+	color: rgba(255, 255, 255, 0.9);
+	letter-spacing: -0.01em;
 	z-index: 1;
 	will-change: transform;
-	background: rgba(255, 255, 255, .08);
-	border: 1px solid rgba(255, 255, 255, .18);
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.18);
 	border-radius: 9999px;
 	padding: 6px 14px;
 	font-size: 12px;
 	font-family: var(--font-montserrat);
 	font-weight: 400;
 	line-height: 20px;
-	transition: transform .2s ease-out, background-color .2s ease-out;
+	transition:
+		transform 0.2s ease-out,
+		background-color 0.2s ease-out;
 	position: relative;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 1px 2px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .1);
+	box-shadow:
+		0 1px 3px rgba(0, 0, 0, 0.3),
+		0 1px 2px rgba(0, 0, 0, 0.2),
+		inset 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .logo-3d {

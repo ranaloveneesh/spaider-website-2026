@@ -10,16 +10,13 @@ export default function FooterWordmark() {
 		if (!containerRef.current || !spotlightRef.current) return;
 		const rect = containerRef.current.getBoundingClientRect();
 		const x = e.clientX - rect.left - 100; // offset by half spotlight width
-		const y = e.clientY - rect.top - 100;  // offset by half spotlight height
+		const y = e.clientY - rect.top - 100; // offset by half spotlight height
 		spotlightRef.current.style.transform = `translateX(${x}px) translateY(${y}px)`;
 	};
 
 	return (
-		<div
-			ref={containerRef}
-			className="group relative hidden overflow-hidden sm:block"
-			onMouseMove={handleMouseMove}
-		>
+		// biome-ignore lint/a11y/noStaticElementInteractions: decorative cursor-follow spotlight, not a keyboard-operable control
+		<div ref={containerRef} className="group relative hidden overflow-hidden sm:block" onMouseMove={handleMouseMove}>
 			{/* Ambient under-glow - makes text barely visible at rest */}
 			<div
 				className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-out"
@@ -28,16 +25,7 @@ export default function FooterWordmark() {
 				}}
 			/>
 
-			<img
-				alt=""
-				aria-hidden
-				width={3000}
-				height={750}
-				decoding="async"
-				className="pointer-events-none mx-auto w-full select-none"
-				style={{ opacity: 0.7, filter: "brightness(1.4)" }}
-				src="/spaider-logo-footer.png"
-			/>
+			<img alt="" aria-hidden width={3000} height={750} decoding="async" className="pointer-events-none mx-auto w-full select-none" style={{ opacity: 0.7, filter: "brightness(1.4)" }} src="/spaider-logo-footer.png" />
 
 			{/* Cursor spotlight */}
 			<div

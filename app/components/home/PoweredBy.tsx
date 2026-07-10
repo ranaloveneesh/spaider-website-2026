@@ -16,19 +16,18 @@ const LOGOS: Logo[] = [
 
 export default function PoweredBy() {
 	return (
-		<section className="mt-12 w-full min-w-0 sm:mt-16 md:mt-20 lg:mt-24">
-			<h2 className="mb-6 font-outfit text-4xl font-medium tracking-tight text-foreground sm:mb-8 sm:text-5xl md:mb-10 lg:mb-12">Powered by</h2>
+		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
+			<div className="mb-6 sm:mb-8 md:mb-10 lg:mb-12">
+				<h2 className="spx-heading text-foreground">Powered by</h2>
+			</div>
 
 			<section className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" aria-label="Powered by logos">
 				{LOGOS.map(({ src, alt, name, scale }) => (
 					<div key={`${src}-${alt}`} className="flex flex-col items-center gap-3">
-						<div
-							className="flex items-center justify-center"
-							style={{ transform: `scale(${scale ?? 1})`, transformOrigin: "center" }}
-						>
+						<div className="flex items-center justify-center" style={{ transform: `scale(${scale ?? 1})`, transformOrigin: "center" }}>
 							<Image src={src} alt={alt} width={360} height={120} sizes="(max-width: 640px) 160px, (max-width: 1280px) 200px, 220px" className="h-9 w-auto object-contain filter brightness-0 invert sm:h-10 md:h-12 lg:h-14 xl:h-16" decoding="async" />
 						</div>
-						<span className="font-montserrat text-[11px] font-medium tracking-wide text-muted/60">{name}</span>
+						<span className="font-geist-mono text-[0.65rem] tracking-[0.08em] text-spx-faint">{name}</span>
 					</div>
 				))}
 			</section>
