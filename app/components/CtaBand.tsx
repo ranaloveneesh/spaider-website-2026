@@ -22,12 +22,7 @@ export default function CtaBand({ title, copy, ctaLabel, ctaHref, className }: P
 					{copy && <p className="mt-2.5 max-w-[44ch] text-[1.02rem] leading-[1.65] text-spx-mute">{copy}</p>}
 				</div>
 				<Button asChild variant="solid">
-					<Link href={ctaHref}>
-						{ctaLabel}
-						<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-							→
-						</span>
-					</Link>
+					<Link href={ctaHref}>{ctaLabel}</Link>
 				</Button>
 			</div>
 		</section>

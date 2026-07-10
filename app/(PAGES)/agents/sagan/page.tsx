@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import CtaBand from "../../../components/CtaBand";
+import GenericCopilot from "../../../components/sagan/GenericCopilot";
 import SaganHero from "../../../components/sagan/Hero";
 import Metrics from "../../../components/sagan/Metrics";
 import OnboardingTimeline from "../../../components/sagan/OnboardingTimeline";
@@ -40,6 +41,7 @@ export default function SaganPage() {
 				<ProposalWalkthrough />
 				<OnboardingTimeline />
 				<Metrics />
+				<GenericCopilot />
 				<Reveal variant="fade-up" threshold={0.25}>
 					<CtaBand title="Pilot SAGAN on your next tender." copy="Deployed in your infrastructure, grounded in your proposal history." ctaHref="/request-demo" ctaLabel="Book a Demo" />
 				</Reveal>

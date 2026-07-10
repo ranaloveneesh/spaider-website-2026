@@ -55,8 +55,8 @@ export default function SaganHero() {
 	const reduced = useReducedMotion();
 
 	return (
-		<motion.section className="relative flex flex-col items-center justify-start pt-12 pb-12 sm:pt-16 sm:pb-16 lg:min-h-screen lg:pt-24 lg:pb-0" variants={V.container} initial={reduced ? false : "hidden"} animate="show">
-			<motion.span variants={V.chip} className="rounded-xs border border-spx-rule-2 px-3.5 py-2 font-geist-mono text-[0.7rem] uppercase tracking-[0.16em] text-spx-cyan">
+		<motion.section className="relative flex flex-col items-center justify-start pt-8 pb-12 sm:pt-10 sm:pb-16 lg:min-h-screen lg:pt-12 lg:pb-0" variants={V.container} initial={reduced ? false : "hidden"} animate="show">
+			<motion.span variants={V.chip} className="spx-eyebrow">
 				RFP Manager
 			</motion.span>
 
@@ -68,24 +68,35 @@ export default function SaganHero() {
 				Your proposal and RFP co-pilot for faster response time. Draft winning bids using your own past materials, templates, and source-backed institutional knowledge.
 			</motion.p>
 
-			<motion.div variants={V.cta} className="flex flex-col items-stretch gap-3 mt-4 sm:flex-row sm:items-center sm:pt-2">
+			<motion.div variants={V.cta} className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 				<Button asChild variant="solid">
-					<Link href="/request-demo">
-						Request a Demo
-						<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-							→
-						</span>
-					</Link>
+					<Link href="/request-demo">Request a Demo</Link>
 				</Button>
 			</motion.div>
 
 			{/* Dashboard - cinematic entrance, glow breathes on loop */}
 			<motion.div variants={V.dashboard} className="relative w-full max-w-5xl mt-10 sm:mt-16">
-				<motion.div className="absolute left-1/2 w-[90%] pointer-events-none z-0" style={{ top: "-23%", transform: "translateX(-50%)" }} animate={reduced ? {} : { opacity: [0.75, 1, 0.75] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} aria-hidden="true">
-					<Image src="/sagan/hero-glows.png" alt="" width={1078} height={800} className="w-full h-auto filter-[hue-rotate(205deg)_saturate(220%)]" priority />
+				<motion.div
+					className="pointer-events-none absolute left-1/2 z-0 w-[104%]"
+					style={{ top: "-26%", transform: "translateX(-50%)" }}
+					animate={reduced ? {} : { opacity: [0.85, 1, 0.85] }}
+					transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+					aria-hidden="true"
+				>
+					<Image src="/sagan/hero-glows.png" alt="" width={1078} height={800} className="h-auto w-full filter-[hue-rotate(205deg)_saturate(260%)_brightness(1.25)]" priority />
 				</motion.div>
 				<div className="relative z-10">
-					<Image src="/sagan/hero-dashboard.png" alt="Dashboard preview showing analytics and metrics interface" width={1106} height={800} className="w-full h-auto rounded-xs border border-spx-rule-2 shadow-2xl" priority />
+					{/* Autoplay is muted+inline (required for mobile autoplay); paused under reduced motion */}
+					<video
+						src="/sagan/sagan_session.mp4"
+						poster="/sagan/hero-dashboard.png"
+						autoPlay={!reduced}
+						muted
+						loop
+						playsInline
+						aria-label="SAGAN session recording showing a proposal being assembled"
+						className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl"
+					/>
 				</div>
 			</motion.div>
 		</motion.section>
