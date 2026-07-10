@@ -19,15 +19,6 @@ const PoweredBy = dynamic(() => import("../components/home/PoweredBy"), {
 	),
 });
 
-const Testimonials = dynamic(() => import("../components/home/Testimonials"), {
-	loading: () => (
-		<section className="mt-16 min-h-[18rem] md:mt-24 md:min-h-[22rem]" aria-busy="true">
-			<div className="mb-8 h-8 w-64 animate-pulse rounded-md bg-white/10 md:mb-12" />
-			<div className="h-40 w-full animate-pulse rounded-md bg-white/5 md:h-52" />
-		</section>
-	),
-});
-
 const FAQ = dynamic(() => import("../components/home/Faq"), {
 	loading: () => (
 		<section className="mt-16 min-h-[22rem] md:mt-24 md:min-h-[28rem]" aria-busy="true">
@@ -100,9 +91,6 @@ export default function Home() {
 					<Reveal variant="fade-up">
 						<PoweredBy />
 					</Reveal>
-					{/* <Reveal variant="fade-up">
-						<Testimonials />
-					</Reveal> */}
 					<Reveal variant="scale">
 						<FAQ />
 					</Reveal>

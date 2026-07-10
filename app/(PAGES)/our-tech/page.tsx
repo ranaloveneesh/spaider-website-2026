@@ -30,35 +30,6 @@ export const metadata: Metadata = {
 	},
 };
 
-type Sec = {
-	title: string;
-	subtitle: string;
-	body: string;
-};
-
-const SECTIONS: Sec[] = [
-	{
-		title: "AI that knows aerospace",
-		subtitle: "Understands physics, standards, and mission workflows",
-		body: "Built with aerospace knowledge from day one. SPAIDER keeps your terminology, constraints, and context so answers are accurate, cited, and useful across design, test, and operations. Teams get reliable support without changing how they work.",
-	},
-	{
-		title: "Adopt AI step by step",
-		subtitle: "Start with your data. Add agents when ready",
-		body: "First we set up a secure retrieval layer (RAG) over your documents and tools. Then we plug in ready-made agents for high-value tasks (like RFP analysis). When you need more, you customise and orchestrate on the same base. No rework, no new pipelines.",
-	},
-	{
-		title: "You choose where it runs",
-		subtitle: "EU cloud or on-prem. Full audit and access control",
-		body: "The stack is modular and containerised. Run in your VPC or inside your network, even in isolated environments. You keep control of data, identities, permissions, and logs, with clean integration into your existing systems and no vendor lock-in.",
-	},
-	{
-		title: "Decide faster, with less risk",
-		subtitle: "Clean inputs. Clear answers. With sources",
-		body: "Agents handle ingestion and retrieval, then return answers with sources and history. Less time searching and formatting; more time on design, safety, and delivery. Consistent, repeatable outputs your teams can stand behind.",
-	},
-];
-
 export default function OurTechPage() {
 	return (
 		// Page-scoped cyan accent, same as the homepage (see page-revamp-playbook.md)
