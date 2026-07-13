@@ -29,12 +29,12 @@ const VALUES = [
 	{
 		number: "/ 01",
 		title: "Precision over speed",
-		body: "We build for aerospace - where accuracy and reliability are non-negotiable. We move deliberately, verify rigorously, and never trade correctness for velocity.",
+		body: "We build for aerospace, where accuracy and reliability are non-negotiable. We move deliberately, verify rigorously, and never trade correctness for velocity.",
 	},
 	{
 		number: "/ 02",
 		title: "Deep domain respect",
-		body: "Aerospace is a discipline earned over decades. We approach domain experts with humility, building AI that amplifies their judgment - never replacing it.",
+		body: "Aerospace is a discipline earned over decades. We approach domain experts with humility, building AI that amplifies their judgment, never replacing it.",
 	},
 	{
 		number: "/ 03",
@@ -46,26 +46,24 @@ const VALUES = [
 export default function CareersPage() {
 	return (
 		<div className="w-full min-w-0 overflow-x-clip">
-			<div className="w-full space-y-16 sm:space-y-24 md:space-y-32" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)]" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				<CareersHero />
 
-				<section id="open-roles" className="scroll-mt-28">
+				<section id="open-roles" className="mt-[var(--spx-section-gap)] scroll-mt-28">
 					<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-12">
-						<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">Open roles</h2>
+						<h2 className="spx-heading text-foreground">Open roles</h2>
 					</Reveal>
 					<Reveal variant="fade-up" threshold={0.05} delayMs={80}>
 						<JobListings />
 					</Reveal>
 				</section>
 
-				<section>
+				<section className="mt-[var(--spx-section-gap)]">
 					<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
-						<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-							Aerospace runs the hardest
+						<h2 className="spx-heading text-foreground">
+							How we work.
 							<br />
-							knowledge work on Earth.
-							<br />
-							<span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>Generic AI never boarded.</span>
+							<span className="spx-grad-text">Why it matters.</span>
 						</h2>
 					</Reveal>
 
@@ -73,9 +71,9 @@ export default function CareersPage() {
 						{VALUES.map((v, i) => (
 							<Reveal key={v.number} variant="fade-up" threshold={0.1} delayMs={i * 55}>
 								<div className="border-b border-spx-rule py-8 md:border-b-0 md:border-r md:border-spx-rule md:py-10 md:pr-8 md:last:border-r-0 md:last:pr-0">
-									<span className="font-geist-mono text-[0.68rem] uppercase tracking-[0.2em] text-spx-faint">{v.number}</span>
-									<h3 className="mt-14 font-outfit text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{v.title}</h3>
-									<p className="mt-4 max-w-[34ch] text-sm leading-6 text-spx-mute sm:text-base sm:leading-7">{v.body}</p>
+									<span className="spx-index">{v.number}</span>
+									<h3 className="spx-h3 mt-14 text-foreground">{v.title}</h3>
+									<p className="spx-body mt-4 max-w-[34ch]">{v.body}</p>
 								</div>
 							</Reveal>
 						))}

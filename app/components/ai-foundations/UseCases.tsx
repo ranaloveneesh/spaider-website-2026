@@ -2,6 +2,7 @@
 
 import { Braces, Briefcase, CalendarCheck, ChevronLeft, ChevronRight, Network } from "lucide-react";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "motion/react";
+import Image from "next/image";
 import { useState } from "react";
 import Reveal from "../ui/reveal";
 
@@ -53,7 +54,7 @@ const SPRING = { type: "spring" as const, stiffness: 170, damping: 26 };
 const CARD_OFFSET = 10;
 const SCALE_STEP = 0.06;
 const DIM_STEP = 0.15;
-const BORDER_RADIUS = 12;
+const BORDER_RADIUS = 2;
 const SWIPE_THRESHOLD = 50;
 
 export default function UseCases() {
@@ -95,24 +96,30 @@ export default function UseCases() {
 	};
 
 	return (
-		<section className="w-full min-w-0 mt-12 sm:mt-16 md:mt-20 lg:mt-24">
-			<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-				Example workflows
+		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
+			<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
+				Example <span className="spx-grad-text">workflows</span>
 			</Reveal>
 
-			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={60} className="mt-3 max-w-3xl text-sm leading-7 text-muted sm:text-base">
+			<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={60} className="spx-lede mt-3">
 				See how teams can use SPAIDER Foundations across business and technical operations.
 			</Reveal>
 
 			<div className="mt-10 flex flex-col items-center gap-5">
 				{/* Nav + card stack row */}
 				<div className="relative flex w-full items-center justify-center">
-					<motion.button onClick={moveToStart} className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Previous card">
-						<ChevronLeft className="h-5 w-5 text-muted" />
+					<motion.button
+						onClick={moveToStart}
+						className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-spx-rule-2 bg-spx-void p-3 transition-colors duration-200 cursor-pointer hover:bg-spx-void-2 hidden sm:flex"
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9 }}
+						aria-label="Previous card"
+					>
+						<ChevronLeft className="h-5 w-5 text-spx-mute" />
 					</motion.button>
 
-					<motion.button onClick={moveToEnd} className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/10 bg-black p-3 transition-colors duration-200 cursor-pointer hover:bg-white/5 hidden sm:flex" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Next card">
-						<ChevronRight className="h-5 w-5 text-muted" />
+					<motion.button onClick={moveToEnd} className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-spx-rule-2 bg-spx-void p-3 transition-colors duration-200 cursor-pointer hover:bg-spx-void-2 hidden sm:flex" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} aria-label="Next card">
+						<ChevronRight className="h-5 w-5 text-spx-mute" />
 					</motion.button>
 
 					{/* Card stack */}
@@ -124,7 +131,7 @@ export default function UseCases() {
 									return (
 										<motion.li
 											key={id}
-											className="absolute h-full w-full list-none overflow-hidden border border-white/[0.12] bg-white/[0.06] backdrop-blur-xl"
+											className="absolute h-full w-full list-none overflow-hidden border border-spx-rule-2 bg-spx-void-2"
 											style={{
 												borderRadius: BORDER_RADIUS,
 												cursor: isFront ? "grab" : "auto",
@@ -152,7 +159,7 @@ export default function UseCases() {
 											whileDrag={isFront ? { zIndex: cards.length + 1, cursor: "grabbing", scale: 1.05 } : {}}
 										>
 											{/* Subtle texture grain */}
-											<img src={texture} alt="" aria-hidden="true" draggable={false} className="pointer-events-none absolute inset-0 h-full w-full select-none object-cover opacity-[0.06] mix-blend-overlay" />
+											<Image src={texture} alt="" aria-hidden="true" draggable={false} fill className="pointer-events-none select-none object-cover opacity-[0.06] mix-blend-overlay" />
 
 											<div className="relative flex h-full flex-col p-4 sm:p-6">
 												{/* Icon */}
@@ -161,13 +168,13 @@ export default function UseCases() {
 												{/* Title + description */}
 												<div className="mt-5">
 													<h3 className="font-outfit text-lg sm:text-xl font-medium leading-snug text-foreground">{title}</h3>
-													<p className="mt-2 text-sm leading-6 text-muted">{description}</p>
+													<p className="mt-2 text-sm leading-6 text-spx-mute">{description}</p>
 												</div>
 
 												{/* Prompt box */}
-												<div className="mt-6 rounded-lg bg-black/20 p-3 ring-1 ring-white/[0.10] backdrop-blur-sm">
-													<p className="font-montserrat text-[0.65rem] font-medium uppercase tracking-[0.12em] text-accent">Prompt</p>
-													<p className="mt-1.5 text-xs sm:text-sm italic leading-5 sm:leading-6 text-foreground/75">"{prompt}"</p>
+												<div className="mt-6 rounded-xs border border-spx-rule bg-spx-void p-3">
+													<p className="spx-label text-[0.65rem] text-spx-cyan">Prompt</p>
+													<p className="mt-1.5 text-xs sm:text-sm italic leading-5 sm:leading-6 text-spx-ink-2">"{prompt}"</p>
 												</div>
 											</div>
 										</motion.li>
@@ -184,10 +191,10 @@ export default function UseCases() {
 					<div className="flex gap-2">
 						{initialCards.map((_, i) => (
 							// biome-ignore lint/suspicious/noArrayIndexKey: initialCards is a static, fixed-length list of progress dots
-							<motion.div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex % initialCards.length ? "w-8 bg-white" : "w-1.5 bg-white/20"}`} whileHover={{ scale: 1.2 }} />
+							<motion.div key={i} className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex % initialCards.length ? "w-8 bg-spx-ink" : "w-1.5 bg-spx-faint/40"}`} whileHover={{ scale: 1.2 }} />
 						))}
 					</div>
-					<p className="text-xs text-muted/40 sm:hidden">Swipe to browse</p>
+					<p className="text-xs text-spx-faint sm:hidden">Swipe to browse</p>
 				</div>
 			</div>
 			{/* end flex col */}

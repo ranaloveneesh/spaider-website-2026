@@ -65,7 +65,7 @@ export default function SaganHero() {
 			</motion.h1>
 
 			<motion.p variants={V.body} className="spx-lede px-4 text-center">
-				Your proposal and RFP co-pilot for faster response time. Draft winning bids using your own past materials, templates, and source-backed institutional knowledge.
+				SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.
 			</motion.p>
 
 			<motion.div variants={V.cta} className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
@@ -76,27 +76,12 @@ export default function SaganHero() {
 
 			{/* Dashboard - cinematic entrance, glow breathes on loop */}
 			<motion.div variants={V.dashboard} className="relative w-full max-w-5xl mt-10 sm:mt-16">
-				<motion.div
-					className="pointer-events-none absolute left-1/2 z-0 w-[104%]"
-					style={{ top: "-26%", transform: "translateX(-50%)" }}
-					animate={reduced ? {} : { opacity: [0.85, 1, 0.85] }}
-					transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-					aria-hidden="true"
-				>
+				<motion.div className="pointer-events-none absolute left-1/2 z-0 w-[104%]" style={{ top: "-26%", transform: "translateX(-50%)" }} animate={reduced ? {} : { opacity: [0.85, 1, 0.85] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} aria-hidden="true">
 					<Image src="/sagan/hero-glows.png" alt="" width={1078} height={800} className="h-auto w-full filter-[hue-rotate(205deg)_saturate(260%)_brightness(1.25)]" priority />
 				</motion.div>
 				<div className="relative z-10">
 					{/* Autoplay is muted+inline (required for mobile autoplay); paused under reduced motion */}
-					<video
-						src="/sagan/sagan_session.mp4"
-						poster="/sagan/hero-dashboard.png"
-						autoPlay={!reduced}
-						muted
-						loop
-						playsInline
-						aria-label="SAGAN session recording showing a proposal being assembled"
-						className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl"
-					/>
+					<video src="/sagan/sagan_session.mp4" poster="/sagan/hero-dashboard.png" autoPlay={!reduced} muted loop playsInline aria-label="SAGAN session recording showing a proposal being assembled" className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl" />
 				</div>
 			</motion.div>
 		</motion.section>

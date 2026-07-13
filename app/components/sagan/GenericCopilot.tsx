@@ -1,6 +1,6 @@
 import Reveal from "@/app/components/ui/reveal";
 
-// Port of source SAGAN's "05 — The difference" section: the `.vs` comparison
+// Port of source SAGAN's "05 - The difference" section: the `.vs` comparison
 // table (generic AI chat vs SAGAN).
 const VS_ROWS: [string, string, string][] = [
 	["Knows your call", "You paste fragments into a context window.", "The full tender, annexes, and your libraries, parsed and structured."],
@@ -10,7 +10,6 @@ const VS_ROWS: [string, string, string][] = [
 	["Trust", "Answers you can't verify.", "Citations, reasoning traces, and human sign-off at every gate."],
 	["Where it runs", "A public cloud you don't control.", "Your infrastructure, on-premise or secure cloud."],
 ];
-
 
 export default function GenericCopilot() {
 	return (
@@ -32,10 +31,7 @@ export default function GenericCopilot() {
 						<span className="text-spx-cyan">SAGAN</span>
 					</div>
 					{VS_ROWS.map(([label, no, yes], i) => (
-						<div
-							key={label}
-							className={`grid grid-cols-1 items-start gap-2 px-[1.375rem] py-[1.125rem] min-[820px]:grid-cols-[170px_1fr_1fr] min-[820px]:gap-[1.375rem] ${i < VS_ROWS.length - 1 ? "border-b border-spx-rule" : ""}`}
-						>
+						<div key={label} className={`grid grid-cols-1 items-start gap-2 px-[1.375rem] py-[1.125rem] min-[820px]:grid-cols-[170px_1fr_1fr] min-[820px]:gap-[1.375rem] ${i < VS_ROWS.length - 1 ? "border-b border-spx-rule" : ""}`}>
 							<span className="text-[0.98rem] font-semibold text-spx-cyan min-[820px]:text-foreground">{label}</span>
 							<span className="text-[0.97rem] leading-[1.6] text-spx-faint">
 								<span aria-hidden="true">✕&ensp;</span>
@@ -51,7 +47,6 @@ export default function GenericCopilot() {
 					))}
 				</div>
 			</Reveal>
-
 		</section>
 	);
 }

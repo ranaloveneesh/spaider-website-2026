@@ -15,7 +15,7 @@ export interface LoginResponse {
 	username: string;
 }
 
-// Shape returned by GET /auth/me — a distinct (but overlapping) shape from
+// Shape returned by GET /auth/me - a distinct (but overlapping) shape from
 // LoginResponse: it keys the user by `id` instead of `user_id` and adds
 // `email_verified`. Only the fields the UI actually reads are declared here.
 export interface AuthUser {

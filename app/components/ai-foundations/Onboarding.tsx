@@ -26,14 +26,14 @@ const steps = [
 
 export default function Onboarding() {
 	return (
-		<section id="how-we-work" className="how-we-work-section relative w-full text-foreground mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+		<section id="how-we-work" className="how-we-work-section relative mt-[var(--spx-section-gap)] w-full text-foreground">
 			<div>
 				<div className="flex flex-col items-start justify-between">
-					<Reveal as="h2" variant="fade-up" threshold={0.35} className="font-outfit text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-						Get started in 3 steps
+					<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
+						Get started in <span className="spx-grad-text">3 steps.</span>
 					</Reveal>
 
-					<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="mt-3 max-w-2xl text-sm leading-7 text-muted sm:text-base">
+					<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="spx-lede mt-3">
 						A simple path from source setup to a working knowledge workspace.
 					</Reveal>
 				</div>
@@ -52,8 +52,8 @@ export default function Onboarding() {
 
 									{/* Text block - slides in from its natural side */}
 									<Reveal variant={even ? "fade-right" : "fade-left"} threshold={0.2} delayMs={80} className={`${even ? "order-2" : "order-1"} flex w-full flex-col items-start gap-2 md:w-2/5`}>
-										<h3 className="mt-4 text-lg font-medium leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-outfit">{item.title}</h3>
-										<p className="text-left text-xs leading-6 text-muted sm:text-sm sm:leading-7 lg:text-base lg:leading-7">{item.desc}</p>
+										<h3 className="mt-4 font-outfit text-lg font-semibold leading-snug tracking-tight text-foreground sm:text-xl md:text-2xl">{item.title}</h3>
+										<p className="max-w-[40ch] text-left text-sm leading-6 text-spx-mute sm:leading-7 lg:text-base">{item.desc}</p>
 									</Reveal>
 
 									{/* Mobile image - compact, fades up */}

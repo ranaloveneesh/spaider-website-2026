@@ -15,12 +15,12 @@ type Gate = {
 };
 
 const GATES: Gate[] = [
-	{ gate: "Requirements & Bid", title: "Win the contract.", body: "Reading the tender, tracing every requirement, drafting the compliant, costed bid.", agent: "SAGAN — in production", status: "live" },
-	{ gate: "Concept & Design", title: "Requirements into architecture.", body: "Trade studies, MBSE and a verification thread that starts on day one.", agent: "SPOCK — in development", status: "dev" },
-	{ gate: "Manufacturing", title: "Build to spec, on the record.", body: "Supplier and works documentation traced back to the design baseline.", agent: "Fleet — roadmap", status: "plan" },
-	{ gate: "Assembly & Test", title: "Integrate. Test. Prove it.", body: "AIT campaigns with evidence captured at every quality gate.", agent: "Fleet — roadmap", status: "plan" },
-	{ gate: "Launch", title: "Go / no-go, with evidence.", body: "Readiness reviews and procedures — every decision on the record at the pad.", agent: "Fleet — roadmap", status: "plan" },
-	{ gate: "Operations", title: "Telemetry into decisions.", body: "Asset monitoring, operational history, and anomaly review — operators in control.", agent: "KEPLER — in development", status: "dev" },
+	{ gate: "Requirements & Bid", title: "Win the contract.", body: "Reading the tender, tracing every requirement, drafting the compliant, costed bid.", agent: "SAGAN - in production", status: "live" },
+	{ gate: "Concept & Design", title: "Requirements into architecture.", body: "Trade studies, MBSE and a verification thread that starts on day one.", agent: "SPOCK - in development", status: "dev" },
+	{ gate: "Manufacturing", title: "Build to spec, on the record.", body: "Supplier and works documentation traced back to the design baseline.", agent: "Fleet - roadmap", status: "plan" },
+	{ gate: "Assembly & Test", title: "Integrate. Test. Prove it.", body: "AIT campaigns with evidence captured at every quality gate.", agent: "Fleet - roadmap", status: "plan" },
+	{ gate: "Launch", title: "Go / no-go, with evidence.", body: "Readiness reviews and procedures - every decision on the record at the pad.", agent: "Fleet - roadmap", status: "plan" },
+	{ gate: "Operations", title: "Telemetry into decisions.", body: "Asset monitoring, operational history, and anomaly review - operators in control.", agent: "KEPLER - in development", status: "dev" },
 ];
 
 // Fractions along the path length where each gate's node sits.
@@ -53,10 +53,10 @@ function StaticGates() {
 							{padGate(i)}
 						</span>
 						<span className="font-geist-mono text-[0.6875rem] uppercase tracking-[0.14em] text-spx-cyan">
-							Gate {padGate(i)} — {g.gate}
+							Gate {padGate(i)} - {g.gate}
 						</span>
 						<h3 className="mt-2 font-outfit text-xl font-semibold tracking-tight text-foreground sm:text-2xl">{g.title}</h3>
-						<p className="mt-2 max-w-[52ch] text-sm leading-6 text-muted/80 sm:text-base sm:leading-7">{g.body}</p>
+						<p className="mt-2 max-w-[52ch] text-sm leading-6 text-spx-mute sm:text-base sm:leading-7">{g.body}</p>
 						<div className="mt-3 flex items-center gap-2 font-geist-mono text-[0.6875rem] uppercase tracking-[0.1em] text-spx-mute">
 							<span aria-hidden="true" className="h-1.5 w-1.5 rounded-full" style={STATUS_DOT[g.status]} />
 							{g.agent}
@@ -127,7 +127,7 @@ function OrbitGates() {
 				<div className="flex flex-wrap items-end justify-between gap-10" style={{ paddingTop: "calc(64px + 3vh)" }}>
 					<div>
 						<h2 className="max-w-[20ch] font-outfit text-[clamp(1.7rem,3.8vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
-							One mission. <span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>Six gates.</span> An agent for each.
+							One mission. <span className="spx-grad-text">Six gates.</span> An agent for each.
 						</h2>
 					</div>
 					<div className="flex items-center gap-4 font-geist-mono text-[0.72rem] tracking-[0.2em] text-spx-mute">
@@ -175,7 +175,7 @@ function OrbitGates() {
 						<AnimatePresence mode="wait">
 							<motion.div key={phase} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 12 }} transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}>
 								<span className="block font-geist-mono text-[0.68rem] uppercase tracking-[0.26em] text-spx-cyan">
-									Gate {padGate(phase)} — {active.gate}
+									Gate {padGate(phase)} - {active.gate}
 								</span>
 								<h3 className="mt-4 text-[clamp(1.5rem,2.9vw,2.6rem)] font-outfit font-semibold leading-[1.02] tracking-tight text-foreground">{active.title}</h3>
 								<p className="mt-3.5 text-[1.05rem] text-spx-mute">{active.body}</p>

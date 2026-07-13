@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/app/components/ui/button";
 import Reveal from "@/app/components/ui/reveal";
@@ -46,9 +47,7 @@ export default function NextStep() {
 									<Link href={card.href}>{card.label}</Link>
 								</Button>
 							</div>
-							<i aria-hidden="true" className="absolute right-10 top-10 text-[1.4rem] not-italic text-spx-faint transition-[color,transform] duration-350 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-spx-cyan">
-								→
-							</i>
+							<ArrowRight aria-hidden="true" className="absolute right-10 top-10 size-[1.4rem] text-spx-faint transition-[color,transform] duration-350 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-spx-cyan" />
 						</div>
 					))}
 				</div>

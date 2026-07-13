@@ -1,6 +1,7 @@
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/app/components/ui/reveal";
 
-// Port of source Technology page's "02 — Knowledge flow" (`.flow` pill chain).
+// Port of source Technology page's "02 - Knowledge flow" (`.flow` pill chain).
 const STEPS = ["Enterprise documents", "Parsing & fact extraction", "Libraries & knowledge graph", "Grounded retrieval", "Agent workflows"] as const;
 
 export default function KnowledgeFlow() {
@@ -17,9 +18,7 @@ export default function KnowledgeFlow() {
 					{STEPS.map((step) => (
 						<span key={step} className="contents">
 							<span className="rounded-xs border border-spx-rule-2 bg-spx-void-2 px-5 py-[0.9375rem] font-geist-mono text-[0.76rem] uppercase tracking-[0.12em] text-spx-ink-2">{step}</span>
-							<i aria-hidden="true" className="not-italic text-spx-faint">
-								→
-							</i>
+							<ArrowRight aria-hidden="true" className="size-4 text-spx-faint" />
 						</span>
 					))}
 					<span className="rounded-xs border border-[rgba(110,231,168,0.45)] bg-spx-void-2 px-5 py-[0.9375rem] font-geist-mono text-[0.76rem] uppercase tracking-[0.12em] text-spx-green">Human review</span>

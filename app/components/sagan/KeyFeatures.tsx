@@ -4,7 +4,7 @@ import { CircleCheck } from "lucide-react";
 import Image from "next/image";
 import WhySpaider from "@/app/components/home/WhySpaider";
 
-const IMAGE_BY_INDEX = ["/agents/ai-foundations/1.png", "/agents/ai-foundations/2.png", "/agents/ai-foundations/3.png", "/agents/ai-foundations/4.png"] as const;
+const IMAGE_BY_INDEX = ["/ai-foundations/1.png", "/ai-foundations/2.png", "/ai-foundations/3.png", "/ai-foundations/4.png"] as const;
 
 const FEATURES = [
 	{

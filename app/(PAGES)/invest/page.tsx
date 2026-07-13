@@ -1,29 +1,35 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { InvestFormLazy } from "@/app/components/invest/InvestFormLazy";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
 	title: "Invest",
-	description: "Investor information for SPAIDER - European sovereign AI for aerospace.",
+	description: "Investor information for SPAIDER, European sovereign AI for aerospace.",
 	alternates: { canonical: "https://www.spaiderspace.com/invest" },
 };
 
 export default function InvestPage() {
 	return (
-		<div className="grid w-full min-w-0 grid-cols-1 gap-10 pt-10 pb-16 sm:gap-12 sm:pt-16 sm:pb-20 md:grid-cols-[5fr_7fr] md:items-start md:gap-12 md:pt-20 md:pb-24 lg:grid-cols-3 lg:gap-16 mx-auto max-w-7xl">
-			<div className="min-w-0 space-y-5 lg:pr-6 lg:pt-2">
-				<Reveal variant="fade-up" threshold={0.2}>
-					<h2 className="font-outfit text-3xl font-medium tracking-tight text-foreground sm:text-4xl md:text-5xl">Invest</h2>
-				</Reveal>
-				<Reveal variant="fade-up" threshold={0.2} delayMs={80}>
-					<p className="text-sm leading-7 text-muted sm:text-base">Become an early shareholder and help launch SPAIDER&apos;s AI in Space.</p>
-				</Reveal>
-				<Reveal variant="fade-up" threshold={0.2} delayMs={150}>
-					<p className="text-sm leading-7 text-muted sm:text-base">Register to receive the investor brief, timeline, and terms for our private raise. For qualified investors; this is a non-binding expression of interest.</p>
-				</Reveal>
+		<div className="w-full min-w-0 overflow-x-clip" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
+			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+				{/* ── Split hero: statement left, investor form right ── */}
+				<header className="border-b border-spx-rule pb-12 pt-6 sm:pb-16 sm:pt-10">
+					<div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-16">
+						<Reveal variant="fade-up" threshold={0.1} className="min-w-0">
+							<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
+								Own a piece of
+								<br />
+								<span className="spx-grad-text">the operating layer.</span>
+							</h1>
+							<p className="spx-lede mt-7">SPAIDER is engaging with strategic investors interested in aerospace AI, enterprise knowledge infrastructure, and domain-specific agentic systems.</p>
+						</Reveal>
+						<div className="w-full min-w-0 lg:pt-2">
+							<InvestFormLazy />
+						</div>
+					</div>
+				</header>
 			</div>
-
-			<InvestFormLazy />
 		</div>
 	);
 }

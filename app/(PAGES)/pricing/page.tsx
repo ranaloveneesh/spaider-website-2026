@@ -1,6 +1,7 @@
 import { Crown, Rocket, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import { PricingModule } from "@/app/components/ui/pricing-module";
+import type { CSSProperties } from "react";
+import { type PricingPlan, PricingPlans } from "@/app/components/pricing/PricingPlans";
 
 export const metadata: Metadata = {
 	title: "Pricing",
@@ -24,12 +25,12 @@ export const metadata: Metadata = {
 	},
 };
 
-const plans = [
+const plans: PricingPlan[] = [
 	{
 		id: "essential",
 		name: "Essential",
 		description: "For small teams",
-		icon: <Zap className="w-8 h-8 text-primary" strokeWidth={1.5} />,
+		icon: <Zap className="h-8 w-8 text-spx-cyan" strokeWidth={1.5} />,
 		priceMonthly: 999,
 		priceYearly: 12000,
 		features: ["1-Seat Expert Agent", "3-Seats AI Foundations", "Continuous upgrades", "Standard support"],
@@ -38,7 +39,7 @@ const plans = [
 		id: "pro",
 		name: "Pro",
 		description: "SMEs",
-		icon: <Rocket className="w-8 h-8 text-primary" strokeWidth={1.5} />,
+		icon: <Rocket className="h-8 w-8 text-spx-cyan" strokeWidth={1.5} />,
 		priceMonthly: 1999,
 		priceYearly: 24000,
 		features: ["3-Seats Expert Agent", "5-Seats AI Foundations", "Continuous upgrades", "Priority support"],
@@ -47,7 +48,7 @@ const plans = [
 		id: "premium",
 		name: "Premium",
 		description: "Large organizations",
-		icon: <Crown className="w-8 h-8 text-primary" strokeWidth={1.5} />,
+		icon: <Crown className="h-8 w-8 text-spx-cyan" strokeWidth={1.5} />,
 		priceMonthly: 2899,
 		priceYearly: 35000,
 		features: ["5-Seats Expert Agent", "7-Seats AI Foundations", "SLA and dedicated support"],
@@ -55,5 +56,14 @@ const plans = [
 ];
 
 export default function PricingPage() {
-	return <PricingModule annualBillingLabel="Annual billing" buttonLabel="Request a demo" plans={plans} defaultAnnual={true} />;
+	return (
+		<div className="w-full min-w-0 overflow-x-clip" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
+			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+				{/* ── Plans ── */}
+				<section className="pt-6 sm:pt-10">
+					<PricingPlans plans={plans} buttonLabel="Request a demo" buttonHref="/request-demo" defaultAnnual />
+				</section>
+			</div>
+		</div>
+	);
 }

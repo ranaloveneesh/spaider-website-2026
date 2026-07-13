@@ -2,6 +2,7 @@
 
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
 import { type CSSProperties, type ReactNode, useState } from "react";
@@ -217,9 +218,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, va
 			{arrow && !asChild ? (
 				<>
 					{children}
-					<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-						→
-					</span>
+					<ArrowRight aria-hidden="true" className="inline-block size-[1em] transition-transform duration-300 group-hover:translate-x-1" />
 				</>
 			) : (
 				children

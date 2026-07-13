@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -12,7 +13,7 @@ const HeroGlobe = dynamic(() => import("./HeroGlobe"), { ssr: false });
 // Expo-out easing - Emil Kowalski's preferred curve for cinematic UI
 const EASE_EXPO = [0.16, 1, 0.3, 1] as const;
 
-/** Outer content container: staggers eyebrow → h1 block → foot → stats */
+/** Outer content container: staggers eyebrow -> h1 block -> foot -> stats */
 const heroContainer = {
 	hidden: {},
 	show: {
@@ -93,18 +94,16 @@ export default function Hero() {
 
 				{/* Foot row: sub-headline left, CTAs right */}
 				<motion.div variants={heroItem} className="mt-[5vh] flex flex-wrap items-end justify-between gap-10">
-					<p className="spx-hero-sub">Deploy domain-expert AI models and agents in your workflows - securely, compliantly, mission-ready from day one.</p>
+					<p className="spx-hero-sub">SPAIDER helps aerospace teams search internal knowledge, manage long-horizon projects, and work with domain-specific AI assistants across proposal, engineering, and operations workflows.</p>
 					<div className="flex flex-wrap items-center gap-3.5">
 						<Button asChild variant="solid">
 							<Link href="/request-demo">
 								Request a Demo
-								<span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-									→
-								</span>
+								<ArrowRight aria-hidden="true" className="inline-block size-[1em] transition-transform duration-300 group-hover:translate-x-1" />
 							</Link>
 						</Button>
 						<Button asChild variant="line">
-							<Link href="/our-tech">Explore Our Tech</Link>
+							<Link href="/ai-foundations">Explore AI Foundations</Link>
 						</Button>
 					</div>
 				</motion.div>

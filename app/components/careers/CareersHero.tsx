@@ -35,8 +35,7 @@ export default function CareersHero() {
 			{/* ── Content ── */}
 			<div className="relative z-10 flex flex-col items-center gap-6">
 				<motion.h1 variants={headingVar} className="mx-auto max-w-[18ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
-					We&apos;re solving <span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>AI solution</span> for{" "}
-					<span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>Aerospace Teams</span>
+					We&apos;re solving <span className="spx-grad-text">AI solution</span> for <span className="spx-grad-text">Aerospace Teams</span>
 					<br />
 					once and for all.
 				</motion.h1>

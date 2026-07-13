@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
 
-// Port of source Technology page's `.stack`/`.layer` section ("01 — The moat").
+// Port of source Technology page's `.stack`/`.layer` section ("01 - The moat").
 // Exclusive-open accordion: clicking an open layer closes it.
 type Layer = {
 	name: string;
@@ -23,7 +23,7 @@ const LAYERS: Layer[] = [
 		name: "Agentic Layer",
 		desc: "Workflow agents that work with your data and tools.",
 		body: "Workflow-specific assistants plan tasks, use tools, maintain context, and support experts across proposals, engineering, operations, and business workflows.",
-		chips: ["SAGAN · SPOCK · KEPLER · AMELIA", "Task planning", "Tool use", "Workflow memory", "SOP-guided execution", "State management"],
+		chips: ["SAGAN · SPOCK · KEPLER · AMELIA", "Task planning", "Tool use", "Workflow memory", "SOP-guided execution", "Persistent context"],
 	},
 	{
 		name: "Model Layer",
@@ -34,8 +34,8 @@ const LAYERS: Layer[] = [
 	{
 		name: "Knowledge Layer",
 		desc: "Turn enterprise data into structured aerospace knowledge.",
-		body: "Documents, standards, project history, and technical data are ingested and structured into searchable libraries, retrieval indexes, and knowledge graphs.",
-		chips: ["Ingestion pipeline", "Document parsing", "Fact extraction", "Knowledge graph", "Vector retrieval", "Libraries", "Source cards"],
+		body: "Documents, standards, project history, and technical data are ingested and structured into searchable libraries, retrieval indexes, and knowledge graphs built on an aerospace ontology and taxonomy.",
+		chips: ["Ingestion pipeline", "Document parsing", "Fact extraction", "Aerospace ontology", "Taxonomy", "Knowledge graph", "Vector retrieval", "Libraries", "Source cards"],
 	},
 ];
 

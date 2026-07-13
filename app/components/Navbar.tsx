@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 
-type DropdownLink = { label: string; href: string; description?: string; comingSoon?: boolean };
+type DropdownLink = { label: string; href: string; description?: string };
 
 type NavItem = { type: "link"; label: string; href: string } | { type: "dropdown"; label: string; links: DropdownLink[] };
 
@@ -18,6 +18,7 @@ const NAV_ITEMS: NavItem[] = [
 		label: "AGENTS",
 		links: [{ label: "SAGAN", href: "/agents/sagan" }],
 	},
+	{ type: "link", label: "PRICING", href: "/pricing" },
 	{
 		type: "dropdown",
 		label: "COMPANY",
@@ -27,7 +28,6 @@ const NAV_ITEMS: NavItem[] = [
 			{ label: "INVEST", href: "/invest" },
 		],
 	},
-	{ type: "link", label: "PRICING", href: "/pricing" },
 ];
 
 const linkClasses = "group relative font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-mute transition-colors duration-300 hover:text-spx-ink";
@@ -79,7 +79,6 @@ function NavDropdown({ label, links }: { label: string; links: DropdownLink[] })
 						<Link key={link.href} href={link.href} role="menuitem" className="group block select-none rounded-xs p-3 transition-colors hover:bg-white/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20">
 							<div className="mb-1 flex items-center gap-2 leading-none">
 								<span className="font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.14em] text-spx-mute group-hover:text-spx-ink transition-colors">{link.label}</span>
-								{link.comingSoon && <span className="rounded-sm bg-spx-rule px-1.5 py-0.5 text-[0.5625rem] font-medium font-geist-mono uppercase tracking-[0.06em] text-spx-mute">Soon</span>}
 							</div>
 							{link.description && <p className="text-xs leading-snug text-spx-ink-2/70 group-hover:text-spx-ink-2 transition-colors">{link.description}</p>}
 						</Link>

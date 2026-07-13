@@ -129,7 +129,7 @@ export default function WhySpaider({ items, title, subtitle }: { items?: Accordi
 							))}
 						</div>
 					) : (
-						<Image src="/logo.png" alt="SPAIDER 3D Slab" width={500} height={500} className="logo-3d" />
+						<Image src="/spaider_logo_3d.gif" alt="SPAIDER 3D Slab" width={500} height={500} className="" />
 					)}
 				</Reveal>
 			</div>

@@ -22,7 +22,7 @@ const STEPS: Step[] = [
 	{
 		label: "Step 02",
 		title: "Prepare your data",
-		description: "We make your private data ready - Vector DB or Knowledge Graph.",
+		description: "We make your private data AI-ready - structured, searchable, and traceable.",
 		icon: Database,
 	},
 	{

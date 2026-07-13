@@ -67,7 +67,7 @@ export function RequestDemoForm() {
 	const fieldProps = { values, errors, onChange: handleChange, onBlur: handleBlur };
 
 	return (
-		<motion.div className="min-w-0 w-full rounded-2xl border border-border p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6" initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
+		<motion.div className="w-full min-w-0 rounded-xs border border-spx-rule bg-spx-void-2 p-6 sm:p-8" initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
 			<form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
 				<RequestDemoFormPersonal {...fieldProps} />
 				<RequestDemoFormWork {...fieldProps} />

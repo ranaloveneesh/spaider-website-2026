@@ -10,56 +10,38 @@ export interface TeamMember {
 	name: string;
 	role: string;
 	image: string;
-	social?: {
-		twitter?: string;
-		linkedin?: string;
-		instagram?: string;
-		behance?: string;
-	};
 }
 
 const DEFAULT_MEMBERS: TeamMember[] = [
 	{
 		id: "1",
-		name: "Chadrack",
-		role: "director of photography",
-		image: "https://media.licdn.com/dms/image/v2/D4D03AQFnmLdpZW78yA/profile-displayphoto-scale_200_200/B4DZvM8NB2JMAY-/0/1768669895649?e=2147483647&v=beta&t=5VGAB-2gYupLNaHvJHECollR25THd-3oR5wngGlQiY4",
-		social: { twitter: "#", linkedin: "#", behance: "#" },
+		name: "Loveneesh Rana",
+		role: "FOUNDER, CEO",
+		image: "/team/Loveneesh.jpg",
 	},
 	{
 		id: "2",
-		name: "Mak VieSAinte",
-		role: "FOUNDER",
-		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2vnSxNNVGZV2MXRjlGELl-NgLl5kXdpDR6A&s",
-		social: { twitter: "#", linkedin: "#" },
+		name: "Nitish Kumar",
+		role: "CTO",
+		image: "/team/Nitish.jpeg",
 	},
 	{
 		id: "3",
-		name: "Osiris Balonga",
-		role: "LEAD FRONT-END",
-		image: "https://media.licdn.com/dms/image/v2/D4D03AQGVqrPPAGHtoQ/profile-displayphoto-scale_200_200/B4DZwhAkjaHwAY-/0/1770080338529?e=2147483647&v=beta&t=q-_6p1VCJ8NN8eHj9zUFwJZds_XpKez9Hy14SAIDp4M",
-		social: { twitter: "#", linkedin: "#" },
+		name: "Ernest Skrzypczyk",
+		role: "LEAD DEPLOYMENT TECHNOLOGIES",
+		image: "/team/Ernest.jpg",
 	},
 	{
 		id: "4",
-		name: "Jacques",
-		role: "PRODUCT OWNER",
-		image: "https://media.licdn.com/dms/image/v2/D4D03AQE-Z7-S1LSYNQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1724143166545?e=2147483647&v=beta&t=6IPCwgOzblGt4p2fEdnY74gMbLyRHii5Ite3A39qQsY",
-		social: { linkedin: "#" },
+		name: "Sumit Goski",
+		role: "LEAD SPACE APPLICATIONS",
+		image: "/team/Sumit.jpeg",
 	},
 	{
 		id: "5",
-		name: "Riche Makso",
-		role: "CTO - PRODUCT DESIGNER",
-		image: "https://media.licdn.com/dms/image/v2/D4D03AQEkTAbZLlSrLg/profile-displayphoto-scale_200_200/B4DZoHdu8BGgAY-/0/1761061833315?e=2147483647&v=beta&t=Rg1dBTvq9X2heyhuhBwG2DsEkG65v0vQ35hF2FSeYns",
-		social: { twitter: "#", linkedin: "#" },
-	},
-	{
-		id: "6",
-		name: "Jemima",
-		role: "MAKE-UP ARTISTE",
-		image: "https://i.pravatar.cc/400?img=16",
-		social: { instagram: "#" } as TeamMember["social"],
+		name: "Md Sohail Ansari",
+		role: "SOFTWARE ENGINEER",
+		image: "/team/Sohail.jpeg",
 	},
 ];
 
@@ -121,7 +103,7 @@ function PhotoCard({ member, className, hoveredId, onHover }: { member: TeamMemb
 		<button
 			type="button"
 			aria-label={`Highlight ${member.name}`}
-			className={cn("relative cursor-pointer shrink-0 overflow-hidden rounded-xl transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")}
+			className={cn("relative cursor-pointer shrink-0 overflow-hidden rounded-xs transition-opacity duration-400", className, isDimmed ? "opacity-60" : "opacity-100")}
 			onMouseEnter={() => onHover(member.id)}
 			onMouseLeave={() => onHover(null)}
 			onFocus={() => onHover(member.id)}
@@ -154,7 +136,7 @@ function MemberRow({ member, hoveredId, onHover, align = "start" }: { member: Te
 		<button
 			type="button"
 			aria-label={`Highlight ${member.name}`}
-			className={cn("w-fit max-w-full cursor-pointer rounded-lg p-1 transition-opacity duration-300", align === "end" ? "justify-self-end text-right" : "justify-self-start text-left", isDimmed ? "opacity-50" : "opacity-100")}
+			className={cn("w-fit max-w-full cursor-pointer rounded-xs p-1 text-left transition-opacity duration-300 justify-self-start", align === "end" && "ml-[45%] sm:ml-0 lg:ml-[45%]", isDimmed ? "opacity-50" : "opacity-100")}
 			onMouseEnter={() => onHover(member.id)}
 			onMouseLeave={() => onHover(null)}
 			onFocus={() => onHover(member.id)}
@@ -164,11 +146,11 @@ function MemberRow({ member, hoveredId, onHover, align = "start" }: { member: Te
 			{/* Name */}
 			<div className="flex items-center gap-2.5">
 				<span className={cn("h-3 w-4 shrink-0 rounded-[5px] transition-all duration-300", isActive ? "bg-foreground w-5" : "bg-foreground/25")} />
-				<span className={cn("text-base font-semibold leading-none tracking-tight transition-colors duration-300 md:text-[18px]", isActive ? "text-foreground" : "text-muted")}>{member.name}</span>
+				<span className={cn("text-base font-semibold leading-none tracking-tight transition-colors duration-300 md:text-[18px]", isActive ? "text-foreground" : "text-spx-mute")}>{member.name}</span>
 			</div>
 
 			{/* Role */}
-			<p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-muted">{member.role}</p>
+			<p className="mt-1.5 pl-[27px] font-geist-mono text-[0.6rem] uppercase tracking-[0.2em] text-spx-mute md:text-[0.65rem]">{member.role}</p>
 		</button>
 	);
 }

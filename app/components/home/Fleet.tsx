@@ -51,7 +51,7 @@ export default function Fleet() {
 					return (
 						<Reveal key={row.idx} variant="fade-up" threshold={0.1} delayMs={i * 55}>
 							<Link href={row.href} className="group relative grid grid-cols-[44px_1fr_auto] items-center gap-x-5 gap-y-3 border-b border-spx-rule py-8 transition-[padding] duration-400 hover:pl-3.5 min-[1000px]:grid-cols-[70px_1.1fr_0.7fr_1.4fr_11rem] min-[1000px]:gap-[1.625rem] min-[1000px]:py-[2.125rem]">
-								{/* Hover wash, cyan → transparent */}
+								{/* Hover wash, cyan -> transparent */}
 								<span aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-350 group-hover:opacity-100" style={{ background: "linear-gradient(90deg, rgba(89,232,245,0.05), transparent 60%)" }} />
 								<span className="spx-index">{row.idx}</span>
 								<span className="font-outfit text-[clamp(1.7rem,3.4vw,2.6rem)] font-semibold leading-[1] tracking-[-0.02em] text-foreground">{row.name}</span>

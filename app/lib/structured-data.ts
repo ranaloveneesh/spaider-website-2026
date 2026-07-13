@@ -49,9 +49,9 @@ export function getSiteJsonLd() {
 	};
 }
 
-const INNOSPACE_HEADLINE = "We Secured 2nd Place at INNOspace Masters 2025 (And We're Just Getting Started)";
+const INNOSPACE_HEADLINE = "We secured 2nd place at INNOspace Masters 2025. And we're just getting started.";
 
-const INNOSPACE_DESCRIPTION = "SPAIDER secured 2nd place at INNOspace Masters 2025 in the OHB Challenge - AI agents for aerospace operations.";
+const INNOSPACE_DESCRIPTION = "SPAIDER secured 2nd place at INNOspace Masters 2025 in the OHB Challenge: AI agents for aerospace operations.";
 
 /** Blog post /blog/innospace + breadcrumbs. */
 export function getInnoSpaceArticleJsonLd() {

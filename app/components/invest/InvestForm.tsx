@@ -4,10 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import CeramicButton from "@/app/components/ui/button";
-import { Input } from "@/app/components/ui/input";
-import { Label } from "@/app/components/ui/label";
-import { Textarea } from "@/app/components/ui/textarea";
+import { Button } from "@/app/components/ui/button";
+import { SPX_FIELD as FIELD_CLASSES, SPX_FORM_LABEL as LABEL_CLASSES } from "@/app/components/ui/spx-form";
 import { cn } from "@/app/lib/utils";
 
 // Strong ease-out - starts fast, feels immediately responsive (Emil principle)
@@ -101,88 +99,105 @@ export function InvestForm() {
 		}
 	};
 
+	const fieldError = (name: keyof FormValues) => (
+		<AnimatePresence>
+			{errors[name] && (
+				<motion.p key={`${name}-error`} id={`${name}-error`} className="text-[0.8rem] text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
+					{errors[name]}
+				</motion.p>
+			)}
+		</AnimatePresence>
+	);
+
 	return (
 		// Card entry: fade-up + scale from 0.98 (nothing appears from nothing - Emil)
-		<motion.div className="min-w-0 w-full rounded-2xl border border-border p-4 shadow-sm sm:p-5 md:col-span-1 lg:col-span-2 lg:p-6" initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
+		<motion.div className="w-full min-w-0 rounded-xs border border-spx-rule bg-spx-void-2 p-6 sm:p-8" initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
 			<form className="my-0 w-full" onSubmit={handleSubmit} noValidate>
 				{/* Row 1 - Name fields */}
-				<motion.div className="mb-4 flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.2 }}>
+				<motion.div className="mb-5 flex flex-col space-y-5 sm:flex-row sm:space-x-4 sm:space-y-0" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.2 }}>
 					<LabelInputContainer>
-						<Label htmlFor="firstname">
+						<label htmlFor="firstname" className={LABEL_CLASSES}>
 							First name <span className="text-destructive">*</span>
-						</Label>
-						<Input id="firstname" name="firstname" placeholder="John" type="text" value={values.firstname} onChange={(e) => handleChange("firstname", e.target.value)} onBlur={() => handleBlur("firstname")} aria-invalid={!!errors.firstname} aria-describedby={errors.firstname ? "firstname-error" : undefined} />
-						<AnimatePresence>
-							{errors.firstname && (
-								<motion.p key="firstname-error" id="firstname-error" className="text-sm text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
-									{errors.firstname}
-								</motion.p>
-							)}
-						</AnimatePresence>
+						</label>
+						<input
+							id="firstname"
+							name="firstname"
+							placeholder="John"
+							type="text"
+							className={FIELD_CLASSES}
+							value={values.firstname}
+							onChange={(e) => handleChange("firstname", e.target.value)}
+							onBlur={() => handleBlur("firstname")}
+							aria-invalid={!!errors.firstname}
+							aria-describedby={errors.firstname ? "firstname-error" : undefined}
+						/>
+						{fieldError("firstname")}
 					</LabelInputContainer>
 					<LabelInputContainer>
-						<Label htmlFor="lastname">
+						<label htmlFor="lastname" className={LABEL_CLASSES}>
 							Last name <span className="text-destructive">*</span>
-						</Label>
-						<Input id="lastname" name="lastname" placeholder="Doe" type="text" value={values.lastname} onChange={(e) => handleChange("lastname", e.target.value)} onBlur={() => handleBlur("lastname")} aria-invalid={!!errors.lastname} aria-describedby={errors.lastname ? "lastname-error" : undefined} />
-						<AnimatePresence>
-							{errors.lastname && (
-								<motion.p key="lastname-error" id="lastname-error" className="text-sm text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
-									{errors.lastname}
-								</motion.p>
-							)}
-						</AnimatePresence>
+						</label>
+						<input
+							id="lastname"
+							name="lastname"
+							placeholder="Doe"
+							type="text"
+							className={FIELD_CLASSES}
+							value={values.lastname}
+							onChange={(e) => handleChange("lastname", e.target.value)}
+							onBlur={() => handleBlur("lastname")}
+							aria-invalid={!!errors.lastname}
+							aria-describedby={errors.lastname ? "lastname-error" : undefined}
+						/>
+						{fieldError("lastname")}
 					</LabelInputContainer>
 				</motion.div>
 
 				{/* Row 2 - Email + Phone */}
-				<motion.div className="mb-4 flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.27 }}>
+				<motion.div className="mb-5 flex flex-col space-y-5 sm:flex-row sm:space-x-4 sm:space-y-0" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.27 }}>
 					<LabelInputContainer>
-						<Label htmlFor="email">
+						<label htmlFor="email" className={LABEL_CLASSES}>
 							Email <span className="text-destructive">*</span>
-						</Label>
-						<Input id="email" name="email" placeholder="you@email.com" type="email" value={values.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
-						<AnimatePresence>
-							{errors.email && (
-								<motion.p key="email-error" id="email-error" className="text-sm text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
-									{errors.email}
-								</motion.p>
-							)}
-						</AnimatePresence>
+						</label>
+						<input id="email" name="email" placeholder="you@email.com" type="email" className={FIELD_CLASSES} value={values.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} aria-invalid={!!errors.email} aria-describedby={errors.email ? "email-error" : undefined} />
+						{fieldError("email")}
 					</LabelInputContainer>
 					<LabelInputContainer>
-						<Label htmlFor="phone">Mobile number</Label>
-						<Input id="phone" name="phone" placeholder="+352 6x xx xx xx" type="tel" value={values.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
-						<AnimatePresence>
-							{errors.phone && (
-								<motion.p key="phone-error" id="phone-error" className="text-sm text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
-									{errors.phone}
-								</motion.p>
-							)}
-						</AnimatePresence>
+						<label htmlFor="phone" className={LABEL_CLASSES}>
+							Mobile number
+						</label>
+						<input id="phone" name="phone" placeholder="+352 6x xx xx xx" type="tel" className={FIELD_CLASSES} value={values.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
+						{fieldError("phone")}
 					</LabelInputContainer>
 				</motion.div>
 
 				{/* Row 3 - Message */}
 				<motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.34 }}>
-					<LabelInputContainer className="mb-4">
-						<Label htmlFor="message">Message</Label>
-						<Textarea id="message" name="message" placeholder="Tell us more..." rows={3} value={values.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} aria-invalid={!!errors.message} aria-describedby={errors.message ? "message-error" : undefined} />
-						<AnimatePresence>
-							{errors.message && (
-								<motion.p key="message-error" id="message-error" className="text-sm text-destructive" role="alert" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15, ease: "easeOut" }}>
-									{errors.message}
-								</motion.p>
-							)}
-						</AnimatePresence>
+					<LabelInputContainer className="mb-6">
+						<label htmlFor="message" className={LABEL_CLASSES}>
+							Message
+						</label>
+						<textarea
+							id="message"
+							name="message"
+							placeholder="Tell us more..."
+							rows={3}
+							className={cn(FIELD_CLASSES, "resize-none")}
+							value={values.message}
+							onChange={(e) => handleChange("message", e.target.value)}
+							onBlur={() => handleBlur("message")}
+							aria-invalid={!!errors.message}
+							aria-describedby={errors.message ? "message-error" : undefined}
+						/>
+						{fieldError("message")}
 					</LabelInputContainer>
 				</motion.div>
 
 				{/* Row 4 - Submit (whileTap scale - Emil button press rule) */}
 				<motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.41 }} whileTap={isSubmitting ? undefined : { scale: 0.97 }}>
-					<CeramicButton color="#ffffff" textColor="#0a0a0b" ringColor="rgba(255,255,255,0.22)" borderRadius={8} padding="11px 24px" fontSize={13} centered style={{ width: "100%", textAlign: "center" }} type="submit" disabled={isSubmitting}>
+					<Button variant="solid" type="submit" disabled={isSubmitting} className="h-auto w-full">
 						{isSubmitting ? "Submitting..." : "Submit"}
-					</CeramicButton>
+					</Button>
 				</motion.div>
 			</form>
 		</motion.div>
@@ -190,5 +205,5 @@ export function InvestForm() {
 }
 
 const LabelInputContainer = ({ children, className }: { children: React.ReactNode; className?: string }) => {
-	return <div className={cn("flex w-full min-w-0 flex-col space-y-2 sm:flex-1", className)}>{children}</div>;
+	return <div className={cn("flex w-full min-w-0 flex-col space-y-2.5 sm:flex-1", className)}>{children}</div>;
 };

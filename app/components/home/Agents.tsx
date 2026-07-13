@@ -52,23 +52,21 @@ const PRODUCTS = [
 		heading: "AI Foundations",
 		description: "Supercharge your everyday company knowledge work with AI. Make your internal and approved external knowledge sources AI-ready - securely, on your infrastructure.",
 		bullets: ["Make your company's internal and approved external knowledge sources AI ready.", "Automate daily documentation (reports, minute-of-meeting etc) tasks.", "Search, chat, and retrieve with traceable context grounded in your data.", "Enterprise co-work powered by domain-expert AI models."],
-		image: "/agents/ai-foundations/12.png",
+		image: "/ai-foundations/12.png",
 		href: "/ai-foundations",
-		comingSoon: false,
 	},
 	{
 		number: "02",
 		tag: "Proposal Agent",
 		heading: "SAGAN",
-		description: "Your proposal and RFP co-pilot for faster response time. Draft winning bids using your own past materials, templates, and source-backed institutional knowledge.",
+		description: "SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.",
 		bullets: ["Read RFPs and extract requirements automatically.", "Draft responses using your templates and past materials.", "Reuse internal knowledge with source-backed outputs.", "Support reviews, planning, and submission readiness."],
-		image: "/agents/ai-foundations/12.png",
+		image: "/ai-foundations/12.png",
 		href: "/agents/sagan",
-		comingSoon: false,
 	},
 ] as const;
 
-function ProductSection({ tag, heading, description, bullets, image, href, comingSoon, flip }: (typeof PRODUCTS)[number] & { flip: boolean }) {
+function ProductSection({ tag, heading, description, bullets, image, href, flip }: (typeof PRODUCTS)[number] & { flip: boolean }) {
 	return (
 		<motion.div className="border-t border-white/[0.07] py-14 sm:py-18 md:py-20 lg:py-24" variants={productRow} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }}>
 			<div className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}>
@@ -77,7 +75,6 @@ function ProductSection({ tag, heading, description, bullets, image, href, comin
 					{/* Eyebrow */}
 					<div className="mb-5 flex flex-wrap items-center gap-3">
 						<span className="font-geist-mono text-[0.7rem] uppercase tracking-[0.18em] text-spx-cyan">{tag}</span>
-						{comingSoon && <span className="rounded-xs border border-spx-rule-2 px-2 py-0.5 font-geist-mono text-[0.5625rem] uppercase tracking-[0.06em] text-spx-mute">Coming Soon</span>}
 					</div>
 
 					{/* Heading */}
@@ -96,7 +93,7 @@ function ProductSection({ tag, heading, description, bullets, image, href, comin
 					</ul>
 
 					{/* CTA */}
-					{href && !comingSoon && (
+					{href && (
 						<div className="mt-8">
 							<Button asChild variant="solid">
 								<Link href={href}>Explore {heading}</Link>
@@ -110,7 +107,7 @@ function ProductSection({ tag, heading, description, bullets, image, href, comin
 					{/*
 					  Resend-style gradient border:
 					  - 1px padding on the outer wrapper exposes the gradient background as a border
-					  - Gradient runs top-left → bottom-right: bright at top, fades to near-invisible at bottom
+					  - Gradient runs top-left -> bottom-right: bright at top, fades to near-invisible at bottom
 					  - box-shadow layers a depth shadow + faint accent glow
 					  - On hover the accent glow brightens, reinforcing the "lit" feel
 					*/}

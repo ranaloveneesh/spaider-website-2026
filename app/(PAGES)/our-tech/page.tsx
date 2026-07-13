@@ -42,7 +42,7 @@ export default function OurTechPage() {
 					{/* ── The moat: interactive stack layers ── */}
 					<TechStack />
 
-					{/* ── Knowledge flow: documents → decisions pill chain ── */}
+					{/* ── Knowledge flow: documents -> decisions pill chain ── */}
 					<KnowledgeFlow />
 
 					{/* ── Platform capabilities - tenets-style hairline grid ── */}

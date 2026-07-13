@@ -1,9 +1,17 @@
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/app/components/ui/reveal";
 
 // Source's SAGAN `stats`, rendered in its `.num-grid` style: big mono value,
 // small uppercase mono label underneath, hairline-divided columns.
 const METRICS = [
-	{ value: "weeks → hours", label: "first structured, costed draft" },
+	{
+		value: (
+			<>
+				weeks <ArrowRight aria-hidden="true" className="inline size-[0.7em] align-baseline" /> hours
+			</>
+		),
+		label: "first structured, costed draft",
+	},
 	{ value: "100%", label: "requirements traced to source" },
 	{ value: "PSS-ready", label: "official agency cost forms populated" },
 ] as const;

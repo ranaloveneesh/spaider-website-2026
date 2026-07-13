@@ -199,7 +199,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
 	.why-spaider-step-bar {
+		/* biome-ignore lint/complexity/noImportantStyles: must override the inline style="width/animation" set by WhySpaider.tsx */
 		animation: none !important;
+		/* biome-ignore lint/complexity/noImportantStyles: must override the inline style="width/animation" set by WhySpaider.tsx */
 		width: 100% !important;
 	}
 }
@@ -252,7 +254,7 @@ body {
 /* Hero subtitle - port of source's `.hero-sub`, a slightly tighter one-off for
    the main hero only (44ch measure, 1.65 line-height). */
 .spx-hero-sub {
-	max-width: 44ch;
+	max-width: 64ch;
 	font-size: clamp(1.06rem, 1.4vw, 1.22rem);
 	line-height: 1.65;
 	color: var(--spx-ink-2);

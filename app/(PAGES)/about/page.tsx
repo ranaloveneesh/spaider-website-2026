@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import SixGates from "@/app/components/about/SixGates";
 import TeamShowcase from "@/app/components/about/Team";
+import CtaBand from "@/app/components/CtaBand";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
@@ -28,15 +29,15 @@ export const metadata: Metadata = {
 export default function AboutPage() {
 	return (
 		<div className="w-full min-w-0 overflow-x-clip">
-			<div className="w-full space-y-16 pb-10 text-left sm:space-y-24 sm:pb-16 md:space-y-32" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
+			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				{/* ── Hero ── */}
-				<Reveal as="header" variant="fade-up" threshold={0.1} className="py-12 sm:py-16">
+				<Reveal as="header" variant="fade-up" threshold={0.1} className="border-b border-spx-rule pb-12 pt-6 sm:pb-16 sm:pt-10">
 					<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
 						Built by aerospace
 						<br />
-						<span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>and AI specialists.</span>
+						<span className="spx-grad-text">and AI specialists.</span>
 					</h1>
-					<p className="mt-8 max-w-[56ch] text-[clamp(1.08rem,1.4vw,1.22rem)] leading-[1.7] text-spx-ink-2">SPAIDER exists to make enterprise knowledge, expert workflows, and domain-specific AI assistants operational across aerospace organizations.</p>
+					<p className="spx-lede mt-7">SPAIDER exists to make enterprise knowledge, expert workflows, and domain-specific AI assistants operational across aerospace organizations.</p>
 
 					{/* Mission / Vision */}
 					<div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-spx-rule bg-spx-rule sm:mt-16 md:grid-cols-2">
@@ -51,15 +52,27 @@ export default function AboutPage() {
 					</div>
 				</Reveal>
 
+				{/* ── Why SPAIDER exists (source Company "01") ── */}
+				<Reveal as="section" variant="fade-up" threshold={0.1} className="mt-[var(--spx-section-gap)]">
+					<h2 className="spx-heading text-foreground">
+						Knowledge is trapped. <span className="spx-grad-text">We make it operational.</span>
+					</h2>
+					<p className="spx-lede mt-3">
+						Aerospace organizations generate enormous technical knowledge, but much of it stays trapped in documents, projects, experts, and disconnected tools. SPAIDER builds the enterprise AI layer that turns this knowledge into reusable intelligence for proposals, engineering, operations, and strategy.
+					</p>
+				</Reveal>
+
 				{/* ── One mission, six gates ── */}
-				<SixGates />
+				<div className="mt-[var(--spx-section-gap)]">
+					<SixGates />
+				</div>
 
 				{/* ── Team ── */}
-				<section>
+				<section className="mt-[var(--spx-section-gap)]">
 					<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
 						<div className="flex justify-start md:justify-end">
-							<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground md:text-right sm:text-5xl">
-								<span style={{ background: "var(--spx-grad)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>Minds</span> behind the mission
+							<h2 className="spx-heading text-foreground md:text-right">
+								<span className="spx-grad-text">Minds</span> behind the mission
 							</h2>
 						</div>
 					</Reveal>
@@ -67,6 +80,11 @@ export default function AboutPage() {
 						<TeamShowcase />
 					</Reveal>
 				</section>
+
+				{/* ── CTA band (source Company closer) ── */}
+				<Reveal variant="fade-up" threshold={0.25}>
+					<CtaBand title="Talk to the team." copy="Pilots, partnerships, and investor conversations." ctaHref="/request-demo" ctaLabel="Get in touch" />
+				</Reveal>
 			</div>
 		</div>
 	);

@@ -1,10 +1,8 @@
 "use client";
 
-import { Input } from "@/app/components/ui/input";
-import { Label } from "@/app/components/ui/label";
-import { SelectField } from "@/app/components/ui/select-field";
+import { SPX_FIELD, SPX_FORM_LABEL, SpxSelect } from "@/app/components/ui/spx-form";
 import type { FormErrors, FormValues } from "./form-types-validation";
-import { LabelInputContainer } from "./RequestDemoShared";
+import { FieldError, LabelInputContainer } from "./RequestDemoShared";
 
 type Props = {
 	values: FormValues;
@@ -15,32 +13,26 @@ type Props = {
 
 export function RequestDemoFormContact({ values, errors, onChange, onBlur }: Props) {
 	return (
-		<div className="mb-4 flex flex-col space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
+		<div className="mb-5 flex flex-col space-y-5 lg:flex-row lg:space-x-4 lg:space-y-0">
 			<LabelInputContainer>
-				<Label htmlFor="country">
+				<label htmlFor="country" className={SPX_FORM_LABEL}>
 					Country <span className="text-destructive">*</span>
-				</Label>
-				<SelectField id="country" name="country" value={values.country} onChange={(e) => onChange("country", e.target.value)} onBlur={() => onBlur("country")} aria-invalid={!!errors.country} aria-describedby={errors.country ? "country-error" : undefined}>
+				</label>
+				<SpxSelect id="country" name="country" value={values.country} onChange={(e) => onChange("country", e.target.value)} onBlur={() => onBlur("country")} aria-invalid={!!errors.country} aria-describedby={errors.country ? "country-error" : undefined}>
 					<option value="Luxembourg">Luxembourg</option>
 					<option value="France">France</option>
 					<option value="Germany">Germany</option>
 					<option value="Belgium">Belgium</option>
 					<option value="Netherlands">Netherlands</option>
-				</SelectField>
-				{errors.country && (
-					<p id="country-error" className="text-sm text-destructive" role="alert">
-						{errors.country}
-					</p>
-				)}
+				</SpxSelect>
+				{errors.country && <FieldError id="country-error">{errors.country}</FieldError>}
 			</LabelInputContainer>
 			<LabelInputContainer>
-				<Label htmlFor="phone">Mobile number</Label>
-				<Input id="phone" name="phone" placeholder="+352 6x xx xx xx" type="tel" value={values.phone} onChange={(e) => onChange("phone", e.target.value)} onBlur={() => onBlur("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
-				{errors.phone && (
-					<p id="phone-error" className="text-sm text-destructive" role="alert">
-						{errors.phone}
-					</p>
-				)}
+				<label htmlFor="phone" className={SPX_FORM_LABEL}>
+					Mobile number
+				</label>
+				<input id="phone" name="phone" placeholder="+352 6x xx xx xx" type="tel" className={SPX_FIELD} value={values.phone} onChange={(e) => onChange("phone", e.target.value)} onBlur={() => onBlur("phone")} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "phone-error" : undefined} />
+				{errors.phone && <FieldError id="phone-error">{errors.phone}</FieldError>}
 			</LabelInputContainer>
 		</div>
 	);

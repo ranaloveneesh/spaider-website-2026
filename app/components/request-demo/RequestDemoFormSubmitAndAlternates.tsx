@@ -1,7 +1,7 @@
 "use client";
 
 import { CalendarIcon, MailIcon } from "lucide-react";
-import CeramicButton from "@/app/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { CALENDLY_URL, EMAIL_ADDRESS } from "@/app/utils/constants";
 
 type Props = {
@@ -11,58 +11,33 @@ type Props = {
 export function RequestDemoFormSubmitAndAlternates({ isSubmitting }: Props) {
 	return (
 		<>
-			<CeramicButton color="#ffffff" textColor="#0a0a0b" ringColor="rgba(255,255,255,0.22)" borderRadius={8} padding="11px 24px" fontSize={13} centered style={{ width: "100%", textAlign: "center" }} type="submit" disabled={isSubmitting}>
+			<Button variant="solid" type="submit" disabled={isSubmitting} className="h-auto w-full">
 				{isSubmitting ? "Submitting..." : "Submit"}
-			</CeramicButton>
+			</Button>
 
-			<div className="my-6 flex items-center gap-3">
-				<div className="h-px flex-1 bg-linear-to-r from-transparent via-neutral-300 to-neutral-300 dark:via-neutral-700 dark:to-neutral-700" />
-				<span className="text-xs font-medium uppercase tracking-wide text-neutral-500 dark:text-neutral-400">OR</span>
-				<div className="h-px flex-1 bg-linear-to-l from-transparent via-neutral-300 to-neutral-300 dark:via-neutral-700 dark:to-neutral-700" />
+			<div className="my-6 flex items-center gap-4">
+				<div className="h-px flex-1 bg-spx-rule" />
+				<span className="font-geist-mono text-[0.65rem] uppercase tracking-[0.16em] text-spx-faint">or</span>
+				<div className="h-px flex-1 bg-spx-rule" />
 			</div>
+
 			<div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:gap-4">
-				<div className="w-full min-w-0 sm:flex-1">
-					<CeramicButton
-						type="button"
-						color="rgba(255,255,255,0.05)"
-						textColor="#ffffff"
-						ringColor="rgba(255,255,255,0.14)"
-						borderRadius={8}
-						padding="11px 24px"
-						fontSize={13}
-						centered
-						aria-label="Schedule on Calendly (opens in a new tab)"
-						style={{ width: "100%", justifyContent: "center" }}
-						onClick={() => window.open(CALENDLY_URL, "_blank", "noopener,noreferrer")}
-					>
-						<span className="inline-flex items-center gap-2">
-							<CalendarIcon className="h-4 w-4 shrink-0" aria-hidden />
-							<span>Calendly</span>
-						</span>
-					</CeramicButton>
-				</div>
-				<div className="w-full min-w-0 sm:flex-1">
-					<CeramicButton
-						type="button"
-						color="rgba(255,255,255,0.05)"
-						textColor="#ffffff"
-						ringColor="rgba(255,255,255,0.14)"
-						borderRadius={8}
-						padding="11px 24px"
-						fontSize={13}
-						centered
-						aria-label={`Send email to ${EMAIL_ADDRESS}`}
-						style={{ width: "100%", justifyContent: "center" }}
-						onClick={() => {
-							window.location.href = `mailto:${EMAIL_ADDRESS}`;
-						}}
-					>
-						<span className="inline-flex items-center gap-2">
-							<MailIcon className="h-4 w-4 shrink-0" aria-hidden />
-							<span>Mail</span>
-						</span>
-					</CeramicButton>
-				</div>
+				<Button variant="line" type="button" className="h-auto w-full min-w-0 px-5 py-3 sm:flex-1" aria-label="Schedule on Calendly (opens in a new tab)" onClick={() => window.open(CALENDLY_URL, "_blank", "noopener,noreferrer")}>
+					<CalendarIcon className="h-4 w-4 shrink-0" aria-hidden />
+					Calendly
+				</Button>
+				<Button
+					variant="line"
+					type="button"
+					className="h-auto w-full min-w-0 px-5 py-3 sm:flex-1"
+					aria-label={`Send email to ${EMAIL_ADDRESS}`}
+					onClick={() => {
+						window.location.href = `mailto:${EMAIL_ADDRESS}`;
+					}}
+				>
+					<MailIcon className="h-4 w-4 shrink-0" aria-hidden />
+					Mail
+				</Button>
 			</div>
 		</>
 	);
