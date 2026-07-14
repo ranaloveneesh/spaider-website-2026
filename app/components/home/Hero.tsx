@@ -95,14 +95,14 @@ export default function Hero() {
 				{/* Foot row: sub-headline left, CTAs right */}
 				<motion.div variants={heroItem} className="mt-[5vh] flex flex-wrap items-end justify-between gap-10">
 					<p className="spx-hero-sub">SPAIDER helps aerospace teams search internal knowledge, manage long-horizon projects, and work with domain-specific AI assistants across proposal, engineering, and operations workflows.</p>
-					<div className="flex flex-wrap items-center gap-3.5">
-						<Button asChild variant="solid">
+					<div className="flex w-full flex-col gap-3.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
+						<Button asChild variant="solid" className="w-full justify-center sm:w-auto">
 							<Link href="/request-demo">
 								Request a Demo
 								<ArrowRight aria-hidden="true" className="inline-block size-[1em] transition-transform duration-300 group-hover:translate-x-1" />
 							</Link>
 						</Button>
-						<Button asChild variant="line">
+						<Button asChild variant="line" className="w-full justify-center sm:w-auto">
 							<Link href="/ai-foundations">Explore AI Foundations</Link>
 						</Button>
 					</div>

@@ -119,7 +119,7 @@ export default function WhySpaider({ items, title, subtitle }: { items?: Accordi
 				</div>
 
 				{/* ── Right: per-item content or static logo ── */}
-				<Reveal variant="fade-up" threshold={0.2} delayMs={80} className="hidden items-center justify-center md:flex">
+				<Reveal variant="fade-up" threshold={0.2} delayMs={80} className="flex items-center justify-center">
 					{hasPerItemContent ? (
 						<div className="relative h-80 w-full overflow-hidden rounded-xl lg:h-96">
 							{activeItems.map((item, i) => (

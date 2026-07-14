@@ -55,10 +55,10 @@ export default function Fleet() {
 								<span aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-350 group-hover:opacity-100" style={{ background: "linear-gradient(90deg, rgba(89,232,245,0.05), transparent 60%)" }} />
 								<span className="spx-index">{row.idx}</span>
 								<span className="font-outfit text-[clamp(1.7rem,3.4vw,2.6rem)] font-semibold leading-[1] tracking-[-0.02em] text-foreground">{row.name}</span>
-								<span className="spx-label hidden min-[1000px]:block">{row.role}</span>
+								<span className="spx-label col-start-2 row-start-2 block min-[1000px]:col-auto min-[1000px]:row-auto">{row.role}</span>
 								<span className="hidden max-w-[38ch] text-base leading-[1.55] text-spx-ink-2 min-[1000px]:block">{row.desc}</span>
 								{!row.explore && (
-									<span className={`col-start-2 row-start-2 inline-flex w-fit items-center gap-2 whitespace-nowrap rounded-xs border px-3.5 py-2 font-geist-mono text-[0.7rem] uppercase tracking-[0.16em] min-[1000px]:col-auto min-[1000px]:row-auto min-[1000px]:justify-self-end ${tag.text} ${tag.border}`}>
+									<span className={`col-start-2 row-start-3 inline-flex w-fit items-center justify-self-end gap-2 whitespace-nowrap rounded-xs border px-3.5 py-2 font-geist-mono text-[0.7rem] uppercase tracking-[0.16em] min-[1000px]:col-auto min-[1000px]:row-auto ${tag.text} ${tag.border}`}>
 										<i aria-hidden="true" className="h-1.5 w-1.5 rounded-full" style={tag.dot} />
 										{row.tag}
 									</span>
@@ -68,7 +68,9 @@ export default function Fleet() {
 									   span - the whole row is already a Link, and nested anchors are invalid HTML.
 									   Classes inlined because buttonVariants() lives in a "use client" module and
 									   Fleet is a server component. Row hover drives it via group-hover. */
-									<span className="inline-flex items-center justify-center gap-3 justify-self-end whitespace-nowrap rounded-xs bg-spx-ink px-5 py-3 font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-void transition-colors duration-300 group-hover:bg-spx-cyan">Explore</span>
+									<span className="col-start-2 row-start-3 inline-flex w-fit items-center justify-center justify-self-end gap-3 whitespace-nowrap rounded-xs bg-spx-ink px-5 py-3 font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-void transition-colors duration-300 group-hover:bg-spx-cyan min-[1000px]:col-auto min-[1000px]:row-auto">
+										Explore
+									</span>
 								)}
 							</Link>
 						</Reveal>

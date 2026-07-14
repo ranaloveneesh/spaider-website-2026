@@ -69,7 +69,7 @@ const PRODUCTS = [
 function ProductSection({ tag, heading, description, bullets, image, href, flip }: (typeof PRODUCTS)[number] & { flip: boolean }) {
 	return (
 		<motion.div className="border-t border-white/[0.07] py-14 sm:py-18 md:py-20 lg:py-24" variants={productRow} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.08 }}>
-			<div className={`grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}>
+			<div className={`grid grid-cols-1 items-start gap-10 md:grid-cols-2 md:gap-12 lg:gap-16 xl:gap-20`}>
 				{/* ── Text column - slides in from its natural side ── */}
 				<motion.div className={`flex flex-col ${flip ? "md:order-2" : ""}`} variants={columnSlide} custom={flip ? 20 : -20}>
 					{/* Eyebrow */}
