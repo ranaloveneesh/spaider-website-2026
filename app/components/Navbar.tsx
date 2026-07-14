@@ -121,12 +121,12 @@ export default function Navbar() {
 		return () => window.removeEventListener("keydown", onKeyDown);
 	}, [isMobileMenuOpen, closeMobileMenu]);
 
-	// The burger/close buttons are CSS-hidden above the `lg` breakpoint (desktop nav
+	// The burger/close buttons are CSS-hidden above the `xl` breakpoint (desktop nav
 	// shows instead) - without this, a menu left open through a resize/orientation
 	// change has no visible control to close it, stranding body's overflow:hidden lock
 	// forever and making the whole page appear stuck/unscrollable.
 	useEffect(() => {
-		const mql = window.matchMedia("(min-width: 1024px)");
+		const mql = window.matchMedia("(min-width: 1280px)");
 		const onChange = (e: MediaQueryListEvent | MediaQueryList) => {
 			if (e.matches) closeMobileMenu();
 		};
@@ -146,7 +146,7 @@ export default function Navbar() {
 				</Link>
 
 				{/* Desktop nav */}
-				<nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
+				<nav aria-label="Primary" className="hidden items-center gap-8 xl:flex">
 					{NAV_ITEMS.map((item) =>
 						item.type === "dropdown" ? (
 							<NavDropdown key={item.label} label={item.label} links={item.links} />
@@ -160,12 +160,12 @@ export default function Navbar() {
 
 				{/* Right side */}
 				<div className="flex shrink-0 items-center gap-3">
-					<Button asChild variant="solid" className="hidden px-5 py-3 tracking-[0.08em] lg:inline-flex">
+					<Button asChild variant="solid" className="hidden px-5 py-3 tracking-[0.08em] xl:inline-flex">
 						<Link href="/request-demo">REQUEST A DEMO</Link>
 					</Button>
 
 					{/* Burger */}
-					<button type="button" className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-spx-rule-2 bg-transparent text-spx-ink lg:hidden" aria-label="Open menu" aria-expanded={isMobileMenuOpen} aria-controls="spx-mobile-menu" onClick={toggleMobileMenu}>
+					<button type="button" className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-spx-rule-2 bg-transparent text-spx-ink xl:hidden" aria-label="Open menu" aria-expanded={isMobileMenuOpen} aria-controls="spx-mobile-menu" onClick={toggleMobileMenu}>
 						<MenuIcon className="h-4.5 w-4.5" aria-hidden="true" />
 					</button>
 				</div>
@@ -175,8 +175,13 @@ export default function Navbar() {
 			<div
 				id="spx-mobile-menu"
 				aria-hidden={!isMobileMenuOpen}
-				className={`fixed inset-0 z-[100] flex flex-col justify-center gap-1 bg-spx-void/97 px-6 backdrop-blur-md transition-opacity duration-300 ease-out sm:px-10 lg:hidden ${isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+				className={`fixed inset-0 z-[100] flex flex-col justify-center gap-1 bg-spx-void/97 px-6 backdrop-blur-md transition-opacity duration-300 ease-out sm:px-10 xl:hidden ${isMobileMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
 			>
+				<Link href="/" aria-label="Home" onClick={closeMobileMenu} className="absolute left-6 top-6 flex shrink-0 select-none items-center gap-2 sm:left-10">
+					<Image src="/logo.png" alt="" width={36} height={72} />
+					<span className="font-outfit text-lg font-semibold leading-none text-white">SPAIDER Space</span>
+				</Link>
+
 				<button type="button" onClick={closeMobileMenu} aria-label="Close menu" className="absolute right-6 top-5 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-xs border border-spx-rule-2 bg-transparent text-spx-ink sm:right-10">
 					<XIcon className="h-4 w-4" aria-hidden="true" />
 				</button>
@@ -184,21 +189,21 @@ export default function Navbar() {
 				{NAV_ITEMS.map((item) =>
 					item.type === "dropdown" ? (
 						<div key={item.label}>
-							<span className="block border-b border-spx-rule py-2.5 font-geist-mono text-[1.3rem] font-normal uppercase tracking-[0.06em] text-spx-ink">{item.label}</span>
+							<span className="block border-b border-spx-rule py-2.5 font-geist-mono text-[0.875rem] font-normal uppercase tracking-[0.06em] text-spx-ink sm:text-[1.4rem]">{item.label}</span>
 							{item.links.map((link) => (
-								<Link key={link.href} href={link.href} onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 pl-5 font-geist-mono text-[0.9rem] font-normal uppercase tracking-[0.06em] text-spx-mute">
+								<Link key={link.href} href={link.href} onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 pl-5 font-geist-mono text-[0.8rem] font-normal uppercase tracking-[0.06em] text-spx-mute sm:text-[1.1rem]">
 									{link.label}
 								</Link>
 							))}
 						</div>
 					) : (
-						<Link key={item.href} href={item.href} onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[1.3rem] font-normal uppercase tracking-[0.06em] text-spx-ink">
+						<Link key={item.href} href={item.href} onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[0.875rem] font-normal uppercase tracking-[0.06em] text-spx-ink sm:text-[1.4rem]">
 							{item.label}
 						</Link>
 					),
 				)}
 
-				<Link href="/request-demo" onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[1.3rem] font-normal uppercase tracking-[0.06em] text-spx-ink">
+				<Link href="/request-demo" onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[0.875rem] font-normal uppercase tracking-[0.06em] text-spx-ink sm:text-[1.4rem]">
 					REQUEST A DEMO
 				</Link>
 			</div>

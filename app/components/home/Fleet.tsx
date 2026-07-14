@@ -20,9 +20,9 @@ type FleetRow = {
 const ROWS: FleetRow[] = [
 	{ idx: "01", name: "AI Foundations", role: "Enterprise platform", desc: "Secure enterprise knowledge layer for aerospace teams.", tag: "Platform", status: "live", href: "/ai-foundations", explore: true },
 	{ idx: "02", name: "Sagan", role: "RFP & Proposal Assistant", desc: "Qualify, structure, and draft complex RFP/ITT responses.", tag: "In production", status: "live", href: "/agents/sagan", explore: true },
-	{ idx: "03", name: "Spock", role: "Systems Engineering Assistant", desc: "Requirements, assurance evidence, and review preparation.", tag: "In development", status: "dev", href: "/agents", explore: false },
-	{ idx: "04", name: "Kepler", role: "Space Asset Operations Intelligence", desc: "Asset monitoring, orbital data, and operational insight.", tag: "In development", status: "dev", href: "/agents", explore: false },
-	{ idx: "05", name: "Amelia", role: "Business Intelligence Assistant", desc: "Markets, ecosystem signals, grants, and business cases.", tag: "In development", status: "dev", href: "/agents", explore: false },
+	{ idx: "03", name: "Spock", role: "Systems Engineering Assistant", desc: "Requirements, assurance evidence, and review preparation.", tag: "under dev", status: "dev", href: "/agents", explore: false },
+	{ idx: "04", name: "Kepler", role: "Space Asset Operations Intelligence", desc: "Asset monitoring, orbital data, and operational insight.", tag: "under dev", status: "dev", href: "/agents", explore: false },
+	{ idx: "05", name: "Amelia", role: "Business Intelligence Assistant", desc: "Markets, ecosystem signals, grants, and business cases.", tag: "under dev", status: "dev", href: "/agents", explore: false },
 ];
 
 const TAG_STYLES: Record<FleetStatus, { text: string; border: string; dot: React.CSSProperties }> = {
