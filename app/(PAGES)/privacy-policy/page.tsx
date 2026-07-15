@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
 								<span className="font-medium text-spx-ink-2">Website use.</span> Technical information such as IP address, browser type, device information, and pages visited, via server logs and essential cookies needed to run the site.
 							</li>
 							<li>
-								<span className="font-medium text-spx-ink-2">Forms and enquiries.</span> When you request a demo, register investor interest, or email us, we process the details you provide (for example name, work email, company, role, country, phone if given, and the content of your message).
+								<span className="font-medium text-spx-ink-2">Forms and enquiries.</span> When you request a trial, register investor interest, or email us, we process the details you provide (for example name, work email, company, role, country, phone if given, and the content of your message).
 							</li>
 							<li>
 								<span className="font-medium text-spx-ink-2">Scheduling.</span> If you book a meeting through a third-party scheduling link we provide, that provider processes data according to its own policy; we only receive the information needed to hold the meeting.

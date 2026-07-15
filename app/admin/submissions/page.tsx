@@ -1,9 +1,9 @@
 "use client";
 
 import { LogOut, RefreshCw, Rocket, Users } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useState } from "react";
 import { type Column, SubmissionsTable } from "@/app/components/admin/SubmissionsTable";
 import { Button } from "@/app/components/ui/button";
 import { ApiError, getInvestSubmissions, getRequestDemoSubmissions, type InvestSubmission, type RequestDemoSubmission } from "@/app/lib/admin/api";
@@ -37,6 +37,7 @@ const requestDemoColumns: Column<RequestDemoSubmission>[] = [
 
 export default function AdminSubmissionsPage() {
 	const router = useRouter();
+	const reduceMotion = useReducedMotion();
 	const { status, token, user, logout } = useAuth();
 
 	const [activeTab, setActiveTab] = useState<TabId>("invest");
@@ -84,14 +85,14 @@ export default function AdminSubmissionsPage() {
 	}, [status, isAdmin, loadSubmissions]);
 
 	if (status === "loading" || status === "unauthenticated") {
-		return <div className="flex min-h-screen items-center justify-center text-sm text-muted">Loading...</div>;
+		return <div className="flex min-h-screen items-center justify-center bg-spx-void text-sm text-spx-mute">Loading...</div>;
 	}
 
 	if (!isAdmin) {
 		return (
-			<div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 px-4 text-center">
-				<p className="max-w-sm text-sm text-muted">{user?.status !== "approved" ? `This account is ${user?.status}. Admin access requires an approved admin account.` : "This account does not have admin access."}</p>
-				<Button variant="outline" onClick={signOut}>
+			<div className="flex min-h-screen w-full flex-col items-center justify-center gap-4 bg-spx-void px-4 text-center">
+				<p className="max-w-sm text-sm text-spx-mute">{user?.status !== "approved" ? `This account is ${user?.status}. Admin access requires an approved admin account.` : "This account does not have admin access."}</p>
+				<Button variant="line" onClick={signOut} className="h-auto px-5 py-2.5 text-destructive shadow-[inset_0_0_0_1px_var(--color-destructive)] hover:bg-destructive/10 hover:text-destructive">
 					Sign out
 				</Button>
 			</div>
@@ -100,30 +101,30 @@ export default function AdminSubmissionsPage() {
 
 	const tabs: { id: TabId; label: string; count: number }[] = [
 		{ id: "invest", label: "Invest", count: investData.length },
-		{ id: "request-demo", label: "Request Demo", count: demoData.length },
+		{ id: "request-demo", label: "Request Trial", count: demoData.length },
 	];
 
 	const statTiles = [
-		{ id: "invest", label: "Invest submissions", count: investData.length, icon: Rocket, accent: "text-blue-400 bg-blue-400/10" },
-		{ id: "request-demo", label: "Request demo submissions", count: demoData.length, icon: Users, accent: "text-emerald-400 bg-emerald-400/10" },
+		{ id: "invest", label: "Invest submissions", count: investData.length, icon: Rocket },
+		{ id: "request-demo", label: "Request trial submissions", count: demoData.length, icon: Users },
 	];
 
 	return (
-		<div className="mx-auto w-full max-w-6xl px-4 py-10 sm:py-14">
-			<motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
-				<div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+		<div className="min-h-screen w-full bg-spx-void px-4 py-8 sm:px-6 sm:py-12 lg:px-8" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
+			<motion.div className="mx-auto w-full max-w-7xl" initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={reduceMotion ? { duration: 0 } : { duration: 0.5, ease: EASE_OUT }}>
+				<div className="mb-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
 					<div>
-						<h1 className="font-outfit text-2xl font-medium text-foreground sm:text-3xl">Form submissions</h1>
-						<p className="mt-1.5 text-sm text-muted">
-							Signed in as <span className="text-foreground">{user?.username}</span> <span className="ml-1 rounded-full border border-neutral-700 bg-neutral-800 px-2 py-0.5 text-xs tracking-wide text-neutral-300 uppercase">{user?.role}</span>
+						<h1 className="font-outfit text-2xl font-medium text-spx-ink sm:text-3xl">Form submissions</h1>
+						<p className="mt-1.5 text-sm text-spx-mute">
+							Signed in as <span className="text-spx-ink-2">{user?.username}</span>
 						</p>
 					</div>
-					<div className="flex gap-2">
-						<Button variant="outline" onClick={loadSubmissions} disabled={isLoading} className="gap-2 transition-transform duration-150 ease-out active:scale-[0.97]">
+					<div className="grid grid-cols-2 gap-2 sm:flex sm:w-auto">
+						<Button variant="line" onClick={loadSubmissions} disabled={isLoading} className="h-auto gap-2 px-4 py-2.5 transition-transform duration-150 ease-out active:scale-[0.97]">
 							<RefreshCw size={16} className={isLoading ? "animate-spin" : ""} />
 							{isLoading ? "Refreshing..." : "Refresh"}
 						</Button>
-						<Button variant="outline" onClick={signOut} className="gap-2 transition-transform duration-150 ease-out active:scale-[0.97]">
+						<Button variant="line" onClick={signOut} className="h-auto gap-2 px-4 py-2.5 text-destructive shadow-[inset_0_0_0_1px_var(--color-destructive)] transition-transform duration-150 ease-out hover:bg-destructive/10 hover:text-destructive active:scale-[0.97]">
 							<LogOut size={16} />
 							Sign out
 						</Button>
@@ -132,34 +133,34 @@ export default function AdminSubmissionsPage() {
 
 				<div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
 					{statTiles.map((tile) => (
-						<div key={tile.id} className="flex items-center gap-4 rounded-xl border border-neutral-800 bg-neutral-900 p-5 shadow-lg shadow-black/20">
-							<div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${tile.accent}`}>
+						<div key={tile.id} className="flex items-center gap-4 rounded-xs border border-spx-rule bg-spx-void-2 p-5">
+							<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xs bg-spx-cyan/10 text-spx-cyan">
 								<tile.icon size={20} />
 							</div>
 							<div>
-								<p className="text-2xl font-semibold text-foreground">{tile.count}</p>
-								<p className="text-sm text-muted">{tile.label}</p>
+								<p className="text-2xl font-semibold text-spx-ink">{tile.count}</p>
+								<p className="text-sm text-spx-mute">{tile.label}</p>
 							</div>
 						</div>
 					))}
 				</div>
 
-				<div className="mb-4 inline-flex rounded-full border border-neutral-800 bg-neutral-900 p-1">
+				<div className="mb-4 inline-flex rounded-xs border border-spx-rule bg-spx-void-2 p-1">
 					{tabs.map((tab) => (
-						<button key={tab.id} type="button" onClick={() => setActiveTab(tab.id)} className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-150 ${activeTab === tab.id ? "text-white" : "text-neutral-400 hover:text-neutral-200"}`}>
-							{activeTab === tab.id && <motion.span layoutId="admin-active-tab" className="absolute inset-0 rounded-full bg-neutral-700" transition={{ type: "spring", duration: 0.5, bounce: 0.15 }} />}
+						<button key={tab.id} type="button" onClick={() => setActiveTab(tab.id)} className={`relative rounded-xs px-4 py-2 font-geist-mono text-[0.7rem] tracking-[0.1em] uppercase transition-colors duration-150 ${activeTab === tab.id ? "text-spx-cyan" : "text-spx-mute hover:text-spx-ink"}`}>
+							{activeTab === tab.id && <motion.span layoutId="admin-active-tab" className="absolute inset-0 rounded-xs bg-spx-cyan/10" transition={{ type: "spring", duration: 0.5, bounce: 0.15 }} />}
 							<span className="relative z-10">
-								{tab.label} <span className="text-xs text-neutral-400">{tab.count}</span>
+								{tab.label} <span className="text-spx-faint">{tab.count}</span>
 							</span>
 						</button>
 					))}
 				</div>
 
-				<div className="rounded-2xl border border-neutral-800 bg-neutral-900 shadow-lg shadow-black/20">
+				<div className="rounded-xs border border-spx-rule bg-spx-void-2">
 					{activeTab === "invest" ? (
 						<SubmissionsTable columns={investColumns} rows={investData} isLoading={isLoading} error={loadError} emptyMessage="No invest submissions yet." getRowKey={(row) => row.id} />
 					) : (
-						<SubmissionsTable columns={requestDemoColumns} rows={demoData} isLoading={isLoading} error={loadError} emptyMessage="No request-demo submissions yet." getRowKey={(row) => row.id} />
+						<SubmissionsTable columns={requestDemoColumns} rows={demoData} isLoading={isLoading} error={loadError} emptyMessage="No request-trial submissions yet." getRowKey={(row) => row.id} />
 					)}
 				</div>
 			</motion.div>

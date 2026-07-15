@@ -31,8 +31,8 @@ export default function FinalCTA() {
 				</motion.p>
 
 				<motion.div variants={V.item} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-					<CeramicButton href="/request-demo" color="#ffffff" textColor="#0a0a0b" ringColor="rgba(255,255,255,0.22)" borderRadius={8} padding="12px 28px" fontSize={13}>
-						REQUEST A DEMO
+					<CeramicButton href="/request-trial" color="#ffffff" textColor="#0a0a0b" ringColor="rgba(255,255,255,0.22)" borderRadius={8} padding="12px 28px" fontSize={13}>
+						REQUEST A TRIAL
 					</CeramicButton>
 					<CeramicButton href="/briefs/spaider-onepager.pdf" color="rgba(255,255,255,0.05)" textColor="#ffffff" ringColor="rgba(255,255,255,0.14)" borderRadius={8} padding="12px 28px" fontSize={13}>
 						READ THE BRIEF

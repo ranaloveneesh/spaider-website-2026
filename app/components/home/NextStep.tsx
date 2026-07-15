@@ -11,8 +11,8 @@ const CARDS = [
 		eyebrow: "For aerospace teams",
 		title: "See it before you commit",
 		body: "Get a walkthrough of AI Foundations and SAGAN on a real use case, in your infrastructure, on your data.",
-		href: "/request-demo",
-		label: "Request a Demo",
+		href: "/request-trial",
+		label: "Request a Trial",
 		variant: "solid",
 	},
 	{

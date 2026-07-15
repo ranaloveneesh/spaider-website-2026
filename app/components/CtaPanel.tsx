@@ -9,7 +9,7 @@ type Props = {
 	ctaLabel?: string;
 };
 
-export default function CtaPanel({ title = "Got a use case in mind? Let's make it real.", copy, ctaHref: _ctaHref = "/request-demo", ctaLabel: _ctaLabel = "Talk to us" }: Props) {
+export default function CtaPanel({ title = "Got a use case in mind? Let's make it real.", copy, ctaHref: _ctaHref = "/request-trial", ctaLabel: _ctaLabel = "Talk to us" }: Props) {
 	return (
 		<div className="relative w-full overflow-hidden mt-[var(--spx-section-gap)]">
 			{/* Content */}
@@ -20,7 +20,7 @@ export default function CtaPanel({ title = "Got a use case in mind? Let's make i
 
 				<div className="mt-10 flex flex-wrap items-center justify-center gap-4">
 					<Button asChild variant="solid">
-						<Link href="/request-demo">REQUEST A DEMO</Link>
+						<Link href="/request-trial">REQUEST A TRIAL</Link>
 					</Button>
 					<Button asChild variant="line">
 						<Link href="/invest">INVEST</Link>

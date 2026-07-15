@@ -43,7 +43,7 @@ export default function SaganPage() {
 				<Metrics />
 				<GenericCopilot />
 				<Reveal variant="fade-up" threshold={0.25}>
-					<CtaBand title="Pilot SAGAN on your next tender." copy="Deployed in your infrastructure, grounded in your proposal history." ctaHref="/request-demo" ctaLabel="Book a Demo" />
+					<CtaBand title="Pilot SAGAN on your next tender." copy="Deployed in your infrastructure, grounded in your proposal history." ctaHref="/request-trial" ctaLabel="Book a Demo" />
 				</Reveal>
 			</div>
 		</div>

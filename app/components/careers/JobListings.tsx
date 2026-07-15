@@ -60,22 +60,24 @@ export default function JobListings() {
 								ease: [0.25, 1, 0.5, 1],
 								delay: i * 0.03,
 							}}
-							className={["group grid grid-cols-1 items-center gap-y-3 px-4 py-4 transition-colors duration-150 sm:grid-cols-[minmax(0,1.6fr)_minmax(120px,0.7fr)_minmax(95px,0.45fr)_auto] sm:gap-4 sm:px-5 sm:py-6", "bg-transparent hover:bg-spx-void-2", i < filtered.length - 1 ? "border-b border-spx-rule" : ""].join(
-								" ",
-							)}
+							className={[
+								"group grid grid-cols-1 items-center gap-y-3 px-4 py-4 transition-colors duration-150 min-[1000px]:grid-cols-[minmax(0,1.6fr)_minmax(120px,0.7fr)_minmax(95px,0.45fr)_auto] min-[1000px]:gap-4 min-[1000px]:px-5 min-[1000px]:py-6",
+								"bg-transparent hover:bg-spx-void-2",
+								i < filtered.length - 1 ? "border-b border-spx-rule" : "",
+							].join(" ")}
 						>
 							<div className="min-w-0">
-								<p className="truncate font-outfit text-base font-semibold tracking-tight text-foreground sm:text-[1.06rem]">{job.title}</p>
-								{/* Mobile-only condensed meta */}
-								<p className="mt-0.5 text-xs text-spx-mute sm:hidden">
+								<p className="font-outfit text-base font-semibold tracking-tight text-foreground min-[1000px]:text-[1.06rem]">{job.title}</p>
+								{/* Condensed meta, shown until the row switches to the full column grid */}
+								<p className="mt-0.5 text-xs text-spx-mute min-[1000px]:hidden">
 									{job.location} &middot; {job.type}
 								</p>
 							</div>
 
-							<p className="hidden text-sm text-spx-ink-2 sm:block sm:text-[0.94rem]">{job.location}</p>
-							<p className="hidden text-sm text-spx-ink-2 sm:block sm:text-[0.94rem]">{job.type}</p>
+							<p className="hidden text-sm text-spx-ink-2 min-[1000px]:block min-[1000px]:text-[0.94rem]">{job.location}</p>
+							<p className="hidden text-sm text-spx-ink-2 min-[1000px]:block min-[1000px]:text-[0.94rem]">{job.type}</p>
 
-							<div className="flex items-center gap-4 self-start sm:self-center">
+							<div className="flex items-center gap-4 self-start min-[1000px]:self-center">
 								<div className="hidden sm:block">
 									<Button asChild variant="line" className="h-auto px-4 py-3">
 										<Link href={job.descriptionLink}>Job Description</Link>

@@ -9,6 +9,7 @@ const PUBLIC_ASSET_CACHE = "public, max-age=86400, s-maxage=2592000, stale-while
 
 const nextConfig: NextConfig = {
 	poweredByHeader: false,
+	devIndicators: false,
 
 	experimental: {
 		optimizePackageImports: ["lucide-react", "motion"],
@@ -19,6 +20,10 @@ const nextConfig: NextConfig = {
 			{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
 			{ protocol: "https", hostname: "i.pravatar.cc", pathname: "/**" },
 		],
+	},
+
+	async redirects() {
+		return [{ source: "/request-demo", destination: "/request-trial", permanent: true }];
 	},
 
 	async headers() {

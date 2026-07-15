@@ -80,8 +80,8 @@ function Footer() {
 								</Link>
 							</li>
 							<li>
-								<Link href="/request-demo" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
-									Request a demo
+								<Link href="/request-trial" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Request a trial
 								</Link>
 							</li>
 							<li>

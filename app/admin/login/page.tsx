@@ -1,14 +1,13 @@
 "use client";
 
 import { Eye, EyeOff, Loader2 } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { type FocusEvent, type FormEvent, useEffect, useState } from "react";
+import { type CSSProperties, type FocusEvent, type FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Button } from "@/app/components/ui/button";
-import { Input } from "@/app/components/ui/input";
-import { Label } from "@/app/components/ui/label";
+import { SPX_FIELD, SPX_FORM_LABEL } from "@/app/components/ui/spx-form";
 import { ApiError } from "@/app/lib/admin/api";
 import { useAuth } from "@/app/lib/admin/auth-context";
 import { cn } from "@/app/lib/utils";
@@ -56,6 +55,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
 
 export default function AdminLoginPage() {
 	const router = useRouter();
+	const reduceMotion = useReducedMotion();
 	const { status, user, login } = useAuth();
 	const [values, setValues] = useState<FormValues>({ identifier: "", password: "" });
 	const [errors, setErrors] = useState<FormErrors>({});
@@ -109,24 +109,30 @@ export default function AdminLoginPage() {
 		}
 	};
 
+	const inTransition = (delay: number) => (reduceMotion ? { initial: { opacity: 1 }, animate: { opacity: 1 }, transition: { duration: 0 } } : { initial: { opacity: 0, y: 8 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4, ease: EASE_OUT, delay } });
+
 	return (
-		<div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-700 via-neutral-800 to-neutral-900 px-4">
-			<motion.div className="relative w-full max-w-md" initial={{ opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
-				<motion.div className="mb-6 flex flex-col items-center gap-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.1 }}>
-					<Image src="/logo.png" alt="" width={28} height={56} />
-					<span className="font-outfit text-sm font-semibold tracking-wide text-white/80">SPAIDER Space</span>
+		<div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-spx-void px-4 py-12 sm:py-16" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
+			<div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(60% 45% at 50% 8%, rgba(89,232,245,0.1), transparent 70%)" }} />
+
+			<motion.div className="relative w-full max-w-md" initial={reduceMotion ? { opacity: 1 } : { opacity: 0, y: 20, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={reduceMotion ? { duration: 0 } : { duration: 0.5, ease: EASE_OUT }}>
+				<motion.div className="mb-8 flex flex-col items-center gap-3" {...inTransition(0.1)}>
+					<Image src="/logo.png" alt="" width={28} height={56} style={{ height: "auto" }} />
+					<span className={cn(SPX_FORM_LABEL, "text-spx-mute")}>SPAIDER Space</span>
 				</motion.div>
 
-				<div className="w-full space-y-7 rounded-2xl border border-white/15 bg-white/10 p-8 backdrop-blur-xl sm:p-9" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 8px 32px rgba(0,0,0,0.35)" }}>
-					<motion.div className="space-y-1.5 text-center" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.16 }}>
-						<h1 className="font-outfit text-2xl font-medium text-foreground">Admin login</h1>
-						<p className="text-sm text-muted">Enter your credentials to access the admin dashboard.</p>
+				<div className="w-full space-y-7 rounded-xs border border-spx-rule bg-spx-void-2 p-8 sm:p-9" style={{ boxShadow: "0 24px 60px -20px rgba(0,0,0,0.6)" }}>
+					<motion.div className="space-y-2 text-center" {...inTransition(0.16)}>
+						<h1 className="font-outfit text-[clamp(1.6rem,4vw,2.1rem)] font-medium leading-tight text-spx-ink">Admin login</h1>
+						<p className="text-sm text-spx-mute">Enter your credentials to access the admin dashboard.</p>
 					</motion.div>
 
 					<form onSubmit={handleSubmit} className="space-y-5" noValidate>
-						<motion.div className="space-y-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.22 }}>
-							<Label htmlFor="identifier">Email or username</Label>
-							<Input
+						<motion.div className="space-y-2" {...inTransition(0.22)}>
+							<label htmlFor="identifier" className={SPX_FORM_LABEL}>
+								Email or username
+							</label>
+							<input
 								id="identifier"
 								name="identifier"
 								type="text"
@@ -135,17 +141,19 @@ export default function AdminLoginPage() {
 								value={values.identifier}
 								onChange={(e) => handleChange("identifier", e.target.value)}
 								onBlur={handleBlur}
-								className={cn(errors.identifier && "border-destructive focus-visible:ring-destructive")}
+								className={cn(SPX_FIELD, errors.identifier && "border-destructive focus:border-destructive")}
 								aria-invalid={!!errors.identifier}
 								aria-describedby={errors.identifier ? "identifier-error" : undefined}
 							/>
 							<FieldError id="identifier-error" message={errors.identifier} />
 						</motion.div>
 
-						<motion.div className="space-y-2" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.28 }}>
-							<Label htmlFor="password">Password</Label>
+						<motion.div className="space-y-2" {...inTransition(0.28)}>
+							<label htmlFor="password" className={SPX_FORM_LABEL}>
+								Password
+							</label>
 							<div className="relative">
-								<Input
+								<input
 									id="password"
 									name="password"
 									type={showPassword ? "text" : "password"}
@@ -154,19 +162,19 @@ export default function AdminLoginPage() {
 									value={values.password}
 									onChange={(e) => handleChange("password", e.target.value)}
 									onBlur={handleBlur}
-									className={cn("pr-10", errors.password && "border-destructive focus-visible:ring-destructive")}
+									className={cn(SPX_FIELD, "pr-11", errors.password && "border-destructive focus:border-destructive")}
 									aria-invalid={!!errors.password}
 									aria-describedby={errors.password ? "password-error" : undefined}
 								/>
-								<button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground transition-[color,transform] duration-150 ease-out hover:text-foreground active:scale-90" onClick={() => setShowPassword((prev) => !prev)} aria-label={showPassword ? "Hide password" : "Show password"}>
+								<button type="button" className="absolute right-3.5 top-1/2 -translate-y-1/2 text-spx-faint transition-[color,transform] duration-150 ease-out hover:text-spx-ink active:scale-90" onClick={() => setShowPassword((prev) => !prev)} aria-label={showPassword ? "Hide password" : "Show password"}>
 									{showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
 								</button>
 							</div>
 							<FieldError id="password-error" message={errors.password} />
 						</motion.div>
 
-						<motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: EASE_OUT, delay: 0.34 }}>
-							<Button type="submit" size="lg" className="w-full gap-2 transition-transform duration-150 ease-out active:scale-[0.97]" disabled={isSubmitting}>
+						<motion.div {...inTransition(0.34)}>
+							<Button type="submit" variant="solid" className="w-full transition-transform duration-150 ease-out active:scale-[0.97]" disabled={isSubmitting}>
 								{isSubmitting && <Loader2 size={16} className="animate-spin" />}
 								{isSubmitting ? "Logging in..." : "Login"}
 							</Button>

@@ -97,8 +97,8 @@ export default function Hero() {
 					<p className="spx-hero-sub">SPAIDER helps aerospace teams search internal knowledge, manage long-horizon projects, and work with domain-specific AI assistants across proposal, engineering, and operations workflows.</p>
 					<div className="flex w-full flex-col gap-3.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
 						<Button asChild variant="solid" className="w-full justify-center sm:w-auto">
-							<Link href="/request-demo">
-								Request a Demo
+							<Link href="/request-trial">
+								Request a Trial
 								<ArrowRight aria-hidden="true" className="inline-block size-[1em] transition-transform duration-300 group-hover:translate-x-1" />
 							</Link>
 						</Button>

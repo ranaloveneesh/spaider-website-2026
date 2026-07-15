@@ -70,7 +70,7 @@ export default function SaganHero() {
 
 			<motion.div variants={V.cta} className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
 				<Button asChild variant="solid">
-					<Link href="/request-demo">Request a Demo</Link>
+					<Link href="/request-trial">Request a Trial</Link>
 				</Button>
 			</motion.div>
 

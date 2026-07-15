@@ -61,7 +61,7 @@ export default function PricingPage() {
 			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				{/* ── Plans ── */}
 				<section className="pt-6 sm:pt-10">
-					<PricingPlans plans={plans} buttonLabel="Request a demo" buttonHref="/request-demo" defaultAnnual />
+					<PricingPlans plans={plans} buttonLabel="Request a trial" buttonHref="/request-trial" defaultAnnual />
 				</section>
 			</div>
 		</div>

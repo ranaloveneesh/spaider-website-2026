@@ -161,7 +161,7 @@ export default function Navbar() {
 				{/* Right side */}
 				<div className="flex shrink-0 items-center gap-3">
 					<Button asChild variant="solid" className="hidden px-5 py-3 tracking-[0.08em] xl:inline-flex">
-						<Link href="/request-demo">REQUEST A DEMO</Link>
+						<Link href="/request-trial">REQUEST A TRIAL</Link>
 					</Button>
 
 					{/* Burger */}
@@ -203,8 +203,8 @@ export default function Navbar() {
 					),
 				)}
 
-				<Link href="/request-demo" onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[0.875rem] font-normal uppercase tracking-[0.06em] text-spx-ink sm:text-[1.4rem]">
-					REQUEST A DEMO
+				<Link href="/request-trial" onClick={closeMobileMenu} className="block border-b border-spx-rule py-2.5 font-geist-mono text-[0.875rem] font-normal uppercase tracking-[0.06em] text-spx-ink sm:text-[1.4rem]">
+					REQUEST A TRIAL
 				</Link>
 			</div>
 		</>

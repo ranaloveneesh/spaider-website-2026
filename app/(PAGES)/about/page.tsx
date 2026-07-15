@@ -31,7 +31,7 @@ export default function AboutPage() {
 		<div className="w-full min-w-0 overflow-x-clip">
 			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				{/* ── Hero ── */}
-				<Reveal as="header" variant="fade-up" threshold={0.1} className="border-b border-spx-rule pb-12 pt-6 sm:pb-16 sm:pt-10">
+				<Reveal as="header" variant="fade-up" threshold={0.1} className="pb-12 pt-6 sm:pb-16 sm:pt-10">
 					<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
 						Built by aerospace
 						<br />
@@ -50,16 +50,6 @@ export default function AboutPage() {
 							<h3 className="mt-6 max-w-[44ch] text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.5] text-spx-ink-2">Every aerospace professional works with trusted AI assistants that understand their organization, their workflows, and the technical context of space systems.</h3>
 						</div>
 					</div>
-				</Reveal>
-
-				{/* ── Why SPAIDER exists (source Company "01") ── */}
-				<Reveal as="section" variant="fade-up" threshold={0.1} className="mt-[var(--spx-section-gap)]">
-					<h2 className="spx-heading text-foreground">
-						Knowledge is trapped. <span className="spx-grad-text">We make it operational.</span>
-					</h2>
-					<p className="spx-lede mt-3">
-						Aerospace organizations generate enormous technical knowledge, but much of it stays trapped in documents, projects, experts, and disconnected tools. SPAIDER builds the enterprise AI layer that turns this knowledge into reusable intelligence for proposals, engineering, operations, and strategy.
-					</p>
 				</Reveal>
 
 				{/* ── One mission, six gates ── */}
@@ -83,7 +73,7 @@ export default function AboutPage() {
 
 				{/* ── CTA band (source Company closer) ── */}
 				<Reveal variant="fade-up" threshold={0.25}>
-					<CtaBand title="Talk to the team." copy="Pilots, partnerships, and investor conversations." ctaHref="/request-demo" ctaLabel="Get in touch" />
+					<CtaBand title="Talk to the team." copy="Pilots, partnerships, and investor conversations." ctaHref="/request-trial" ctaLabel="Get in touch" />
 				</Reveal>
 			</div>
 		</div>

@@ -4,9 +4,9 @@ import { RequestDemoFormLazy } from "@/app/components/request-demo/RequestDemoFo
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: "Request a Demo",
-	description: "Book a demo of SPAIDER: sovereign AI agents for your aerospace team.",
-	alternates: { canonical: "https://www.spaiderspace.com/request-demo" },
+	title: "Request a Trial",
+	description: "Book a trial of SPAIDER: sovereign AI agents for your aerospace team.",
+	alternates: { canonical: "https://www.spaiderspace.com/request-trial" },
 };
 
 const SESSION_POINTS = ["Walk through your specific use case", "Discuss security, deployment, and integrations", "Get pricing and next steps"];
@@ -20,7 +20,7 @@ export default function RequestDemoPage() {
 					<div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start lg:gap-16">
 						<Reveal variant="fade-up" threshold={0.1} className="min-w-0">
 							<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
-								Request a <span className="spx-grad-text">demo.</span>
+								Request a <span className="spx-grad-text">trial.</span>
 							</h1>
 							<p className="spx-lede mt-7">See how SPAIDER can enhance your way of working and connect to your data. In a short live session, we&apos;ll show what&apos;s possible, listen to your goals, and outline the simplest path forward.</p>
 

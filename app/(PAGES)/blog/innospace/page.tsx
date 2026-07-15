@@ -108,7 +108,7 @@ export default function InnoSpaceArticle() {
 					{/* ── CTA row ── */}
 					<Reveal variant="fade-up" threshold={0.25} className="mt-12 flex flex-wrap items-center gap-3 sm:mt-14">
 						<Button asChild variant="solid">
-							<Link href="/request-demo">Request a Demo</Link>
+							<Link href="/request-trial">Request a Trial</Link>
 						</Button>
 						<Button asChild variant="line">
 							<Link href="/invest">Invest</Link>

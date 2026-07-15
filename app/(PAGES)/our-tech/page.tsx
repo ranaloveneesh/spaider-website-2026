@@ -76,7 +76,7 @@ export default function OurTechPage() {
 
 					{/* CTA band (before footer) - source's mini `.cta-band` */}
 					<Reveal variant="fade-up" threshold={0.25}>
-						<CtaBand className="mt-[calc(var(--spx-section-gap)*0.5)]" title="Bring your documents. We'll bring the stack." copy="A technical briefing with your documents, your standards, your workflows." ctaHref="/request-demo" ctaLabel="Book a Demo" />
+						<CtaBand className="mt-[calc(var(--spx-section-gap)*0.5)]" title="Bring your documents. We'll bring the stack." copy="A technical briefing with your documents, your standards, your workflows." ctaHref="/request-trial" ctaLabel="Book a Demo" />
 					</Reveal>
 				</main>
 			</div>
