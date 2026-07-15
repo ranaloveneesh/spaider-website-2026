@@ -48,16 +48,16 @@ function FeatureRow({ index, children }: { index: number; children: React.ReactN
 const PRODUCTS = [
 	{
 		number: "01",
-		tag: "Knowledge Platform",
+		tag: "Enterprise platform",
 		heading: "AI Foundations",
-		description: "Supercharge your everyday company knowledge work with AI. Make your internal and approved external knowledge sources AI-ready - securely, on your infrastructure.",
+		description: "AI Foundations makes your aerospace organization AI-ready by turning private knowledge, project work, and expert workflows into a secure, searchable, reusable enterprise knowledge layer.",
 		bullets: ["Make your company's internal and approved external knowledge sources AI ready.", "Automate daily documentation (reports, minute-of-meeting etc) tasks.", "Search, chat, and retrieve with traceable context grounded in your data.", "Enterprise co-work powered by domain-expert AI models."],
 		image: "/ai-foundations/12.png",
 		href: "/ai-foundations",
 	},
 	{
 		number: "02",
-		tag: "Proposal Agent",
+		tag: "RFP & Proposal Assistant",
 		heading: "SAGAN",
 		description: "SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.",
 		bullets: ["Read RFPs and extract requirements automatically.", "Draft responses using your templates and past materials.", "Reuse internal knowledge with source-backed outputs.", "Support reviews, planning, and submission readiness."],
@@ -150,13 +150,13 @@ export default function Agents() {
 			{/* Section header - h2 then subtext stagger in on first pixel */}
 			<motion.div className="mb-6 sm:mb-8" variants={headerContainer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0 }}>
 				<motion.span variants={headerItem} className="spx-eyebrow mb-8">
-					The product suite
+					Flagship agents
 				</motion.span>
 				<motion.h2 variants={headerItem} className="spx-heading text-foreground">
 					Explore our <span className="spx-grad-text">products</span>
 				</motion.h2>
 				<motion.p variants={headerItem} className="spx-lede mt-3">
-					Domain-specific assistants for the workflows aerospace teams actually run.
+					AI Foundations and Sagan are live and handling real aerospace workflows, from knowledge work to RFP responses.
 				</motion.p>
 			</motion.div>
 

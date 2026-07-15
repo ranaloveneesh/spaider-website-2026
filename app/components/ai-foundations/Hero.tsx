@@ -53,7 +53,7 @@ export default function AIFoundationsHero() {
 	return (
 		<motion.section className="relative flex flex-col items-center justify-start pt-8 pb-12 sm:pt-10 sm:pb-16 lg:min-h-screen lg:pt-12 lg:pb-0" variants={V.container} initial={reduced ? false : "hidden"} animate="show">
 			<motion.span variants={V.chip} className="spx-eyebrow">
-				Talk to your data
+				Enterprise platform
 			</motion.span>
 
 			<motion.h1 variants={V.heading} className="mt-4 mb-4 max-w-3xl px-4 text-center font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground sm:mb-6">

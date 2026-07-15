@@ -39,7 +39,7 @@ export default function Fleet() {
 			<Reveal variant="fade-up" threshold={0.1} className="mb-12 sm:mb-16 md:mb-20">
 				<span className="spx-eyebrow mb-8">The product suite</span>
 				<h2 className="spx-heading text-foreground">
-					Explore our <span className="spx-grad-text">products</span>
+					See the <span className="spx-grad-text">full roster</span>
 				</h2>
 				<p className="spx-lede mt-7">Domain-specific assistants for the workflows aerospace teams actually run.</p>
 			</Reveal>
