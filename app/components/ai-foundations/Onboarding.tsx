@@ -7,19 +7,19 @@ const steps = [
 	{
 		title: "Connect your sources",
 		desc: "Add the documents, tools, and approved data sources your team already uses.",
-		imgSrc: "/abstract/1.png",
+		imgSrc: "/abstract/1.webp",
 		imgAlt: "Connect your sources",
 	},
 	{
 		title: "Configure the workspace",
 		desc: "Set permissions, source rules, instructions, and the workflows you want the system to support.",
-		imgSrc: "/abstract/2.png",
+		imgSrc: "/abstract/2.webp",
 		imgAlt: "Configure the workspace",
 	},
 	{
 		title: "Start working with your knowledge",
 		desc: "Search, query, and interact with your data through a governed AI interface.",
-		imgSrc: "/abstract/3.png",
+		imgSrc: "/abstract/3.webp",
 		imgAlt: "Start working with your knowledge",
 	},
 ] as const;

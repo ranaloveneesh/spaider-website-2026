@@ -17,31 +17,31 @@ const DEFAULT_MEMBERS: TeamMember[] = [
 		id: "1",
 		name: "Loveneesh Rana",
 		role: "FOUNDER, CEO",
-		image: "/team/Loveneesh.jpg",
+		image: "/team/Loveneesh.webp",
 	},
 	{
 		id: "2",
 		name: "Nitish Kumar",
 		role: "CTO",
-		image: "/team/Nitish.jpeg",
+		image: "/team/Nitish.webp",
 	},
 	{
 		id: "3",
 		name: "Ernest Skrzypczyk",
 		role: "LEAD DEPLOYMENT TECHNOLOGIES",
-		image: "/team/Ernest.jpg",
+		image: "/team/Ernest.webp",
 	},
 	{
 		id: "4",
 		name: "Sumit Goski",
 		role: "LEAD SPACE APPLICATIONS",
-		image: "/team/Sumit.jpeg",
+		image: "/team/Sumit.webp",
 	},
 	{
 		id: "5",
 		name: "Md Sohail Ansari",
 		role: "SOFTWARE ENGINEER",
-		image: "/team/Sohail.jpeg",
+		image: "/team/Sohail.webp",
 	},
 ];
 

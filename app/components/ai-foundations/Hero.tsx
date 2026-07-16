@@ -77,7 +77,7 @@ export default function AIFoundationsHero() {
 				</motion.div>
 				<div className="relative z-10">
 					{/* Autoplay is muted+inline (required for mobile autoplay); paused under reduced motion */}
-					<video src="/ai-foundations/knowledge_demo.mp4" poster="/sagan/hero-dashboard.png" autoPlay={!reduced} muted loop playsInline aria-label="AI Foundations demo showing knowledge retrieval in the workspace" className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl" />
+					<video src="/ai-foundations/knowledge_demo.mp4" poster="/ai-foundations/knowledge_preview.png" autoPlay={!reduced} muted loop playsInline aria-label="AI Foundations demo showing knowledge retrieval in the workspace" className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl" />
 				</div>
 			</motion.div>
 		</motion.section>

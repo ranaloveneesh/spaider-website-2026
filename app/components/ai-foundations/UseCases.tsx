@@ -2,13 +2,11 @@
 
 import { Braces, Briefcase, CalendarCheck, ChevronLeft, ChevronRight, Network } from "lucide-react";
 import { AnimatePresence, motion, useMotionValue, useTransform } from "motion/react";
-import Image from "next/image";
 import { useState } from "react";
 import Reveal from "../ui/reveal";
 
 interface Card {
 	id: number;
-	texture: string;
 	title: string;
 	description: string;
 	prompt: string;
@@ -18,7 +16,6 @@ interface Card {
 const initialCards: Card[] = [
 	{
 		id: 1,
-		texture: "/textures/1.png",
 		title: "Business Development",
 		description: "Search contracts, proposals, and internal records to track pipeline, renewals, and next actions.",
 		prompt: "Which contracts renew in the next 30 days, what is blocked, and what needs action?",
@@ -26,7 +23,6 @@ const initialCards: Card[] = [
 	},
 	{
 		id: 2,
-		texture: "/textures/2.png",
 		title: "Engineering",
 		description: "Query repositories, logs, and technical records across subsystems with context.",
 		prompt: "Show open telemetry issues and the most recent related commits.",
@@ -34,7 +30,6 @@ const initialCards: Card[] = [
 	},
 	{
 		id: 3,
-		texture: "/textures/3.png",
 		title: "Project Management",
 		description: "Connect planning and reporting data to generate structured status updates and risk summaries.",
 		prompt: "Draft this week's project update with key risks, mitigations, and schedule changes.",
@@ -42,7 +37,6 @@ const initialCards: Card[] = [
 	},
 	{
 		id: 4,
-		texture: "/textures/4.png",
 		title: "Systems Engineering",
 		description: "Explore requirements, interfaces, and verification links with traceable context.",
 		prompt: "For this requirement, show linked tests, status, and impacted interfaces.",
@@ -126,7 +120,7 @@ export default function UseCases() {
 					<div className="relative z-10 w-full max-w-sm sm:max-w-lg h-[300px] sm:h-auto sm:aspect-[16/10] overflow-visible">
 						<ul className="relative m-0 h-full w-full p-0 mt-8 sm:mt-16">
 							<AnimatePresence>
-								{cards.map(({ id, texture, title, description, prompt, Icon }, i) => {
+								{cards.map(({ id, title, description, prompt, Icon }, i) => {
 									const isFront = i === 0;
 									return (
 										<motion.li
@@ -158,9 +152,6 @@ export default function UseCases() {
 											onDragEnd={handleDragEnd}
 											whileDrag={isFront ? { zIndex: cards.length + 1, cursor: "grabbing", scale: 1.05 } : {}}
 										>
-											{/* Subtle texture grain */}
-											<Image src={texture} alt="" aria-hidden="true" draggable={false} fill className="pointer-events-none select-none object-cover opacity-[0.06] mix-blend-overlay" />
-
 											<div className="relative flex h-full flex-col p-4 sm:p-6">
 												{/* Icon */}
 												<Icon className="h-5 w-5 text-accent" />

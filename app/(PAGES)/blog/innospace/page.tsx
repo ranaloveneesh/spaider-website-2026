@@ -47,7 +47,7 @@ export default function InnoSpaceArticle() {
 
 				{/* ── Hero image ── */}
 				<Reveal variant="zoom" threshold={0.25} className="relative mt-10 aspect-video w-full min-w-0 overflow-hidden rounded-xs border border-spx-rule-2 shadow-2xl sm:mt-12 md:aspect-21/9">
-					<Image src="/blog/innospace.png" alt="SPAIDER Space - INNOspace Masters 2025" fill priority className="object-cover" sizes="100vw" />
+					<Image src="/blog/innospace.webp" alt="SPAIDER Space - INNOspace Masters 2025" fill priority className="object-cover" sizes="100vw" />
 				</Reveal>
 
 				{/* ── Article ── */}

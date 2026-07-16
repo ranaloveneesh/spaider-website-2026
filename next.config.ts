@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
 	},
 
 	images: {
+		qualities: [75, 95],
 		remotePatterns: [
 			{ protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
 			{ protocol: "https", hostname: "i.pravatar.cc", pathname: "/**" },
@@ -33,16 +34,14 @@ const nextConfig: NextConfig = {
 		} as const;
 
 		return [
-			{ source: "/icons/:path*", headers: [assetHeader] },
 			{ source: "/trusted/:path*", headers: [assetHeader] },
-			{ source: "/tech/:path*", headers: [assetHeader] },
 			{ source: "/integrations/:path*", headers: [assetHeader] },
-			{ source: "/foundations/:path*", headers: [assetHeader] },
+			{ source: "/ai-foundations/:path*", headers: [assetHeader] },
 			{ source: "/logo/:path*", headers: [assetHeader] },
 			{ source: "/blog/:path*", headers: [assetHeader] },
 			{ source: "/team/:path*", headers: [assetHeader] },
 			{
-				source: "/favicon.svg",
+				source: "/favicon.ico",
 				headers: [assetHeader],
 			},
 			{
@@ -54,11 +53,7 @@ const nextConfig: NextConfig = {
 				headers: [assetHeader],
 			},
 			{
-				source: "/demo.png",
-				headers: [assetHeader],
-			},
-			{
-				source: "/og-image.png",
+				source: "/logo.png",
 				headers: [assetHeader],
 			},
 		];

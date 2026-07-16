@@ -10,9 +10,9 @@ const LOGOS: Logo[] = [
 	{ src: "/trusted/esa.svg", alt: "ESA", scale: 0.5 },
 	{ src: "/trusted/technoport.svg", alt: "Technoport", scale: 0.6 },
 	{ src: "/trusted/mirores.svg", alt: "Mirores", scale: 0.7 },
-	{ src: "/trusted/esric.png", alt: "ESRIC", scale: 0.6 },
-	{ src: "/trusted/ses.png", alt: "SES", scale: 1.5 },
-	{ src: "/trusted/ohb.png", alt: "OHB", scale: 0.5 },
+	{ src: "/trusted/esric.svg", alt: "ESRIC", scale: 0.6 },
+	{ src: "/trusted/ses.svg", alt: "SES", scale: 1.5 },
+	{ src: "/trusted/ohb.svg", alt: "OHB", scale: 0.5 },
 ];
 
 const MARQUEE_LOGOS: MarqueeLogo[] = [...LOGOS.map((l) => ({ ...l, dup: 0 as const })), ...LOGOS.map((l) => ({ ...l, dup: 1 as const }))];

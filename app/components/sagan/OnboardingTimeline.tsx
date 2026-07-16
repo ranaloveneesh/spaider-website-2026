@@ -14,25 +14,25 @@ const STEPS: StepItem[] = [
 	{
 		title: "Assign Oversight",
 		desc: "Designate a SAGAN Manager responsible for configuration, approvals, and operational oversight.",
-		imgSrc: "/abstract/1.png",
+		imgSrc: "/abstract/1.webp",
 		imgAlt: "Assign Oversight",
 	},
 	{
 		title: "Configure Core Intelligence",
 		desc: "Set access, tone, creativity/accuracy balance, and guardrails for safe autonomy.",
-		imgSrc: "/abstract/2.png",
+		imgSrc: "/abstract/2.webp",
 		imgAlt: "Configure Core Intelligence",
 	},
 	{
 		title: "Integrate Knowledge Base",
 		desc: "Connect repositories and tools so SAGAN can draft with citations and up-to-date context.",
-		imgSrc: "/abstract/3.png",
+		imgSrc: "/abstract/3.webp",
 		imgAlt: "Integrate Knowledge Base",
 	},
 	{
 		title: "Orchestrate Proposal Workflow",
 		desc: "Standardize intake, drafting, compliance checks, review cycles, and submission-ready exports.",
-		imgSrc: "/abstract/4.png",
+		imgSrc: "/abstract/4.webp",
 		imgAlt: "Orchestrate Proposal Workflow",
 	},
 ];

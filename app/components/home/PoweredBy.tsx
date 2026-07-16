@@ -8,10 +8,10 @@ type Logo = {
 };
 
 const LOGOS: Logo[] = [
-	{ src: "/powered/nvidia.png", alt: "NVIDIA Inception program logo", name: "NVIDIA", scale: 1 },
+	{ src: "/powered/nvidia.svg", alt: "NVIDIA Inception program logo", name: "NVIDIA", scale: 1 },
 	{ src: "/powered/googlecloud.svg", alt: "Google Cloud logo", name: "Google Cloud", scale: 2.3 },
-	{ src: "/powered/aws.png", alt: "Amazon Web Services logo", name: "AWS", scale: 0.6 },
-	{ src: "/powered/luxprovide.png", alt: "LuxProvide logo", name: "LuxProvide", scale: 0.8 },
+	{ src: "/powered/aws.svg", alt: "Amazon Web Services logo", name: "AWS", scale: 0.6 },
+	{ src: "/powered/luxprovide.svg", alt: "LuxProvide logo", name: "LuxProvide", scale: 0.8 },
 ];
 
 export default function PoweredBy() {

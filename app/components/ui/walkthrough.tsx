@@ -8,7 +8,9 @@ import Reveal from "@/app/components/ui/reveal";
 // scroll-through steps on the left, a sticky app-screenshot frame on the right
 // that crossfades to the active step. Source drives it with GSAP ScrollTrigger
 // (active while a step crosses the 55% line); here an IntersectionObserver with
-// a center-band rootMargin does the same job.
+// a center-band rootMargin does the same job. Below the 960px breakpoint the
+// frame can't stay pinned (steps stack in a single column), so each step
+// carries its own inline screenshot instead of relying on the shared frame.
 export type WalkStep = {
 	img: string;
 	title: string;
@@ -63,16 +65,23 @@ export default function Walkthrough({ title, lede, steps }: Props) {
 							<span className="mb-5 block font-geist-mono text-[0.74rem] uppercase tracking-[0.24em] text-spx-cyan">0{i + 1}</span>
 							<h3 className="font-outfit text-[clamp(1.35rem,2.2vw,1.9rem)] font-semibold leading-[1.15] tracking-[-0.015em] text-foreground">{step.title}</h3>
 							<p className="mt-3.5 max-w-[40ch] text-[1.04rem] leading-[1.68] text-spx-mute">{step.body}</p>
+
+							{/* Inline screenshot - stands in for the sticky frame below 960px, where it can't stay pinned */}
+							<div className="relative mt-6 aspect-[16/10] w-full overflow-hidden rounded-xs border border-spx-rule-2 bg-spx-void-2 min-[960px]:hidden">
+								<Image src={step.img} alt={step.title} fill sizes="100vw" quality={95} className="object-contain" priority={i === 0} />
+							</div>
 						</div>
 					))}
 				</div>
 
-				{/* Sticky media frame - screenshots crossfade to the active step */}
+				{/* Sticky media frame (960px+ only) - screenshots crossfade to the active step */}
 				{/* Source's offset for full-bleed layouts, clamped so it never goes offscreen on ultrawides */}
-				<div className="order-first min-[960px]:order-none min-[960px]:sticky" style={{ top: "max(70px, calc(50vh - 21vw + 40px))" }}>
-					<div className="relative aspect-[1512/900] overflow-hidden rounded-xs border border-spx-rule-2 bg-spx-void-2">
+				<div className="hidden min-[960px]:sticky min-[960px]:block" style={{ top: "max(70px, calc(50vh - 21vw + 40px))" }}>
+					<div className="relative aspect-[16/10] overflow-hidden rounded-xs border border-spx-rule-2 bg-spx-void-2">
 						{steps.map((step, i) => (
-							<Image key={step.title} src={step.img} alt={step.title} fill sizes="(max-width: 960px) 100vw, 60vw" className={`object-cover transition-opacity duration-450 ${active === i ? "opacity-100" : "opacity-0"}`} priority={i === 0} />
+							/* sizes overstates the ~55vw frame on purpose: dense app screenshots need ~2x
+							   oversampling to survive the optimizer's lossy resize on low-DPR screens */
+							<Image key={step.title} src={step.img} alt={step.title} fill sizes="(max-width: 960px) 100vw, 75vw" quality={95} className={`object-contain transition-opacity duration-450 ${active === i ? "opacity-100" : "opacity-0"}`} priority={i === 0} />
 						))}
 					</div>
 				</div>

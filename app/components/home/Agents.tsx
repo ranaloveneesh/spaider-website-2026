@@ -52,7 +52,7 @@ const PRODUCTS = [
 		heading: "AI Foundations",
 		description: "AI Foundations makes your aerospace organization AI-ready by turning private knowledge, project work, and expert workflows into a secure, searchable, reusable enterprise knowledge layer.",
 		bullets: ["Make your company's internal and approved external knowledge sources AI ready.", "Automate daily documentation (reports, minute-of-meeting etc) tasks.", "Search, chat, and retrieve with traceable context grounded in your data.", "Enterprise co-work powered by domain-expert AI models."],
-		image: "/ai-foundations/12.png",
+		image: "/ai-foundations/knowledge_preview.png",
 		href: "/ai-foundations",
 	},
 	{
@@ -61,7 +61,7 @@ const PRODUCTS = [
 		heading: "SAGAN",
 		description: "SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.",
 		bullets: ["Read RFPs and extract requirements automatically.", "Draft responses using your templates and past materials.", "Reuse internal knowledge with source-backed outputs.", "Support reviews, planning, and submission readiness."],
-		image: "/ai-foundations/12.png",
+		image: "/sagan/sagan_preview.png",
 		href: "/agents/sagan",
 	},
 ] as const;

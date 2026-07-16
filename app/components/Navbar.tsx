@@ -30,7 +30,7 @@ const NAV_ITEMS: NavItem[] = [
 	},
 ];
 
-const linkClasses = "group relative font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-mute transition-colors duration-300 hover:text-spx-ink";
+const linkClasses = "group relative inline-flex items-center leading-none font-geist-mono text-[0.8125rem] font-normal uppercase tracking-[0.12em] text-spx-mute transition-colors duration-300 hover:text-spx-ink";
 const underlineClasses = "absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-spx-cyan transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100";
 
 function NavAnchor({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {

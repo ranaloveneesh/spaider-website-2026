@@ -71,7 +71,7 @@ export function getInnoSpaceArticleJsonLd() {
 				},
 				headline: INNOSPACE_HEADLINE,
 				description: INNOSPACE_DESCRIPTION,
-				image: [`${base}/blog/innospace.png`],
+				image: [`${base}/blog/innospace.webp`],
 				datePublished: "2025-09-01",
 				dateModified: "2025-09-01",
 				author: { "@id": orgId },

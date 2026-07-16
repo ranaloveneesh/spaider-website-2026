@@ -21,7 +21,7 @@ type Post = {
 const POSTS: Post[] = [
 	{
 		href: "/blog/innospace",
-		image: "/blog/innospace.png",
+		image: "/blog/innospace.webp",
 		title: "We secured 2nd place at INNOspace Masters 2025",
 		excerpt: "AI agents in mission-grade environments at Europe's leading space innovation arena, the OHB Challenge in Bonn.",
 		date: "September 2025",

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 		siteName: "SPAIDER Space",
 		images: [
 			{
-				url: "/og-image.png",
+				url: "/logo.png",
 				width: 1200,
 				height: 630,
 				alt: "SPAIDER Space - Pricing",

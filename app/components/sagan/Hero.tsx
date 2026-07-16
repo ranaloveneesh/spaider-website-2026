@@ -81,7 +81,7 @@ export default function SaganHero() {
 				</motion.div>
 				<div className="relative z-10">
 					{/* Autoplay is muted+inline (required for mobile autoplay); paused under reduced motion */}
-					<video src="/sagan/sagan_session.mp4" poster="/sagan/hero-dashboard.png" autoPlay={!reduced} muted loop playsInline aria-label="SAGAN session recording showing a proposal being assembled" className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl" />
+					<video src="/sagan/sagan_session.mp4" poster="/sagan/sagan_preview.png" autoPlay={!reduced} muted loop playsInline aria-label="SAGAN session recording showing a proposal being assembled" className="h-auto w-full rounded-xs border border-spx-rule-2 shadow-2xl" />
 				</div>
 			</motion.div>
 		</motion.section>
