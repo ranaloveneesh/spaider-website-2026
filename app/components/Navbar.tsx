@@ -4,6 +4,7 @@ import { ChevronDownIcon, MenuIcon, XIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useSmoothScroll } from "./SmoothScrollProvider";
 import { Button } from "./ui/button";
 
 type DropdownLink = { label: string; href: string; description?: string };
@@ -92,6 +93,7 @@ function NavDropdown({ label, links }: { label: string; links: DropdownLink[] })
 export default function Navbar() {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const { stop: stopLenis, start: startLenis } = useSmoothScroll();
 
 	const closeMobileMenu = useCallback(() => setIsMobileMenuOpen(false), []);
 	const toggleMobileMenu = useCallback(() => setIsMobileMenuOpen((v) => !v), []);
@@ -103,14 +105,23 @@ export default function Navbar() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
+	// Lock scrolling while the menu is open. `overflow: hidden` alone isn't
+	// enough - Lenis drives scrolling from wheel/touch events itself, so it
+	// must also be paused or the page keeps scrolling behind the overlay.
 	useEffect(() => {
 		if (!isMobileMenuOpen) return;
-		const prevOverflow = document.body.style.overflow;
+		const prevBodyOverflow = document.body.style.overflow;
+		// html too: iOS Safari ignores overflow:hidden set only on body for touch scrolling.
+		const prevHtmlOverflow = document.documentElement.style.overflow;
 		document.body.style.overflow = "hidden";
+		document.documentElement.style.overflow = "hidden";
+		stopLenis();
 		return () => {
-			document.body.style.overflow = prevOverflow;
+			document.body.style.overflow = prevBodyOverflow;
+			document.documentElement.style.overflow = prevHtmlOverflow;
+			startLenis();
 		};
-	}, [isMobileMenuOpen]);
+	}, [isMobileMenuOpen, stopLenis, startLenis]);
 
 	useEffect(() => {
 		if (!isMobileMenuOpen) return;

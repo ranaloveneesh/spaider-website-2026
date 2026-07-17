@@ -1,6 +1,7 @@
 "use client";
 
 import Lenis from "@studio-freight/lenis";
+import { usePathname } from "next/navigation";
 import type React from "react";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef } from "react";
 
@@ -12,6 +13,10 @@ type SmoothScrollContextValue = {
 	 * - A number (Y position in px)
 	 */
 	scrollTo: (target: string | number | Element, options?: Record<string, unknown>) => void;
+	/** Pause Lenis scrolling (e.g. while a modal/overlay is open). */
+	stop: () => void;
+	/** Resume Lenis scrolling after `stop`. */
+	start: () => void;
 	/** Direct access to the Lenis instance (may be null until mounted). */
 	lenis: Lenis | null;
 };
@@ -53,6 +58,9 @@ type SmoothScrollProviderProps = {
 export default function SmoothScrollProvider({ children, lerp, duration, smoothWheel = true, smoothTouch = false }: SmoothScrollProviderProps) {
 	const lenisRef = useRef<Lenis | null>(null);
 	const rafIdRef = useRef<number | null>(null);
+	const pathname = usePathname();
+	const prevPathnameRef = useRef(pathname);
+	const isPopStateRef = useRef(false);
 
 	const scrollTo = useCallback((target: string | number | Element, options?: Record<string, unknown>) => {
 		const lenis = lenisRef.current;
@@ -61,13 +69,73 @@ export default function SmoothScrollProvider({ children, lerp, duration, smoothW
 		(lenis as any).scrollTo(target as any, options as any);
 	}, []);
 
+	const stop = useCallback(() => {
+		lenisRef.current?.stop();
+	}, []);
+
+	const start = useCallback(() => {
+		lenisRef.current?.start();
+	}, []);
+
 	const contextValue = useMemo<SmoothScrollContextValue>(
 		() => ({
 			scrollTo,
+			stop,
+			start,
 			lenis: lenisRef.current,
 		}),
-		[scrollTo],
+		[scrollTo, stop, start],
 	);
+
+	// Back/forward navigations must keep Next's scroll restoration, so flag
+	// them and skip the scroll-to-top reset below. The flag self-clears in
+	// case the popstate never produces a pathname change (hash-only history).
+	useEffect(() => {
+		let clearTimer: number | undefined;
+		const onPopState = () => {
+			isPopStateRef.current = true;
+			window.clearTimeout(clearTimer);
+			clearTimer = window.setTimeout(() => {
+				isPopStateRef.current = false;
+			}, 1000);
+		};
+		window.addEventListener("popstate", onPopState);
+		return () => {
+			window.clearTimeout(clearTimer);
+			window.removeEventListener("popstate", onPopState);
+		};
+	}, []);
+
+	// Route changes: Lenis keeps its own scroll position across App Router
+	// navigations (this provider lives in a persistent layout), so Next's
+	// built-in scroll-to-top gets overridden on the next animation frame.
+	// Reset Lenis to the top on every pathname change instead.
+	useEffect(() => {
+		// Compare instead of a first-run flag: also absorbs StrictMode's
+		// dev-only double effect run on mount.
+		if (prevPathnameRef.current === pathname) return;
+		prevPathnameRef.current = pathname;
+
+		if (isPopStateRef.current) {
+			isPopStateRef.current = false;
+			return;
+		}
+
+		const lenis = lenisRef.current;
+		if (!lenis) return;
+
+		const hash = window.location.hash;
+		if (hash) {
+			const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+			if (el) {
+				// Cross-page hash link: let layout settle, then scroll to the target.
+				window.requestAnimationFrame(() => scrollTo(el, { offset: -72, immediate: false }));
+				return;
+			}
+		}
+
+		(lenis as any).scrollTo(0, { immediate: true, force: true });
+	}, [pathname, scrollTo]);
 
 	useEffect(() => {
 		// Guard: only create once, even if React re-runs effects in dev.

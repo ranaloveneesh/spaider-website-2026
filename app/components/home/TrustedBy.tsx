@@ -44,7 +44,7 @@ export default function TrustedBy() {
 							>
 								<Image src={src} alt={alt} width={360} height={120} sizes="(max-width: 640px) 160px, 200px" className="h-9 w-auto object-contain brightness-0 invert opacity-35 transition-opacity duration-300 hover:opacity-65 sm:h-10 md:h-11" decoding="async" />
 							</div>
-							<span className="font-geist-mono text-[0.65rem] tracking-[0.08em] text-spx-faint">{alt}</span>
+							<span className="sr-only">{alt}</span>
 						</div>
 					))}
 				</div>

@@ -135,6 +135,8 @@ function ProductSection({ tag, heading, description, bullets, image, href, flip 
 							/>
 							<div className="relative aspect-video w-full">
 								<Image src={image} alt={`${heading} product preview`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+								{/* Inset hairline separates the image from the card frame */}
+								<div aria-hidden className="pointer-events-none absolute inset-0 z-10 rounded-[13px] ring-1 ring-inset ring-white/10" />
 							</div>
 						</div>
 					</motion.div>
