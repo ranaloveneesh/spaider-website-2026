@@ -42,9 +42,9 @@ export const metadata: Metadata = {
 		siteName: "SPAIDER Space",
 		images: [
 			{
-				url: "/logo.png",
-				width: 1200,
-				height: 630,
+				url: "/og.png",
+				width: 1731,
+				height: 909,
 				alt: "SPAIDER Space - Sovereign AI for Aerospace",
 			},
 		],
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "SPAIDER Space - Sovereign AI for Aerospace",
 		description: "AI agents for aerospace teams. Secure, sovereign, mission-ready.",
-		images: ["/logo.png"],
+		images: ["/og.png"],
 		creator: "@spaider_ai",
 	},
 
