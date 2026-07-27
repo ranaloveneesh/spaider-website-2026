@@ -28,7 +28,7 @@ const DEFAULT_MEMBERS: TeamMember[] = [
 	{
 		id: "3",
 		name: "Ernest Skrzypczyk",
-		role: "LEAD DEPLOYMENT TECHNOLOGIES",
+		role: "SYSTEM AND DEPLOYMENT ARCHITECT",
 		image: "/team/Ernest.webp",
 	},
 	{
