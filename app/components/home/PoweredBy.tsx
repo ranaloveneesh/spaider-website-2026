@@ -12,6 +12,7 @@ const LOGOS: Logo[] = [
 	{ src: "/powered/googlecloud.svg", alt: "Google Cloud logo", name: "Google Cloud", scale: 2.3 },
 	{ src: "/powered/aws.svg", alt: "Amazon Web Services logo", name: "AWS", scale: 0.6 },
 	{ src: "/powered/luxprovide.svg", alt: "LuxProvide logo", name: "LuxProvide", scale: 0.8 },
+	{ src: "/powered/intel.svg", alt: "Intel logo", name: "Intel", scale: 0.9 },
 ];
 
 export default function PoweredBy() {
@@ -21,7 +22,7 @@ export default function PoweredBy() {
 				<h2 className="spx-heading text-foreground">Powered by</h2>
 			</div>
 
-			<section className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4" aria-label="Powered by logos">
+			<section className="mx-auto grid w-full grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5" aria-label="Powered by logos">
 				{LOGOS.map(({ src, alt, name, scale }) => (
 					<div key={`${src}-${alt}`} className="flex flex-col items-center gap-3">
 						<div className="flex items-center justify-center" style={{ transform: `scale(${scale ?? 1})`, transformOrigin: "center" }}>
