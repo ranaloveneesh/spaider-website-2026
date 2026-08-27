@@ -13,6 +13,7 @@ const LOGOS: Logo[] = [
 	{ src: "/trusted/esric.svg", alt: "ESRIC", scale: 0.6 },
 	{ src: "/trusted/ses.svg", alt: "SES", scale: 1.5 },
 	{ src: "/trusted/ohb.svg", alt: "OHB", scale: 0.5 },
+	{ src: "/trusted/intel.svg", alt: "Intel", scale: 1 },
 ];
 
 const MARQUEE_LOGOS: MarqueeLogo[] = [...LOGOS.map((l) => ({ ...l, dup: 0 as const })), ...LOGOS.map((l) => ({ ...l, dup: 1 as const }))];
@@ -56,7 +57,7 @@ export default function TrustedBy() {
           100% { transform: translateX(-50%); }
         }
         .hero-marquee-track {
-          animation: heroMarquee 60s linear infinite;
+          animation: heroMarquee 40s linear infinite;
           will-change: transform;
         }
         @media (prefers-reduced-motion: reduce) {
