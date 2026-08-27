@@ -12,7 +12,7 @@ const LOGOS: Logo[] = [
 	{ src: "/powered/googlecloud.svg", alt: "Google Cloud logo", name: "Google Cloud", scale: 2.3 },
 	{ src: "/powered/aws.svg", alt: "Amazon Web Services logo", name: "AWS", scale: 0.6 },
 	{ src: "/powered/luxprovide.svg", alt: "LuxProvide logo", name: "LuxProvide", scale: 0.8 },
-	{ src: "/powered/intel.svg", alt: "Intel logo", name: "Intel", scale: 0.9 },
+	{ src: "/powered/intel.svg", alt: "Intel logo", name: "Intel", scale: 1 },
 ];
 
 export default function PoweredBy() {
