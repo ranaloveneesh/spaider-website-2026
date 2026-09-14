@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScro
 import { useEffect, useRef, useState } from "react";
 import Reveal from "@/app/components/ui/reveal";
 
-type GateStatus = "live" | "dev" | "plan";
+type GateStatus = "live" | "agent";
 
 type Gate = {
 	gate: string;
@@ -15,12 +15,12 @@ type Gate = {
 };
 
 const GATES: Gate[] = [
-	{ gate: "Bid & Qualification", title: "Win the contract.", body: "Reading the tender, tracing every requirement, drafting the compliant, costed bid.", agent: "SAGAN - in production", status: "live" },
-	{ gate: "Concept & Feasibility", title: "Requirements into architecture.", body: "Requirements traced, structured, and held to a verification thread that starts on day one.", agent: "SPOCK - in development", status: "dev" },
-	{ gate: "Manufacturing & Production", title: "Build to spec, on the record.", body: "Supplier and works documentation captured, searchable, and traced back to the design baseline.", agent: "AI Foundations - in production", status: "live" },
-	{ gate: "Integration & Test", title: "Integrate. Test. Prove it.", body: "Requirements and standards checked off against AIT evidence at every quality gate.", agent: "SPOCK - in development", status: "dev" },
-	{ gate: "Launch Readiness", title: "Go / no-go, with evidence.", body: "PDR/CDR-style readiness reviews - open points, risks, and documentation status on the record.", agent: "SPOCK - in development", status: "dev" },
-	{ gate: "Operations & Sustainment", title: "Telemetry into decisions.", body: "Asset monitoring, operational history, and anomaly review - operators in control.", agent: "KEPLER - in development", status: "dev" },
+	{ gate: "Bid & Qualification", title: "Proposals and tenders", body: "Tender analysis, requirement tracing, proposal structure, work packages, costing, and review.", agent: "SAGAN - product", status: "live" },
+	{ gate: "Concept & Feasibility", title: "Requirements and architecture", body: "Requirements structured and connected to architecture, assumptions, interfaces, and evidence.", agent: "SPOCK", status: "agent" },
+	{ gate: "Manufacturing & Production", title: "Technical knowledge", body: "Supplier, production, and program documentation retained as searchable and traceable technical knowledge.", agent: "AI Foundations - platform", status: "live" },
+	{ gate: "Integration & Test", title: "Verification evidence", body: "Requirements and standards connected to integration, verification, and test evidence.", agent: "SPOCK", status: "agent" },
+	{ gate: "Launch Readiness", title: "Technical reviews", body: "Open points, risks, evidence status, and readiness inputs prepared for the responsible review team.", agent: "SPOCK", status: "agent" },
+	{ gate: "Operations & Sustainment", title: "Mission operations", body: "Operational context, procedures, events, mission history, and anomaly investigation support.", agent: "KEPLER", status: "agent" },
 ];
 
 // Fractions along the path length where each gate's node sits.
@@ -29,8 +29,7 @@ const PATH_D = "M60 468 C 250 462 340 372 480 322 C 620 272 720 294 850 232 C 96
 
 const STATUS_DOT: Record<GateStatus, React.CSSProperties> = {
 	live: { background: "var(--spx-green)", boxShadow: "0 0 10px var(--spx-green)" },
-	dev: { background: "var(--spx-amber)" },
-	plan: { background: "var(--spx-faint)" },
+	agent: { background: "var(--spx-cyan)" },
 };
 
 function padGate(i: number) {
@@ -43,7 +42,7 @@ function StaticGates() {
 		<div>
 			<Reveal variant="fade-up" threshold={0.1} className="mb-8 sm:mb-12 md:mb-16">
 				<h2 className="max-w-[20ch] font-outfit text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-					One mission. <span className="text-spx-cyan">Six gates.</span> Four agents in the loop.
+					One mission. <span className="text-spx-cyan">Six gates.</span> One intelligence architecture.
 				</h2>
 			</Reveal>
 			<ol className="relative border-l border-spx-rule-2 pl-8 sm:pl-10">
@@ -127,7 +126,7 @@ function OrbitGates() {
 				<div className="flex flex-wrap items-end justify-between gap-10" style={{ paddingTop: "calc(64px + 3vh)" }}>
 					<div>
 						<h2 className="max-w-[20ch] font-outfit text-[clamp(1.7rem,3.8vw,3.2rem)] font-semibold leading-[1.05] tracking-tight text-foreground">
-							One mission. <span className="spx-grad-text">Six gates.</span> Four agents in the loop.
+							One mission. <span className="spx-grad-text">Six gates.</span> One intelligence architecture.
 						</h2>
 					</div>
 					<div className="flex items-center gap-4 font-geist-mono text-[0.72rem] tracking-[0.2em] text-spx-mute">

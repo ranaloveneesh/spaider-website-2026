@@ -2,13 +2,22 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import type { CSSProperties } from "react";
 import Hero from "../components/home/Hero";
+import Positioning from "../components/home/Positioning";
 import TrustedBy from "../components/home/TrustedBy";
 import Reveal from "../components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: { absolute: "SPAIDER Space - Sovereign AI for Aerospace" },
-	description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents that collaborate with your team on your data - securely, compliantly, and at scale.",
+	title: { absolute: "SPAIDER Space - Intelligence Systems for Space Engineering and Operations" },
+	description: "SPAIDER develops aerospace ontologies, domain models, expert agents, and explainability systems for space engineering and mission operations.",
 };
+
+const ArchitecturePreview = dynamic(() => import("../components/home/ArchitecturePreview"), {
+	loading: () => <div className="mt-24 min-h-[34rem] w-full animate-pulse border border-white/10 bg-white/[0.025]" aria-busy="true" />,
+});
+
+const TrustPreview = dynamic(() => import("../components/home/TrustPreview"), {
+	loading: () => <div className="mt-24 min-h-[30rem] w-full animate-pulse border-y border-white/10 bg-white/[0.025]" aria-busy="true" />,
+});
 
 const PoweredBy = dynamic(() => import("../components/home/PoweredBy"), {
 	loading: () => (
@@ -81,11 +90,14 @@ export default function Home() {
 			    position:sticky for descendants (e.g. GetStarted's pinned section). */}
 			<div className="overflow-x-clip">
 				<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)]" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
-					{/* Agents handles its own internal per-element animations */}
+					<Positioning />
+					<ArchitecturePreview />
+					{/* Agents preserves the existing deployed product screenshots and media. */}
 					<Agents />
 					<Fleet />
+					<TrustPreview />
 					<Reveal variant="fade-right">
-						<WhySpaider subtitle="Sovereign by design, traceable by default, and built for aerospace from the start." />
+						<WhySpaider title={<><span className="text-foreground">A space-technology</span> <span className="spx-grad-text">development roadmap.</span></>} subtitle="SPAIDER combines current ground-based products with R&D for future engineering, operational, edge, and autonomous space applications." />
 					</Reveal>
 					<GetStarted />
 					<Reveal variant="fade-up">

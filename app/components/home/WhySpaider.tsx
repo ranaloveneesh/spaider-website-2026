@@ -18,16 +18,16 @@ interface AccordionItem {
 
 const DEFAULT_ITEMS: AccordionItem[] = [
 	{
-		t: "Aerospace-native intelligent automation",
-		d: "Domain-expert AI Models, powering domain-trained AI Agents for deep technical & operational aerospace workflows.",
+		t: "Space-technology development",
+		d: "Research and product development across aerospace knowledge systems, domain models, technical agents, explainability, and mission-operations intelligence.",
 	},
 	{
-		t: "Grounded and governed data analysis",
-		d: "Outputs stay tied to approved data, sources, and internal knowledge.",
+		t: "Aerospace ontology and model R&D",
+		d: "Technical concepts, requirements, systems, interfaces, operational procedures, and mission context are represented for use by models and agents.",
 	},
 	{
-		t: "Deployable in sensitive environments",
-		d: "Run on EU cloud, private cloud, or on-prem with controlled access and data handling.",
+		t: "Ground and future space applications",
+		d: "The current focus is expert support for ground-based engineering and operations. The architecture is being developed for future use across ground systems, edge environments, and autonomous mission workflows.",
 	},
 ];
 

@@ -1,26 +1,21 @@
-import { ArrowRight } from "lucide-react";
 import Reveal from "@/app/components/ui/reveal";
 
 // Source's SAGAN `stats`, rendered in its `.num-grid` style: big mono value,
 // small uppercase mono label underneath, hairline-divided columns.
 const METRICS = [
 	{
-		value: (
-			<>
-				weeks <ArrowRight aria-hidden="true" className="inline size-[0.7em] align-baseline" /> hours
-			</>
-		),
-		label: "first structured, costed draft",
+		value: "Structured",
+		label: "requirements, work packages, schedules, and costs",
 	},
-	{ value: "100%", label: "requirements traced to source" },
-	{ value: "PSS-ready", label: "official agency cost forms populated" },
+	{ value: "Traceable", label: "responses connected to tender sources and evidence" },
+	{ value: "Reviewable", label: "shared workflow with defined human approval points" },
 ] as const;
 
 export default function Metrics() {
 	return (
 		<section className="mx-auto mt-[var(--spx-section-gap)] w-full min-w-0">
 			<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
-				Less grunt work, <span className="spx-grad-text">stronger bids.</span>
+				A structured proposal <span className="spx-grad-text">workspace.</span>
 			</Reveal>
 			<div className="mt-10 grid grid-cols-1 border-t border-spx-rule sm:grid-cols-3 sm:gap-x-8">
 				{METRICS.map((m, index) => (

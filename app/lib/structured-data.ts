@@ -41,7 +41,7 @@ export function getSiteJsonLd() {
 				"@id": websiteId,
 				url: base,
 				name: "SPAIDER",
-				description: "SPAIDER provides European-sovereign AI infrastructure for aerospace. Deploy domain-expert AI agents on your data-securely and compliantly.",
+				description: "SPAIDER develops aerospace ontologies, domain models, expert agents, and explainability systems for space engineering and mission operations.",
 				publisher: { "@id": orgId },
 				inLanguage: "en-US",
 			},

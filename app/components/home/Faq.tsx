@@ -19,7 +19,7 @@ const faqs = [
 	},
 	{
 		question: "How do you keep outputs reliable?",
-		answer: "SPAIDER grounds outputs in approved sources, applies workflow guardrails, and keeps humans in the loop where decisions matter.",
+		answer: "SPAIDER grounds outputs in approved sources and records provenance. The Trust Layer adds contradiction screening, confidence signals, consistency checks, and routes flagged results for expert review.",
 	},
 	{
 		question: "What do we need to get started?",

@@ -14,28 +14,34 @@ type Layer = {
 
 const LAYERS: Layer[] = [
 	{
-		name: "Trust Layer",
-		desc: "Traceable, reviewable AI for expert teams.",
-		body: "Source grounding, confidence checks, explainability, and human review keep AI outputs controlled and auditable. Assistance, not blind automation.",
-		chips: ["Source grounding", "Confidence checks", "Hallucination checks", "Explainability", "Human review", "Auditability", "Citations"],
+		name: "Knowledge Layer",
+		desc: "Private technical and operational knowledge.",
+		body: "Documents, standards, project history, operational records, and approved external sources are ingested, parsed, indexed, and retained with source metadata.",
+		chips: ["Ingestion", "Document parsing", "Fact extraction", "Libraries", "Vector retrieval", "Source records"],
 	},
 	{
-		name: "Agentic Layer",
-		desc: "Workflow agents that work with your data and tools.",
-		body: "Workflow-specific assistants plan tasks, use tools, maintain context, and support experts across proposals, engineering, operations, and business workflows.",
-		chips: ["SAGAN · SPOCK · KEPLER · AMELIA", "Task planning", "Tool use", "Workflow memory", "SOP-guided execution", "Persistent context"],
+		name: "Ontology Layer",
+		desc: "Aerospace concepts and technical relationships.",
+		body: "The ontology layer represents requirements, systems, interfaces, evidence, assets, procedures, events, and mission context so data can be interpreted consistently across tools and workflows.",
+		chips: ["Aerospace taxonomy", "Domain ontology", "Entities", "Relationships", "Knowledge graphs", "Semantic retrieval"],
 	},
 	{
 		name: "Model Layer",
-		desc: "Domain intelligence for aerospace workflows.",
-		body: "Frontier models combined with SPAIDER's aerospace-specific intelligence and model routing. Reasoning over technical documents, engineering workflows, and mission context.",
-		chips: ["Domain-adapted models", "Model routing", "Aerospace reasoning", "Retrieval · extraction · validation", "Private deployment"],
+		desc: "Domain processing for aerospace workflows.",
+		body: "Domain-adapted components and routed foundation models perform technical extraction, classification, retrieval, synthesis, and workflow-specific reasoning.",
+		chips: ["Domain adaptation", "Model routing", "Technical extraction", "Classification", "Retrieval", "Private deployment"],
 	},
 	{
-		name: "Knowledge Layer",
-		desc: "Turn enterprise data into structured aerospace knowledge.",
-		body: "Documents, standards, project history, and technical data are ingested and structured into searchable libraries, retrieval indexes, and knowledge graphs built on an aerospace ontology and taxonomy.",
-		chips: ["Ingestion pipeline", "Document parsing", "Fact extraction", "Aerospace ontology", "Taxonomy", "Knowledge graph", "Vector retrieval", "Libraries", "Source cards"],
+		name: "Agent Layer",
+		desc: "Expert workflows connected to data and tools.",
+		body: "SAGAN, SPOCK, and KEPLER use the lower layers to execute bounded workflows across proposals, systems engineering, and mission operations.",
+		chips: ["SAGAN", "SPOCK", "KEPLER", "Task planning", "Tool use", "Workflow state", "Approval gates"],
+	},
+	{
+		name: "Trust Layer",
+		desc: "Verification and explainability across the system.",
+		body: "Independent mechanisms attach provenance, consistency checks, confidence signals, and review state to agent inputs and outputs. These signals support users, policies, and downstream systems.",
+		chips: ["Evidence provenance", "Contradiction screening", "Confidence estimation", "Memory consistency", "Escalation", "Audit records"],
 	},
 ];
 
@@ -46,9 +52,9 @@ export default function TechStack() {
 		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
 			<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-14">
 				<h2 className="spx-heading text-foreground">
-					Four layers. <span className="spx-grad-text">One system.</span>
+					Five layers. <span className="spx-grad-text">One system.</span>
 				</h2>
-				<p className="spx-lede mt-3">Four proprietary layers. Select a layer to see what lives inside it.</p>
+				<p className="spx-lede mt-3">Select a layer to review its technical role and current development scope.</p>
 			</Reveal>
 
 			<Reveal variant="fade-up" threshold={0.1} delayMs={80}>

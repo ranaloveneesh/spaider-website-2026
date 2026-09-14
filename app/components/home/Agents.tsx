@@ -48,10 +48,10 @@ function FeatureRow({ index, children }: { index: number; children: React.ReactN
 const PRODUCTS = [
 	{
 		number: "01",
-		tag: "Enterprise platform",
+		tag: "Knowledge infrastructure",
 		heading: "AI Foundations",
-		description: "AI Foundations makes your aerospace organization AI-ready by turning private knowledge, project work, and expert workflows into a secure, searchable, reusable enterprise knowledge layer.",
-		bullets: ["Make your company's internal and approved external knowledge sources AI ready.", "Automate daily documentation (reports, minute-of-meeting etc) tasks.", "Search, chat, and retrieve with traceable context grounded in your data.", "Enterprise co-work powered by domain-expert AI models."],
+		description: "AI Foundations structures private aerospace knowledge for retrieval, model use, and agent workflows. It provides the data and knowledge infrastructure used across the SPAIDER stack.",
+		bullets: ["Ingest internal documents and approved external sources.", "Structure technical knowledge using aerospace taxonomy and ontology.", "Search and retrieve with traceable source context.", "Provide governed knowledge access to models and agents."],
 		image: "/ai-foundations/knowledge_preview.png",
 		href: "/ai-foundations",
 	},
@@ -59,7 +59,7 @@ const PRODUCTS = [
 		number: "02",
 		tag: "RFP & Proposal Assistant",
 		heading: "SAGAN",
-		description: "SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.",
+		description: "SAGAN supports aerospace bid teams across opportunity assessment, requirements analysis, proposal structure, work packages, costing, and compliance review.",
 		bullets: ["Read RFPs and extract requirements automatically.", "Draft responses using your templates and past materials.", "Reuse internal knowledge with source-backed outputs.", "Support reviews, planning, and submission readiness."],
 		image: "/sagan/sagan_preview.png",
 		href: "/agents/sagan",
@@ -152,13 +152,13 @@ export default function Agents() {
 			{/* Section header - h2 then subtext stagger in on first pixel */}
 			<motion.div className="mb-6 sm:mb-8" variants={headerContainer} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0 }}>
 				<motion.span variants={headerItem} className="spx-eyebrow mb-8">
-					Flagship agents
+					Current products
 				</motion.span>
 				<motion.h2 variants={headerItem} className="spx-heading text-foreground">
-					Explore our <span className="spx-grad-text">products</span>
+					Product interfaces and <span className="spx-grad-text">working workflows.</span>
 				</motion.h2>
 				<motion.p variants={headerItem} className="spx-lede mt-3">
-					AI Foundations and Sagan are live and handling real aerospace workflows, from knowledge work to RFP responses.
+					AI Foundations provides the underlying knowledge infrastructure. SAGAN applies it to aerospace proposals and tender workflows.
 				</motion.p>
 			</motion.div>
 

@@ -12,12 +12,18 @@ type DropdownLink = { label: string; href: string; description?: string };
 type NavItem = { type: "link"; label: string; href: string } | { type: "dropdown"; label: string; links: DropdownLink[] };
 
 const NAV_ITEMS: NavItem[] = [
-	{ type: "link", label: "TECH STACK", href: "/our-tech" },
+	{ type: "link", label: "TECHNOLOGY", href: "/our-tech" },
+	{ type: "link", label: "TRUST", href: "/trust-layer" },
 	{ type: "link", label: "AI FOUNDATIONS", href: "/ai-foundations" },
 	{
 		type: "dropdown",
 		label: "AGENTS",
-		links: [{ label: "SAGAN", href: "/agents/sagan" }],
+		links: [
+			{ label: "ALL AGENTS", href: "/agents", description: "Three expert agents for space programs" },
+			{ label: "SAGAN", href: "/agents/sagan", description: "Proposals and tenders" },
+			{ label: "SPOCK", href: "/agents/spock", description: "Systems engineering" },
+			{ label: "KEPLER", href: "/agents/kepler", description: "Mission operations" },
+		],
 	},
 	{ type: "link", label: "PRICING", href: "/pricing" },
 	{

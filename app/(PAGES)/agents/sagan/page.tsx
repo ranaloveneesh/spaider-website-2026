@@ -7,6 +7,7 @@ import Metrics from "../../../components/sagan/Metrics";
 import OnboardingTimeline from "../../../components/sagan/OnboardingTimeline";
 import ProposalWalkthrough from "../../../components/sagan/ProposalWalkthrough";
 import RfpChallenge from "../../../components/sagan/RFPChallenge";
+import TrustIntegration from "../../../components/sagan/TrustIntegration";
 import Reveal from "../../../components/ui/reveal";
 
 export const metadata: Metadata = {
@@ -41,9 +42,10 @@ export default function SaganPage() {
 				<ProposalWalkthrough />
 				<OnboardingTimeline />
 				<Metrics />
+				<TrustIntegration />
 				<GenericCopilot />
 				<Reveal variant="fade-up" threshold={0.25}>
-					<CtaBand title="Pilot SAGAN on your next tender." copy="Deployed in your infrastructure, grounded in your proposal history." ctaHref="/request-trial" ctaLabel="Book a Demo" />
+					<CtaBand title="Evaluate SAGAN for your next tender." copy="Review the workflow, document set, templates, integrations, and deployment requirements with the SPAIDER team." ctaHref="/request-trial" ctaLabel="Book a Technical Discussion" />
 				</Reveal>
 			</div>
 		</div>

@@ -32,13 +32,13 @@ export default function RfpChallenge() {
 	return (
 		<section className="mx-auto mt-[var(--spx-section-gap)] w-full min-w-0">
 			<Reveal as="h2" variant="fade-up" threshold={0.35} className="spx-heading text-foreground">
-				RFPs are complex, <span className="spx-grad-text">deadlines are not.</span>
+				Aerospace proposals require <span className="spx-grad-text">coordinated technical work.</span>
 			</Reveal>
 			<div className="mt-10 flex flex-col gap-10 md:flex-row md:justify-between md:gap-16 lg:gap-20">
 				<Reveal variant="fade-left" threshold={0.25} className="max-w-md">
-					<p className="spx-body">Every year, space organizations handle hundreds of RFPs, each requiring significant time from specialized engineering teams.</p>
+					<p className="spx-body">Complex RFP and ITT responses require technical interpretation, requirements traceability, work-package planning, costing, evidence, and coordinated review.</p>
 
-					<p className="spx-body mt-3 md:mt-4">With limited resources and growing competition, teams face tough choices on where to invest effort, risking delays and missed opportunities.</p>
+					<p className="spx-body mt-3 md:mt-4">SAGAN is designed to keep this work connected to the tender, the organization&apos;s approved knowledge, and the proposal review process.</p>
 
 					{/* Toggle (mobile only) */}
 					<button

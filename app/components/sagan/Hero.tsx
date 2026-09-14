@@ -65,7 +65,7 @@ export default function SaganHero() {
 			</motion.h1>
 
 			<motion.p variants={V.body} className="spx-lede px-4 text-center">
-				SAGAN helps aerospace teams qualify opportunities, understand requirements, structure proposals, create work packages, and accelerate compliant RFP responses.
+				SAGAN supports aerospace bid teams across opportunity assessment, requirements analysis, proposal structure, work packages, costing, and compliance review.
 			</motion.p>
 
 			<motion.div variants={V.cta} className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">

@@ -9,16 +9,16 @@ import Reveal from "@/app/components/ui/reveal";
 const CARDS = [
 	{
 		eyebrow: "For aerospace teams",
-		title: "See it before you commit",
-		body: "Get a walkthrough of AI Foundations and SAGAN on a real use case, in your infrastructure, on your data.",
+		title: "Define a technical pilot",
+		body: "Review AI Foundations, SAGAN, and the SPAIDER technology architecture against a bounded workflow and relevant data.",
 		href: "/request-trial",
 		label: "Request a Trial",
 		variant: "solid",
 	},
 	{
 		eyebrow: "For investors",
-		title: "Join the mission early",
-		body: "SPAIDER is building the sovereign AI layer for European aerospace, with real traction and a growing pipeline.",
+		title: "Review the company and roadmap",
+		body: "SPAIDER is developing space-technology and AI infrastructure for engineering and mission operations.",
 		href: "/invest",
 		label: "Invest",
 		variant: "line",
@@ -30,9 +30,9 @@ export default function NextStep() {
 		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
 			<Reveal variant="fade-up" threshold={0.1}>
 				<h2 className="spx-heading text-foreground">
-					Fly it <span className="spx-grad-text">or fund it</span>
+					Work with <span className="spx-grad-text">SPAIDER.</span>
 				</h2>
-				<p className="spx-lede mt-3">Deploy SPAIDER on your missions, or back the team building it.</p>
+				<p className="spx-lede mt-3">Discuss a technical pilot, partnership, or investment.</p>
 			</Reveal>
 
 			<Reveal variant="fade-up" threshold={0.1} delayMs={100}>

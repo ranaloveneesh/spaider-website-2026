@@ -30,7 +30,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			priority: 0.9,
 		},
 		{
+			url: u("/trust-layer"),
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.95,
+		},
+		{
+			url: u("/agents"),
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.95,
+		},
+		{
 			url: u("/agents/sagan"),
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.9,
+		},
+		{
+			url: u("/agents/spock"),
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.9,
+		},
+		{
+			url: u("/agents/kepler"),
 			lastModified: now,
 			changeFrequency: "monthly",
 			priority: 0.9,

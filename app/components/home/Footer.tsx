@@ -29,7 +29,7 @@ function Footer() {
 									<span className="uppercase mr-1">Spaider</span>
 									Space
 								</p>
-								<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">The Sovereign AI Layer for Aerospace.</p>
+								<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">Intelligence systems for space engineering and operations.</p>
 							</div>
 						</div>
 
@@ -50,7 +50,12 @@ function Footer() {
 						<ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-2.5">
 							<li>
 								<Link href="/our-tech" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
-									Tech Stack
+									Technology
+								</Link>
+							</li>
+							<li>
+								<Link href="/trust-layer" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
+									Trust Layer
 								</Link>
 							</li>
 							<li>
@@ -63,6 +68,8 @@ function Footer() {
 									SAGAN
 								</Link>
 							</li>
+							<li><Link href="/agents/spock" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">SPOCK</Link></li>
+							<li><Link href="/agents/kepler" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">KEPLER</Link></li>
 							<li>
 								<Link href="/pricing" className="text-xs leading-6 text-foreground transition-colors font-geist-mono hover:text-foreground sm:text-sm sm:leading-7 lg:text-base">
 									Pricing
@@ -127,7 +134,7 @@ function Footer() {
 				</div>
 
 				<div className="mt-8 flex flex-col gap-2 border-t border-white/10 pt-5 text-center sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:pt-6 sm:text-left">
-					<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">Built for mission-ready, European-sovereign AI.</p>
+					<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">Space technology, aerospace intelligence, and explainable AI.</p>
 					<p className="text-xs leading-6 text-muted font-geist-mono sm:text-sm sm:leading-7">© {year} Spaider Space. All rights reserved.</p>
 				</div>
 			</div>

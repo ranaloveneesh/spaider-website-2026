@@ -16,9 +16,9 @@ export default function GenericCopilot() {
 		<section className="mt-[var(--spx-section-gap)] w-full min-w-0">
 			<Reveal variant="fade-up" threshold={0.1} className="mb-10 sm:mb-14">
 				<h2 className="spx-heading text-foreground">
-					Why not just <span className="spx-grad-text">a generic copilot?</span>
+					SAGAN compared with <span className="spx-grad-text">generic AI chat.</span>
 				</h2>
-				<p className="spx-lede mt-3">A chat window can write sentences. A bid needs structure, compliance, cost forms, and a team. That is the difference.</p>
+				<p className="spx-lede mt-3">A proposal workflow requires tender structure, traceability, approved knowledge, costing, collaboration, and review controls.</p>
 			</Reveal>
 
 			{/* vs table */}
