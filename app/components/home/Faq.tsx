@@ -327,7 +327,7 @@ function FAQ() {
 
 									<div className="flex min-w-0 flex-1 flex-col gap-2 sm:gap-3">
 										<div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-3">
-											<h2 className={`text-base font-medium leading-snug sm:text-lg text-foreground`}>{item.question}</h2>
+											<p className={`text-base font-medium leading-snug sm:text-lg text-foreground`}>{item.question}</p>
 										</div>
 									</div>
 								</button>
