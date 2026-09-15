@@ -28,7 +28,6 @@ const MODULES = [
 export default function TrustPreview() {
 	return (
 		<section className="relative mt-[var(--spx-section-gap)] w-full min-w-0 border-y border-spx-rule py-[clamp(4rem,8vw,7rem)]">
-			<div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(89,232,245,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(89,232,245,0.035)_1px,transparent_1px)] [background-size:48px_48px]" />
 			<div className="relative grid gap-12 xl:grid-cols-[0.75fr_1.25fr] xl:gap-20">
 				<Reveal variant="fade-right" threshold={0.12}>
 					<span className="spx-eyebrow mb-8">Core R&amp;D · Trust Layer</span>

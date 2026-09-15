@@ -32,10 +32,10 @@ export default function AboutPage() {
 			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				{/* ── Hero ── */}
 				<Reveal as="header" variant="fade-up" threshold={0.1} className="pb-12 pt-6 sm:pb-16 sm:pt-10">
-					<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
-						A space-technology company
+					<h1 className="max-w-[20ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
+						A space-technology company building
 						<br />
-						<span className="spx-grad-text">building aerospace intelligence.</span>
+						<span className="spx-grad-text">aerospace intelligence.</span>
 					</h1>
 					<p className="spx-lede mt-7">SPAIDER works at the intersection of space systems, aerospace software, artificial intelligence, and mission operations. We develop technical infrastructure for how space programs capture knowledge, engineer systems, and operate missions.</p>
 

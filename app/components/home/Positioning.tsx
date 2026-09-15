@@ -6,7 +6,7 @@ const CAPABILITIES = [
 	{
 		index: "01",
 		title: "Domain expert",
-		body: "Aerospace ontologies, structured program knowledge, and domain-adapted models provide the technical context required for space workflows.",
+		body: "Aerospace ontologies, structured program knowledge, and domain-adapted models provide the context required for space workflows.",
 		enabledBy: "Ontology · Knowledge · Models",
 	},
 	{
@@ -39,9 +39,7 @@ export default function Positioning() {
 						Technical intelligence for the <span className="spx-grad-text">space mission lifecycle.</span>
 					</h2>
 					<div>
-						<p className="spx-lede">
-							SPAIDER develops the intelligence layer for space programs, engineering teams, and mission operations. The system combines aerospace knowledge, models, expert agents, and verification mechanisms in one architecture.
-						</p>
+						<p className="spx-lede">SPAIDER develops the intelligence layer for space programs, engineering teams, and mission operations. The system combines aerospace knowledge, models, expert agents, and verification mechanisms in one architecture.</p>
 						<Link href="/our-tech" className="mt-6 inline-flex items-center gap-2 font-geist-mono text-[0.75rem] uppercase tracking-[0.14em] text-spx-cyan transition-colors hover:text-white">
 							Review the architecture <ArrowUpRight className="size-4" aria-hidden="true" />
 						</Link>

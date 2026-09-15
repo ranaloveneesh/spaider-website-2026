@@ -57,14 +57,14 @@ function NavDropdown({ label, links }: { label: string; links: DropdownLink[] })
 	return (
 		<fieldset
 			ref={ref}
-			className="relative m-0 border-0 p-0"
+			aria-label={`${label} menu`}
+			className="relative m-0 inline-flex items-center border-0 p-0"
 			onMouseEnter={() => setOpen(true)}
 			onMouseLeave={() => setOpen(false)}
 			onBlur={(e) => {
 				if (!ref.current?.contains(e.relatedTarget as Node | null)) setOpen(false);
 			}}
 		>
-			<legend className="sr-only">{label} menu</legend>
 			<button
 				type="button"
 				className={`${linkClasses} inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]`}

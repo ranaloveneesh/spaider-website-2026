@@ -155,7 +155,7 @@ export default function Agents() {
 					Current products
 				</motion.span>
 				<motion.h2 variants={headerItem} className="spx-heading text-foreground">
-					Product interfaces and <span className="spx-grad-text">working workflows.</span>
+					Explore our products and <span className="spx-grad-text">workflows.</span>
 				</motion.h2>
 				<motion.p variants={headerItem} className="spx-lede mt-3">
 					AI Foundations provides the underlying knowledge infrastructure. SAGAN applies it to aerospace proposals and tender workflows.
