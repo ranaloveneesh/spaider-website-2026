@@ -16,25 +16,25 @@ const STEPS: Step[] = [
 	{
 		label: "Step 01",
 		title: "Define your use case",
-		description: "Identify the workflow you want to agentify.",
+		description: "Select a bounded engineering, operations, knowledge, or proposal workflow.",
 		icon: Target,
 	},
 	{
 		label: "Step 02",
 		title: "Prepare your data",
-		description: "We make your private data AI-ready - structured, searchable, and traceable.",
+		description: "Structure the relevant documents, standards, project history, and approved data sources.",
 		icon: Database,
 	},
 	{
 		label: "Step 03",
 		title: "Prototype",
-		description: "We create a working prototype with you actively in the loop.",
+		description: "Configure a working workflow and validate it with the responsible technical team.",
 		icon: FlaskConical,
 	},
 	{
 		label: "Step 04",
 		title: "Deploy",
-		description: "We deploy in your secure cloud or on-prem infra as per your needs.",
+		description: "Deploy in an agreed cloud, private-cloud, or on-premises environment.",
 		icon: Rocket,
 	},
 ];
@@ -47,7 +47,7 @@ function Heading() {
 			<h2 className="spx-heading text-foreground">
 				From pilot to <span className="spx-grad-text">production</span>
 			</h2>
-			<p className="spx-lede mt-3">A clear path from first pilot to agents running in your daily workflows.</p>
+			<p className="spx-lede mt-3">A defined path from a bounded technical use case to an operational workflow.</p>
 		</div>
 	);
 }

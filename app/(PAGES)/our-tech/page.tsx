@@ -3,18 +3,20 @@ import type { CSSProperties } from "react";
 import CtaBand from "@/app/components/CtaBand";
 import SecurityCompliance from "@/app/components/home/SecurityCompliance";
 import AnimatedHeader from "@/app/components/our-tech/AnimatedHeader";
+import ArchitectureVisual from "@/app/components/our-tech/ArchitectureVisual";
 import IntegrationsGallery from "@/app/components/our-tech/IntegrationsGallery";
 import KnowledgeFlow from "@/app/components/our-tech/KnowledgeFlow";
+import ResearchProgram from "@/app/components/our-tech/ResearchProgram";
 import TechStack from "@/app/components/our-tech/TechStack";
 import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
-	title: "Tech Stack",
-	description: "European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+	title: "Technology",
+	description: "SPAIDER's five-layer architecture for aerospace knowledge, ontology, domain models, expert agents, and explainable AI.",
 	alternates: { canonical: "https://www.spaiderspace.com/our-tech" },
 	openGraph: {
-		title: "Tech Stack | SPAIDER Space",
-		description: "European-sovereign AI infrastructure for aerospace - platform architecture, security, and deployment.",
+		title: "Technology | SPAIDER Space",
+		description: "A five-layer architecture for aerospace knowledge, ontology, domain models, expert agents, and explainable AI.",
 		url: "https://www.spaiderspace.com/our-tech",
 		siteName: "SPAIDER Space",
 		images: [
@@ -35,15 +37,15 @@ export default function OurTechPage() {
 		// Page-scoped cyan accent, same as the homepage (see page-revamp-playbook.md)
 		<div className="w-full min-w-0 overflow-x-clip" style={{ "--color-accent": "var(--spx-cyan)", "--color-accent-hover": "#3ecfdd" } as CSSProperties}>
 			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)]" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
-				{/* ── Hero: "Proprietary aerospace AI, built as a stack." ── */}
 				<AnimatedHeader />
 
-				<main className="relative min-w-0 text-foreground">
-					{/* ── The moat: interactive stack layers ── */}
+				<div className="relative min-w-0 text-foreground">
+					<ArchitectureVisual />
 					<TechStack />
 
 					{/* ── Knowledge flow: documents -> decisions pill chain ── */}
 					<KnowledgeFlow />
+					<ResearchProgram />
 
 					{/* ── Platform capabilities - tenets-style hairline grid ── */}
 					{/* <section className="mt-[var(--spx-section-gap)] w-full min-w-0">
@@ -76,9 +78,9 @@ export default function OurTechPage() {
 
 					{/* CTA band (before footer) - source's mini `.cta-band` */}
 					<Reveal variant="fade-up" threshold={0.25}>
-						<CtaBand className="mt-[calc(var(--spx-section-gap)*0.5)]" title="Bring your documents. We'll bring the stack." copy="A technical briefing with your documents, your standards, your workflows." ctaHref="/request-trial" ctaLabel="Book a Demo" />
+						<CtaBand className="mt-[calc(var(--spx-section-gap)*0.5)]" title="Review the architecture against a technical workflow." copy="Discuss your documents, standards, systems, and deployment requirements with the SPAIDER team." ctaHref="/request-trial" ctaLabel="Book a Technical Briefing" />
 					</Reveal>
-				</main>
+				</div>
 			</div>
 		</div>
 	);

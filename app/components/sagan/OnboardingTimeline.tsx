@@ -46,7 +46,7 @@ export default function OnboardingTimeline() {
 				</Reveal>
 
 				<Reveal as="p" variant="fade-up" threshold={0.35} delayMs={80} className="spx-lede mt-3">
-					Four steps from setup to a fully operational AI proposal engine.
+					Four steps to configure the workflow, data access, review controls, and proposal process.
 				</Reveal>
 			</div>
 

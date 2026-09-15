@@ -12,12 +12,18 @@ type DropdownLink = { label: string; href: string; description?: string };
 type NavItem = { type: "link"; label: string; href: string } | { type: "dropdown"; label: string; links: DropdownLink[] };
 
 const NAV_ITEMS: NavItem[] = [
-	{ type: "link", label: "TECH STACK", href: "/our-tech" },
+	{ type: "link", label: "TECHNOLOGY", href: "/our-tech" },
+	{ type: "link", label: "TRUST", href: "/trust-layer" },
 	{ type: "link", label: "AI FOUNDATIONS", href: "/ai-foundations" },
 	{
 		type: "dropdown",
 		label: "AGENTS",
-		links: [{ label: "SAGAN", href: "/agents/sagan" }],
+		links: [
+			{ label: "ALL AGENTS", href: "/agents", description: "Three expert agents for space programs" },
+			{ label: "SAGAN", href: "/agents/sagan", description: "Proposals and tenders" },
+			{ label: "SPOCK", href: "/agents/spock", description: "Systems engineering" },
+			{ label: "KEPLER", href: "/agents/kepler", description: "Mission operations" },
+		],
 	},
 	{ type: "link", label: "PRICING", href: "/pricing" },
 	{
@@ -51,14 +57,14 @@ function NavDropdown({ label, links }: { label: string; links: DropdownLink[] })
 	return (
 		<fieldset
 			ref={ref}
-			className="relative m-0 border-0 p-0"
+			aria-label={`${label} menu`}
+			className="relative m-0 inline-flex items-center border-0 p-0"
 			onMouseEnter={() => setOpen(true)}
 			onMouseLeave={() => setOpen(false)}
 			onBlur={(e) => {
 				if (!ref.current?.contains(e.relatedTarget as Node | null)) setOpen(false);
 			}}
 		>
-			<legend className="sr-only">{label} menu</legend>
 			<button
 				type="button"
 				className={`${linkClasses} inline-flex cursor-pointer items-center gap-1.5 border-0 bg-transparent p-0 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--focus-ring-color)]`}

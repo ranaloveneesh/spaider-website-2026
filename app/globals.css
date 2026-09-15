@@ -8,6 +8,9 @@ body {
 }
 
 :root {
+	--font-outfit: "Switzer", system-ui, sans-serif;
+	--font-montserrat: "Switzer", system-ui, sans-serif;
+	--font-geist-mono: "SFMono-Regular", "Cascadia Code", "Roboto Mono", Consolas, monospace;
 	--color-bg-primary: var(--spx-void);
 	--color-bg-secondary: #1c1c1f;
 	--color-bg-tertiary: #232326;

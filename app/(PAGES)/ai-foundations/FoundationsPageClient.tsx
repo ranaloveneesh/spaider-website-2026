@@ -17,7 +17,7 @@ export default function FoundationsPageClient() {
 				<WhatYouGet />
 				<Onboarding />
 				<UseCases />
-				<CtaBand title="Make your organization AI-ready." copy="Start with a secure knowledge foundation on your own documents." ctaHref="/request-trial" ctaLabel="Start a pilot" />
+				<CtaBand title="Build a technical knowledge foundation." copy="Review your documents, data sources, ontology requirements, retrieval workflows, and deployment environment." ctaHref="/request-trial" ctaLabel="Discuss a Pilot" />
 			</div>
 		</div>
 	);

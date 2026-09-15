@@ -27,13 +27,14 @@ const subVar = {
 export default function AnimatedHeader() {
 	return (
 		<motion.header className="w-full border-b border-spx-rule pb-12 pt-6 sm:pb-16 sm:pt-10" variants={container} initial="hidden" animate="show">
+			<motion.span variants={subVar} className="spx-eyebrow mb-7">Technology</motion.span>
 			<motion.h1 variants={headingVar} className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
-				Not just a chatbot.
+				The intelligence architecture
 				<br />
-				<span className="spx-grad-text">An operating stack.</span>
+				<span className="spx-grad-text">for space systems.</span>
 			</motion.h1>
 			<motion.p variants={subVar} className="spx-lede mt-7">
-				A layered aerospace AI architecture connecting enterprise knowledge, domain models, agentic workflows, and trust mechanisms into one operational system.
+				SPAIDER connects aerospace knowledge, ontologies, domain models, expert agents, and independent verification mechanisms in one technical architecture.
 			</motion.p>
 		</motion.header>
 	);

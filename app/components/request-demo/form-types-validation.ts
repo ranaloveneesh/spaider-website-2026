@@ -1,3 +1,5 @@
+import { isValidEmail, isValidPhone } from "@/app/lib/form-validation";
+
 export type FormValues = {
 	firstname: string;
 	lastname: string;
@@ -33,14 +35,12 @@ export function validateField(name: keyof FormValues, values: FormValues): strin
 		return "This field is required.";
 	}
 
-	if (name === "workEmail" && values.workEmail.trim()) {
-		const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.workEmail);
-		if (!isEmailValid) return "Enter a valid email address.";
+	if (name === "workEmail" && values.workEmail.trim() && !isValidEmail(values.workEmail)) {
+		return "Enter a valid email address.";
 	}
 
-	if (name === "phone" && values.phone.trim()) {
-		const isPhoneValid = /^[+()\d\s-]{7,}$/.test(values.phone);
-		if (!isPhoneValid) return "Enter a valid phone number.";
+	if (name === "phone" && values.phone.trim() && !isValidPhone(values.phone)) {
+		return "Enter a valid phone number.";
 	}
 
 	return "";

@@ -82,28 +82,28 @@ export default function Hero() {
 				    .hero-title, scaled down a touch. */}
 				<motion.h1 variants={headlineContainer} className="font-outfit text-[clamp(2.6rem,8.5vw,8rem)] font-semibold leading-[1.08] tracking-[-0.015em] text-white">
 					<motion.span variants={headlineLine} style={{ display: "block" }}>
-						Sovereign AI
+						Intelligence systems
 					</motion.span>
 					<motion.span variants={headlineLine} style={{ display: "block" }}>
-						operating layer
+						for space engineering
 					</motion.span>
 					<motion.span variants={headlineLine} style={{ display: "block" }}>
-						for <span className="spx-grad-text">aerospace</span>
+						and <span className="spx-grad-text">operations</span>
 					</motion.span>
 				</motion.h1>
 
 				{/* Foot row: sub-headline left, CTAs right */}
 				<motion.div variants={heroItem} className="mt-[5vh] flex flex-wrap items-end justify-between gap-10">
-					<p className="spx-hero-sub">SPAIDER helps aerospace teams search internal knowledge, manage long-horizon projects, and work with domain-specific AI assistants across proposal, engineering, and operations workflows.</p>
+					<p className="spx-hero-sub">SPAIDER develops aerospace ontologies, domain models, expert agents, and verification systems for technical and operational work across the space mission lifecycle.</p>
 					<div className="flex w-full flex-col gap-3.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
 						<Button asChild variant="solid" className="w-full justify-center sm:w-auto">
-							<Link href="/request-trial">
-								Request a Trial
+							<Link href="/our-tech">
+								Explore the Technology
 								<ArrowRight aria-hidden="true" className="inline-block size-[1em] transition-transform duration-300 group-hover:translate-x-1" />
 							</Link>
 						</Button>
 						<Button asChild variant="line" className="w-full justify-center sm:w-auto">
-							<Link href="/ai-foundations">Explore AI Foundations</Link>
+							<Link href="/agents">Meet the Agents</Link>
 						</Button>
 					</div>
 				</motion.div>

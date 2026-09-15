@@ -6,11 +6,11 @@ import Reveal from "@/app/components/ui/reveal";
 
 export const metadata: Metadata = {
 	title: "About",
-	description: "Spaider Space builds European-sovereign AI infrastructure for aerospace teams.",
+	description: "SPAIDER develops intelligence systems for space engineering and mission operations.",
 	alternates: { canonical: "https://www.spaiderspace.com/about" },
 	openGraph: {
 		title: "About | SPAIDER Space",
-		description: "Spaider Space builds European-sovereign AI infrastructure for aerospace teams.",
+		description: "SPAIDER develops intelligence systems for space engineering and mission operations.",
 		url: "https://www.spaiderspace.com/about",
 		siteName: "SPAIDER Space",
 		images: [
@@ -32,22 +32,22 @@ export default function AboutPage() {
 			<div className="w-full pb-[calc(var(--spx-section-gap)*0.5)] text-left" style={{ marginLeft: "-1rem", marginRight: "-1rem", width: "calc(100% + 2rem)", paddingLeft: "var(--spx-gutter)", paddingRight: "var(--spx-gutter)" }}>
 				{/* ── Hero ── */}
 				<Reveal as="header" variant="fade-up" threshold={0.1} className="pb-12 pt-6 sm:pb-16 sm:pt-10">
-					<h1 className="max-w-[15ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
-						Built by aerospace
+					<h1 className="max-w-[20ch] font-outfit text-[clamp(2.5rem,6.8vw,5.6rem)] font-medium leading-[1.05] tracking-tight text-foreground">
+						A space-technology company building
 						<br />
-						<span className="spx-grad-text">and AI specialists.</span>
+						<span className="spx-grad-text">aerospace intelligence.</span>
 					</h1>
-					<p className="spx-lede mt-7">SPAIDER exists to make enterprise knowledge, expert workflows, and domain-specific AI assistants operational across aerospace organizations.</p>
+					<p className="spx-lede mt-7">SPAIDER works at the intersection of space systems, aerospace software, artificial intelligence, and mission operations. We develop technical infrastructure for how space programs capture knowledge, engineer systems, and operate missions.</p>
 
 					{/* Mission / Vision */}
 					<div className="mt-12 grid grid-cols-1 gap-px overflow-hidden border border-spx-rule bg-spx-rule sm:mt-16 md:grid-cols-2">
 						<div className="bg-spx-void p-9">
 							<span className="block font-geist-mono text-[0.7rem] uppercase tracking-[0.2em] text-spx-cyan">Our mission</span>
-							<h3 className="mt-6 max-w-[44ch] text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.5] text-spx-ink-2">Help aerospace teams accelerate innovation by making enterprise knowledge, workflows, and domain-specific AI assistants operational across the organization.</h3>
+							<h3 className="mt-6 max-w-[44ch] text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.5] text-spx-ink-2">Develop the fundamental intelligence layer for the space industry, connecting technical knowledge, engineering workflows, and mission operations.</h3>
 						</div>
 						<div className="bg-spx-void p-9">
 							<span className="block font-geist-mono text-[0.7rem] uppercase tracking-[0.2em] text-spx-cyan">Our vision</span>
-							<h3 className="mt-6 max-w-[44ch] text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.5] text-spx-ink-2">Every aerospace professional works with trusted AI assistants that understand their organization, their workflows, and the technical context of space systems.</h3>
+							<h3 className="mt-6 max-w-[44ch] text-[clamp(1.05rem,1.6vw,1.3rem)] leading-[1.5] text-spx-ink-2">Space systems and organizations use domain-expert, explainable, and governed intelligence across the complete mission lifecycle, from concept to operations.</h3>
 						</div>
 					</div>
 				</Reveal>

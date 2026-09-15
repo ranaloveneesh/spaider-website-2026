@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import { Button } from "@/app/components/ui/button";
 import { SPX_FIELD as FIELD_CLASSES, SPX_FORM_LABEL as LABEL_CLASSES } from "@/app/components/ui/spx-form";
+import { isValidEmail, isValidPhone } from "@/app/lib/form-validation";
 import { cn } from "@/app/lib/utils";
 
 // Strong ease-out - starts fast, feels immediately responsive (Emil principle)
@@ -36,13 +37,11 @@ function validateField(name: keyof FormValues, values: FormValues): string {
 	if (requiredFields.includes(name) && typeof value === "string" && !value.trim()) {
 		return "This field is required.";
 	}
-	if (name === "email" && values.email.trim()) {
-		const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email);
-		if (!isEmailValid) return "Enter a valid email address.";
+	if (name === "email" && values.email.trim() && !isValidEmail(values.email)) {
+		return "Enter a valid email address.";
 	}
-	if (name === "phone" && values.phone.trim()) {
-		const isPhoneValid = /^[+()\d\s-]{7,}$/.test(values.phone);
-		if (!isPhoneValid) return "Enter a valid phone number.";
+	if (name === "phone" && values.phone.trim() && !isValidPhone(values.phone)) {
+		return "Enter a valid phone number.";
 	}
 	return "";
 }
