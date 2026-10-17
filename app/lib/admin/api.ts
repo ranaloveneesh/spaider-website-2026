@@ -1,23 +1,15 @@
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { API_BASE_URL as BASE_URL } from "@/app/lib/api-config";
 
+// Shape returned by POST /auth/token. The account details sit nested under
+// `user` (with `platform_role` instead of `role`), so the UI reads the
+// account from GET /auth/me after signing in. Only the fields used are declared.
 export interface LoginResponse {
 	access_token: string;
 	token_type: string;
-	email: string | null;
-	full_name: string;
-	organisation: string;
-	organisation_industry: string;
-	organisation_role: string | null;
-	organization_id: number;
-	role: "admin" | "user";
-	status: "approved" | "pending" | "blocked";
-	user_id: number;
-	username: string;
+	expires_at: string;
 }
 
-// Shape returned by GET /auth/me - a distinct (but overlapping) shape from
-// LoginResponse: it keys the user by `id` instead of `user_id` and adds
-// `email_verified`. Only the fields the UI actually reads are declared here.
+// Shape returned by GET /auth/me. Only the fields the UI actually reads are declared here.
 export interface AuthUser {
 	username: string;
 	full_name: string;

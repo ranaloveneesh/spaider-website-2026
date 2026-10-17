@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 import { Button } from "@/app/components/ui/button";
 import { SPX_FIELD as FIELD_CLASSES, SPX_FORM_LABEL as LABEL_CLASSES } from "@/app/components/ui/spx-form";
+import { API_BASE_URL } from "@/app/lib/api-config";
 import { isValidEmail, isValidPhone } from "@/app/lib/form-validation";
 import { cn } from "@/app/lib/utils";
 
@@ -82,7 +83,7 @@ export function InvestForm() {
 		if (Object.keys(nextErrors).length > 0) return;
 		setIsSubmitting(true);
 		try {
-			const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/website/invest`, {
+			const res = await fetch(`${API_BASE_URL}/website/invest`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(values),

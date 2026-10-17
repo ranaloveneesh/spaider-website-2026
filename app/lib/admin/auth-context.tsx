@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { type AuthUser, login as apiLogin, getMe, type LoginResponse } from "./api";
+import { type AuthUser, login as apiLogin, getMe } from "./api";
 
 const STORAGE_KEY = "spaider_admin_session";
 
@@ -16,7 +16,7 @@ interface AuthContextValue {
 	status: AuthStatus;
 	token: string | null;
 	user: AuthUser | null;
-	login: (username: string, password: string) => Promise<LoginResponse>;
+	login: (username: string, password: string) => Promise<AuthUser>;
 	logout: () => void;
 }
 
@@ -68,13 +68,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 	}, []);
 
 	const login = useCallback(async (username: string, password: string) => {
-		const response = await apiLogin(username, password);
-		const { access_token, token_type: _token_type, ...user } = response;
+		const { access_token } = await apiLogin(username, password);
+		const user = await getMe(access_token);
 		writeStoredSession({ token: access_token, user });
 		setToken(access_token);
 		setUser(user);
 		setStatus("authenticated");
-		return response;
+		return user;
 	}, []);
 
 	const logout = useCallback(() => {

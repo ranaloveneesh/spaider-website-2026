@@ -5,6 +5,8 @@ import type { FormEvent } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
+import { API_BASE_URL } from "@/app/lib/api-config";
+
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 import { type FormErrors, type FormValues, initialValues, validate, validateField } from "./form-types-validation";
@@ -42,7 +44,7 @@ export function RequestDemoForm() {
 		setIsSubmitting(true);
 
 		try {
-			const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/website/request-demo`, {
+			const res = await fetch(`${API_BASE_URL}/website/request-demo`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

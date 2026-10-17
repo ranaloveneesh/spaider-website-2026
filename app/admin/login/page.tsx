@@ -95,8 +95,8 @@ export default function AdminLoginPage() {
 
 		setIsSubmitting(true);
 		try {
-			const response = await login(values.identifier.trim(), values.password);
-			if (response.role !== "admin") {
+			const user = await login(values.identifier.trim(), values.password);
+			if (user.role !== "admin") {
 				toast.error("This account does not have admin access.");
 				return;
 			}
