@@ -154,51 +154,39 @@ export default function Navbar() {
 
 	return (
 		<>
-			<div className="fixed inset-x-0 top-0 z-50">
-				<aside aria-label="NeoSpace hackathon announcement" className="flex min-h-12 w-full items-center justify-center border-y border-spx-rule bg-spx-void-2 px-4 py-2 text-center sm:px-6">
-					<p className="font-geist-mono text-[0.65rem] leading-relaxed tracking-[0.06em] text-spx-ink-2 sm:text-[0.8125rem] sm:tracking-[0.08em]">
-						Participating in NeoSpace hackathon? Click here{" "}
-						<a href="https://neospace.spaiderspace.com" target="_blank" rel="noreferrer" className="text-spx-cyan underline decoration-spx-cyan/50 underline-offset-4 transition-colors hover:text-spx-green hover:decoration-spx-green focus-visible:rounded-xs focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-spx-cyan">
-							https://neospace.spaiderspace.com
-						</a>{" "}
-						to signup
-					</p>
-				</aside>
+			{/* Full-width bar - transparent until scrolled, then solid + blurred */}
+			<header className={`fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-6 border-b px-6 py-5.5 transition-colors duration-400 sm:px-10 ${isScrolled ? "border-spx-rule bg-spx-void/82 backdrop-blur-md" : "border-transparent bg-transparent"}`}>
+				{/* Logo */}
+				<Link href="/" aria-label="Home" className="flex shrink-0 select-none items-center gap-2">
+					<Image src="/logo.png" alt="" width={36} height={72} />
+					<span className="font-outfit text-lg font-semibold leading-none text-white">SPAIDER Space</span>
+				</Link>
 
-				{/* Full-width bar - transparent until scrolled, then solid + blurred */}
-				<header className={`relative flex items-center justify-between gap-6 border-b px-6 py-5.5 transition-colors duration-400 sm:px-10 ${isScrolled ? "border-spx-rule bg-spx-void/82 backdrop-blur-md" : "border-transparent bg-transparent"}`}>
-					{/* Logo */}
-					<Link href="/" aria-label="Home" className="flex shrink-0 select-none items-center gap-2">
-						<Image src="/logo.png" alt="" width={36} height={72} />
-						<span className="font-outfit text-lg font-semibold leading-none text-white">SPAIDER Space</span>
-					</Link>
+				{/* Desktop nav */}
+				<nav aria-label="Primary" className="hidden items-center gap-8 xl:flex">
+					{NAV_ITEMS.map((item) =>
+						item.type === "dropdown" ? (
+							<NavDropdown key={item.label} label={item.label} links={item.links} />
+						) : (
+							<NavAnchor key={item.href} href={item.href}>
+								{item.label}
+							</NavAnchor>
+						),
+					)}
+				</nav>
 
-					{/* Desktop nav */}
-					<nav aria-label="Primary" className="hidden items-center gap-8 xl:flex">
-						{NAV_ITEMS.map((item) =>
-							item.type === "dropdown" ? (
-								<NavDropdown key={item.label} label={item.label} links={item.links} />
-							) : (
-								<NavAnchor key={item.href} href={item.href}>
-									{item.label}
-								</NavAnchor>
-							),
-						)}
-					</nav>
+				{/* Right side */}
+				<div className="flex shrink-0 items-center gap-3">
+					<Button asChild variant="solid" className="hidden px-5 py-3 tracking-[0.08em] xl:inline-flex">
+						<Link href="/request-trial">REQUEST A TRIAL</Link>
+					</Button>
 
-					{/* Right side */}
-					<div className="flex shrink-0 items-center gap-3">
-						<Button asChild variant="solid" className="hidden px-5 py-3 tracking-[0.08em] xl:inline-flex">
-							<Link href="/request-trial">REQUEST A TRIAL</Link>
-						</Button>
-
-						{/* Burger */}
-						<button type="button" className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-spx-rule-2 bg-transparent text-spx-ink xl:hidden" aria-label="Open menu" aria-expanded={isMobileMenuOpen} aria-controls="spx-mobile-menu" onClick={toggleMobileMenu}>
-							<MenuIcon className="h-4.5 w-4.5" aria-hidden="true" />
-						</button>
-					</div>
-				</header>
-			</div>
+					{/* Burger */}
+					<button type="button" className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-xs border border-spx-rule-2 bg-transparent text-spx-ink xl:hidden" aria-label="Open menu" aria-expanded={isMobileMenuOpen} aria-controls="spx-mobile-menu" onClick={toggleMobileMenu}>
+						<MenuIcon className="h-4.5 w-4.5" aria-hidden="true" />
+					</button>
+				</div>
+			</header>
 
 			{/* Mobile full-screen overlay menu */}
 			<div
